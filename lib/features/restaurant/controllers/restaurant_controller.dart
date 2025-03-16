@@ -27,6 +27,9 @@ class RestaurantController extends GetxController implements GetxService {
 
   List<Restaurant>? _restaurantList;
   List<Restaurant>? get restaurantList => _restaurantList;
+  List<Restaurant>? _categoryWiseRestaurantList;
+  List<Restaurant>? get categoryWiseRestaurantList =>
+      _categoryWiseRestaurantList;
 
   List<Restaurant>? _popularRestaurantList;
   List<Restaurant>? get popularRestaurantList => _popularRestaurantList;
@@ -35,7 +38,8 @@ class RestaurantController extends GetxController implements GetxService {
   List<Restaurant>? get latestRestaurantList => _latestRestaurantList;
 
   List<Restaurant>? _recentlyViewedRestaurantList;
-  List<Restaurant>? get recentlyViewedRestaurantList => _recentlyViewedRestaurantList;
+  List<Restaurant>? get recentlyViewedRestaurantList =>
+      _recentlyViewedRestaurantList;
 
   Restaurant? _restaurant;
   Restaurant? get restaurant => _restaurant;
@@ -47,13 +51,19 @@ class RestaurantController extends GetxController implements GetxService {
   ProductModel? get restaurantProductModel => _restaurantProductModel;
 
   ProductModel? _restaurantSearchProductModel;
-  ProductModel? get restaurantSearchProductModel => _restaurantSearchProductModel;
+  ProductModel? get restaurantSearchProductModel =>
+      _restaurantSearchProductModel;
 
-  int _categoryIndex = 0;
-  int get categoryIndex => _categoryIndex;
+  // int _categoryIndex = 0;
+  // int get categoryIndex => _categoryIndex;
+
+  int _subCategoryIndex = 0;
+  int get subCategoryIndex => _subCategoryIndex;
 
   List<CategoryModel>? _categoryList;
   List<CategoryModel>? get categoryList => _categoryList;
+  List<CategoryModel>? _subCategoryList;
+  List<CategoryModel>? get subCategoryList => _subCategoryList;
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
@@ -82,7 +92,8 @@ class RestaurantController extends GetxController implements GetxService {
   String get searchText => _searchText;
 
   RecommendedProductModel? _recommendedProductModel;
-  RecommendedProductModel? get recommendedProductModel => _recommendedProductModel;
+  RecommendedProductModel? get recommendedProductModel =>
+      _recommendedProductModel;
 
   CartSuggestItemModel? _cartSuggestItemModel;
   CartSuggestItemModel? get cartSuggestItemModel => _cartSuggestItemModel;
@@ -114,34 +125,38 @@ class RestaurantController extends GetxController implements GetxService {
   int _nearestRestaurantIndex = -1;
   int get nearestRestaurantIndex => _nearestRestaurantIndex;
 
-
   void setNearestRestaurantIndex(int index, {bool notify = true}) {
     _nearestRestaurantIndex = index;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
-  double getRestaurantDistance(LatLng restaurantLatLng){
-    return restaurantServiceInterface.getRestaurantDistanceFromUser(restaurantLatLng);
+  double getRestaurantDistance(LatLng restaurantLatLng) {
+    return restaurantServiceInterface
+        .getRestaurantDistanceFromUser(restaurantLatLng);
   }
 
-  String filteringUrl(String slug){
-    return restaurantServiceInterface.filterRestaurantLinkUrl(slug, _restaurant?.id, _restaurant?.zoneId);
+  String filteringUrl(String slug) {
+    return restaurantServiceInterface.filterRestaurantLinkUrl(
+        slug, _restaurant?.id, _restaurant?.zoneId);
   }
 
-  Future<void> getOrderAgainRestaurantList(bool reload, {DataSourceEnum dataSource = DataSourceEnum.local}) async {
-    if(reload) {
+  Future<void> getOrderAgainRestaurantList(bool reload,
+      {DataSourceEnum dataSource = DataSourceEnum.local}) async {
+    if (reload) {
       _orderAgainRestaurantList = null;
       update();
     }
     List<Restaurant>? orderAgainRestaurantList;
-    if(dataSource == DataSourceEnum.local) {
-      orderAgainRestaurantList = await restaurantServiceInterface.getOrderAgainRestaurantList(source: DataSourceEnum.local);
+    if (dataSource == DataSourceEnum.local) {
+      orderAgainRestaurantList = await restaurantServiceInterface
+          .getOrderAgainRestaurantList(source: DataSourceEnum.local);
       _prepareOrderAgainRestaurantList(orderAgainRestaurantList);
       getOrderAgainRestaurantList(false, dataSource: DataSourceEnum.client);
     } else {
-      orderAgainRestaurantList = await restaurantServiceInterface.getOrderAgainRestaurantList(source: DataSourceEnum.client);
+      orderAgainRestaurantList = await restaurantServiceInterface
+          .getOrderAgainRestaurantList(source: DataSourceEnum.client);
       _prepareOrderAgainRestaurantList(orderAgainRestaurantList);
     }
   }
@@ -154,22 +169,30 @@ class RestaurantController extends GetxController implements GetxService {
     update();
   }
 
-  Future<void> getRecentlyViewedRestaurantList(bool reload, String type, bool notify, {DataSourceEnum dataSource = DataSourceEnum.local, bool fromRecall = false}) async {
+  Future<void> getRecentlyViewedRestaurantList(
+      bool reload, String type, bool notify,
+      {DataSourceEnum dataSource = DataSourceEnum.local,
+      bool fromRecall = false}) async {
     _type = type;
-    if(reload && !fromRecall){
+    if (reload && !fromRecall) {
       _recentlyViewedRestaurantList = null;
     }
-    if(notify) {
+    if (notify) {
       update();
     }
     List<Restaurant>? recentlyViewedRestaurantList;
-    if(_recentlyViewedRestaurantList == null || reload || fromRecall) {
-      if(dataSource == DataSourceEnum.local) {
-        recentlyViewedRestaurantList = await restaurantServiceInterface.getRecentlyViewedRestaurantList(type, source: DataSourceEnum.local);
+    if (_recentlyViewedRestaurantList == null || reload || fromRecall) {
+      if (dataSource == DataSourceEnum.local) {
+        recentlyViewedRestaurantList = await restaurantServiceInterface
+            .getRecentlyViewedRestaurantList(type,
+                source: DataSourceEnum.local);
         _prepareRecentlyViewedRestaurantList(recentlyViewedRestaurantList);
-        getRecentlyViewedRestaurantList(false, 'all', false, dataSource: DataSourceEnum.client, fromRecall: true);
+        getRecentlyViewedRestaurantList(false, 'all', false,
+            dataSource: DataSourceEnum.client, fromRecall: true);
       } else {
-        recentlyViewedRestaurantList = await restaurantServiceInterface.getRecentlyViewedRestaurantList(type, source: DataSourceEnum.client);
+        recentlyViewedRestaurantList = await restaurantServiceInterface
+            .getRecentlyViewedRestaurantList(type,
+                source: DataSourceEnum.client);
         _prepareRecentlyViewedRestaurantList(recentlyViewedRestaurantList);
       }
     }
@@ -183,29 +206,51 @@ class RestaurantController extends GetxController implements GetxService {
     update();
   }
 
-  Future<void> getRestaurantRecommendedItemList(int? restaurantId, bool reload) async {
+  Future<void> getRestaurantRecommendedItemList(
+      int? restaurantId, bool reload) async {
     _recommendedProductModel = null;
-    if(reload) {
+    if (reload) {
       _restaurantModel = null;
       update();
     }
-    _recommendedProductModel = await restaurantServiceInterface.getRestaurantRecommendedItemList(restaurantId);
+    _recommendedProductModel = await restaurantServiceInterface
+        .getRestaurantRecommendedItemList(restaurantId);
     update();
   }
 
-  Future<void> getRestaurantList(int offset, bool reload, {bool fromMap = false, DataSourceEnum source = DataSourceEnum.local}) async {
-    if(reload) {
+  Future<void> getCategoryWiseRestaurantList(String categoryId,
+      {bool reload = false}) async {
+    _categoryWiseRestaurantList = null;
+    update();
+    List<Restaurant> result = [];
+    result = await restaurantServiceInterface.getCategoryWiseResturantList(
+            offset: 0, limit: 20, categoryId: categoryId) ??
+        [];
+    _categoryWiseRestaurantList = [];
+    _categoryWiseRestaurantList = result;
+    update();
+  }
+
+  Future<void> getRestaurantList(int offset, bool reload,
+      {bool fromMap = false,
+      DataSourceEnum source = DataSourceEnum.local}) async {
+    if (reload) {
       _restaurantModel = null;
       update();
     }
 
     RestaurantModel? restaurantModel;
-    if(source == DataSourceEnum.local && offset == 1) {
-      restaurantModel = await restaurantServiceInterface.getRestaurantList(offset, _restaurantType, _topRated, _discount, _veg, _nonVeg, fromMap: fromMap, source: DataSourceEnum.local);
+    if (source == DataSourceEnum.local && offset == 1) {
+      restaurantModel = await restaurantServiceInterface.getRestaurantList(
+          offset, _restaurantType, _topRated, _discount, _veg, _nonVeg,
+          fromMap: fromMap, source: DataSourceEnum.local);
       _prepareRestaurantList(restaurantModel, offset);
-      getRestaurantList(1, false, fromMap: fromMap, source: DataSourceEnum.client);
+      getRestaurantList(1, false,
+          fromMap: fromMap, source: DataSourceEnum.client);
     } else {
-      restaurantModel = await restaurantServiceInterface.getRestaurantList(offset, _restaurantType, _topRated, _discount, _veg, _nonVeg, fromMap: fromMap, source: DataSourceEnum.client);
+      restaurantModel = await restaurantServiceInterface.getRestaurantList(
+          offset, _restaurantType, _topRated, _discount, _veg, _nonVeg,
+          fromMap: fromMap, source: DataSourceEnum.client);
       _prepareRestaurantList(restaurantModel, offset);
     }
   }
@@ -214,7 +259,7 @@ class RestaurantController extends GetxController implements GetxService {
     if (restaurantModel != null) {
       if (offset == 1) {
         _restaurantModel = restaurantModel;
-      }else {
+      } else {
         _restaurantModel!.totalSize = restaurantModel.totalSize;
         _restaurantModel!.offset = restaurantModel.offset;
         _restaurantModel!.restaurants!.addAll(restaurantModel.restaurants!);
@@ -248,7 +293,9 @@ class RestaurantController extends GetxController implements GetxService {
     getRestaurantList(1, true);
   }
 
-  Future<void> getPopularRestaurantList(bool reload, String type, bool notify, {DataSourceEnum dataSource = DataSourceEnum.local, bool fromRecall = false}) async {
+  Future<void> getPopularRestaurantList(bool reload, String type, bool notify,
+      {DataSourceEnum dataSource = DataSourceEnum.local,
+      bool fromRecall = false}) async {
     _type = type;
     if (reload) {
       _popularRestaurantList = null;
@@ -258,13 +305,15 @@ class RestaurantController extends GetxController implements GetxService {
     }
     List<Restaurant>? popularRestaurantList;
     if (_popularRestaurantList == null || reload || fromRecall) {
-
       if (dataSource == DataSourceEnum.local) {
-        popularRestaurantList = await restaurantServiceInterface.getPopularRestaurantList(type, source: DataSourceEnum.local);
+        popularRestaurantList = await restaurantServiceInterface
+            .getPopularRestaurantList(type, source: DataSourceEnum.local);
         _preparePopularRestaurantList(popularRestaurantList);
-        getPopularRestaurantList(false, 'all', false, dataSource: DataSourceEnum.client, fromRecall: true);
+        getPopularRestaurantList(false, 'all', false,
+            dataSource: DataSourceEnum.client, fromRecall: true);
       } else {
-        popularRestaurantList = await restaurantServiceInterface.getPopularRestaurantList(type, source: DataSourceEnum.client);
+        popularRestaurantList = await restaurantServiceInterface
+            .getPopularRestaurantList(type, source: DataSourceEnum.client);
         _preparePopularRestaurantList(popularRestaurantList);
       }
     }
@@ -278,24 +327,28 @@ class RestaurantController extends GetxController implements GetxService {
     update();
   }
 
-  Future<void> getLatestRestaurantList(bool reload, String type, bool notify, {DataSourceEnum dataSource = DataSourceEnum.local, bool fromRecall = false}) async {
+  Future<void> getLatestRestaurantList(bool reload, String type, bool notify,
+      {DataSourceEnum dataSource = DataSourceEnum.local,
+      bool fromRecall = false}) async {
     _type = type;
-    if(reload){
+    if (reload) {
       _latestRestaurantList = null;
     }
-    if(notify) {
+    if (notify) {
       update();
     }
 
     List<Restaurant>? latestRestaurantList;
-    if(_latestRestaurantList == null || reload || fromRecall) {
-
-      if(dataSource == DataSourceEnum.local) {
-        latestRestaurantList = await restaurantServiceInterface.getLatestRestaurantList(type, source: DataSourceEnum.local);
+    if (_latestRestaurantList == null || reload || fromRecall) {
+      if (dataSource == DataSourceEnum.local) {
+        latestRestaurantList = await restaurantServiceInterface
+            .getLatestRestaurantList(type, source: DataSourceEnum.local);
         _prepareLatestRestaurantList(latestRestaurantList);
-        getLatestRestaurantList(false, 'all', false, dataSource: DataSourceEnum.client, fromRecall: true);
+        getLatestRestaurantList(false, 'all', false,
+            dataSource: DataSourceEnum.client, fromRecall: true);
       } else {
-        latestRestaurantList = await restaurantServiceInterface.getLatestRestaurantList(type, source: DataSourceEnum.client);
+        latestRestaurantList = await restaurantServiceInterface
+            .getLatestRestaurantList(type, source: DataSourceEnum.client);
         _prepareLatestRestaurantList(latestRestaurantList);
       }
     }
@@ -309,26 +362,47 @@ class RestaurantController extends GetxController implements GetxService {
     update();
   }
 
-  void setCategoryList() {
-    if(Get.find<CategoryController>().categoryList != null && _restaurant != null) {
-      _categoryList = restaurantServiceInterface.setCategories(Get.find<CategoryController>().categoryList!, _restaurant!);
+  // void setCategoryList() {
+  //   if (Get.find<CategoryController>().categoryList != null &&
+  //       _restaurant != null) {
+  //     _categoryList = restaurantServiceInterface.setCategories(
+  //         Get.find<CategoryController>().categoryList!, _restaurant!);
+  //   }
+  // }
+
+  void setSubCategoryList(int categoryId) {
+    if (Get.find<CategoryController>().subCategoryList != null &&
+        _restaurant != null) {
+      _subCategoryList = restaurantServiceInterface.setSubCategories(
+          Get.find<CategoryController>().subCategoryList!,
+          categoryId,
+          _restaurant!);
     }
   }
 
-
-  Future<Restaurant?> getRestaurantDetails(Restaurant restaurant, {bool fromCart = false, String slug = ''}) async {
-    _categoryIndex = 0;
-    if(restaurant.name != null) {
+  Future<Restaurant?> getRestaurantDetails(Restaurant restaurant,
+      {bool fromCart = false, String slug = ''}) async {
+    // _categoryIndex = 0;
+    _subCategoryIndex = 0;
+    if (restaurant.name != null) {
       _restaurant = restaurant;
-    }else {
+    } else {
       _isLoading = true;
       _restaurant = null;
-      _restaurant = await restaurantServiceInterface.getRestaurantDetails(restaurant.id.toString(), slug, Get.find<LocalizationController>().locale.languageCode);
-      if(_restaurant != null && _restaurant!.latitude != null){
+      _restaurant = await restaurantServiceInterface.getRestaurantDetails(
+          restaurant.id.toString(),
+          slug,
+          Get.find<LocalizationController>().locale.languageCode);
+      if (_restaurant != null && _restaurant!.latitude != null) {
         await _setRequiredDataAfterRestaurantGet(slug, fromCart);
       }
       Get.find<CheckoutController>().setOrderType(
-        (_restaurant != null && _restaurant!.delivery != null) ? _restaurant!.delivery! ? 'delivery' : 'take_away' : 'delivery', notify: false,
+        (_restaurant != null && _restaurant!.delivery != null)
+            ? _restaurant!.delivery!
+                ? 'delivery'
+                : 'take_away'
+            : 'delivery',
+        notify: false,
       );
 
       _isLoading = false;
@@ -337,61 +411,93 @@ class RestaurantController extends GetxController implements GetxService {
     return _restaurant;
   }
 
-  Future<void> _setRequiredDataAfterRestaurantGet(String slug, bool fromCart) async {
+  Future<void> _setRequiredDataAfterRestaurantGet(
+      String slug, bool fromCart) async {
     Get.find<CheckoutController>().initializeTimeSlot(_restaurant!);
-    if(!fromCart && slug.isEmpty){
+    if (!fromCart && slug.isEmpty) {
       Get.find<CheckoutController>().getDistanceInKM(
         LatLng(
           double.parse(AddressHelper.getAddressFromSharedPref()!.latitude!),
           double.parse(AddressHelper.getAddressFromSharedPref()!.longitude!),
         ),
-        LatLng(double.parse(_restaurant!.latitude!), double.parse(_restaurant!.longitude!)),
+        LatLng(double.parse(_restaurant!.latitude!),
+            double.parse(_restaurant!.longitude!)),
       );
     }
-    if(slug.isNotEmpty){
-      await _setStoreAddressToUserAddress(LatLng(double.parse(_restaurant!.latitude!), double.parse(_restaurant!.longitude!)));
+    if (slug.isNotEmpty) {
+      await _setStoreAddressToUserAddress(LatLng(
+          double.parse(_restaurant!.latitude!),
+          double.parse(_restaurant!.longitude!)));
     }
   }
 
   Future<void> _setStoreAddressToUserAddress(LatLng restaurantAddress) async {
     Position storePosition = Position(
-      latitude: restaurantAddress.latitude, longitude: restaurantAddress.longitude,
-      timestamp: DateTime.now(), accuracy: 1, altitude: 1, heading: 1, speed: 1, speedAccuracy: 1, altitudeAccuracy: 1, headingAccuracy: 1,
+      latitude: restaurantAddress.latitude,
+      longitude: restaurantAddress.longitude,
+      timestamp: DateTime.now(),
+      accuracy: 1,
+      altitude: 1,
+      heading: 1,
+      speed: 1,
+      speedAccuracy: 1,
+      altitudeAccuracy: 1,
+      headingAccuracy: 1,
     );
-    String addressFromGeocode = await Get.find<LocationController>().getAddressFromGeocode(LatLng(restaurantAddress.latitude, restaurantAddress.longitude));
-    ZoneResponseModel responseModel = await Get.find<LocationController>().getZone(storePosition.latitude.toString(), storePosition.longitude.toString(), true);
-    AddressModel addressModel = restaurantServiceInterface.prepareAddressModel(storePosition, responseModel, addressFromGeocode);
+    String addressFromGeocode = await Get.find<LocationController>()
+        .getAddressFromGeocode(
+            LatLng(restaurantAddress.latitude, restaurantAddress.longitude));
+    ZoneResponseModel responseModel = await Get.find<LocationController>()
+        .getZone(storePosition.latitude.toString(),
+            storePosition.longitude.toString(), true);
+    AddressModel addressModel = restaurantServiceInterface.prepareAddressModel(
+        storePosition, responseModel, addressFromGeocode);
     await AddressHelper.saveAddressInSharedPref(addressModel);
   }
 
   void makeEmptyRestaurant({bool willUpdate = true}) {
     _restaurant = null;
-    if(willUpdate) {
+    if (willUpdate) {
       update();
     }
   }
 
   Future<void> getCartRestaurantSuggestedItemList(int? restaurantID) async {
-    _suggestedItems = await restaurantServiceInterface.getCartRestaurantSuggestedItemList(restaurantID);
+    _suggestedItems = await restaurantServiceInterface
+        .getCartRestaurantSuggestedItemList(restaurantID);
     update();
   }
 
-  Future<void> getRestaurantProductList(int? restaurantID, int offset, String type, bool notify) async {
+  Future<void> getRestaurantProductList(
+      int? restaurantID, int offset, String type, bool notify) async {
     _foodOffset = offset;
-    if(offset == 1 || _restaurantProducts == null) {
+    if (offset == 1 || _restaurantProducts == null) {
       _type = type;
       _foodOffsetList = [];
       _restaurantProducts = null;
       _foodOffset = 1;
-      if(notify) {
+      if (notify) {
         update();
       }
     }
     if (!_foodOffsetList.contains(offset)) {
       _foodOffsetList.add(offset);
-      ProductModel? productModel = await restaurantServiceInterface.getRestaurantProductList(restaurantID, offset,
-          (_restaurant != null && _restaurant!.categoryIds!.isNotEmpty && _categoryIndex != 0)
-          ? _categoryList![_categoryIndex].id : 0, type);
+      ProductModel? productModel =
+          await restaurantServiceInterface.getRestaurantProductList(
+              restaurantID,
+              offset,
+              (_restaurant != null &&
+                      _restaurant!.subCategories!.isNotEmpty &&
+                      // _categoryIndex != 0
+                      _subCategoryIndex != 0)
+                  ?
+                  //  _categoryList!
+                  _subCategoryList![
+                          // _categoryIndex
+                          _subCategoryIndex]
+                      .id
+                  : 0,
+              type);
 
       if (productModel != null) {
         if (offset == 1) {
@@ -404,7 +510,7 @@ class RestaurantController extends GetxController implements GetxService {
         update();
       }
     } else {
-      if(_foodPaginate) {
+      if (_foodPaginate) {
         _foodPaginate = false;
         update();
       }
@@ -425,23 +531,26 @@ class RestaurantController extends GetxController implements GetxService {
     update();
   }
 
-  Future<void> getRestaurantSearchProductList(String searchText, String? storeID, int offset, String type) async {
-    if(searchText.isEmpty) {
+  Future<void> getRestaurantSearchProductList(
+      String searchText, String? storeID, int offset, String type) async {
+    if (searchText.isEmpty) {
       showCustomSnackBar('write_item_name'.tr);
-    }else {
+    } else {
       _isSearching = true;
       _searchText = searchText;
-      if(offset == 1 || _restaurantSearchProductModel == null) {
+      if (offset == 1 || _restaurantSearchProductModel == null) {
         _searchType = type;
         _restaurantSearchProductModel = null;
         update();
       }
-      ProductModel? productModel = await restaurantServiceInterface.getRestaurantSearchProductList(searchText, storeID, offset, type);
+      ProductModel? productModel = await restaurantServiceInterface
+          .getRestaurantSearchProductList(searchText, storeID, offset, type);
       if (productModel != null) {
         if (offset == 1) {
           _restaurantSearchProductModel = productModel;
-        }else {
-          _restaurantSearchProductModel!.products!.addAll(productModel.products!);
+        } else {
+          _restaurantSearchProductModel!.products!
+              .addAll(productModel.products!);
           _restaurantSearchProductModel!.totalSize = productModel.totalSize;
           _restaurantSearchProductModel!.offset = productModel.offset;
         }
@@ -452,7 +561,7 @@ class RestaurantController extends GetxController implements GetxService {
 
   void changeSearchStatus({bool isUpdate = true}) {
     _isSearching = !_isSearching;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
@@ -463,26 +572,39 @@ class RestaurantController extends GetxController implements GetxService {
     _searchType = 'all';
   }
 
-  void setCategoryIndex(int index) {
-    _categoryIndex = index;
+  // void setCategoryIndex(int index) {
+  //   _categoryIndex = index;
+  //   _restaurantProducts = null;
+  //   getRestaurantProductList(
+  //       _restaurant!.id, 1, Get.find<RestaurantController>().type, false);
+  //   update();
+  // }
+  void setSubCategoryIndex(int index) {
+    _subCategoryIndex = index;
     _restaurantProducts = null;
-    getRestaurantProductList(_restaurant!.id, 1, Get.find<RestaurantController>().type, false);
+    getRestaurantProductList(
+        _restaurant!.id, 1, Get.find<RestaurantController>().type, false);
     update();
   }
 
-  bool isRestaurantClosed(DateTime dateTime, bool active, List<Schedules>? schedules, {int? customDateDuration}) {
-    return restaurantServiceInterface.isRestaurantClosed(dateTime, active, schedules);
+  bool isRestaurantClosed(
+      DateTime dateTime, bool active, List<Schedules>? schedules,
+      {int? customDateDuration}) {
+    return restaurantServiceInterface.isRestaurantClosed(
+        dateTime, active, schedules);
   }
 
   bool isRestaurantOpenNow(bool active, List<Schedules>? schedules) {
     return restaurantServiceInterface.isRestaurantOpenNow(active, schedules);
   }
 
-  bool isOpenNow(Restaurant restaurant) => restaurant.open == 1 && restaurant.active!;
+  bool isOpenNow(Restaurant restaurant) =>
+      restaurant.open == 1 && restaurant.active!;
 
-  double? getDiscount(Restaurant restaurant) => restaurant.discount != null ? restaurant.discount!.discount : 0;
+  double? getDiscount(Restaurant restaurant) =>
+      restaurant.discount != null ? restaurant.discount!.discount : 0;
 
-  String? getDiscountType(Restaurant restaurant) => restaurant.discount != null ? restaurant.discount!.discountType : 'percent';
-
-
+  String? getDiscountType(Restaurant restaurant) => restaurant.discount != null
+      ? restaurant.discount!.discountType
+      : 'percent';
 }

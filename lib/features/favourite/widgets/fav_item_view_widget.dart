@@ -20,10 +20,18 @@ class FavItemViewWidget extends StatelessWidget {
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: FooterViewWidget(
-              child: Center(child: SizedBox(
-                width: Dimensions.webMaxWidth, child: ProductViewWidget(
-                  isRestaurant: isRestaurant, products: favouriteController.wishProductList, restaurants: favouriteController.wishRestList,
-                  noDataText: isRestaurant ? 'you_have_not_add_any_restaurant_to_wishlist'.tr : 'you_have_not_add_any_food_to_wishlist'.tr, fromFavorite: true,
+              child: Center(
+                  child: Container(
+                // color: Colors.white,
+                width: Dimensions.webMaxWidth,
+                child: ProductViewWidget(
+                  isRestaurant: isRestaurant,
+                  products: favouriteController.wishProductList,
+                  restaurants: favouriteController.wishRestList,
+                  noDataText: isRestaurant
+                      ? 'you_have_not_add_any_restaurant_to_wishlist'.tr
+                      : 'you_have_not_add_any_food_to_wishlist'.tr,
+                  fromFavorite: true,
                 ),
               )),
             ),

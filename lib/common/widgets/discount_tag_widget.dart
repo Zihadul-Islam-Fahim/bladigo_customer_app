@@ -24,12 +24,12 @@ class DiscountTagWidget extends StatelessWidget {
     String currencySymbol = Get.find<SplashController>().configModel!.currencySymbol!;
 
     return !isProductBottomSheet ? (discount! > 0 || freeDelivery!) ? Positioned(
-      top: fromTop, left: fromLeft,
+      top: 8, left: 4,
       child: CustomPaint(
-        size: const Size(85, 34),
+        size: const Size(100, 24),
         painter: LabelPaint(),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: paddingHorizontal, vertical: paddingVertical),
+          padding: EdgeInsets.only(left:8,right:8,top:6,bottom:6),
           child: Align(
             child: Text(
               discount! > 0 ? '${(isRightSide || discountType == 'percent') ? '' : currencySymbol}$discount${discountType == 'percent' ? '%'
@@ -74,39 +74,21 @@ class DiscountTagWidget extends StatelessWidget {
 class LabelPaint extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
+    // Draw the pill-shaped label background
+    Paint paint = Paint()
+      ..style = PaintingStyle.fill
+      ..color = Color(0xff2b9430).withOpacity(0.8);
 
-    Path path_0 = Path();
-    path_0.moveTo(6.98361,26.7441);
-    path_0.lineTo(3,26.7441);
-    path_0.lineTo(6.98361,30);
-    path_0.lineTo(6.98361,26.7441);
-    path_0.close();
+    RRect roundedRect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+      Radius.circular(size.height / 2),
+    );
 
-    Paint paint0Fill = Paint()..style=PaintingStyle.fill;
-    paint0Fill.color = const Color(0xffC1555D).withOpacity(1.0);
-    canvas.drawPath(path_0,paint0Fill);
-
-    Path path_1 = Path();
-    path_1.moveTo(3,8.65277);
-    path_1.cubicTo(3,4.97855,5.97855,2,9.65278,2);
-    path_1.lineTo(78.8988,2);
-    path_1.cubicTo(81.0498,2,82.312,4.41958,81.0813,6.18369);
-    path_1.lineTo(78.0243,10.5657);
-    path_1.cubicTo(76.4289,12.8525,76.4289,15.8917,78.0243,18.1785);
-    path_1.lineTo(81.0813,22.5605);
-    path_1.cubicTo(82.312,24.3246,81.0498,26.7442,78.8988,26.7442);
-    path_1.lineTo(3,26.7442);
-    path_1.lineTo(3,8.65277);
-    path_1.close();
-
-    Paint paint1Fill = Paint()..style=PaintingStyle.fill;
-    paint1Fill.color = Theme.of(Get.context!).primaryColor;
-    canvas.drawPath(path_1,paint1Fill);
-
+    canvas.drawRRect(roundedRect, paint);
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
+    return false;
   }
 }

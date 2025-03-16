@@ -12,8 +12,16 @@ class CustomImageWidget extends StatefulWidget {
   final Color? imageColor;
   final bool isRestaurant;
   final bool isFood;
-  const CustomImageWidget({super.key, required this.image, this.height, this.width, this.fit = BoxFit.cover, this.placeholder = '', this.imageColor,
-    this.isRestaurant = false, this.isFood = false});
+  const CustomImageWidget(
+      {super.key,
+      required this.image,
+      this.height,
+      this.width,
+      this.fit = BoxFit.cover,
+      this.placeholder = '',
+      this.imageColor,
+      this.isRestaurant = false,
+      this.isFood = false});
 
   @override
   State<CustomImageWidget> createState() => _CustomImageWidgetState();
@@ -24,7 +32,6 @@ class _CustomImageWidgetState extends State<CustomImageWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     // if (kDebugMode) {
     //   print('==========Image========>> $image');
     // }
@@ -41,15 +48,38 @@ class _CustomImageWidgetState extends State<CustomImageWidget> {
         });
       },
       child: AnimatedScale(
-        scale: _isHovered ? 1.2 : 1.0,  // Scale to 1.2 when hovered
+        scale: _isHovered ? 1.2 : 1.0, // Scale to 1.2 when hovered
         duration: Duration(milliseconds: 300), // Animation duration
-        curve: Curves.easeInOut,  // Smooth curve
+        curve: Curves.easeInOut, // Smooth curve
         child: CachedNetworkImage(
-          imageUrl: widget.image, height: widget.height, width: widget.width, fit: widget.fit,
-          placeholder: (context, url) => CustomAssetImageWidget(widget.placeholder.isNotEmpty ? widget.placeholder : widget.isRestaurant ? Images.restaurantPlaceholder : widget.isFood ? Images.foodPlaceholder : Images.placeholderPng,
-              height: widget.height, width: widget.width, fit: widget.fit, color: widget.imageColor),
-          errorWidget: (context, url, error) => CustomAssetImageWidget(widget.placeholder.isNotEmpty ? widget.placeholder : widget.isRestaurant ? Images.restaurantPlaceholder : widget.isFood ? Images.foodPlaceholder : Images.placeholderPng,
-              height: widget.height, width: widget.width, fit: widget.fit, color: widget.imageColor),
+          imageUrl: widget.image,
+          height: widget.height,
+          width: widget.width,
+          fit: widget.fit,
+          placeholder: (context, url) => CustomAssetImageWidget(
+              widget.placeholder.isNotEmpty
+                  ? widget.placeholder
+                  : widget.isRestaurant
+                      ? Images.restaurantPlaceholder
+                      : widget.isFood
+                          ? Images.foodPlaceholder
+                          : Images.placeholderPng,
+              height: widget.height,
+              width: widget.width,
+              fit: widget.fit,
+              color: widget.imageColor),
+          errorWidget: (context, url, error) => CustomAssetImageWidget(
+              widget.placeholder.isNotEmpty
+                  ? widget.placeholder
+                  : widget.isRestaurant
+                      ? Images.restaurantPlaceholder
+                      : widget.isFood
+                          ? Images.foodPlaceholder
+                          : Images.placeholderPng,
+              height: widget.height,
+              width: widget.width,
+              fit: widget.fit,
+              color: widget.imageColor),
         ),
       ),
     );

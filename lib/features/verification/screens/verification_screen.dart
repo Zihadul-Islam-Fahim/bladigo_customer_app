@@ -113,7 +113,7 @@ class VerificationScreenState extends State<VerificationScreen> {
                 ),
               ) : const SizedBox(),
 
-              CustomAssetImageWidget(Images.otpVerification, height: 100),
+              CustomAssetImageWidget(Images.otpVerification, height: 200),
               const SizedBox(height: Dimensions.paddingSizeOverLarge),
 
               Get.find<SplashController>().configModel!.demo! ? Text(
@@ -123,7 +123,7 @@ class VerificationScreenState extends State<VerificationScreen> {
                 child: Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
                   RichText(text: TextSpan(children: [
                     TextSpan(text: 'we_have_a_verification_code'.tr, style: robotoRegular.copyWith(color: Theme.of(context).disabledColor)),
-                    TextSpan(text: ' ${_email ?? _number}', style: robotoMedium.copyWith(color: Theme.of(context).textTheme.bodyLarge!.color)),
+                    TextSpan(text: ' ${_email ?? _number}', style: robotoMedium.copyWith(color: Theme.of(context).primaryColor)),
                   ]), textAlign: TextAlign.center,),
                 ],
                 ),
@@ -138,7 +138,7 @@ class VerificationScreenState extends State<VerificationScreen> {
                   animationType: AnimationType.slide,
                   pinTheme: PinTheme(
                     shape: PinCodeFieldShape.box,
-                    fieldHeight: 60,
+                    fieldHeight: 50,
                     fieldWidth: 50,
                     borderWidth: borderWidth,
                     borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
@@ -161,7 +161,7 @@ class VerificationScreenState extends State<VerificationScreen> {
                   beforeTextPaste: (text) => true,
                 ),
               ),
-              const SizedBox(height: Dimensions.paddingSizeExtraLarge),
+              const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
               GetBuilder<ProfileController>(
                   builder: (profileController) {
@@ -234,7 +234,7 @@ class VerificationScreenState extends State<VerificationScreen> {
 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: isDesktop ? 29 : Dimensions.paddingSizeDefault),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text(
                     'did_not_receive_the_code'.tr,
                     style: robotoRegular.copyWith(color: Theme.of(context).disabledColor),

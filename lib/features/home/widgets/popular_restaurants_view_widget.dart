@@ -26,6 +26,13 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<RestaurantController>(builder: (restController) {
       List<Restaurant>? restaurantList = isRecentlyViewed ? restController.recentlyViewedRestaurantList : restController.popularRestaurantList;
+      // if (restaurantList != null) {
+      //   for (var restaurant in restaurantList) {
+      //     debugPrint('Restaurant Name: ${restaurant.name}');
+      //     debugPrint('Restaurant Logo URL: ${restaurant.logoFullUrl}');
+      //   }
+      // }
+
         return (restaurantList != null && restaurantList.isEmpty) ? const SizedBox() : Padding(
           padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeLarge),
           child: SizedBox(

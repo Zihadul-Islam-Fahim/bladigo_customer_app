@@ -1,3 +1,4 @@
+import 'package:stackfood_multivendor/common/widgets/custom_snackbar_widget.dart';
 import 'package:stackfood_multivendor/features/business/controllers/business_controller.dart';
 import 'package:stackfood_multivendor/features/business/domain/models/package_model.dart';
 import 'package:stackfood_multivendor/features/dashboard/controllers/dashboard_controller.dart';
@@ -16,10 +17,13 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
 
-class RestaurantRegistrationController extends GetxController implements GetxService {
-  final RestaurantRegistrationServiceInterface restaurantRegistrationServiceInterface;
+class RestaurantRegistrationController extends GetxController
+    implements GetxService {
+  final RestaurantRegistrationServiceInterface
+      restaurantRegistrationServiceInterface;
 
-  RestaurantRegistrationController({required this.restaurantRegistrationServiceInterface});
+  RestaurantRegistrationController(
+      {required this.restaurantRegistrationServiceInterface});
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
@@ -90,33 +94,45 @@ class RestaurantRegistrationController extends GetxController implements GetxSer
   PackageModel? _packageModel;
   PackageModel? get packageModel => _packageModel;
 
-  void setRestaurantAdditionalJoinUsPageData({bool isUpdate = true}){
+  void setRestaurantAdditionalJoinUsPageData({bool isUpdate = true}) {
     _dataList = [];
     _additionalList = [];
-    if(Get.find<SplashController>().configModel!.restaurantAdditionalJoinUsPageData != null) {
-      for (var data in Get.find<SplashController>().configModel!.restaurantAdditionalJoinUsPageData!.data!) {
-        int index = Get.find<SplashController>().configModel!.restaurantAdditionalJoinUsPageData!.data!.indexOf(data);
+    if (Get.find<SplashController>()
+            .configModel!
+            .restaurantAdditionalJoinUsPageData !=
+        null) {
+      for (var data in Get.find<SplashController>()
+          .configModel!
+          .restaurantAdditionalJoinUsPageData!
+          .data!) {
+        int index = Get.find<SplashController>()
+            .configModel!
+            .restaurantAdditionalJoinUsPageData!
+            .data!
+            .indexOf(data);
         _dataList!.add(data);
-        if(data.fieldType == 'text' || data.fieldType == 'number' || data.fieldType == 'email' || data.fieldType == 'phone'){
+        if (data.fieldType == 'text' ||
+            data.fieldType == 'number' ||
+            data.fieldType == 'email' ||
+            data.fieldType == 'phone') {
           _additionalList!.add(TextEditingController());
-        } else if(data.fieldType == 'date') {
+        } else if (data.fieldType == 'date') {
           _additionalList!.add(null);
-        } else if(data.fieldType == 'check_box') {
+        } else if (data.fieldType == 'check_box') {
           _additionalList!.add([]);
-          if(data.checkData != null) {
+          if (data.checkData != null) {
             for (var element in data.checkData!) {
               debugPrint(element);
               _additionalList![index].add(0);
             }
           }
-        } else if(data.fieldType == 'file') {
+        } else if (data.fieldType == 'file') {
           _additionalList!.add([]);
         }
-
       }
     }
 
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
@@ -127,7 +143,7 @@ class RestaurantRegistrationController extends GetxController implements GetxSer
   }
 
   void setAdditionalCheckData(int index, int i, String date) {
-    if(_additionalList![index][i] == date){
+    if (_additionalList![index][i] == date) {
       _additionalList![index][i] = 0;
     } else {
       _additionalList![index][i] = date;
@@ -136,8 +152,9 @@ class RestaurantRegistrationController extends GetxController implements GetxSer
   }
 
   Future<void> pickFile(int index, MediaData mediaData) async {
-    FilePickerResult? result = await restaurantRegistrationServiceInterface.picFile(mediaData);
-    if(result != null) {
+    FilePickerResult? result =
+        await restaurantRegistrationServiceInterface.picFile(mediaData);
+    if (result != null) {
       _additionalList![index].add(result);
     }
     update();
@@ -148,9 +165,9 @@ class RestaurantRegistrationController extends GetxController implements GetxSer
     update();
   }
 
-  void storeStatusChange(double value, {bool isUpdate = true}){
+  void storeStatusChange(double value, {bool isUpdate = true}) {
     _storeStatus = value;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
@@ -161,40 +178,52 @@ class RestaurantRegistrationController extends GetxController implements GetxSer
     _selectedZoneIndex = 0;
     _restaurantLocation = null;
     _zoneIds = null;
-    _zoneList = await Get.find<DeliverymanRegistrationController>().getZoneList();
+    _zoneList =
+        await Get.find<DeliverymanRegistrationController>().getZoneList();
     if (_zoneList != null) {
       setLocation(LatLng(
-        double.parse(Get.find<SplashController>().configModel!.defaultLocation!.lat ?? '0'),
-        double.parse(Get.find<SplashController>().configModel!.defaultLocation!.lng ?? '0'),
+        double.parse(
+            Get.find<SplashController>().configModel!.defaultLocation!.lat ??
+                '0'),
+        double.parse(
+            Get.find<SplashController>().configModel!.defaultLocation!.lng ??
+                '0'),
       ));
     }
     update();
   }
 
-  void setLocation(LatLng location, {bool forRestaurantRegistration = false, int? zoneId}) async {
+  void setLocation(LatLng location,
+      {bool forRestaurantRegistration = false, int? zoneId}) async {
     // Get.dialog(const CustomLoaderWidget(), barrierDismissible: false);
     _zoneLoading = true;
     update();
     ZoneResponseModel response = await Get.find<LocationController>().getZone(
-      location.latitude.toString(), location.longitude.toString(), false,
+      location.latitude.toString(),
+      location.longitude.toString(),
+      false,
     );
-    _inZone = await restaurantRegistrationServiceInterface.checkInZone(location.latitude.toString(), location.longitude.toString(), zoneId!);
-    // if(!_inZone) {
-    //   showCustomSnackBar('you_are_not_in_zone'.tr);
-    // }
-    _restaurantAddress = await Get.find<LocationController>().getAddressFromGeocode(LatLng(location.latitude, location.longitude));
-    if(response.isSuccess && response.zoneIds.isNotEmpty) {
+    _inZone = await restaurantRegistrationServiceInterface.checkInZone(
+        location.latitude.toString(),
+        location.longitude.toString(),
+        zoneId ?? 1);
+    if (!_inZone) {
+      showCustomSnackBar('you_are_not_in_zone'.tr);
+    }
+    _restaurantAddress = await Get.find<LocationController>()
+        .getAddressFromGeocode(LatLng(location.latitude, location.longitude));
+    if (response.isSuccess && response.zoneIds.isNotEmpty) {
       _restaurantLocation = location;
       _zoneIds = response.zoneIds;
-      for(int index=0; index<_zoneList!.length; index++) {
-        if(_zoneIds!.contains(_zoneList![index].id)) {
-          if(!forRestaurantRegistration) {
+      for (int index = 0; index < _zoneList!.length; index++) {
+        if (_zoneIds!.contains(_zoneList![index].id)) {
+          if (!forRestaurantRegistration) {
             _selectedZoneIndex = 0;
           }
           break;
         }
       }
-    }else {
+    } else {
       _restaurantLocation = null;
       _zoneIds = null;
     }
@@ -207,30 +236,32 @@ class RestaurantRegistrationController extends GetxController implements GetxSer
     update();
   }
 
-  void minTimeChange(String time){
+  void minTimeChange(String time) {
     _storeMinTime = time;
     update();
   }
 
-  void maxTimeChange(String time){
+  void maxTimeChange(String time) {
     _storeMaxTime = time;
     update();
   }
 
-  void timeUnitChange(String unit){
+  void timeUnitChange(String unit) {
     _storeTimeUnit = unit;
     update();
   }
 
   void pickImage(bool isLogo, bool isRemove) async {
-    if(isRemove) {
+    if (isRemove) {
       _pickedLogo = null;
       _pickedCover = null;
-    }else {
+    } else {
       if (isLogo) {
-        _pickedLogo = await restaurantRegistrationServiceInterface.picLogoFromGallery();
+        _pickedLogo =
+            await restaurantRegistrationServiceInterface.picLogoFromGallery();
       } else {
-        _pickedCover = await restaurantRegistrationServiceInterface.picLogoFromGallery();
+        _pickedCover =
+            await restaurantRegistrationServiceInterface.picLogoFromGallery();
       }
       update();
     }
@@ -245,24 +276,35 @@ class RestaurantRegistrationController extends GetxController implements GetxSer
     update();
   }
 
-  Future<void> registerRestaurant(Map<String, String> data, List<FilePickerResult> additionalDocuments, List<String> inputTypeList) async {
+  Future<void> registerRestaurant(
+      Map<String, String> data,
+      List<FilePickerResult> additionalDocuments,
+      List<String> inputTypeList) async {
     _isLoading = true;
     update();
 
-    List<MultipartDocument> multiPartsDocuments = restaurantRegistrationServiceInterface.prepareMultipartDocuments(inputTypeList, additionalDocuments);
-    Response? response = await restaurantRegistrationServiceInterface.registerRestaurant(data, _pickedLogo, _pickedCover, multiPartsDocuments);
+    List<MultipartDocument> multiPartsDocuments =
+        restaurantRegistrationServiceInterface.prepareMultipartDocuments(
+            inputTypeList, additionalDocuments);
+    Response? response =
+        await restaurantRegistrationServiceInterface.registerRestaurant(
+            data, _pickedLogo, _pickedCover, multiPartsDocuments);
 
-    if(response.statusCode == 200) {
-      Get.find<DashboardController>().saveRegistrationSuccessfulSharedPref(true);
+    if (response.statusCode == 200) {
+      Get.find<DashboardController>()
+          .saveRegistrationSuccessfulSharedPref(true);
       int? restaurantId = response.body['restaurant_id'];
       int? packageId = response.body['package_id'];
-      if(packageId == null) {
-        Get.find<BusinessController>().submitBusinessPlan(restaurantId: restaurantId!, packageId: null);
+      if (packageId == null) {
+        Get.find<BusinessController>()
+            .submitBusinessPlan(restaurantId: restaurantId!, packageId: null);
       } else {
-        if(!GetPlatform.isWeb) {
-          Get.toNamed(RouteHelper.getSubscriptionPaymentRoute(restaurantId: restaurantId, packageId: packageId));
+        if (!GetPlatform.isWeb) {
+          Get.toNamed(RouteHelper.getSubscriptionPaymentRoute(
+              restaurantId: restaurantId, packageId: packageId));
         } else {
-          Get.offNamed(RouteHelper.getSubscriptionPaymentRoute(restaurantId: restaurantId, packageId: packageId));
+          Get.offNamed(RouteHelper.getSubscriptionPaymentRoute(
+              restaurantId: restaurantId, packageId: packageId));
         }
       }
     }
@@ -270,29 +312,36 @@ class RestaurantRegistrationController extends GetxController implements GetxSer
     update();
   }
 
-  void resetBusiness(){
-    _businessIndex = Get.find<SplashController>().configModel!.commissionBusinessModel == 0 ? 1 : 0;
+  void resetBusiness() {
+    _businessIndex =
+        Get.find<SplashController>().configModel!.commissionBusinessModel == 0
+            ? 1
+            : 0;
     _activeSubscriptionIndex = 0;
     _businessPlanStatus = 'business';
-    _paymentIndex = Get.find<SplashController>().configModel!.subscriptionFreeTrialStatus??false ? 1 : 0;
+    _paymentIndex =
+        Get.find<SplashController>().configModel!.subscriptionFreeTrialStatus ??
+                false
+            ? 1
+            : 0;
   }
 
   Future<void> getPackageList({bool isUpdate = true}) async {
-    _packageModel = await restaurantRegistrationServiceInterface.getPackageList();
-    if(isUpdate) {
+    _packageModel =
+        await restaurantRegistrationServiceInterface.getPackageList();
+    if (isUpdate) {
       update();
     }
   }
 
-  void setBusiness(int business){
+  void setBusiness(int business) {
     _activeSubscriptionIndex = 0;
     _businessIndex = business;
     update();
   }
 
-  void selectSubscriptionCard(int index){
+  void selectSubscriptionCard(int index) {
     _activeSubscriptionIndex = index;
     update();
   }
-
 }

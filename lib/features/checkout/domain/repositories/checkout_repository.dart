@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:stackfood_multivendor/api/api_client.dart';
 import 'package:stackfood_multivendor/features/checkout/domain/models/offline_method_model.dart';
 import 'package:stackfood_multivendor/features/checkout/domain/models/place_order_body_model.dart';
@@ -16,8 +17,8 @@ class CheckoutRepository implements CheckoutRepositoryInterface {
   Future<int?> getDmTipMostTapped() async {
     int mostDmTipAmount = 0;
     Response response = await apiClient.getData(AppConstants.mostTipsUri);
-    if(response.statusCode == 200){
-      mostDmTipAmount = response.body['most_tips_amount'];
+    if (response.statusCode == 200) {
+      mostDmTipAmount = response.body['most_tips_amount'] ?? 0;
     }
     return mostDmTipAmount;
   }
@@ -25,9 +26,15 @@ class CheckoutRepository implements CheckoutRepositoryInterface {
   @override
   Future<List<OfflineMethodModel>> getOfflineMethodList() async {
     List<OfflineMethodModel> offlineMethodList = [];
-    Response response = await apiClient.getData(AppConstants.offlineMethodListUri);
+    Response response =
+        await apiClient.getData(AppConstants.offlineMethodListUri);
     if (response.statusCode == 200) {
-      response.body.forEach((method) => offlineMethodList.add(OfflineMethodModel.fromJson(method)));
+      try {
+        response.body.forEach((method) =>
+            offlineMethodList.add(OfflineMethodModel.fromJson(method)));
+      } catch (e) {
+        debugPrint("Checkout page Error: $e");
+      }
     }
     return offlineMethodList;
   }
@@ -35,7 +42,8 @@ class CheckoutRepository implements CheckoutRepositoryInterface {
   @override
   Future<double> getExtraCharge(double? distance) async {
     double? extraCharge;
-    Response response = await apiClient.getData('${AppConstants.vehicleChargeUri}?distance=$distance');
+    Response response = await apiClient
+        .getData('${AppConstants.vehicleChargeUri}?distance=$distance');
     if (response.statusCode == 200) {
       extraCharge = double.parse(response.body.toString());
     } else {
@@ -46,22 +54,27 @@ class CheckoutRepository implements CheckoutRepositoryInterface {
 
   @override
   Future<bool> saveOfflineInfo(String data) async {
-    Response response = await apiClient.postData(AppConstants.offlinePaymentSaveInfoUri, jsonDecode(data));
+    Response response = await apiClient.postData(
+        AppConstants.offlinePaymentSaveInfoUri, jsonDecode(data));
     return (response.statusCode == 200);
   }
 
   @override
   Future<Response> placeOrder(PlaceOrderBodyModel orderBody) async {
-    return await apiClient.postData(AppConstants.placeOrderUri, orderBody.toJson());
+    return await apiClient.postData(
+        AppConstants.placeOrderUri, orderBody.toJson());
   }
 
   @override
-  Future<Response> sendNotificationRequest(String orderId, String? guestId) async {
-    return await apiClient.getData('${AppConstants.sendCheckoutNotificationUri}/$orderId${guestId != null ? '?guest_id=$guestId' : ''}');
+  Future<Response> sendNotificationRequest(
+      String orderId, String? guestId) async {
+    return await apiClient.getData(
+        '${AppConstants.sendCheckoutNotificationUri}/$orderId${guestId != null ? '?guest_id=$guestId' : ''}');
   }
 
   @override
-  Future<Response> getDistanceInMeter(LatLng originLatLng, LatLng destinationLatLng) async {
+  Future<Response> getDistanceInMeter(
+      LatLng originLatLng, LatLng destinationLatLng) async {
     return await apiClient.getData('${AppConstants.distanceMatrixUri}'
         '?origin_lat=${originLatLng.latitude}&origin_lng=${originLatLng.longitude}'
         '&destination_lat=${destinationLatLng.latitude}&destination_lng=${destinationLatLng.longitude}');
@@ -69,7 +82,8 @@ class CheckoutRepository implements CheckoutRepositoryInterface {
 
   @override
   Future<bool> updateOfflineInfo(String data) async {
-    Response response = await apiClient.postData(AppConstants.offlinePaymentUpdateInfoUri, jsonDecode(data));
+    Response response = await apiClient.postData(
+        AppConstants.offlinePaymentUpdateInfoUri, jsonDecode(data));
     return (response.statusCode == 200);
   }
 
@@ -102,6 +116,4 @@ class CheckoutRepository implements CheckoutRepositoryInterface {
     // TODO: implement update
     throw UnimplementedError();
   }
-
-  
 }

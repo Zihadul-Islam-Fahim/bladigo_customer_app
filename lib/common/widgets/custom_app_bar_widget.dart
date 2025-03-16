@@ -24,7 +24,24 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
       title: Text(title, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: bgColor == null ? Theme.of(context).textTheme.bodyLarge!.color : Theme.of(context).cardColor)),
       centerTitle: true,
       leading: isBackButtonExist ? IconButton(
-        icon: const Icon(Icons.arrow_back_ios),
+        icon: Container(
+          width: 33,
+          height: 33,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+            // Rounded corners
+            border: Border.all(
+              color: Colors.black,
+              width: 1.38,
+            ),
+          ),
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 24,
+          ),
+        ),
         color: bgColor == null ? Theme.of(context).textTheme.bodyLarge!.color : Theme.of(context).cardColor,
         onPressed: () => onBackPressed != null ? onBackPressed!() : Navigator.pop(context),
       ) : const SizedBox(),

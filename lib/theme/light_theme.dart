@@ -6,8 +6,10 @@ ThemeData light = ThemeData(
   primaryColor: const Color(0xFF2B9430),
   secondaryHeaderColor: const Color(0xFF5EAA5d),
   disabledColor: const Color(0xFF9B9B9B),
+  highlightColor: const Color(0xFFDBDBDB),
   brightness: Brightness.light,
   hintColor: const Color(0xFF5E6472),
+  focusColor: const Color(0xffeea014),
   cardColor: Colors.white,
   shadowColor: Colors.black.withOpacity(0.03),
   textButtonTheme: TextButtonThemeData(

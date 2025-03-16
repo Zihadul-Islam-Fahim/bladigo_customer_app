@@ -51,19 +51,19 @@ Future<void> main() async {
 
   if(GetPlatform.isWeb) {
     await Firebase.initializeApp(options: const FirebaseOptions(
-      apiKey: 'AIzaSyCc3OCd5I2xSlnftZ4bFAbuCzMhgQHLivA',
-      appId: '1:491987943015:android:fe79b69339834d5c8f1ec2',
-      messagingSenderId: '491987943015',
-      projectId: 'stackmart-500c7',
+      apiKey: 'AIzaSyCPwFVMUC12x_loQ5ZBgVWCmwaC2hOKhJM',
+      appId: '1:512064433463:android:870615304fffda0133feb2',
+      messagingSenderId: '512064433463',
+      projectId: 'bladigo',
     ));
     MetaSEO().config();
   }else if(GetPlatform.isAndroid) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: 'AIzaSyCc3OCd5I2xSlnftZ4bFAbuCzMhgQHLivA',
-        appId: '1:491987943015:android:fe79b69339834d5c8f1ec2',
-        messagingSenderId: '491987943015',
-        projectId: 'stackmart-500c7',
+        apiKey: 'AIzaSyCPwFVMUC12x_loQ5ZBgVWCmwaC2hOKhJM',
+        appId: '1:512064433463:android:870615304fffda0133feb2',
+        messagingSenderId: '512064433463',
+        projectId: 'bladigo',
       ),
     );
   } else {
@@ -76,6 +76,12 @@ Future<void> main() async {
   try {
     if (GetPlatform.isMobile) {
       final RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
+
+      // final fm = FirebaseMessaging.instance;
+      // final fcmToken = await fm.getToken();
+      //
+      //
+      // debugPrint("Firebase token#################" + fcmToken! ?? " null firebase fcm token");
       if (remoteMessage != null) {
         body = NotificationHelper.convertNotification(remoteMessage.data);
       }

@@ -17,7 +17,8 @@ class FavouriteScreen extends StatefulWidget {
   FavouriteScreenState createState() => FavouriteScreenState();
 }
 
-class FavouriteScreenState extends State<FavouriteScreen> with SingleTickerProviderStateMixin {
+class FavouriteScreenState extends State<FavouriteScreen>
+    with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
   @override
@@ -28,8 +29,8 @@ class FavouriteScreenState extends State<FavouriteScreen> with SingleTickerProvi
     _initCall();
   }
 
-  void _initCall(){
-    if(Get.find<AuthController>().isLoggedIn()) {
+  void _initCall() {
+    if (Get.find<AuthController>().isLoggedIn()) {
       Get.find<FavouriteController>().getFavouriteList(fromFavScreen: true);
     }
   }
@@ -37,42 +38,50 @@ class FavouriteScreenState extends State<FavouriteScreen> with SingleTickerProvi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarWidget(title: 'favourite'.tr, isBackButtonExist: false),
-      endDrawer: const MenuDrawerWidget(), endDrawerEnableOpenDragGesture: false,
-      body: Get.find<AuthController>().isLoggedIn() ? SafeArea(child: Column(children: [
-
-        WebScreenTitleWidget(title: 'favourite'.tr),
-
-        Container(
-          width: Dimensions.webMaxWidth,
-          color: Theme.of(context).cardColor,
-          child: TabBar(
-            controller: _tabController,
-            indicatorColor: Theme.of(context).primaryColor,
-            indicatorWeight: 3,
-            labelColor: Theme.of(context).primaryColor,
-            unselectedLabelColor: Theme.of(context).disabledColor,
-            unselectedLabelStyle: robotoRegular.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeSmall),
-            labelStyle: robotoBold.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).primaryColor),
-            tabs: [
-              Tab(text: 'food'.tr),
-              Tab(text: 'restaurants'.tr),
-            ],
-          ),
-        ),
-
-        Expanded(child: TabBarView(
-          controller: _tabController,
-          children: const [
-            FavItemViewWidget(isRestaurant: false),
-            FavItemViewWidget(isRestaurant: true),
-          ],
-        )),
-
-      ])) : NotLoggedInScreen(callBack: (value){
-        _initCall();
-        setState(() {});
-      }),
+      appBar:
+          CustomAppBarWidget(title: 'favourite'.tr, isBackButtonExist: false),
+      backgroundColor: Colors.white,
+      endDrawer: const MenuDrawerWidget(),
+      endDrawerEnableOpenDragGesture: false,
+      body: Get.find<AuthController>().isLoggedIn()
+          ? SafeArea(
+              child: Column(children: [
+              WebScreenTitleWidget(title: 'favourite'.tr),
+              Container(
+                width: Dimensions.webMaxWidth,
+                color: Theme.of(context).cardColor,
+                // color: Colors.white,
+                child: TabBar(
+                  controller: _tabController,
+                  indicatorColor: Theme.of(context).primaryColor,
+                  indicatorWeight: 3,
+                  labelColor: Theme.of(context).primaryColor,
+                  unselectedLabelColor: Theme.of(context).disabledColor,
+                  unselectedLabelStyle: robotoRegular.copyWith(
+                      color: Theme.of(context).disabledColor,
+                      fontSize: Dimensions.fontSizeSmall),
+                  labelStyle: robotoBold.copyWith(
+                      fontSize: Dimensions.fontSizeSmall,
+                      color: Theme.of(context).primaryColor),
+                  tabs: [
+                    Tab(text: 'food'.tr),
+                    Tab(text: 'restaurants'.tr),
+                  ],
+                ),
+              ),
+              Expanded(
+                  child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  FavItemViewWidget(isRestaurant: false),
+                  FavItemViewWidget(isRestaurant: true),
+                ],
+              )),
+            ]))
+          : NotLoggedInScreen(callBack: (value) {
+              _initCall();
+              setState(() {});
+            }),
     );
   }
 }

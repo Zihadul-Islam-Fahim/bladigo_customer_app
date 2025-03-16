@@ -31,16 +31,29 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
       toolbarHeight: isDesktop ? 150 : 90,
       pinned: true, floating: false, elevation: 0.5,
       backgroundColor: Theme.of(context).cardColor,
+      leadingWidth: 80,
       leading: !isDesktop ? IconButton(
-        icon: Container(
-          height: 50, width: 50,
-          decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).primaryColor),
-          alignment: Alignment.center,
-          padding: const EdgeInsets.only(right: Dimensions.paddingSizeExtraSmall),
-          child: Icon(Icons.chevron_left, color: Theme.of(context).cardColor, size: 28),
+        icon:Container(
+          width: 50, // Adjust size as needed
+          height: 50,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+            // Rounded corners
+            border: Border.all(
+              color: Colors.white,
+              width: 2,
+            ),
+          ),
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 24,
+          ),
         ),
         onPressed: () => Get.back(),
       ) : const SizedBox(),
+
 
       flexibleSpace: GetBuilder<CouponController>(
         builder: (couponController) {

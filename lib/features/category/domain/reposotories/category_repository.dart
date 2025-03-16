@@ -30,25 +30,28 @@ class CategoryRepository implements CategoryRepositoryInterface {
   }
 
   @override
-  Future<List<CategoryModel>?> getList({int? offset, DataSourceEnum? source}) async {
+  Future<List<CategoryModel>?> getList(
+      {int? offset, DataSourceEnum? source}) async {
     List<CategoryModel>? categoryList;
     String cacheId = AppConstants.categoryUri;
 
-    switch(source!){
+    switch (source!) {
       case DataSourceEnum.client:
         Response response = await apiClient.getData(AppConstants.categoryUri);
 
-        if(response.statusCode == 200){
+        if (response.statusCode == 200) {
           categoryList = [];
           response.body.forEach((category) {
             categoryList!.add(CategoryModel.fromJson(category));
           });
-          LocalClient.organize(DataSourceEnum.client, cacheId, jsonEncode(response.body), apiClient.getHeader());
+          LocalClient.organize(DataSourceEnum.client, cacheId,
+              jsonEncode(response.body), apiClient.getHeader());
         }
 
       case DataSourceEnum.local:
-        String? cacheResponseData = await LocalClient.organize(DataSourceEnum.local, cacheId, null, null);
-        if(cacheResponseData != null) {
+        String? cacheResponseData = await LocalClient.organize(
+            DataSourceEnum.local, cacheId, null, null);
+        if (cacheResponseData != null) {
           categoryList = [];
           jsonDecode(cacheResponseData).forEach((category) {
             categoryList!.add(CategoryModel.fromJson(category));
@@ -61,19 +64,24 @@ class CategoryRepository implements CategoryRepositoryInterface {
   @override
   Future<List<CategoryModel>?> getSubCategoryList(String? parentID) async {
     List<CategoryModel>? subCategoryList;
-    Response response = await apiClient.getData('${AppConstants.subCategoryUri}$parentID');
+    Response response =
+        await apiClient.getData('${AppConstants.subCategoryUri}$parentID');
     if (response.statusCode == 200) {
-      subCategoryList= [];
-      subCategoryList.add(CategoryModel(id: int.parse(parentID!), name: 'all'.tr));
-      response.body.forEach((category) => subCategoryList!.add(CategoryModel.fromJson(category)));
+      subCategoryList = [];
+      subCategoryList
+          .add(CategoryModel(id: int.parse(parentID!), name: 'all'.tr));
+      response.body.forEach(
+          (category) => subCategoryList!.add(CategoryModel.fromJson(category)));
     }
     return subCategoryList;
   }
 
   @override
-  Future<ProductModel?> getCategoryProductList(String? categoryID, int offset, String type) async {
+  Future<ProductModel?> getCategoryProductList(
+      String? categoryID, int offset, String type) async {
     ProductModel? productModel;
-    Response response = await apiClient.getData('${AppConstants.categoryProductUri}$categoryID?limit=10&offset=$offset&type=$type');
+    Response response = await apiClient.getData(
+        '${AppConstants.categoryProductUri}$categoryID?limit=10&offset=$offset&type=$type');
     if (response.statusCode == 200) {
       productModel = ProductModel.fromJson(response.body);
     }
@@ -81,9 +89,11 @@ class CategoryRepository implements CategoryRepositoryInterface {
   }
 
   @override
-  Future<RestaurantModel?> getCategoryRestaurantList(String? categoryID, int offset, String type) async {
+  Future<RestaurantModel?> getCategoryRestaurantList(
+      String? categoryID, int offset, String type) async {
     RestaurantModel? restaurantModel;
-    Response response = await apiClient.getData('${AppConstants.categoryRestaurantUri}$categoryID?limit=10&offset=$offset&type=$type');
+    Response response = await apiClient.getData(
+        '${AppConstants.categoryRestaurantUri}$categoryID?limit=10&offset=$offset&type=$type');
     if (response.statusCode == 200) {
       restaurantModel = RestaurantModel.fromJson(response.body);
     }
@@ -108,7 +118,8 @@ class CategoryRepository implements CategoryRepositoryInterface {
   // }
 
   @override
-  Future<Response> getSearchData(String? query, String? categoryID, bool isRestaurant, String type) async {
+  Future<Response> getSearchData(
+      String? query, String? categoryID, bool isRestaurant, String type) async {
     return await apiClient.getData(
       '${AppConstants.searchUri}${isRestaurant ? 'restaurants' : 'products'}/search?name=$query&category_id=$categoryID&type=$type&offset=1&limit=50',
     );

@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>491987943015-8enep3h58pfk6da9oc17rv2iqostjvln.apps.googleusercontent.com</string>
+	<string>512064433463-3mf20qp6hagqggqpdr7mrjbfqj52o262.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.491987943015-8enep3h58pfk6da9oc17rv2iqostjvln</string>
+	<string>com.googleusercontent.apps.512064433463-3mf20qp6hagqggqpdr7mrjbfqj52o262</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>512064433463-ampf3tondeqv6iosgvm9ijl1hk0orf65.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBzHWIQp_RVmD4zN5lSCnBy1SPkvfHrIMQ</string>
+	<string>AIzaSyC_US7N72c8tUh4Is84KRoiHLgdV8_D_Vw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>491987943015</string>
+	<string>512064433463</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.sixamtech.stackfood</string>
+	<string>com.bladigo.bladigocustomer</string>
 	<key>PROJECT_ID</key>
-	<string>stackmart-500c7</string>
+	<string>bladigo</string>
 	<key>STORAGE_BUCKET</key>
-	<string>stackmart-500c7.appspot.com</string>
+	<string>bladigo.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:491987943015:ios:a52cf155c77290d78f1ec2</string>
+	<string>1:512064433463:ios:f47cb97c2fddb7a933feb2</string>
 </dict>
 </plist>

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:stackfood_multivendor/features/category/domain/models/category_model.dart';
 import 'package:stackfood_multivendor/features/wallet/domain/models/fund_bonus_model.dart';
 
 class RestaurantModel {
@@ -11,7 +13,10 @@ class RestaurantModel {
   RestaurantModel.fromJson(Map<String, dynamic> json) {
     totalSize = json['total_size'];
     limit = json['limit'].toString();
-    offset = (json['offset'] != null && json['offset'].toString().trim().isNotEmpty) ? int.parse(json['offset'].toString()) : null;
+    offset =
+        (json['offset'] != null && json['offset'].toString().trim().isNotEmpty)
+            ? int.parse(json['offset'].toString())
+            : null;
     if (json['restaurants'] != null) {
       restaurants = [];
       json['restaurants'].forEach((v) {
@@ -58,6 +63,7 @@ class Restaurant {
   bool? active;
   String? deliveryTime;
   List<int>? categoryIds;
+  // List<int>? subCategoryIds;
   int? veg;
   int? nonVeg;
   Discount? discount;
@@ -90,6 +96,8 @@ class Restaurant {
   int? reviewsCommentsCount;
   List<String>? characteristics;
   bool? isExtraPackagingActive;
+  int? categoryId;
+  List<CategoryModel>? subCategories;
 
   Restaurant({
     this.id,
@@ -117,6 +125,7 @@ class Restaurant {
     this.active,
     this.deliveryTime,
     this.categoryIds,
+    // this.subCategoryIds,
     this.veg,
     this.nonVeg,
     this.discount,
@@ -149,6 +158,8 @@ class Restaurant {
     this.reviewsCommentsCount,
     this.characteristics,
     this.isExtraPackagingActive,
+    this.categoryId,
+    this.subCategories,
   });
 
   Restaurant.fromJson(Map<String, dynamic> json) {
@@ -156,12 +167,14 @@ class Restaurant {
     name = json['name'];
     phone = json['phone'];
     email = json['email'];
+    categoryId = json['category_id'];
     logoFullUrl = json['logo_full_url'] ?? '';
     latitude = json['latitude'];
     longitude = json['longitude'];
     address = json['address'];
     zoneId = json['zone_id'];
-    minimumOrder = json['minimum_order'] != null ? json['minimum_order'].toDouble() : 0;
+    minimumOrder =
+        json['minimum_order'] != null ? json['minimum_order'].toDouble() : 0;
     currency = json['currency'];
     freeDelivery = json['free_delivery'];
     coverPhotoFullUrl = json['cover_photo_full_url'] ?? '';
@@ -178,21 +191,41 @@ class Restaurant {
     deliveryTime = json['delivery_time'];
     veg = json['veg'];
     nonVeg = json['non_veg'];
-    categoryIds = json['category_ids'] != null ? json['category_ids'].cast<int>() : [];
-    discount = json['discount'] != null ? Discount.fromJson(json['discount']) : null;
+
+    categoryIds =
+        json['category_ids'] != null ? json['category_ids'].cast<int>() : [];
+    // subCategoryIds = json['sub_category_ids'] != null
+    //     ? json['sub_category_ids'].cast<int>()
+    //     : [];
+    debugPrint("subcategory list ${categoryId} : ${json['sub_categories']}");
+    subCategories = json['sub_categories'] != null
+        ? (json['sub_categories'] as List)
+            .map((data) => CategoryModel.fromJson(data))
+            .toList()
+        : [];
+    debugPrint("subcategory list ${categoryId} : ${subCategories}");
+
+    discount =
+        json['discount'] != null ? Discount.fromJson(json['discount']) : null;
     if (json['schedules'] != null) {
       schedules = <Schedules>[];
       json['schedules'].forEach((v) {
         schedules!.add(Schedules.fromJson(v));
       });
     }
-    minimumShippingCharge = json['minimum_shipping_charge'] != null ? json['minimum_shipping_charge'].toDouble() : 0.0;
-    perKmShippingCharge = json['per_km_shipping_charge'] != null ? json['per_km_shipping_charge'].toDouble() : 0.0;
+    minimumShippingCharge = json['minimum_shipping_charge'] != null
+        ? json['minimum_shipping_charge'].toDouble()
+        : 0.0;
+    perKmShippingCharge = json['per_km_shipping_charge'] != null
+        ? json['per_km_shipping_charge'].toDouble()
+        : 0.0;
     maximumShippingCharge = json['maximum_shipping_charge']?.toDouble();
     vendorId = json['vendor_id'];
     restaurantModel = json['restaurant_model'];
     restaurantStatus = json['restaurant_status'];
-    restaurantSubscription = json['restaurant_sub'] != null ? RestaurantSubscription.fromJson(json['restaurant_sub']) : null;
+    restaurantSubscription = json['restaurant_sub'] != null
+        ? RestaurantSubscription.fromJson(json['restaurant_sub'])
+        : null;
     if (json['cuisine'] != null) {
       cuisineNames = [];
       json['cuisine'].forEach((v) {
@@ -221,7 +254,10 @@ class Restaurant {
     customerDateOrderStatus = json['customer_date_order_sratus'];
     customerOrderDate = json['customer_order_date'];
     freeDeliveryDistanceStatus = json['free_delivery_distance_status'];
-    freeDeliveryDistanceValue = (json['free_delivery_distance_value'] != null && json['free_delivery_distance_value'] != '') ? double.parse(json['free_delivery_distance_value'].toString()) : null;
+    freeDeliveryDistanceValue = (json['free_delivery_distance_value'] != null &&
+            json['free_delivery_distance_value'] != '')
+        ? double.parse(json['free_delivery_distance_value'].toString())
+        : null;
     restaurantOpeningTime = json['current_opening_time'];
     extraPackagingStatusIsMandatory = json['extra_packaging_status'] ?? false;
     extraPackagingAmount = json['extra_packaging_amount']?.toDouble() ?? 0;
@@ -247,6 +283,7 @@ class Restaurant {
     data['name'] = name;
     data['phone'] = phone;
     data['email'] = email;
+    data['category_id'] = categoryId;
     data['logo_full_url'] = logoFullUrl;
     data['latitude'] = latitude;
     data['longitude'] = longitude;
@@ -270,6 +307,8 @@ class Restaurant {
     data['non_veg'] = nonVeg;
     data['delivery_time'] = deliveryTime;
     data['category_ids'] = categoryIds;
+    // data['sub_category_ids'] = subCategoryIds;
+    data['sub_categories'] = subCategories;
     if (discount != null) {
       data['discount'] = discount!.toJson();
     }
@@ -377,7 +416,12 @@ class Schedules {
   String? openingTime;
   String? closingTime;
 
-  Schedules({this.id, this.restaurantId, this.day, this.openingTime, this.closingTime});
+  Schedules(
+      {this.id,
+      this.restaurantId,
+      this.day,
+      this.openingTime,
+      this.closingTime});
 
   Schedules.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -495,7 +539,7 @@ class Refund {
     if (json['image_full_url'] != null) {
       imageFullUrl = <String>[];
       json['image_full_url'].forEach((v) {
-        if(v != null) {
+        if (v != null) {
           imageFullUrl!.add(v);
         }
       });
@@ -690,7 +734,14 @@ class Cuisines {
   String? createdAt;
   String? updatedAt;
 
-  Cuisines({this.id, this.name, this.image, this.status, this.slug, this.createdAt, this.updatedAt});
+  Cuisines(
+      {this.id,
+      this.name,
+      this.image,
+      this.status,
+      this.slug,
+      this.createdAt,
+      this.updatedAt});
 
   Cuisines.fromJson(Map<String, dynamic> json) {
     id = json['id'];

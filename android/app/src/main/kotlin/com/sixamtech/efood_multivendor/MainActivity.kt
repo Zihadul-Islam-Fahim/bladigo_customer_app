@@ -1,4 +1,4 @@
-package com.sixamtech.stackfooduser
+package com.bladigo.bladigocustomer
 
 import io.flutter.embedding.android.FlutterActivity
 
