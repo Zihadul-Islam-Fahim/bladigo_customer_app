@@ -88,7 +88,7 @@ class SubServiceItemCard extends StatelessWidget {
           Text(
             label,
             style: robotoMedium.copyWith(
-              fontSize: Dimensions.fontSizeExtraSmall,
+              fontSize: Dimensions.fontSizeDefault,
 
             ),
             maxLines: 1,

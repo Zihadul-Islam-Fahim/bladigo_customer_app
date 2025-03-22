@@ -578,10 +578,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Image.asset(Images.searchIconNew, width: 16, height: 16),
                     const SizedBox(width: Dimensions.paddingSizeExtraSmall),
                     Expanded(
-                        child: Text("What's you like to eat today?".tr,
+                        child: Text("What_you_like_to".tr,
                             style: robotoRegular.copyWith(
                               fontSize: Dimensions.fontSizeSmall,
                               color: Colors.grey,
+                              fontWeight: FontWeight.bold
                             ))),
                   ]),
                 ),

@@ -1186,5 +1186,9 @@
   "email_verification": "Email Verification",
   "password_reset_successfully": "Password reset successfully",
   "or_login_with": "Or Login with",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+
+  "What_you_like_to": "Search for a restaurant or food",
+  "What_would_you_like_to_order":"What would you like to order",
+  "All_Available_Restaurants":"All Available Restaurants"
 }

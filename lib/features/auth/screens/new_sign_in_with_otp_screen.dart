@@ -99,7 +99,7 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
   // }
   final ScrollController _scrollController = ScrollController();
   // Color bgColor = Colors.transparent;
-  Color textColor = Colors.white;
+  Color textColor = Colors.black;
 
   @override
   void initState() {
@@ -129,30 +129,46 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
           // const SignInBg(),
           Container(
             height: Get.height,
-            decoration: BoxDecoration(
-              // color: Theme.of(context).primaryColor.withOpacity(0.10),
-                image: const DecorationImage(
-                  fit: BoxFit.fitWidth,
-                  image: AssetImage(Images.signinBG),
-                )),
+            color: Colors.white,
+            // decoration: BoxDecoration(
+            //   // color: Theme.of(context).primaryColor.withOpacity(0.10),
+            //     image: const DecorationImage(
+            //       fit: BoxFit.fitWidth,
+            //       image: AssetImage(Images.signinBG),
+            //     ),
+            // ),
             child: Container(
               padding: const EdgeInsets.only(left: 12, right: 12),
               // color: bgColor,
               child: SingleChildScrollView(
                 controller: _scrollController,
-                physics: NeverScrollableScrollPhysics(),
+               // physics: NeverScrollableScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: Get.height * 0.5),
-                    Text(
-                      'We will send a verification code to this number',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: textColor,
-                        fontWeight: FontWeight.w500,
+                    SizedBox(height: 100),
+                    Center(
+                      child: Text(
+                        'Enter your mobile number',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: textColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20,),
+                    Center(
+                      child: Text(
+                        'We will send a verification code to this number in whatsapp',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: textColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     // const SizedBox(height: 20),
                     // TextFormField(

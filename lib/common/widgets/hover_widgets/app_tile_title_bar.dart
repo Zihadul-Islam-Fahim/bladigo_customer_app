@@ -51,7 +51,7 @@ class AppTileTitleBar extends StatelessWidget {
               ),
               Text(title,
                   style: robotoBold.copyWith(
-                      fontSize: Dimensions.fontSizeLarge,
+                      fontSize: 20,
                       fontWeight: FontWeight.w600)),
             ],
           ),
@@ -77,6 +77,66 @@ class AppTileTitleBar extends StatelessWidget {
                   ],
                 )),
           ),
+          // ArrowIconButtonWidget(
+          //     onTap: () => Get.toNamed(RouteHelper.getCategoryRoute())),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+class AppTileTitleBar2 extends StatelessWidget {
+  const AppTileTitleBar2({
+    super.key,
+    required this.title,
+    this.onTap,
+    this.showSeeAll = true,
+    this.bottomPadding = 0,
+    this.topPadding = 0,
+    this.leftPadding = 0,
+    this.rightPadding = 0,
+  });
+
+  final String title;
+  final bool showSeeAll;
+  final void Function()? onTap;
+  final double leftPadding;
+  final double rightPadding;
+  final double topPadding;
+  final double bottomPadding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        left: leftPadding,
+        right: rightPadding,
+        bottom: bottomPadding,
+        top: topPadding,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 8,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(8)),
+                width: 4.5,
+                height: 24,
+              ),
+              Text(title,
+                  style: robotoBold.copyWith(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600)),
+            ],
+          ),
+
           // ArrowIconButtonWidget(
           //     onTap: () => Get.toNamed(RouteHelper.getCategoryRoute())),
         ],

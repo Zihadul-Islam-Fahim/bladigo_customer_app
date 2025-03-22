@@ -1186,5 +1186,11 @@
   "email_verification": "التحقق من البريد الإلكتروني",
   "password_reset_successfully": "تم إعادة تعيين كلمة المرور بنجاح",
   "or_login_with": "أو تسجيل الدخول باستخدام",
-  "confirm": "يتأكد"
+  "confirm": "يتأكد",
+
+ "What_you_like_to" : "ابحث عن مطعم أو طعام",
+
+ "What_would_you_like_to_order" : "ماذا تريد أن تطلب؟",
+
+ "All_Available_Restaurants" : "جميع المطاعم المتاحة"
 }

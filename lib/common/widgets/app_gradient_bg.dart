@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppGradientBackground extends StatelessWidget {
   const AppGradientBackground(
-      {super.key,
-      this.child,
-      this.borderRadius = 0,
-      this.height = 180});
+      {super.key, this.child, this.borderRadius = 0, this.height = 180});
 
   final Widget? child;
   final double borderRadius;

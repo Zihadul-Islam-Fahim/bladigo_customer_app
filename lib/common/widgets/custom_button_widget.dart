@@ -39,13 +39,13 @@ class CustomButtonWidget extends StatelessWidget {
           const SizedBox(
             height: 15, width: 15,
             child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               strokeWidth: 2,
             ),
           ),
           const SizedBox(width: Dimensions.paddingSizeSmall),
 
-          Text('loading'.tr, style: robotoMedium.copyWith(color: Colors.black)),
+          Text('loading'.tr, style: robotoMedium.copyWith(color: Colors.white)),
         ]),
         ) : Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           icon != null ? Padding(

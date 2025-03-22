@@ -1186,5 +1186,11 @@
   "email_verification": "Verificación de correo electrónico",
   "password_reset_successfully": "Restablecimiento de contraseña exitoso",
   "or_login_with": "O inicia sesión con",
-  "confirm": "Confirmar"
+  "confirm": "Confirmar",
+
+  "What_you_like_to" : "Buscar un restaurante o comida",
+
+  "What_would_you_like_to_order" : "¿Qué te gustaría pedir?",
+
+  "All_Available_Restaurants" :     "Todos los restaurantes disponibles"
 }

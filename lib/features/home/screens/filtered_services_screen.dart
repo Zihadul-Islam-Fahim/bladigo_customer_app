@@ -191,6 +191,12 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
                           ));
                   }),
                   SizedBox(height: Dimensions.paddingSizeDefault),
+                  AppTileTitleBar2(
+                    title: "All_Available_Restaurants",
+                    onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
+                        arguments: widget.category),
+                  ),
+                  SizedBox(height: Dimensions.paddingSizeDefault),
                   GetBuilder<CategoryController>(builder: (catController) {
                     return Column(
                       children: [

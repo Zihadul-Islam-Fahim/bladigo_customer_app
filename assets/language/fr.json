@@ -1186,7 +1186,13 @@
   "email_verification": "Vérification de l'email",
   "password_reset_successfully": "Mot de passe réinitialisé avec succès",
   "or_login_with": "Ou connectez-vous avec",
-  "confirm": "Confirmer"
+  "confirm": "Confirmer",
 
-  
-  }
+  "What_you_like_to" : "Rechercher un restaurant ou un plat",
+
+  "What_would_you_like_to_order" : "Que souhaitez-vous commander ?",
+
+  "All_Available_Restaurants" :     "Tous les restaurants disponibles"
+
+
+}

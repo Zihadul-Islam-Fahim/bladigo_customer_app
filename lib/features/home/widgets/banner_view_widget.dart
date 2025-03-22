@@ -24,7 +24,7 @@ class BannerViewWidget extends StatelessWidget {
     return GetBuilder<HomeController>(builder: (homeController) {
       return (homeController.bannerImageList != null && homeController.bannerImageList!.isEmpty) ? const SizedBox() : Container(
         width: MediaQuery.of(context).size.width,
-        height: GetPlatform.isDesktop ? 500 : 205,
+        height: GetPlatform.isDesktop ? 500 : 220,
         padding: const EdgeInsets.only(top: Dimensions.paddingSizeDefault),
         child: homeController.bannerImageList != null ? Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

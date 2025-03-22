@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stackfood_multivendor/common/widgets/app_gradient_bg.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_ink_well_widget.dart';
+import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
 import 'package:stackfood_multivendor/features/location/controllers/location_controller.dart';
 import 'package:stackfood_multivendor/features/notification/controllers/notification_controller.dart';
 import 'package:stackfood_multivendor/helper/address_helper.dart';
@@ -12,15 +13,22 @@ import 'package:stackfood_multivendor/util/images.dart';
 import 'package:stackfood_multivendor/util/styles.dart';
 
 class HomeScreenHeaderWidget extends StatelessWidget {
-  const HomeScreenHeaderWidget({
+   const HomeScreenHeaderWidget({
     this.isSecondScreen = true,
     super.key,
   });
 
   final bool isSecondScreen;
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
+
+
     return Stack(
       alignment: Alignment.topLeft,
       children: [
@@ -136,7 +144,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                CustomInkWellWidget(
+                InkWell(
                   onTap: () {
                     debugPrint("click");
                     Get.toNamed(RouteHelper.getNotificationRoute());
@@ -241,6 +249,8 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
+
+                    !Get.find<AuthController>().isLoggedIn() ?
                     ElevatedButton(
                       onPressed: () async {
                         await Get.toNamed(
@@ -260,7 +270,8 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                           ),
                           maximumSize: Size(80, 32),
                           minimumSize: Size(80, 32)),
-                    )
+                    ):
+                        SizedBox()
                   ],
                 ),
               ),
@@ -275,7 +286,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                 )
               : Image.asset(
                   Images.handAssetsImage,
-                  height: 180,
+                  height: 150,
                   width: 200,
                 ),
         ),

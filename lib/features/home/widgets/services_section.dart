@@ -21,7 +21,7 @@ class ServicesSection extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.only(left: 12),
         child: AppTileTitleBar(
-          title: 'All Services'.tr,
+          title: 'What_would_you_like_to_order'.tr,
           onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
         ),
       ),

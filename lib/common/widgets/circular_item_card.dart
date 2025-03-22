@@ -19,11 +19,12 @@ class CircularItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color:  Color(0xffE8F5E9),  // Color.fromRGBO(255, 255, 255, 1.0),
       shape: CircleBorder(),
-      elevation: 8,
+      elevation: 0,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.08),
+        //  color: Colors.black.withOpacity(0.065),
           shape: BoxShape.circle,
         ),
         child: Column(
@@ -35,8 +36,8 @@ class CircularItemCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       child: CustomImageWidget(
                         image: imagePath,
-                        height: ResponsiveHelper.isMobile(context) ? 62 : 100,
-                        width: ResponsiveHelper.isMobile(context) ? 60 : 100,
+                        height: ResponsiveHelper.isMobile(context) ? 82 : 100,
+                        width: ResponsiveHelper.isMobile(context) ? 98 : 100,
                         fit: BoxFit.cover,
                       ),
                     )
@@ -56,7 +57,7 @@ class CircularItemCard extends StatelessWidget {
               Text(
                 label,
                 style: robotoMedium.copyWith(
-                  fontSize: Dimensions.fontSizeExtraSmall,
+                  fontSize: Dimensions.fontSizeDefault,
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,

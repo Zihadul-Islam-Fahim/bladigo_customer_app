@@ -172,6 +172,7 @@ class AuthController extends GetxController implements GetxService {
     return authServiceInterface.isLoggedIn();
   }
 
+
   String getGuestId() {
     return authServiceInterface.getGuestId();
   }
