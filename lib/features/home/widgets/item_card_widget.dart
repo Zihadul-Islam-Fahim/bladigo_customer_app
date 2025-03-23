@@ -345,7 +345,7 @@ class ItemCardWidget extends StatelessWidget {
                     product.restaurantName ?? '',
                     style: robotoRegular.copyWith(
                         color: Theme.of(context).disabledColor,
-                        fontSize: Dimensions.fontSizeSmall),
+                        fontSize: 13),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
@@ -356,7 +356,9 @@ class ItemCardWidget extends StatelessWidget {
                     children: [
                       Flexible(
                           child: Text(product.name ?? '',
-                              style: robotoMedium,
+                              style: robotoMedium.copyWith(
+                                fontSize: 17
+                              ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1)),
                       const SizedBox(width: Dimensions.paddingSizeExtraSmall),

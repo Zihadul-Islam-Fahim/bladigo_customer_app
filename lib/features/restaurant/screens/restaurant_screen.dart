@@ -277,8 +277,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                                           'recommend_for_you'
                                                               .tr,
                                                           style: robotoMedium.copyWith(
-                                                              fontSize: Dimensions
-                                                                  .fontSizeLarge,
+                                                              fontSize: 20,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w700)),
@@ -290,11 +289,12 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                                               .tr,
                                                           style: robotoRegular.copyWith(
                                                               fontSize: Dimensions
-                                                                  .fontSizeSmall,
+                                                                  .fontSizeDefault,
                                                               color: Theme.of(
                                                                       context)
                                                                   .disabledColor)),
-                                                    ]),
+                                                    ],
+                                                ),
                                               ),
                                               ArrowIconButtonWidget(
                                                 onTap: () => Get.toNamed(
@@ -399,7 +399,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                             Text('all_food_items'.tr,
                                                 style: robotoBold.copyWith(
                                                     fontSize: Dimensions
-                                                        .fontSizeDefault)),
+                                                        .fontSizeExtraLarge)),
                                             const Expanded(child: SizedBox()),
                                             isDesktop
                                                 ? Container(
@@ -661,14 +661,14 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                                               ? robotoMedium.copyWith(
                                                                   fontSize:
                                                                       Dimensions
-                                                                          .fontSizeSmall,
+                                                                          .fontSizeDefault,
                                                                   color: Theme.of(
                                                                           context)
                                                                       .primaryColor)
                                                               : robotoRegular.copyWith(
                                                                   fontSize:
                                                                       Dimensions
-                                                                          .fontSizeSmall),
+                                                                          .fontSizeDefault),
                                                         ),
                                                       ]),
                                                 ),

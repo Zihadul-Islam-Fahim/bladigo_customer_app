@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stackfood_multivendor/common/widgets/app_gradient_bg.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_ink_well_widget.dart';
 import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
@@ -181,49 +182,51 @@ class HomeScreenHeaderWidget extends StatelessWidget {
             ),
           ),
         ),
-        isSecondScreen
-            ? Positioned(
-                bottom: 24,
-                left: 16,
-                child: RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Hey there ! \nTime to order?\n',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Just',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: ' Bladigo ',
-                        style: TextStyle(
-                          color: Colors.greenAccent.withOpacity(0.8),
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'it?',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ))
-            : Positioned(
+        // isSecondScreen
+        //     ? Positioned(
+        //         bottom: 24,
+        //         left: 16,
+        //         child: RichText(
+        //           text: TextSpan(
+        //             children: [
+        //               TextSpan(
+        //                 text: 'Hey there ! \nTime to order?\n',
+        //                 style: TextStyle(
+        //                   color: Colors.white,
+        //                   fontSize: 18,
+        //                   fontWeight: FontWeight.bold,
+        //                 ),
+        //               ),
+        //               TextSpan(
+        //                 text: 'Just',
+        //                 style: TextStyle(
+        //                   color: Colors.white,
+        //                   fontSize: 24,
+        //                   fontWeight: FontWeight.bold,
+        //                 ),
+        //               ),
+        //               TextSpan(
+        //                 text: ' Bladigo ',
+        //                 style: TextStyle(
+        //                   color: Colors.greenAccent.withOpacity(0.8),
+        //                   fontSize: 24,
+        //                   fontWeight: FontWeight.bold,
+        //                 ),
+        //               ),
+        //               TextSpan(
+        //                 text: 'it?',
+        //                 style: TextStyle(
+        //                   color: Colors.white,
+        //                   fontSize: 18,
+        //                   fontWeight: FontWeight.bold,
+        //                 ),
+        //               ),
+        //             ],
+        //           ),
+        //         ))
+        //     :
+
+        Positioned(
                 bottom: 8,
                 left: 16,
                 child: Column(
@@ -233,22 +236,58 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                     SizedBox(
                       height: 48,
                     ),
-                    Text(
-                      'Hey there !',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Login or create an account\nfor a faster experience ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                   AuthHelper.isLoggedIn() ?
+                   Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Text(
+                          'Fresh',
+                          style: GoogleFonts.montserratAlternates(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),Text(
+                          'Quick',
+                          style: GoogleFonts.montserratAlternates(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),Text(
+                          'Delicious',
+                          style: GoogleFonts.montserratAlternates(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                     ],
+                   ) :
+                   Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Text(
+                         'Hey there !',
+                         style: GoogleFonts.montserratAlternates(
+                           color: Colors.white,
+                           fontSize: 18,
+                           fontWeight: FontWeight.bold,
+                         ),
+                       ),
+                       Text(
+                         'Login or create an account\nfor a faster experience ',
+                         style: GoogleFonts.poppins(
+                           color: Colors.white,
+                           fontSize: 11,
+                           fontWeight: FontWeight.w400,
+                         ),
+                       ),
+
+                     ],
+                   )
+                    ,
+
 
                     !Get.find<AuthController>().isLoggedIn() ?
                     ElevatedButton(
@@ -275,21 +314,21 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                   ],
                 ),
               ),
-        Positioned(
-          bottom: -20,
-          right: 0,
-          child: isSecondScreen
-              ? Image.asset(
-                  'assets/image/icon_new.png',
-                  height: 160,
-                  width: 200,
-                )
-              : Image.asset(
-                  Images.handAssetsImage,
-                  height: 150,
-                  width: 200,
-                ),
-        ),
+        // Positioned(
+        //   bottom: -20,
+        //   right: 0,
+        //   child: isSecondScreen
+        //       ? Image.asset(
+        //           'assets/image/icon_new.png',
+        //           height: 160,
+        //           width: 200,
+        //         )
+        //       : Image.asset(
+        //           Images.handAssetsImage,
+        //           height: 150,
+        //           width: 200,
+        //         ),
+        // ),
       ],
     );
   }

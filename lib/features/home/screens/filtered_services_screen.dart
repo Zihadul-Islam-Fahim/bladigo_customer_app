@@ -83,171 +83,173 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
         onRefresh: () async {
           await _reload();
         },
-        child: ListView(
-          controller: _scrollController,
-          physics: AlwaysScrollableScrollPhysics(),
-          children: [
-            HomeScreenHeaderWidget(),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(left: 12, right: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _searchBar(context),
-                  SizedBox(height: 9),
-                  AppTileTitleBar(
-                    title: widget.category.name.toString(),
-                    onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
-                        arguments: widget.category),
-                  ),
-                  GetBuilder<CategoryController>(builder: (categoryController) {
-                    return categoryController.subCategoryList != null &&
-                            categoryController.subCategoryList!.isEmpty
-                        ? SizedBox.shrink()
-                        : SizedBox(
-                            // height: ResponsiveHelper.isMobile(context)
-                            //     ? 240
-                            //     : 280,
-                            child: GridView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            clipBehavior: Clip.none,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              childAspectRatio: 1,
-                              crossAxisSpacing: 4,
-                            ),
-                            padding: const EdgeInsets.only(
-                                left: Dimensions.paddingSizeDefault),
-                            itemCount: categoryController.subCategoryList !=
-                                    null
-                                ? categoryController.subCategoryList!.length > 9
-                                    ? 5
-                                    : categoryController.subCategoryList!.length
-                                : 5,
-                            itemBuilder: (context, index) {
-                              final data = categoryController.subCategoryList !=
+        child: SingleChildScrollView(
+          child: Column(
+            // controller: _scrollController,
+            // physics: AlwaysScrollableScrollPhysics(),
+            children: [
+              HomeScreenHeaderWidget(),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _searchBar(context),
+                    SizedBox(height: 9),
+                    AppTileTitleBar(
+                      title: widget.category.name.toString(),
+                      onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
+                          arguments: widget.category),
+                    ),
+                    GetBuilder<CategoryController>(builder: (categoryController) {
+                      return categoryController.subCategoryList != null &&
+                              categoryController.subCategoryList!.isEmpty
+                          ? SizedBox.shrink()
+                          : SizedBox(
+                              // height: ResponsiveHelper.isMobile(context)
+                              //     ? 240
+                              //     : 280,
+                              child: GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              clipBehavior: Clip.none,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                childAspectRatio: 1,
+                                crossAxisSpacing: 4,
+                              ),
+                              padding: const EdgeInsets.only(
+                                  left: Dimensions.paddingSizeDefault),
+                              itemCount: categoryController.subCategoryList !=
                                       null
-                                  ? categoryController.subCategoryList![index]
-                                  : null;
-                              return categoryController.subCategoryList != null
-                                  ? CustomInkWellWidget(
-                                      padding: EdgeInsets.zero,
-                                      radius: 8,
-                                      highlightColor: Color(0xff2b9430),
-                                      onTap: () => Get.toNamed(
-                                        RouteHelper.getCategoryProductRoute(
-                                          widget.category.id,
-                                          widget.category.name.toString(),
-                                        ),
-                                        arguments: index,
-                                      ),
-                                      // radius: 68,
-                                      child: SubServiceItemCard(
-                                        isNetworkImage: true,
-                                        filteredPage: true,
-                                        imagePath: "${data?.imageFullUrl}",
-                                        label: "${data?.name}",
-                                      ),
-                                    )
-                                  : Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      elevation: 0.5,
-                                      color: Colors.grey[100],
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          ShimmerWidget.rectangular(
-                                            height: ResponsiveHelper.isMobile(
-                                                    context)
-                                                ? 70
-                                                : 110,
-                                            width: ResponsiveHelper.isMobile(
-                                                    context)
-                                                ? 80
-                                                : 110,
+                                  ? categoryController.subCategoryList!.length > 9
+                                      ? 5
+                                      : categoryController.subCategoryList!.length
+                                  : 5,
+                              itemBuilder: (context, index) {
+                                final data = categoryController.subCategoryList !=
+                                        null
+                                    ? categoryController.subCategoryList![index]
+                                    : null;
+                                return categoryController.subCategoryList != null
+                                    ? CustomInkWellWidget(
+                                        padding: EdgeInsets.zero,
+                                        radius: 8,
+                                        highlightColor: Color(0xff2b9430),
+                                        onTap: () => Get.toNamed(
+                                          RouteHelper.getCategoryProductRoute(
+                                            widget.category.id,
+                                            widget.category.name.toString(),
                                           ),
-                                          SizedBox(
+                                          arguments: index,
+                                        ),
+                                        // radius: 68,
+                                        child: SubServiceItemCard(
+                                          isNetworkImage: true,
+                                          filteredPage: true,
+                                          imagePath: "${data?.imageFullUrl}",
+                                          label: "${data?.name}",
+                                        ),
+                                      )
+                                    : Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        elevation: 0.5,
+                                        color: Colors.grey[100],
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            ShimmerWidget.rectangular(
                                               height: ResponsiveHelper.isMobile(
                                                       context)
-                                                  ? Dimensions
-                                                      .paddingSizeExtraSmall
-                                                  : Dimensions
-                                                      .paddingSizeLarge),
-                                          ShimmerWidget.rectangular(
-                                            height: 11,
-                                            width: 50,
-                                          ),
-                                        ],
-                                      ),
-                                    );
+                                                  ? 70
+                                                  : 110,
+                                              width: ResponsiveHelper.isMobile(
+                                                      context)
+                                                  ? 80
+                                                  : 110,
+                                            ),
+                                            SizedBox(
+                                                height: ResponsiveHelper.isMobile(
+                                                        context)
+                                                    ? Dimensions
+                                                        .paddingSizeExtraSmall
+                                                    : Dimensions
+                                                        .paddingSizeLarge),
+                                            ShimmerWidget.rectangular(
+                                              height: 11,
+                                              width: 50,
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                              },
+                            ));
+                    }),
+                    SizedBox(height: Dimensions.paddingSizeDefault),
+                    AppTileTitleBar2(
+                      title: "All_Available_Restaurants".tr,
+                      onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
+                          arguments: widget.category),
+                    ),
+                    SizedBox(height: Dimensions.paddingSizeDefault),
+                    GetBuilder<CategoryController>(builder: (catController) {
+                      return Column(
+                        children: [
+                          // if (restaturantController.categoryWiseRestaurantList ==
+                          //         null ||
+                          //     restaturantController.categoryWiseRestaurantList !=
+                          //             null &&
+                          //         restaturantController
+                          //             .categoryWiseRestaurantList!.isNotEmpty)
+                          //   AppTileTitleBar(
+                          //     title: widget.category.name.toString(),
+                          //     onTap: () {
+                          //       CategoryProductScreen.tabIndex = 1;
+                          //       Get.find<CategoryController>()
+                          //           .setRestaurant(true);
+                          //       Get.toNamed(
+                          //         RouteHelper.getCategoryProductRoute(
+                          //           widget.category.id,
+                          //           widget.category.name.toString(),
+                          //         ),
+                          //       );
+                          //     },
+                          //   ),
+                          ListView.separated(
+                            padding: EdgeInsets.only(top: 0, bottom: 12),
+                            shrinkWrap: true,
+                            primary: false,
+                            itemBuilder: (context, index) {
+                              final data = catController.categoryRestaurantList ==
+                                      null
+                                  ? null
+                                  : catController.categoryRestaurantList![index];
+                              return catController.categoryRestaurantList != null
+                                  ? FilteredItemCard(restaurant: data!)
+                                  : _restaurentShimmerWidget(context);
                             },
-                          ));
-                  }),
-                  SizedBox(height: Dimensions.paddingSizeDefault),
-                  AppTileTitleBar2(
-                    title: "All_Available_Restaurants",
-                    onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
-                        arguments: widget.category),
-                  ),
-                  SizedBox(height: Dimensions.paddingSizeDefault),
-                  GetBuilder<CategoryController>(builder: (catController) {
-                    return Column(
-                      children: [
-                        // if (restaturantController.categoryWiseRestaurantList ==
-                        //         null ||
-                        //     restaturantController.categoryWiseRestaurantList !=
-                        //             null &&
-                        //         restaturantController
-                        //             .categoryWiseRestaurantList!.isNotEmpty)
-                        //   AppTileTitleBar(
-                        //     title: widget.category.name.toString(),
-                        //     onTap: () {
-                        //       CategoryProductScreen.tabIndex = 1;
-                        //       Get.find<CategoryController>()
-                        //           .setRestaurant(true);
-                        //       Get.toNamed(
-                        //         RouteHelper.getCategoryProductRoute(
-                        //           widget.category.id,
-                        //           widget.category.name.toString(),
-                        //         ),
-                        //       );
-                        //     },
-                        //   ),
-                        ListView.separated(
-                          padding: EdgeInsets.only(top: 0, bottom: 12),
-                          shrinkWrap: true,
-                          primary: false,
-                          itemBuilder: (context, index) {
-                            final data = catController.categoryRestaurantList ==
+                            separatorBuilder: (context, index) {
+                              return SizedBox(height: 4);
+                            },
+                            itemCount: catController.categoryRestaurantList ==
                                     null
-                                ? null
-                                : catController.categoryRestaurantList![index];
-                            return catController.categoryRestaurantList != null
-                                ? FilteredItemCard(restaurant: data!)
-                                : _restaurentShimmerWidget(context);
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(height: 4);
-                          },
-                          itemCount: catController.categoryRestaurantList ==
-                                  null
-                              ? 8
-                              : catController.categoryRestaurantList!.length,
-                        ),
-                      ],
-                    );
-                  }),
-                ],
-              ),
-            )
-          ],
+                                ? 8
+                                : catController.categoryRestaurantList!.length,
+                          ),
+                        ],
+                      );
+                    }),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -330,7 +332,7 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
                   Image.asset(Images.searchIconNew, width: 16, height: 16),
                   const SizedBox(width: Dimensions.paddingSizeExtraSmall),
                   Expanded(
-                      child: Text("What's you like to eat today?".tr,
+                      child: Text("What_you_like_to".tr,
                           style: robotoRegular.copyWith(
                             fontSize: Dimensions.fontSizeSmall,
                             color: Colors.grey,
@@ -547,7 +549,8 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
                           widget.restaurant.name.toString(),
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w700,
+
                           ),
                         ),
                         SizedBox(height: 4),
@@ -565,10 +568,10 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
                                   top: 2,
                                   bottom: 2,
                                 ),
-                                child: Text(
-                                  '${widget.restaurant.ratings} ⭐',
+                                child: widget.restaurant.ratings?.isEmpty ?? true ? Text(
+                                  '0 ⭐',
                                   style: TextStyle(color: Colors.white),
-                                ),
+                                ): Text('${widget.restaurant.ratings?[0].toString()} ⭐'),
                               ),
                             ),
                             SizedBox(width: 10),
@@ -576,7 +579,7 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
                               '${widget.restaurant.ratingCount} People Rated',
                               style: TextStyle(
                                 color: Color(0xFF8C8C8C),
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w500,
                               ),
                             )
@@ -633,7 +636,7 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
           style: TextStyle(
             color: textColor,
             fontWeight: FontWeight.w400,
-            fontSize: 11.33,
+            fontSize: 12.33,
           ),
         )
       ],

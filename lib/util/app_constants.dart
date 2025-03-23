@@ -6,7 +6,8 @@ class AppConstants {
   static const String appName = 'Bladigo';
   static const double appVersion = 7.9;
 
-  static const String fontFamily = 'Roboto';
+ // static const String fontFamily = 'Roboto';
+  static const String fontFamily = 'arial';
   static const bool payInWevView = false;
   static const String webHostedUrl = 'https://bladigo.com';
   static const bool useReactWebsite = false;

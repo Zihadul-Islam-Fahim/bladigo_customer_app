@@ -1,5 +1,6 @@
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_favourite_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_ink_well_widget.dart';
@@ -260,9 +261,12 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                             children: [
                                               Text(
                                                 product!.name ?? '',
-                                                style: robotoBold.copyWith(
-                                                    fontSize: Dimensions
-                                                        .fontSizeLarge),
+                                                style: TextStyle(
+                                                    fontSize: 23,
+                                                    fontFamily: 'arial',
+                                                  fontWeight: FontWeight.bold
+
+                                                ),
                                                 maxLines: 2,
                                                 overflow:
                                                     TextOverflow.ellipsis,
@@ -296,7 +300,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                   height: Dimensions
                                                       .paddingSizeExtraSmall),
                                               Text(product!.description ?? '',
-                                                  style: robotoRegular,
+                                                  style: arial.copyWith(fontSize: 16),
                                                   textAlign:
                                                       TextAlign.justify),
                                               const SizedBox(
@@ -1150,7 +1154,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                               children: [
                                 Text('${'total_amount'.tr}:',
                                     style: robotoMedium.copyWith(
-                                        fontSize: Dimensions.fontSizeDefault,
+                                        fontSize: Dimensions.fontSizeLarge,
                                         color:
                                             Theme.of(context).primaryColor)),
                                 const SizedBox(
@@ -1175,6 +1179,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                   PriceConverter.convertAnimationPrice(
                                     priceWithAddonsVariationWithDiscount,
                                     textStyle: robotoBold.copyWith(
+                                      fontSize: 18,
                                         color:
                                             Theme.of(context).primaryColor),
                                   ),

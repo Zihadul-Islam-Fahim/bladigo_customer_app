@@ -529,7 +529,7 @@ class _HomeScreenState extends State<HomeScreen> {
         const BannerViewWidget(),
         const BadWeatherWidget(),
         const TodayTrendsViewWidget(),
-        const LocationBannerViewWidget(),
+      //  const LocationBannerViewWidget(),
         const HighlightWidgetView(),
         _isLogin ? const OrderAgainViewWidget() : const SizedBox(),
         _configModel!.mostReviewedFoods == 1

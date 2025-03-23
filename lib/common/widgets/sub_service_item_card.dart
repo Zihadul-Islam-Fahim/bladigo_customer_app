@@ -26,7 +26,7 @@ class SubServiceItemCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       elevation: 0.0,
-      color: Colors.transparent,
+      color: Color(0xffE8F5E9),
       shadowColor: Colors.transparent,
       borderOnForeground: false,
       child: Column(

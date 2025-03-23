@@ -674,7 +674,7 @@ class OrderInfoSection extends StatelessWidget {
         ) : const SizedBox(),
 
         InkWell(
-          onTap: () => Get.toNamed(RouteHelper.getRestaurantRoute(order.restaurant?.id)),
+        //  onTap: () => Get.toNamed(RouteHelper.getRestaurantRoute(order.restaurant?.id)),
           child: Container(
             decoration: BoxDecoration(
               color: Theme.of(context).cardColor,

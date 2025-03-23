@@ -227,7 +227,9 @@ class ProductWidget extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(vertical: 2.0),
                             child: Text(
                               isRestaurant ? restaurant!.name! : product!.name!,
-                              style: robotoMedium,
+                              style: robotoMedium.copyWith(
+                                fontFamily: 'Roboto'
+                              ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
