@@ -1189,10 +1189,16 @@
   "confirm": "Confirmer",
 
   "What_you_like_to" : "Rechercher un restaurant ou un plat",
-
   "What_would_you_like_to_order" : "Que souhaitez-vous commander ?",
+  "All_Available_Restaurants" :     "Tous les restaurants disponibles",
 
-  "All_Available_Restaurants" :     "Tous les restaurants disponibles"
+  "Home" :  "Accueil",
+  "My orders" : "Mes commandes",
+  "Favorites" : "Favoris",
+  "Profile" : "Profil",
+
+  "enter_your_mobile": "Entrez votre numéro de téléphone portable",
+  "we_will_send_whatsapp": "Nous enverrons un code de vérification à ce numéro via WhatsApp"
 
 
 }

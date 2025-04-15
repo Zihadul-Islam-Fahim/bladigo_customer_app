@@ -5,6 +5,7 @@ class Dimensions {
   static double fontSizeSmall = Get.context!.width >= 1300 ? 14 : 12;
   static double fontSizeDefault = Get.context!.width >= 1300 ? 16 : 14;
   static double fontSizeLarge = Get.context!.width >= 1300 ? 18 : 16;
+  static double fontSizeLarge1 = Get.context!.width >= 1300 ? 23 : 19;
   static double fontSizeExtraLarge = Get.context!.width >= 1300 ? 20 : 18;
   static double fontSizeOverLarge = Get.context!.width >= 1300 ? 26 : 24;
 

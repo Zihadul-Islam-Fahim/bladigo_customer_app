@@ -32,13 +32,14 @@ class _PopularFoodNearbyViewWidgetState extends State<PopularFoodNearbyViewWidge
               children: [
                 ResponsiveHelper.isDesktop(context) ?  Padding(
                   padding: const EdgeInsets.only(bottom: 45),
-                  child: Text('popular_foods_nearby'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
+                  child: Text('popular_foods_nearby'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1)),
                 ): Padding(padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeLarge),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text('popular_foods_nearby'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge, fontWeight: FontWeight.w600)),
+                    Text('popular_foods_nearby'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600)),
                     ArrowIconButtonWidget(onTap: () => Get.toNamed(RouteHelper.getPopularFoodRoute(true))),
                   ],
-                )),
+                ),
+                ),
 
                 Row(children: [
                     ResponsiveHelper.isDesktop(context) ? ArrowIconButtonWidget(

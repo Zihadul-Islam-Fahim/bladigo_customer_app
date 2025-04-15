@@ -53,7 +53,7 @@ class DiscountTagWidget extends StatelessWidget {
             bottomRight: Radius.circular(Dimensions.radiusSmall),
           ),
           gradient: LinearGradient(colors: [
-            Colors.black,
+            Theme.of(context).primaryColor,
             Colors.black.withOpacity(0.0),
           ], begin: Alignment.centerLeft, end: Alignment.centerRight),
         ),

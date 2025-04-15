@@ -192,6 +192,7 @@ class RouteHelper {
       '$resetPassword?phone=$phone&token=$token&page=$page';
   static String getSearchRoute() => search;
   static String getRestaurantRoute(int? id) {
+    debugPrint(id.toString());
     if (kIsWeb) {
       // Define MetaSEO object
       MetaSEO meta = MetaSEO();

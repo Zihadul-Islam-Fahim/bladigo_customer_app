@@ -498,16 +498,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
         SliverToBoxAdapter(
-            child: Center(
-                child: FooterViewWidget(
-          child: Padding(
-            padding: ResponsiveHelper.isDesktop(context)
-                ? EdgeInsets.zero
-                : const EdgeInsets.only(
-                    bottom: Dimensions.paddingSizeOverLarge),
-            child: AllRestaurantsWidget(scrollController: _scrollController),
+          child: Center(
+            child: FooterViewWidget(
+              child: Padding(
+                padding: ResponsiveHelper.isDesktop(context)
+                    ? EdgeInsets.zero
+                    : const EdgeInsets.only(
+                        bottom: Dimensions.paddingSizeOverLarge),
+                child:
+                    AllRestaurantsWidget(scrollController: _scrollController),
+              ),
+            ),
           ),
-        ))),
+        ),
       ],
     );
   }
@@ -569,7 +572,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     horizontal: Dimensions.paddingSizeSmall),
                 decoration: BoxDecoration(
                   color: Colors.grey.withOpacity(0.18),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(25),
+                  border: Border.all(color: Theme.of(context).primaryColor)
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -583,31 +587,34 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: Dimensions.fontSizeSmall,
                               color: Colors.grey,
                               fontWeight: FontWeight.bold
-                            ))),
+                            ),
+                        ),
+                    ),
                   ]),
                 ),
               ),
             ),
-            SizedBox(
-              width: 12,
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                  transform: Matrix4.translationValues(0, -3, 0),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: Dimensions.paddingSizeSmall),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.18),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 2, right: 2, top: 16, bottom: 16),
-                    child:
-                        Image.asset(Images.filterIcon, width: 16, height: 16),
-                  )),
-            )
+            // SizedBox(
+            //   width: 12,
+            // ),
+            // Expanded(
+            //   flex: 1,
+            //   child: Container(
+            //       transform: Matrix4.translationValues(0, -3, 0),
+            //       padding: const EdgeInsets.symmetric(
+            //           horizontal: Dimensions.paddingSizeSmall),
+            //       decoration: BoxDecoration(
+            //         color: Colors.grey.withOpacity(0.18),
+            //         borderRadius: BorderRadius.circular(8),
+            //         border: Border.all(color: Theme.of(context).primaryColor)
+            //       ),
+            //       child: Padding(
+            //         padding: const EdgeInsets.only(
+            //             left: 2, right: 2, top: 16, bottom: 16),
+            //         child:
+            //             Image.asset(Images.filterIcon, width: 16, height: 16),
+            //       )),
+            // )
           ],
         ),
       ),

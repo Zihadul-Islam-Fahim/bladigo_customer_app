@@ -1192,5 +1192,13 @@
 
   "What_would_you_like_to_order" : "¿Qué te gustaría pedir?",
 
-  "All_Available_Restaurants" :     "Todos los restaurantes disponibles"
+  "All_Available_Restaurants" :     "Todos los restaurantes disponibles",
+
+  "Home" : "Inicio",
+  "My orders" : "Mis pedidos",
+  "Favorites" : "Favoritos",
+  "Profile" : "Perfil",
+
+  "enter_your_mobile": "Ingresa tu número de teléfono móvil",
+  "we_will_send_whatsapp": "Enviaremos un código de verificación a este número por WhatsApp"
 }

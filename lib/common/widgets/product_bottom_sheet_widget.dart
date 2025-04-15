@@ -503,7 +503,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                 style: robotoBold
                                                                     .copyWith(
                                                                         fontSize:
-                                                                            Dimensions.fontSizeLarge)),
+                                                                            Dimensions.fontSizeExtraLarge)),
                                                             Container(
                                                               decoration:
                                                                   BoxDecoration(
@@ -590,7 +590,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                 style: robotoMedium.copyWith(
                                                                     fontSize:
                                                                         Dimensions
-                                                                            .fontSizeExtraSmall,
+                                                                            .fontSizeDefault,
                                                                     color: Theme.of(
                                                                             context)
                                                                         .primaryColor),
@@ -707,7 +707,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                                   product!.variations![index].variationValues![i].level!.trim(),
                                                                                   maxLines: 1,
                                                                                   overflow: TextOverflow.ellipsis,
-                                                                                  style: productController.selectedVariations[index][i]! ? robotoMedium : robotoRegular.copyWith(color: Theme.of(context).hintColor),
+                                                                                  style: productController.selectedVariations[index][i]! ? robotoMedium : robotoRegular.copyWith(color: Theme.of(context).hintColor,fontSize: Dimensions.fontSizeLarge1),
                                                                                 ),
                                                                               ),
                                                                               Flexible(
@@ -732,7 +732,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                               maxLines: 1,
                                                                               overflow: TextOverflow.ellipsis,
                                                                               textDirection: TextDirection.ltr,
-                                                                              style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Theme.of(context).disabledColor, decoration: TextDecoration.lineThrough),
+                                                                              style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).disabledColor, decoration: TextDecoration.lineThrough),
                                                                             )
                                                                           : const SizedBox(),
                                                                       SizedBox(
@@ -748,8 +748,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                         textDirection:
                                                                             TextDirection.ltr,
                                                                         style: productController.selectedVariations[index][i]!
-                                                                            ? robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraSmall)
-                                                                            : robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Theme.of(context).disabledColor),
+                                                                            ? robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge)
+                                                                            : robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).disabledColor),
                                                                       ),
                                                                       product!.variations![index].multiSelect!
                                                                           ? Checkbox(

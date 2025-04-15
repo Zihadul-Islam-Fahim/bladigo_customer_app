@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +17,13 @@ import 'package:stackfood_multivendor/features/language/controllers/localization
 import 'package:stackfood_multivendor/features/restaurant/screens/restaurant_screen.dart';
 import 'package:stackfood_multivendor/helper/responsive_helper.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
+import 'package:stackfood_multivendor/util/app_constants.dart';
 import 'package:stackfood_multivendor/util/dimensions.dart';
 import 'package:stackfood_multivendor/util/images.dart';
 import 'package:stackfood_multivendor/util/styles.dart';
 import 'package:video_player/video_player.dart';
+
+import '../../restaurant/controllers/restaurant_controller.dart';
 
 class HighlightWidgetView extends StatefulWidget {
   const HighlightWidgetView({super.key});
@@ -39,10 +44,17 @@ class _HighlightWidgetViewState extends State<HighlightWidgetView> {
         child: Stack(
           children: [
 
-            CustomAssetImageWidget(
-              Images.highlightBg, width: context.width,
-              fit: BoxFit.cover,
+            Container(
+              width: context.width,
+              height: Get.height * 0.45,
+              color: const Color(0xFF2B9430),
             ),
+
+            // CustomAssetImageWidget(
+            //   Images.highlightBg, width: context.width,
+            //   fit: BoxFit.cover,
+            //
+            // ),
 
             Column(children: [
 
@@ -55,10 +67,10 @@ class _HighlightWidgetViewState extends State<HighlightWidgetView> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('highlights_for_you'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge, color: Colors.black)),
+                      Text('highlights_for_you'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Colors.white)),
                       const SizedBox(width: 5),
 
-                      Text('see_our_most_popular_restaurant_and_foods'.tr, style: robotoRegular.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeSmall)),
+                      Text('see_our_most_popular_restaurant_and_foods'.tr, style: robotoRegular.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall)),
                     ],
                   ),
 
@@ -125,9 +137,16 @@ class HighlightRestaurantWidget extends StatelessWidget {
         border: Border.all(color: Theme.of(context).disabledColor.withOpacity(0.07), width: 2),
       ),
       child: InkWell(
-        onTap: (){
+        onTap: () async {
+
+
+
           Get.toNamed(RouteHelper.getRestaurantRoute(advertisement.restaurantId),
-            arguments: RestaurantScreen(restaurant: Restaurant(id: advertisement.restaurantId)),
+
+            // arguments: RestaurantScreen(restaurant: Restaurant(id: advertisement.restaurantId)),
+            arguments: RestaurantScreen(restaurant:  await Get.find<RestaurantController>().getRestaurantDetails(Restaurant(id: advertisement.restaurantId))
+            ),
+
           );
         },
         child: Column(children: [

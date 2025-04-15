@@ -55,7 +55,7 @@ class _TodayTrendsViewWidgetState extends State<TodayTrendsViewWidget> {
 
                 Padding(
                   padding: const EdgeInsets.only(top: Dimensions.paddingSizeDefault, left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault),
-                  child: Text('today_trends'.tr, style: robotoBold.copyWith(color: Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeLarge, fontWeight: FontWeight.w600)),
+                  child: Text('today_trends'.tr, style: robotoBold.copyWith(color: Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600)),
                 ),
 
                 Padding(

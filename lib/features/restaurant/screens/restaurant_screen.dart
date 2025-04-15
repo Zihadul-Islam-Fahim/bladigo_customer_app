@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:stackfood_multivendor/features/cart/controllers/cart_controller.dart';
 import 'package:stackfood_multivendor/features/coupon/controllers/coupon_controller.dart';
 import 'package:stackfood_multivendor/features/home/widgets/arrow_icon_button_widget.dart';
@@ -54,31 +56,37 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   }
 
   Future<void> _initDataCall() async {
-    if (Get.find<RestaurantController>().isSearching) {
-      Get.find<RestaurantController>().changeSearchStatus(isUpdate: false);
-    }
-    await Get.find<RestaurantController>()
-        .getRestaurantDetails(widget.restaurant!, slug: widget.slug);
-    if (Get.find<CategoryController>().categoryList == null) {
-      Get.find<CategoryController>().getCategoryList(true);
-    }
-    if (Get.find<CategoryController>().subCategoryList == null) {
-      Get.find<CategoryController>()
-          .getSubCategoryList(widget.restaurant?.categoryId.toString());
-    }
-    Get.find<CouponController>().getRestaurantCouponList(
-        restaurantId: widget.restaurant!.id ??
-            Get.find<RestaurantController>().restaurant!.id!);
-    Get.find<RestaurantController>().getRestaurantRecommendedItemList(
-        widget.restaurant!.id ??
-            Get.find<RestaurantController>().restaurant!.id!,
-        false);
-    Get.find<RestaurantController>().getRestaurantProductList(
-        widget.restaurant!.id ??
-            Get.find<RestaurantController>().restaurant!.id!,
-        1,
-        'all',
-        false);
+
+  log("======================================> ${widget.restaurant!.name}");
+
+WidgetsBinding.instance.addPostFrameCallback((_) async
+    {
+      if (Get.find<RestaurantController>().isSearching) {
+        Get.find<RestaurantController>().changeSearchStatus(isUpdate: false);
+      }
+      await Get.find<RestaurantController>()
+          .getRestaurantDetails(widget.restaurant!, slug: widget.slug);
+      if (Get.find<CategoryController>().categoryList == null) {
+        Get.find<CategoryController>().getCategoryList(true);
+      }
+      if (Get.find<CategoryController>().subCategoryList == null) {
+        Get.find<CategoryController>()
+            .getSubCategoryList(widget.restaurant?.categoryId.toString());
+      }
+      Get.find<CouponController>().getRestaurantCouponList(
+          restaurantId: widget.restaurant!.id ??
+              Get.find<RestaurantController>().restaurant!.id!);
+      Get.find<RestaurantController>().getRestaurantRecommendedItemList(
+          widget.restaurant!.id ??
+              Get.find<RestaurantController>().restaurant!.id!,
+          false);
+      Get.find<RestaurantController>().getRestaurantProductList(
+          widget.restaurant!.id ??
+              Get.find<RestaurantController>().restaurant!.id!,
+          1,
+          'all',
+          false);
+    });
   }
 
   @override
@@ -99,8 +107,13 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   categoryController.categoryList != null) {
                 restaurant = restController.restaurant;
               }
+
+
               // restController.setCategoryList();
-              restController.setSubCategoryList(widget.restaurant!.categoryId!);
+
+            restController.setSubCategoryList(widget.restaurant!.categoryId!);
+
+
 
               bool hasCoupon = (couponController.couponList != null &&
                   couponController.couponList!.isNotEmpty);
@@ -361,10 +374,12 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                         ]),
                                   )
                                 : const SizedBox(),
-                          ]),
-                        ))),
+                              ]),
+                            ),
+                          ),
+                        ),
                         // (restController.categoryList!.isNotEmpty)
-                        (restController.subCategoryList!.isNotEmpty)
+                        (restController.subCategoryList != null)
                             ? SliverPersistentHeader(
                                 pinned: true,
                                 delegate: SliverDelegate(
@@ -382,7 +397,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                                         .withOpacity(0.1),
                                                     spreadRadius: 1,
                                                     blurRadius: 10,
-                                                    offset: const Offset(0, 1))
+                                                    offset: const Offset(0, 1)),
                                               ],
                                       ),
                                       padding: const EdgeInsets.symmetric(
@@ -729,7 +744,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                 products: restController.isSearching
                                     ? restController
                                         .restaurantSearchProductModel?.products
-                                    : restController.subCategoryList!.isNotEmpty
+                                    : restController.subCategoryList != null
                                         // restController.categoryList!.isNotEmpty
                                         ? restController.restaurantProducts
                                         : null,

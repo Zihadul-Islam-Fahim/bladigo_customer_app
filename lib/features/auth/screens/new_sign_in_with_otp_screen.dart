@@ -149,9 +149,9 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
                     SizedBox(height: 100),
                     Center(
                       child: Text(
-                        'Enter your mobile number',
+                        'enter_your_mobile'.tr,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: textColor,
                           fontWeight: FontWeight.w500,
                         ),
@@ -161,9 +161,9 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
                     SizedBox(height: 20,),
                     Center(
                       child: Text(
-                        'We will send a verification code to this number in whatsapp',
+                        'we_will_send_whatsapp'.tr,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 15,
                           color: textColor,
                           fontWeight: FontWeight.w500,
                         ),
@@ -216,6 +216,7 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
                     //         fontWeight: FontWeight.w500),
                     //   ),
                     // ),
+                    SizedBox(height: 20,),
 
                     SignInView(
                       exitFromApp: widget.exitFromApp,

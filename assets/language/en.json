@@ -1190,5 +1190,15 @@
 
   "What_you_like_to": "Search for a restaurant or food",
   "What_would_you_like_to_order":"What would you like to order",
-  "All_Available_Restaurants":"All Available Restaurants"
+  "All_Available_Restaurants":"All Available Restaurants",
+
+  "Home": "Home",
+  "My_orders":"My orders",
+  "Favorites":"Favorites",
+  "Profile":"Profile",
+
+  "enter_your_mobile": "Enter your mobile number",
+  "we_will_send_whatsapp": "We will send a verification code to this number in whatsapp"
+
+
 }

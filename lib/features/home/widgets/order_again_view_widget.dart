@@ -26,7 +26,7 @@ class OrderAgainViewWidget extends StatelessWidget {
               child: Row(children: [
                 Expanded(
                   child: Column(crossAxisAlignment: ResponsiveHelper.isMobile(context) ? CrossAxisAlignment.start : CrossAxisAlignment.center, children: [
-                      Text('order_again'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge, fontWeight: FontWeight.w600)),
+                      Text('order_again'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600)),
 
                       Text('${'recently_you_ordered_from'.tr} ${restController.orderAgainRestaurantList!.length} ${'restaurants'.tr}',
                           style: robotoRegular.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeSmall)),

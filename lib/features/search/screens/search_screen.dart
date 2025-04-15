@@ -156,14 +156,14 @@ class SearchScreenState extends State<SearchScreen> {
 
                   const SizedBox(height: Dimensions.paddingSizeExtraSmall),
                   searchController.historyList.isNotEmpty ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text('recent_search'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge)),
+                    Text('recent_search'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
 
                     InkWell(
                       onTap: () => searchController.clearSearchAddress(),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall, horizontal: 4),
                         child: Text('clear_all'.tr, style: robotoRegular.copyWith(
-                          fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).colorScheme.error,
+                          fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).colorScheme.error,
                         )),
                       ),
                     ),
@@ -216,7 +216,7 @@ class SearchScreenState extends State<SearchScreen> {
                   _isLoggedIn ? (searchController.suggestedFoodList == null || (searchController.suggestedFoodList != null && searchController.suggestedFoodList!.isNotEmpty)) ? Padding(
                     padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeDefault),
                     child: Text(
-                      'recommended'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge),
+                      'recommended'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraLarge),
                     ),
                   ) : const SizedBox() : const SizedBox(),
 
@@ -265,7 +265,7 @@ class SearchScreenState extends State<SearchScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         (cuisineController.cuisineModel != null) ? Text(
-                          'cuisines'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge),
+                          'cuisines'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraLarge),
                         ) : const SizedBox(),
                         const SizedBox(height: Dimensions.paddingSizeDefault),
 
@@ -273,13 +273,13 @@ class SearchScreenState extends State<SearchScreen> {
                         (cuisineController.cuisineModel != null) ? cuisineController.cuisineModel!.cuisines!.isNotEmpty ? GetBuilder<CuisineController>(builder: (cuisineController) {
                           return cuisineController.cuisineModel != null ? GridView.builder(
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: ResponsiveHelper.isDesktop(context) ? 8 : ResponsiveHelper.isTab(context) ? 6 : 4,
-                              mainAxisSpacing: 15,
-                              crossAxisSpacing: ResponsiveHelper.isDesktop(context) ? 35 : 15,
-                              childAspectRatio: ResponsiveHelper.isDesktop(context) ? 1 : 1,
+                              crossAxisCount: ResponsiveHelper.isDesktop(context) ? 8 : ResponsiveHelper.isTab(context) ? 6 : 3,
+                              mainAxisSpacing: Dimensions.paddingSizeDefault,
+                              crossAxisSpacing: ResponsiveHelper.isDesktop(context) ? 35 : Dimensions.paddingSizeSmall,
+                              childAspectRatio: 1,
                             ),
                             shrinkWrap: true,
-                            itemCount: cuisineController.cuisineModel!.cuisines!.length,
+                            itemCount: cuisineController.cuisineModel!.cuisines!.length > 5 ? 6 : cuisineController.cuisineModel!.cuisines!.length,
                             scrollDirection: Axis.vertical,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index){
@@ -288,7 +288,7 @@ class SearchScreenState extends State<SearchScreen> {
                                   Get.toNamed(RouteHelper.getCuisineRestaurantRoute(cuisineController.cuisineModel!.cuisines![index].id, cuisineController.cuisineModel!.cuisines![index].name));
                                 },
                                 child: SizedBox(
-                                  height: 130,
+                                  height: 160,
                                   child: CuisineCardWidget(
                                     image: '${cuisineController.cuisineModel!.cuisines![index].imageFullUrl}',
                                     name: cuisineController.cuisineModel!.cuisines![index].name!,

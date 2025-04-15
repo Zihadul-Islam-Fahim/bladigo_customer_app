@@ -1189,8 +1189,18 @@
   "confirm": "يتأكد",
 
  "What_you_like_to" : "ابحث عن مطعم أو طعام",
-
  "What_would_you_like_to_order" : "ماذا تريد أن تطلب؟",
+ "All_Available_Restaurants" : "جميع المطاعم المتاحة",
 
- "All_Available_Restaurants" : "جميع المطاعم المتاحة"
+ "Home" : "الرئيسية",
+ "My_orders" : "طلباتي",
+ "Favorites" : "المفضلة",
+ "Profile" : "الملف الشخصي",
+
+ "enter_your_mobile": "أدخل رقم هاتفك المحمول",
+ "we_will_send_whatsapp": "سنرسل رمز التحقق إلى هذا الرقم عبر واتساب",
+
+ "Fresh": "طازج",
+ "Delicious": "لذيذ",
+ "Quick": "سريع"
 }

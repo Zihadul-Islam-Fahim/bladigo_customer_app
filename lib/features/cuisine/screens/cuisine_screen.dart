@@ -50,9 +50,9 @@ class _CuisineScreenState extends State<CuisineScreen> {
                     child: GetBuilder<CuisineController>(builder: (cuisineController) {
                       return cuisineController.cuisineModel != null ? GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: ResponsiveHelper.isMobile(context) ? 4 : ResponsiveHelper.isDesktop(context) ? 8 : 6,
+                          crossAxisCount: ResponsiveHelper.isMobile(context) ? 3 : ResponsiveHelper.isDesktop(context) ? 8 : 6,
                           mainAxisSpacing: Dimensions.paddingSizeDefault,
-                          crossAxisSpacing: ResponsiveHelper.isDesktop(context) ? 35 : Dimensions.paddingSizeDefault,
+                          crossAxisSpacing: ResponsiveHelper.isDesktop(context) ? 35 : Dimensions.paddingSizeSmall,
                           childAspectRatio: 1,
                         ),
                         shrinkWrap: true,

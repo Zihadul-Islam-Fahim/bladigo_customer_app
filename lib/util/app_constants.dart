@@ -238,8 +238,8 @@ class AppConstants {
   static List<String?> preferenceDays = ['today', 'tomorrow'];
 
   /// Deep Links
-  static const String yourScheme = 'StackFood';
-  static const String yourHost = 'stackfood.com';
+  static const String yourScheme = 'Bladigo';
+  static const String yourHost = 'Bladigo.com';
 
   /// Languages
   static List<LanguageModel> languages = [

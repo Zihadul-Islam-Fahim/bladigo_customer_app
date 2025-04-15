@@ -35,7 +35,7 @@ class CuisineViewWidget extends StatelessWidget {
             children: [
               Padding(padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  Text('cuisine'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge, fontWeight: FontWeight.w600)),
+                  Text('cuisine'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600)),
                   ArrowIconButtonWidget(onTap: () => Get.toNamed(RouteHelper.getCuisineRoute())),
                 ]),
               ),
@@ -43,11 +43,12 @@ class CuisineViewWidget extends StatelessWidget {
               cuisineController.cuisineModel != null ? GridView.builder(
                 padding: const EdgeInsets.only(left: Dimensions.paddingSizeLarge, right: Dimensions.paddingSizeLarge),
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: cuisineController.cuisineModel!.cuisines!.length > 7  ? 8 : cuisineController.cuisineModel!.cuisines!.length,
+                itemCount: cuisineController.cuisineModel!.cuisines!.length > 5  ? 6 : cuisineController.cuisineModel!.cuisines!.length,
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: ResponsiveHelper.isMobile(context) ? 4 : ResponsiveHelper.isDesktop(context) ? 7 : 6,
-                  mainAxisSpacing: Dimensions.paddingSizeLarge,  crossAxisSpacing: Dimensions.paddingSizeLarge,
+                  crossAxisCount: ResponsiveHelper.isMobile(context) ? 3 : ResponsiveHelper.isDesktop(context) ? 7 : 6,
+                  mainAxisSpacing: Dimensions.paddingSizeExtraSmall,  crossAxisSpacing: Dimensions.paddingSizeExtraSmall,
+
                 ),
                 itemBuilder: (context, index) {
                   return CustomInkWellWidget(

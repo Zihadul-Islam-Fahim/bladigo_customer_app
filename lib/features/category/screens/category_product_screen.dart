@@ -165,7 +165,7 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
                         )
                       : Text(widget.categoryName,
                           style: robotoRegular.copyWith(
-                            fontSize: Dimensions.fontSizeLarge,
+                            fontSize: 20,
                             color: Theme.of(context).textTheme.bodyLarge!.color,
                           )),
                   centerTitle: true,
@@ -253,7 +253,7 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
                     !catController.isSearching)
                 ? Center(
                     child: Container(
-                    height: 40,
+                    height: 47,
                     width: Dimensions.webMaxWidth,
                     color: Theme.of(context).cardColor,
                     padding: const EdgeInsets.symmetric(
@@ -291,11 +291,11 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
                                     style: index ==
                                             catController.subCategoryIndex
                                         ? robotoMedium.copyWith(
-                                            fontSize: Dimensions.fontSizeSmall,
+                                            fontSize: Dimensions.fontSizeLarge,
                                             color:
                                                 Theme.of(context).primaryColor)
                                         : robotoRegular.copyWith(
-                                            fontSize: Dimensions.fontSizeSmall),
+                                            fontSize: Dimensions.fontSizeLarge),
                                   ),
                                 ]),
                           ),

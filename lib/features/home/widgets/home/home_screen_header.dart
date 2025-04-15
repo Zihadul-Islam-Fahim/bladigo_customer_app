@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stackfood_multivendor/common/widgets/app_gradient_bg.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_ink_well_widget.dart';
 import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
+import 'package:stackfood_multivendor/features/language/controllers/localization_controller.dart';
 import 'package:stackfood_multivendor/features/location/controllers/location_controller.dart';
 import 'package:stackfood_multivendor/features/notification/controllers/notification_controller.dart';
 import 'package:stackfood_multivendor/helper/address_helper.dart';
@@ -27,6 +28,8 @@ class HomeScreenHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
 
 
 
@@ -226,94 +229,101 @@ class HomeScreenHeaderWidget extends StatelessWidget {
         //         ))
         //     :
 
-        Positioned(
-                bottom: 8,
-                left: 16,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 48,
-                    ),
-                   AuthHelper.isLoggedIn() ?
-                   Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-                       Text(
-                          'Fresh',
-                          style: GoogleFonts.montserratAlternates(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),Text(
-                          'Quick',
-                          style: GoogleFonts.montserratAlternates(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),Text(
-                          'Delicious',
-                          style: GoogleFonts.montserratAlternates(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
+        GetBuilder<LocalizationController>(
+          builder: (controller) {
+            return Positioned(
+                    bottom: 8,
+                    left: controller.isLtr ? 12 : 280,
+
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 48,
                         ),
-                     ],
-                   ) :
-                   Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-                       Text(
-                         'Hey there !',
-                         style: GoogleFonts.montserratAlternates(
-                           color: Colors.white,
-                           fontSize: 18,
-                           fontWeight: FontWeight.bold,
-                         ),
-                       ),
-                       Text(
-                         'Login or create an account\nfor a faster experience ',
-                         style: GoogleFonts.poppins(
-                           color: Colors.white,
-                           fontSize: 11,
-                           fontWeight: FontWeight.w400,
-                         ),
-                       ),
+                       AuthHelper.isLoggedIn() ?
+                       Column(
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           Text(
+                              'Fresh'.tr,
+                              style: GoogleFonts.montserratAlternates(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                           Text(
+                             'Delicious'.tr,
+                             style: GoogleFonts.montserratAlternates(
+                               color: Colors.white,
+                               fontSize: 25,
+                               fontWeight: FontWeight.bold,
+                             ),
+                           ),
+                           Text(
+                              'Quick'.tr,
+                              style: GoogleFonts.montserratAlternates(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                         ],
+                       ) :
+                       Column(
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           Text(
+                             'Hey there !',
+                             style: GoogleFonts.montserratAlternates(
+                               color: Colors.white,
+                               fontSize: 18,
+                               fontWeight: FontWeight.bold,
+                             ),
+                           ),
+                           Text(
+                             'Login or create an account\nfor a faster experience ',
+                             style: GoogleFonts.poppins(
+                               color: Colors.white,
+                               fontSize: 11,
+                               fontWeight: FontWeight.w400,
+                             ),
+                           ),
 
-                     ],
-                   )
-                    ,
+                         ],
+                       )
+                        ,
 
 
-                    !Get.find<AuthController>().isLoggedIn() ?
-                    ElevatedButton(
-                      onPressed: () async {
-                        await Get.toNamed(
-                            RouteHelper.getSignInRoute(Get.currentRoute));
-                      },
-                      child: Text('SIGN UP'),
-                      style: ElevatedButton.styleFrom(
-                          elevation: 8,
-                          textStyle: TextStyle(fontSize: 9),
-                          padding: EdgeInsets.only(
-                              left: 2, right: 2, top: 4, bottom: 4),
-                          backgroundColor: Color(0xff2B9430),
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                8), // Makes the button rectangular
-                          ),
-                          maximumSize: Size(80, 32),
-                          minimumSize: Size(80, 32)),
-                    ):
-                        SizedBox()
-                  ],
-                ),
-              ),
+                        !Get.find<AuthController>().isLoggedIn() ?
+                        ElevatedButton(
+                          onPressed: () async {
+                            await Get.toNamed(
+                                RouteHelper.getSignInRoute(Get.currentRoute));
+                          },
+                          child: Text('SIGN UP'.tr),
+                          style: ElevatedButton.styleFrom(
+                              elevation: 8,
+                              textStyle: TextStyle(fontSize: 9),
+                              padding: EdgeInsets.only(
+                                  left: 2, right: 2, top: 4, bottom: 4),
+                              backgroundColor: Color(0xff2B9430),
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    8), // Makes the button rectangular
+                              ),
+                              maximumSize: Size(80, 32),
+                              minimumSize: Size(80, 32)),
+                        ):
+                            SizedBox()
+                      ],
+                    ),
+                  );
+          }
+        ),
         // Positioned(
         //   bottom: -20,
         //   right: 0,

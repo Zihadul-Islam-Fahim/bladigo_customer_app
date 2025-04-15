@@ -223,14 +223,14 @@ class DashboardScreenState extends State<DashboardScreen> {
                             ),
                             KBottomNavItem(
                               imageAsset: 'assets/image/home.png',
-                              label: 'Home',
+                              label: 'Home'.tr,
                               isSelected: _pageIndex == 0,
                               onTap: () => _setPage(0),
                             ),
                             Spacer(),
                             KBottomNavItem(
                               imageAsset: 'assets/image/my_order.png',
-                              label: 'My orders',
+                              label: 'My_orders'.tr,
                               isSelected: _pageIndex == 3,
                               onTap: () => _setPage(3),
                             ),
@@ -239,14 +239,14 @@ class DashboardScreenState extends State<DashboardScreen> {
                             Spacer(),
                             KBottomNavItem(
                               imageAsset: 'assets/image/fav.png',
-                              label: 'Favorites',
+                              label: 'Favorites'.tr,
                               isSelected: _pageIndex == 1,
                               onTap: () => _setPage(1),
                             ),
                             Spacer(),
                             KBottomNavItem(
                               imageAsset: 'assets/image/person.png',
-                              label: 'Profile',
+                              label: 'Profile'.tr,
                               isSelected: _pageIndex == 4,
                               onTap: () => _setPage(4),
                             ),
