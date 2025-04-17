@@ -23,11 +23,12 @@ class CuisineViewWidget extends StatelessWidget {
           width: Dimensions.webMaxWidth,
           margin: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeLarge),
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: const AssetImage(Images.cuisineBgPng),
-              colorFilter: ColorFilter.mode(Theme.of(context).primaryColor.withOpacity(0.1), BlendMode.color),
-              fit: BoxFit.cover,
-            ),
+            color: Theme.of(context).primaryColor,
+            // image: DecorationImage(
+            //   image: const AssetImage(Images.cuisineBgPng),
+            //   colorFilter: ColorFilter.mode(Color.fromRGBO(240, 194, 47, 1), BlendMode.color),
+            //   fit: BoxFit.cover,
+            // ),
             borderRadius: BorderRadius.all(Radius.circular(ResponsiveHelper.isMobile(context) ? 0 : Dimensions.radiusSmall)),
           ),
           child: Column(
@@ -35,7 +36,7 @@ class CuisineViewWidget extends StatelessWidget {
             children: [
               Padding(padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  Text('cuisine'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600)),
+                  Text('cuisine'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600,color: Colors.white)),
                   ArrowIconButtonWidget(onTap: () => Get.toNamed(RouteHelper.getCuisineRoute())),
                 ]),
               ),
@@ -48,6 +49,7 @@ class CuisineViewWidget extends StatelessWidget {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: ResponsiveHelper.isMobile(context) ? 3 : ResponsiveHelper.isDesktop(context) ? 7 : 6,
                   mainAxisSpacing: Dimensions.paddingSizeExtraSmall,  crossAxisSpacing: Dimensions.paddingSizeExtraSmall,
+
 
                 ),
                 itemBuilder: (context, index) {

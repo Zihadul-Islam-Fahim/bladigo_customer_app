@@ -24,15 +24,16 @@ class BannerViewWidget extends StatelessWidget {
     return GetBuilder<HomeController>(builder: (homeController) {
       return (homeController.bannerImageList != null && homeController.bannerImageList!.isEmpty) ? const SizedBox() : Container(
         width: MediaQuery.of(context).size.width,
-        height: GetPlatform.isDesktop ? 500 : 220,
+        height: GetPlatform.isDesktop ? 500 : 290,
         padding: const EdgeInsets.only(top: Dimensions.paddingSizeDefault),
         child: homeController.bannerImageList != null ? Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CarouselSlider.builder(
               options: CarouselOptions(
-                aspectRatio: 2.5,
-                enlargeFactor: 0.3,
+                viewportFraction: 0.935,
+                aspectRatio: 16/9,
+               enlargeFactor: 0.6,
                 autoPlay: true,
                 enlargeCenterPage: true,
                 disableCenter: true,
@@ -65,6 +66,7 @@ class BannerViewWidget extends StatelessWidget {
                     }
                   },
                   child: Container(
+
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
                       borderRadius: BorderRadius.circular(Dimensions.radiusSmall),

@@ -2,7 +2,7 @@ name: stackfood_multivendor
 description: A new Flutter application.
 publish_to: 'none' #
 #version: 1.0.5+11 # palystore
-version: 1.0.2+5 # appstore
+version: 1.0.3+6 # appstore
 
 environment:
   sdk: ">=3.4.4 <4.0.0"

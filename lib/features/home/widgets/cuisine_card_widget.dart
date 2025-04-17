@@ -51,7 +51,7 @@ class CuisineCardWidget extends StatelessWidget {
                 boxShadow: [BoxShadow(color: Colors.grey[Get.find<ThemeController>().darkTheme ? 700 : 300]!, spreadRadius: 0.5, blurRadius: 0.5)],
                 borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(Dimensions.radiusDefault), bottomRight: Radius.circular(Dimensions.radiusDefault)),
               ),
-              child: Text( name, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
+              child: Text( name, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.white),
                 maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,
               ),
             ),
@@ -126,7 +126,7 @@ class CuisineCardWidget extends StatelessWidget {
             child: ClipOval(
               child: CustomImageWidget(
                 image: image,
-                fit: BoxFit.cover, height: fromSearchPage || fromCuisinesPage ? 80 : 80, width: fromSearchPage || fromCuisinesPage ? 80 : 80,
+                fit: BoxFit.cover, height: fromSearchPage || fromCuisinesPage ? 80 : 90, width: fromSearchPage || fromCuisinesPage ? 80 : 90,
               ),
             ),
           ),
@@ -141,7 +141,7 @@ class CuisineCardWidget extends StatelessWidget {
           //  boxShadow: [BoxShadow(color: Colors.grey[Get.find<ThemeController>().darkTheme ? 700 : 300]!, spreadRadius: 0.5, blurRadius: 0.5)],
             borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(Dimensions.radiusDefault), bottomRight: Radius.circular(Dimensions.radiusDefault)),
           ),
-          child: Text( name, style: robotoMedium.copyWith(fontSize: 16),
+          child: Text( name, style: robotoMedium.copyWith(fontSize: 18,color: fromSearchPage || fromCuisinesPage? Colors.black : Colors.white),
             maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,
           ),
         ),

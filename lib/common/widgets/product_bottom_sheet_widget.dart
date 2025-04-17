@@ -519,9 +519,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                             .primaryColor
                                                                     : Theme.of(
                                                                             context)
-                                                                        .disabledColor
+                                                                        .primaryColor
                                                                         .withOpacity(
-                                                                            0.2),
+                                                                            0.9),
                                                                 borderRadius:
                                                                     BorderRadius.circular(
                                                                         Dimensions
@@ -532,10 +532,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                   Dimensions
                                                                       .paddingSizeExtraSmall),
                                                               child: Text(
-                                                                product!
-                                                                        .variations![
-                                                                            index]
-                                                                        .required!
+                                                                product!.variations![index].required!
                                                                     ? (product!.variations![index].multiSelect! ? product!.variations![index].min! : 1) <=
                                                                             selectedCount
                                                                         ? 'completed'
@@ -552,12 +549,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                           .required!
                                                                       ? (product!.variations![index].multiSelect! ? product!.variations![index].min! : 1) <=
                                                                               selectedCount
-                                                                          ? Theme.of(context)
-                                                                              .cardColor
-                                                                          : Theme.of(context)
-                                                                              .cardColor
-                                                                      : Theme.of(context)
-                                                                          .hintColor,
+                                                                          ? Colors.white
+                                                                          : Colors.white
+                                                                      : Colors.white,
                                                                   fontSize:
                                                                       Dimensions
                                                                           .fontSizeSmall,
