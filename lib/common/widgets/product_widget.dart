@@ -38,14 +38,14 @@ class ProductWidget extends StatelessWidget {
 
   const ProductWidget(
       {super.key,
-      required this.product,
-      required this.isRestaurant,
-      required this.restaurant,
-      required this.index,
-      required this.length,
-      this.inRestaurant = false,
-      this.isCampaign = false,
-      this.fromCartSuggestion = false});
+        required this.product,
+        required this.isRestaurant,
+        required this.restaurant,
+        required this.index,
+        required this.length,
+        this.inRestaurant = false,
+        this.isCampaign = false,
+        this.fromCartSuggestion = false});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class ProductWidget extends StatelessWidget {
     if (isRestaurant) {
       image = restaurant!.logoFullUrl;
       discount =
-          restaurant!.discount != null ? restaurant!.discount!.discount : 0;
+      restaurant!.discount != null ? restaurant!.discount!.discount : 0;
       discountType = restaurant!.discount != null
           ? restaurant!.discount!.discountType
           : 'percent';
@@ -76,14 +76,14 @@ class ProductWidget extends StatelessWidget {
           product!.availableTimeStarts, product!.availableTimeEnds);
       price = product!.price!;
       discountPrice =
-          PriceConverter.convertWithDiscount(price, discount, discountType)!;
+      PriceConverter.convertWithDiscount(price, discount, discountType)!;
     }
 
     return Padding(
       padding: EdgeInsets.symmetric(
-          // horizontal: desktop ? 0 : Dimensions.paddingSizeExtraSmall,
-          //vertical: desktop ? 0 : Dimensions.paddingSizeExtraSmall
-          ),
+        // horizontal: desktop ? 0 : Dimensions.paddingSizeExtraSmall,
+        //vertical: desktop ? 0 : Dimensions.paddingSizeExtraSmall
+      ),
       child: Container(
         margin: desktop ? null : const EdgeInsets.only(bottom: 2),
         decoration: BoxDecoration(
@@ -111,19 +111,19 @@ class ProductWidget extends StatelessWidget {
               if (product!.restaurantStatus == 1) {
                 ResponsiveHelper.isMobile(context)
                     ? Get.to(
-                        ProductBottomSheetWidget(
-                            product: product,
-                            inRestaurantPage: inRestaurant,
-                            isCampaign: isCampaign),
-                        // backgroundColor: Colors.transparent,
-                        //isScrollControlled: true,
-                      )
+                  ProductBottomSheetWidget(
+                      product: product,
+                      inRestaurantPage: inRestaurant,
+                      isCampaign: isCampaign),
+                  // backgroundColor: Colors.transparent,
+                  //isScrollControlled: true,
+                )
                     : Get.dialog(
-                        Dialog(
-                            child: ProductBottomSheetWidget(
-                                product: product,
-                                inRestaurantPage: inRestaurant)),
-                      );
+                  Dialog(
+                      child: ProductBottomSheetWidget(
+                          product: product,
+                          inRestaurantPage: inRestaurant)),
+                );
               } else {
                 showCustomSnackBar('item_is_not_available'.tr);
               }
@@ -131,9 +131,9 @@ class ProductWidget extends StatelessWidget {
           },
           radius: Dimensions.radiusDefault,
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Card(
-              //color: Colors.red,
+              color: Colors.transparent,
               elevation: 0,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,62 +141,62 @@ class ProductWidget extends StatelessWidget {
                     Stack(clipBehavior: Clip.none, children: [
                       ((image != null && image.isNotEmpty) || isRestaurant)
                           ? ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                  Dimensions.radiusDefault),
-                              child: CustomImageWidget(
-                                image:
-                                    '${isRestaurant ? restaurant!.logoFullUrl : product!.imageFullUrl}',
-                                height: desktop
-                                    ? 120
-                                    : length == null
-                                        ? 100
-                                        : 150,
-                                width: desktop ? 120 : double.infinity,
-                                fit: BoxFit.cover,
-                                isFood: !isRestaurant,
-                                isRestaurant: isRestaurant,
-                              ),
-                            )
+                        borderRadius: BorderRadius.circular(
+                            Dimensions.radiusDefault),
+                        child: CustomImageWidget(
+                          image:
+                          '${isRestaurant ? restaurant!.logoFullUrl : product!.imageFullUrl}',
+                          height: desktop
+                              ? 120
+                              : length == null
+                              ? 100
+                              : 190,
+                          width: desktop ? 120 : 190,
+                          fit: BoxFit.cover,
+                          isFood: !isRestaurant,
+                          isRestaurant: isRestaurant,
+                        ),
+                      )
                           : isAvailable
-                              ? const SizedBox()
-                              : Container(
-                                  height: desktop
-                                      ? 120
-                                      : length == null
-                                          ? 100
-                                          : 110,
-                                  width: desktop ? 120 : 110,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                        Dimensions.radiusDefault),
-                                  ),
-                                ),
+                          ? const SizedBox()
+                          : Container(
+                        height: desktop
+                            ? 120
+                            : length == null
+                            ? 100
+                            : 110,
+                        width: desktop ? 120 : 110,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              Dimensions.radiusDefault),
+                        ),
+                      ),
                       ((image != null && image.isNotEmpty) || isRestaurant)
                           ? DiscountTagWidget(
-                              discount: discount,
-                              discountType: discountType,
-                              freeDelivery: isRestaurant
-                                  ? restaurant!.freeDelivery
-                                  : false,
-                              fromTop: Dimensions.paddingSizeExtraSmall,
-                              fromLeft: isAvailable ? -7 : -3,
-                              paddingVertical:
-                                  ResponsiveHelper.isDesktop(context) ? 5 : 10,
-                            )
+                        discount: discount,
+                        discountType: discountType,
+                        freeDelivery: isRestaurant
+                            ? restaurant!.freeDelivery
+                            : false,
+                        fromTop: Dimensions.paddingSizeExtraSmall,
+                        fromLeft: isAvailable ? -7 : -3,
+                        paddingVertical:
+                        ResponsiveHelper.isDesktop(context) ? 5 : 10,
+                      )
                           : const SizedBox(),
                       isAvailable
                           ? const SizedBox()
                           : NotAvailableWidget(
-                              isRestaurant: isRestaurant,
-                              opacity: ((image != null && image.isNotEmpty) ||
-                                      isRestaurant)
-                                  ? 0.6
-                                  : 0.15,
-                              color: ((image != null && image.isNotEmpty) ||
-                                      isRestaurant)
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
+                        isRestaurant: isRestaurant,
+                        opacity: ((image != null && image.isNotEmpty) ||
+                            isRestaurant)
+                            ? 0.6
+                            : 0.15,
+                        color: ((image != null && image.isNotEmpty) ||
+                            isRestaurant)
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                       Positioned(
                         bottom: 10,
                         right: 10,
@@ -228,7 +228,8 @@ class ProductWidget extends StatelessWidget {
                             child: Text(
                               isRestaurant ? restaurant!.name! : product!.name!,
                               style: robotoMedium.copyWith(
-                                fontFamily: 'Roboto'
+                                  fontFamily: 'Roboto',
+                                fontSize: Dimensions.fontSizeLarge,
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -236,71 +237,71 @@ class ProductWidget extends StatelessWidget {
                           ),
                           isRestaurant
                               ? Row(
-                                  children: [
-                                    Text(
-                                      'start_from'.tr,
-                                      style: robotoRegular.copyWith(
-                                          fontSize:
-                                              Dimensions.fontSizeExtraSmall,
-                                          color:
-                                              Theme.of(context).disabledColor),
-                                    ),
-                                    const SizedBox(
-                                        width:
-                                            Dimensions.paddingSizeExtraSmall),
-                                    Text(
-                                      PriceConverter.convertPrice(
-                                          restaurant!.minimumOrder!),
-                                      style: robotoRegular.copyWith(
-                                          fontSize: Dimensions.fontSizeSmall,
-                                          fontWeight: FontWeight.w700,
-                                          color: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge!
-                                              .color),
-                                    ),
-                                  ],
-                                )
+                            children: [
+                              Text(
+                                'start_from'.tr,
+                                style: robotoRegular.copyWith(
+                                    fontSize:
+                                    Dimensions.fontSizeSmall,
+                                    color:
+                                    Theme.of(context).disabledColor),
+                              ),
+                              const SizedBox(
+                                  width:
+                                  Dimensions.paddingSizeExtraSmall),
+                              Text(
+                                PriceConverter.convertPrice(
+                                    restaurant!.minimumOrder!),
+                                style: robotoRegular.copyWith(
+                                    fontSize: Dimensions.fontSizeSmall,
+                                    fontWeight: FontWeight.w700,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .color),
+                              ),
+                            ],
+                          )
                               : Wrap(children: [
-                                  discount! > 0
-                                      ? Text(
-                                          PriceConverter.convertPrice(
-                                              product!.price),
-                                          textDirection: TextDirection.ltr,
-                                          style: robotoMedium.copyWith(
-                                            fontSize:
-                                                Dimensions.fontSizeDefault,
-                                            color:
-                                                Theme.of(context).disabledColor,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          ),
-                                        )
-                                      : const SizedBox(),
-                                  SizedBox(
-                                      width: discount > 0
-                                          ? Dimensions.paddingSizeExtraSmall
-                                          : 0),
-                                  Text(
-                                    PriceConverter.convertPrice(product!.price,
-                                        discount: discount,
-                                        discountType: discountType),
-                                    style: robotoMedium.copyWith(
-                                        fontSize: Dimensions.fontSizeLarge,
-                                        color: Colors.black),
-                                    textDirection: TextDirection.ltr,
-                                  ),
-                                  const SizedBox(
-                                      width: Dimensions.paddingSizeExtraSmall),
-                                  (image != null && image.isNotEmpty)
-                                      ? const SizedBox.shrink()
-                                      : DiscountTagWithoutImageWidget(
-                                          discount: discount,
-                                          discountType: discountType,
-                                          freeDelivery: isRestaurant
-                                              ? restaurant!.freeDelivery
-                                              : false),
-                                ]),
+                            discount! > 0
+                                ? Text(
+                              PriceConverter.convertPrice(
+                                  product!.price),
+                              textDirection: TextDirection.ltr,
+                              style: robotoMedium.copyWith(
+                                fontSize:
+                                Dimensions.fontSizeDefault,
+                                color:
+                                Theme.of(context).disabledColor,
+                                decoration:
+                                TextDecoration.lineThrough,
+                              ),
+                            )
+                                : const SizedBox(),
+                            SizedBox(
+                                width: discount > 0
+                                    ? Dimensions.paddingSizeExtraSmall
+                                    : 0),
+                            Text(
+                              PriceConverter.convertPrice(product!.price,
+                                  discount: discount,
+                                  discountType: discountType),
+                              style: robotoMedium.copyWith(
+                                  fontSize: Dimensions.fontSizeLarge,
+                                ),
+                              textDirection: TextDirection.ltr,
+                            ),
+                            const SizedBox(
+                                width: Dimensions.paddingSizeExtraSmall),
+                            (image != null && image.isNotEmpty)
+                                ? const SizedBox.shrink()
+                                : DiscountTagWithoutImageWidget(
+                                discount: discount,
+                                discountType: discountType,
+                                freeDelivery: isRestaurant
+                                    ? restaurant!.freeDelivery
+                                    : false),
+                          ]),
 
                           // Expanded(
                           //   child: Column(

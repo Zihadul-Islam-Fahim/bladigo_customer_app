@@ -38,11 +38,12 @@ class _MenuScreenState extends State<MenuScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
       body: GetBuilder<ProfileController>(builder: (profileController) {
+
         final bool isLoggedIn = Get.find<AuthController>().isLoggedIn();
 
         return Column(children: [
           Container(
-            decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+            decoration: BoxDecoration(color: Theme.of(context).primaryColor,),
             child: Padding(
               padding: const EdgeInsets.only(
                 left: Dimensions.paddingSizeOverLarge,
@@ -149,7 +150,7 @@ class _MenuScreenState extends State<MenuScreen> {
             child: Ink(
               color: Get.find<ThemeController>().darkTheme
                   ? Theme.of(context).colorScheme.surface
-                  : Theme.of(context).primaryColor.withOpacity(0.1),
+                  : Theme.of(context).cardColor,
               padding: const EdgeInsets.only(top: Dimensions.paddingSizeLarge),
               child: Column(children: [
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -339,29 +340,29 @@ class _MenuScreenState extends State<MenuScreen> {
                                             RouteHelper.getReferAndEarnRoute(),
                                       )
                                     : const SizedBox(),
-                                (Get.find<SplashController>()
-                                            .configModel!
-                                            .toggleDmRegistration! &&
-                                        !ResponsiveHelper.isDesktop(context))
-                                    ? PortionWidget(
-                                        icon: Images.dmIcon,
-                                        title: 'join_as_a_delivery_man'.tr,
-                                        route: RouteHelper
-                                            .getDeliverymanRegistrationRoute(),
-                                      )
-                                    : const SizedBox(),
-                                (Get.find<SplashController>()
-                                            .configModel!
-                                            .toggleRestaurantRegistration! &&
-                                        !ResponsiveHelper.isDesktop(context))
-                                    ? PortionWidget(
-                                        icon: Images.storeIcon,
-                                        title: 'open_store'.tr,
-                                        hideDivider: true,
-                                        route: RouteHelper
-                                            .getRestaurantRegistrationRoute(),
-                                      )
-                                    : const SizedBox(),
+                                // (Get.find<SplashController>()
+                                //             .configModel!
+                                //             .toggleDmRegistration! &&
+                                //         !ResponsiveHelper.isDesktop(context))
+                                //     ? PortionWidget(
+                                //         icon: Images.dmIcon,
+                                //         title: 'join_as_a_delivery_man'.tr,
+                                //         route: RouteHelper
+                                //             .getDeliverymanRegistrationRoute(),
+                                //       )
+                                //     : const SizedBox(),
+                                // (Get.find<SplashController>()
+                                //             .configModel!
+                                //             .toggleRestaurantRegistration! &&
+                                //         !ResponsiveHelper.isDesktop(context))
+                                //     ? PortionWidget(
+                                //         icon: Images.storeIcon,
+                                //         title: 'open_store'.tr,
+                                //         hideDivider: true,
+                                //         route: RouteHelper
+                                //             .getRestaurantRegistrationRoute(),
+                                //       )
+                                //     : const SizedBox(),
                               ]),
                             )
                           ])

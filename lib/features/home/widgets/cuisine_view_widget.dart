@@ -49,7 +49,7 @@ class CuisineViewWidget extends StatelessWidget {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: ResponsiveHelper.isMobile(context) ? 3 : ResponsiveHelper.isDesktop(context) ? 7 : 6,
                   mainAxisSpacing: Dimensions.paddingSizeExtraSmall,  crossAxisSpacing: Dimensions.paddingSizeExtraSmall,
-
+                  childAspectRatio: 0.82
 
                 ),
                 itemBuilder: (context, index) {

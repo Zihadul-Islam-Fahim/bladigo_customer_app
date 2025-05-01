@@ -17,10 +17,12 @@ ThemeData light = ThemeData(
       foregroundColor: const Color(0xFF5EAA5d),
     ),
   ),
+  scaffoldBackgroundColor: Colors.white,
   // colorScheme: const ColorScheme.light(primary: Color(0xFF5EAA5d), secondary: Color(0xFF5EAA5d)).copyWith(error: const Color(0xFF5EAA5d)),
   colorScheme: const ColorScheme.light(
           primary: Color(0xFF5EAA5d),
           tertiary: Color(0xff102F9C),
+
           tertiaryContainer: Color(0xff8195DB),
           secondary: Color(0xFF5EAA5d))
       .copyWith(surface: const Color(0xFFF5F6F8))

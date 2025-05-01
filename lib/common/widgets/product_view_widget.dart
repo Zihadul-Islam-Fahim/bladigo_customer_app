@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:stackfood_multivendor/common/models/product_model.dart';
 import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
 import 'package:stackfood_multivendor/common/widgets/no_data_screen_widget.dart';
@@ -63,9 +65,9 @@ class ProductViewWidget extends StatelessWidget {
                   key: UniqueKey(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisSpacing: 8,
+                     // mainAxisSpacing: 2,
                       crossAxisSpacing: 10,
-                      childAspectRatio: 0.85
+                      childAspectRatio: Platform.isIOS ? 0.80 :  0.72
                       // crossAxisCount:2,
                       ),
                   physics: isScrollable

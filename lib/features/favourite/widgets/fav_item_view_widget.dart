@@ -12,6 +12,7 @@ class FavItemViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).cardColor,
       body: GetBuilder<FavouriteController>(builder: (favouriteController) {
         return RefreshIndicator(
           onRefresh: () async {
@@ -22,7 +23,7 @@ class FavItemViewWidget extends StatelessWidget {
             child: FooterViewWidget(
               child: Center(
                   child: Container(
-                // color: Colors.white,
+                color: Theme.of(context).cardColor,
                 width: Dimensions.webMaxWidth,
                 child: ProductViewWidget(
                   isRestaurant: isRestaurant,

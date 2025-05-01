@@ -1,4 +1,4 @@
-import 'package:stackfood_multivendor/common/widgets/product_widget.dart';
+
 import 'package:stackfood_multivendor/features/splash/controllers/theme_controller.dart';
 import 'package:stackfood_multivendor/common/models/product_model.dart';
 import 'package:stackfood_multivendor/features/cart/domain/models/cart_model.dart';
@@ -9,6 +9,9 @@ import 'package:stackfood_multivendor/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common/widgets/cart_suggest_product_widget.dart';
+import '../../../common/widgets/product_widget.dart';
+
 class CartSuggestedItemViewWidget extends StatelessWidget {
   final List<CartModel> cartList;
   const CartSuggestedItemViewWidget({super.key, required this.cartList});
@@ -18,7 +21,7 @@ class CartSuggestedItemViewWidget extends StatelessWidget {
     bool isDesktop = ResponsiveHelper.isDesktop(context);
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor.withOpacity(Get.find<ThemeController>().darkTheme ? 0 : 1),
+       // color: Theme.of(context).cardColor.withOpacity(Get.find<ThemeController>().darkTheme ? 0 : 1),
         borderRadius: BorderRadius.circular(isDesktop ? Dimensions.radiusDefault : 0),
         boxShadow: isDesktop ? const [BoxShadow(color: Colors.black12, blurRadius: 5, spreadRadius: 1)] : [],
       ),
@@ -45,24 +48,24 @@ class CartSuggestedItemViewWidget extends StatelessWidget {
               const SizedBox(height: Dimensions.paddingSizeSmall),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeExtraSmall),
-                child: Text('you_may_also_like'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault)),
+                child: Text('you_may_also_like'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1)),
               ),
 
               SizedBox(
-                height: isDesktop ? 165 : 162,
+                height: isDesktop ? 165 : 182,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: suggestedItems.length,
                   physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.only(left: isDesktop ? Dimensions.paddingSizeExtraSmall : Dimensions.paddingSizeDefault),
+                  padding: EdgeInsets.only(left: isDesktop ? Dimensions.paddingSizeExtraSmall : 2),
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: isDesktop ? const EdgeInsets.symmetric(vertical: 20) : const EdgeInsets.symmetric(vertical: 10) ,
+                      padding: isDesktop ? const EdgeInsets.symmetric(vertical: 20) : const EdgeInsets.symmetric(vertical: 4) ,
                       child: Container(
-                        width: isDesktop ? 350 : 300,
-                        padding: const EdgeInsets.only(right: Dimensions.paddingSizeSmall, left: Dimensions.paddingSizeExtraSmall),
-                        margin: const EdgeInsets.only(right: Dimensions.paddingSizeSmall),
-                        child: ProductWidget(
+                        width: isDesktop ? 350 : 152,
+                       // padding: const EdgeInsets.only(right: Dimensions.paddingSizeSmall, left: Dimensions.paddingSizeExtraSmall),
+                        margin: const EdgeInsets.only(right: 2),
+                        child: CartSuggestProductWidget(
                           isRestaurant: false,
                           product: suggestedItems![index],
                           fromCartSuggestion: true,

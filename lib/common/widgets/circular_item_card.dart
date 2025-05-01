@@ -19,7 +19,7 @@ class CircularItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color:  Color(0xffE8F5E9),  // Color.fromRGBO(255, 255, 255, 1.0),
+      color:  Theme.of(context).brightness == Brightness.dark? Colors.black54: Color(0xffE8F5E9),  // Color.fromRGBO(255, 255, 255, 1.0),
       shape: CircleBorder(),
       elevation: 0,
       child: Container(
@@ -58,6 +58,7 @@ class CircularItemCard extends StatelessWidget {
                 label,
                 style: robotoMedium.copyWith(
                   fontSize: Dimensions.fontSizeDefault,
+                //  color: Theme.of(context).scaffoldBackgroundColor
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,

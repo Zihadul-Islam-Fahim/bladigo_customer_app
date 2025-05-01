@@ -61,6 +61,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         }
       },
       child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: CustomAppBarWidget(title: 'notification'.tr, onBackPressed: () {
           if(widget.fromNotification) {
             Get.offAllNamed(RouteHelper.getInitialRoute());

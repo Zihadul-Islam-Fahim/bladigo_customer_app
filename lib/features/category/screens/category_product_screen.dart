@@ -402,7 +402,7 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
                     child: FooterViewWidget(
                       child: Center(
                         child: Container(
-                          color: Colors.white,
+                          color: Theme.of(context).scaffoldBackgroundColor,
                           width: Dimensions.webMaxWidth,
                           child: Column(
                             children: [

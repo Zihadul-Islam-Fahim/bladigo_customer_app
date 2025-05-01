@@ -701,7 +701,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                               child: Container(
                             width: Dimensions.webMaxWidth,
                             decoration: BoxDecoration(
-                              color: Color(0xffffffff),
+                              color: Theme.of(context).cardColor,
                             ),
                             child: PaginatedListViewWidget(
                               scrollController: scrollController,
@@ -751,7 +751,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                 inRestaurantPage: true,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: Dimensions.paddingSizeSmall,
-                                  vertical: Dimensions.paddingSizeLarge,
+                                  vertical: Dimensions.paddingSizeSmall,
                                 ),
                               ),
                             ),

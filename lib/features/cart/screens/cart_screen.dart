@@ -107,6 +107,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     bool isDesktop = ResponsiveHelper.isDesktop(context);
     return Scaffold(
+      backgroundColor: Theme.of(context).cardColor,
       appBar: CustomAppBarWidget(
           title: 'my_cart'.tr,
           isBackButtonExist: (isDesktop || !widget.fromNav)),
@@ -318,7 +319,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                                 ConstrainedBox(
                                                                                   constraints: BoxConstraints(maxHeight: isDesktop ? MediaQuery.of(context).size.height * 0.4 : double.infinity),
                                                                                   child: Card(
-                                                                                    color: Theme.of(context).cardColor,
+                                                                                    color: Theme.of(context).scaffoldBackgroundColor,
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -435,7 +436,7 @@ class _CartScreenState extends State<CartScreen> {
 
                                                                                 SizedBox(height: !isDesktop ? 0 : 8),
 
-                                                                                // !isDesktop ? CartSuggestedItemViewWidget(cartList: cartController.cartList) : const SizedBox(),
+                                                                                !isDesktop ? CartSuggestedItemViewWidget(cartList: cartController.cartList) : const SizedBox(),
                                                                               ]),
                                                                         ),
                                                                         const SizedBox(

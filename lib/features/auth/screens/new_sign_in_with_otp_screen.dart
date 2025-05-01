@@ -99,7 +99,7 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
   // }
   final ScrollController _scrollController = ScrollController();
   // Color bgColor = Colors.transparent;
-  Color textColor = Colors.black;
+  // Color textColor = Colors.whit;
 
   @override
   void initState() {
@@ -129,7 +129,7 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
           // const SignInBg(),
           Container(
             height: Get.height,
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
             // decoration: BoxDecoration(
             //   // color: Theme.of(context).primaryColor.withOpacity(0.10),
             //     image: const DecorationImage(
@@ -152,7 +152,7 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
                         'enter_your_mobile'.tr,
                         style: TextStyle(
                           fontSize: 16,
-                          color: textColor,
+
                           fontWeight: FontWeight.w500,
                         ),
                         textAlign: TextAlign.center,
@@ -164,7 +164,7 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
                         'we_will_send_whatsapp'.tr,
                         style: TextStyle(
                           fontSize: 15,
-                          color: textColor,
+
                           fontWeight: FontWeight.w500,
                         ),
                         textAlign: TextAlign.center,

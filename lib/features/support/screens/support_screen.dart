@@ -85,7 +85,7 @@ class _SupportScreenState extends State<SupportScreen> {
                               child: ElementWidget(
                                 image: Images.helpAddress,
                                 title: 'address'.tr,
-                                subTitle: Get.find<SplashController>().configModel!.address!,
+                                subTitle: Get.find<SplashController>().configModel?.address ?? "",
                                 onTap: (){},
                               ),
                             ),

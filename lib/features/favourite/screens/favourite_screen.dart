@@ -40,7 +40,7 @@ class FavouriteScreenState extends State<FavouriteScreen>
     return Scaffold(
       appBar:
           CustomAppBarWidget(title: 'favourite'.tr, isBackButtonExist: false),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).cardColor,
       endDrawer: const MenuDrawerWidget(),
       endDrawerEnableOpenDragGesture: false,
       body: Get.find<AuthController>().isLoggedIn()
@@ -51,6 +51,7 @@ class FavouriteScreenState extends State<FavouriteScreen>
                 width: Dimensions.webMaxWidth,
                 color: Theme.of(context).cardColor,
                 // color: Colors.white,
+
                 child: TabBar(
                   controller: _tabController,
                   indicatorColor: Theme.of(context).primaryColor,
@@ -59,10 +60,11 @@ class FavouriteScreenState extends State<FavouriteScreen>
                   unselectedLabelColor: Theme.of(context).disabledColor,
                   unselectedLabelStyle: robotoRegular.copyWith(
                       color: Theme.of(context).disabledColor,
-                      fontSize: Dimensions.fontSizeSmall),
+                      fontSize: Dimensions.fontSizeLarge),
                   labelStyle: robotoBold.copyWith(
-                      fontSize: Dimensions.fontSizeSmall,
+                      fontSize: Dimensions.fontSizeLarge,
                       color: Theme.of(context).primaryColor),
+
                   tabs: [
                     Tab(text: 'food'.tr),
                     Tab(text: 'restaurants'.tr),
