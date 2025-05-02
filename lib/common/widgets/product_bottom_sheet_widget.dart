@@ -205,20 +205,21 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                       borderRadius: BorderRadius.circular(12),
                                       // Rounded corners
                                       border: Border.all(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                         width: 2,
                                       ),
                                     ),
                                     child: Icon(
                                       Icons.arrow_back,
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       size: 24,
                                     ),
                                   ),
                                 ),
                               ),
                             )
-                          ]),
+                          ],
+                          ),
                         )
                       : const SizedBox.shrink(),
 
