@@ -26,7 +26,7 @@ class SubServiceItemCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       elevation: 0.0,
-      color: Theme.of(context).brightness == Brightness.dark? Colors.black54 : Color(0xffE8F5E9),
+      color: Theme.of(context).brightness == Brightness.dark? Colors.black54 : Colors.transparent, //Color(0xffE8F5E9),
       shadowColor: Colors.transparent,
       borderOnForeground: false,
       child: Column(
@@ -78,7 +78,8 @@ class SubServiceItemCard extends StatelessWidget {
                               // width: ResponsiveHelper.isMobile(context) ? 60 : 100,
                             ),
                           ),
-                  ]),
+                  ],
+              ),
             ),
           ),
           SizedBox(
@@ -88,7 +89,8 @@ class SubServiceItemCard extends StatelessWidget {
           Text(
             label,
             style: robotoMedium.copyWith(
-              fontSize: Dimensions.fontSizeDefault,
+              fontSize: 18,
+              fontWeight: FontWeight.bold
 
             ),
             maxLines: 1,

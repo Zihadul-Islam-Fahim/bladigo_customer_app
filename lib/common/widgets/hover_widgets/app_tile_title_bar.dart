@@ -51,7 +51,7 @@ class AppTileTitleBar extends StatelessWidget {
               ),
               Text(title,
                   style: robotoBold.copyWith(
-                      fontSize: 20,
+                      fontSize: 23,
                       fontWeight: FontWeight.w600)),
             ],
           ),
@@ -132,7 +132,7 @@ class AppTileTitleBar2 extends StatelessWidget {
               ),
               Text(title,
                   style: robotoBold.copyWith(
-                      fontSize: 20,
+                      fontSize: 23,
                       fontWeight: FontWeight.w600)),
             ],
           ),

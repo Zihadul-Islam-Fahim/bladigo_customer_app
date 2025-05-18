@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ResponsiveHelper.isDesktop(context) ? const WebMenuBar() : null,
           endDrawer: const MenuDrawerWidget(),
           endDrawerEnableOpenDragGesture: false,
-          backgroundColor: Theme.of(context).colorScheme.surface,
+          backgroundColor: Theme.of(context).cardColor,
           body: SafeArea(
             top: (Get.find<SplashController>().configModel!.theme == 2),
             child: RefreshIndicator(

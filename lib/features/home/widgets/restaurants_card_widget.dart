@@ -43,7 +43,7 @@ class RestaurantsCardWidget extends StatelessWidget {
         Container(
           width: isNewOnStackFood! ? ResponsiveHelper.isMobile(context) ? 350 : 380  : ResponsiveHelper.isMobile(context) ? 330: 355,
           decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
             boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 0, blurRadius: 10, offset: const Offset(0, 1))],
           ),

@@ -311,56 +311,65 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
   }
 
   Widget _searchBar(BuildContext context) {
-    return InkWell(
-      onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 5,
-            child: Container(
-              transform: Matrix4.translationValues(0, -3, 0),
-              padding: const EdgeInsets.symmetric(
-                  horizontal: Dimensions.paddingSizeSmall),
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.18),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 2, right: 2, top: 16, bottom: 16),
-                child: Row(children: [
-                  Image.asset(Images.searchIconNew, width: 16, height: 16),
-                  const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                  Expanded(
-                      child: Text("What_you_like_to".tr,
-                          style: robotoRegular.copyWith(
-                            fontSize: Dimensions.fontSizeSmall,
-                            color: Colors.grey,
-                          ))),
-                ]),
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 12,
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
+    return Padding(
+      padding: const EdgeInsets.only(left: 12, right: 12),
+      child: InkWell(
+        onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 5,
+              child: Container(
                 transform: Matrix4.translationValues(0, -3, 0),
                 padding: const EdgeInsets.symmetric(
                     horizontal: Dimensions.paddingSizeSmall),
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.18),
-                  borderRadius: BorderRadius.circular(8),
+                    color: Colors.grey.withOpacity(0.18),
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(color: Theme.of(context).primaryColor)
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 2, right: 2, top: 16, bottom: 16),
-                  child: Image.asset(Images.filterIcon, width: 16, height: 16),
-                )),
-          )
-        ],
+                  child: Row(children: [
+                    Image.asset(Images.searchIconNew, width: 16, height: 16),
+                    const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                    Expanded(
+                      child: Text("What_you_like_to".tr,
+                        style: robotoRegular.copyWith(
+                            fontSize: Dimensions.fontSizeSmall,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+            ),
+            // SizedBox(
+            //   width: 12,
+            // ),
+            // Expanded(
+            //   flex: 1,
+            //   child: Container(
+            //       transform: Matrix4.translationValues(0, -3, 0),
+            //       padding: const EdgeInsets.symmetric(
+            //           horizontal: Dimensions.paddingSizeSmall),
+            //       decoration: BoxDecoration(
+            //         color: Colors.grey.withOpacity(0.18),
+            //         borderRadius: BorderRadius.circular(8),
+            //         border: Border.all(color: Theme.of(context).primaryColor)
+            //       ),
+            //       child: Padding(
+            //         padding: const EdgeInsets.only(
+            //             left: 2, right: 2, top: 16, bottom: 16),
+            //         child:
+            //             Image.asset(Images.filterIcon, width: 16, height: 16),
+            //       )),
+            // )
+          ],
+        ),
       ),
     );
   }
