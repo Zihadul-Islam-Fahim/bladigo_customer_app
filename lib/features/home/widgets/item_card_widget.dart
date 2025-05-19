@@ -330,7 +330,7 @@ class ItemCardWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 5,
             child: Padding(
               padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
               child: Column(
@@ -345,7 +345,7 @@ class ItemCardWidget extends StatelessWidget {
                     product.restaurantName ?? '',
                     style: robotoRegular.copyWith(
                         color: Theme.of(context).disabledColor,
-                        fontSize: 13),
+                        fontSize: Dimensions.fontSizeDefault),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
@@ -357,7 +357,7 @@ class ItemCardWidget extends StatelessWidget {
                       Flexible(
                           child: Text(product.name ?? '',
                               style: robotoMedium.copyWith(
-                                fontSize: 17
+                                fontSize: 22
                               ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1)),
@@ -384,17 +384,16 @@ class ItemCardWidget extends StatelessWidget {
                           children: [
                             Text(product.avgRating!.toStringAsFixed(1),
                                 style: robotoRegular.copyWith(
-                                    fontSize: Dimensions.fontSizeExtraSmall)),
+                                    fontSize: Dimensions.fontSizeDefault)),
                             const SizedBox(
                                 width: Dimensions.paddingSizeExtraSmall),
-                            Icon(Icons.star,
-                                color: Theme.of(context).primaryColor,
+                            Icon(Icons.star, color: Theme.of(context).primaryColor,
                                 size: 15),
                             const SizedBox(
                                 width: Dimensions.paddingSizeExtraSmall),
                             Text('(${product.ratingCount})',
                                 style: robotoRegular.copyWith(
-                                    fontSize: Dimensions.fontSizeExtraSmall,
+                                    fontSize: Dimensions.fontSizeLarge1,
                                     color: Theme.of(context).disabledColor)),
                           ],
                         )
@@ -408,7 +407,7 @@ class ItemCardWidget extends StatelessWidget {
                       discountPrice < price
                           ? Text(PriceConverter.convertPrice(price),
                               style: robotoRegular.copyWith(
-                                  fontSize: Dimensions.fontSizeDefault,
+                                  fontSize: Dimensions.fontSizeLarge,
                                   color: Theme.of(context).disabledColor,
                                   decoration: TextDecoration.lineThrough,
                                   decorationColor:
@@ -419,7 +418,7 @@ class ItemCardWidget extends StatelessWidget {
                               width: Dimensions.paddingSizeExtraSmall)
                           : const SizedBox(),
                       Text(PriceConverter.convertPrice(discountPrice),
-                          style: robotoBold),
+                          style: robotoBold.copyWith(fontSize: 16)),
                     ],
                   ),
                 ],

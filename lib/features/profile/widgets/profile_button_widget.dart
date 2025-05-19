@@ -30,11 +30,13 @@ class ProfileButtonWidget extends StatelessWidget {
           border: ResponsiveHelper.isDesktop(context) || isThemeSwitchButton ? null : Border.all(color: Theme.of(context).primaryColor.withOpacity(0.1), width: 1.5),
           boxShadow: isThemeSwitchButton ? null : [BoxShadow(color: Theme.of(context).primaryColor.withOpacity(0.05), spreadRadius: 0, blurRadius: 4)],
         ),
-        child: Row(children: [
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           iconImage != null ? Image.asset(iconImage!, height: 18, width: 25) : Icon(icon, size: isThemeSwitchButton ? 20 : 25, color: color ?? Theme.of(context).textTheme.bodyMedium!.color),
           const SizedBox(width: Dimensions.paddingSizeSmall),
 
-          Expanded(child: Text(title, style: robotoRegular)),
+          Expanded(child: Text(title, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge1))),
 
           isButtonActive != null ? CupertinoSwitch(
             value: isButtonActive!,
