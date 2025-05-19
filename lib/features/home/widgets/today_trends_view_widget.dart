@@ -55,12 +55,12 @@ class _TodayTrendsViewWidgetState extends State<TodayTrendsViewWidget> {
 
                 Padding(
                   padding: const EdgeInsets.only(top: Dimensions.paddingSizeDefault, left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault),
-                  child: Text('today_trends'.tr, style: robotoBold.copyWith(color: Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600)),
+                  child: Text('today_trends'.tr, style: robotoBold.copyWith(color: Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600)),
                 ),
 
                 Padding(
                   padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault),
-                  child: Text('here_what_you_might_like_to_taste'.tr, style: robotoRegular.copyWith(color: const Color(0xffB48453), fontSize: Dimensions.fontSizeSmall)),
+                  child: Text('here_what_you_might_like_to_taste'.tr, style: robotoRegular.copyWith(color: const Color(0xffB48453), fontSize: Dimensions.fontSizeDefault)),
                 ),
 
                campaignController.itemCampaignList != null ? Expanded(

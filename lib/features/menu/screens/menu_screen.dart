@@ -160,7 +160,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     child: Text(
                       'general'.tr,
                       style: robotoMedium.copyWith(
-                          fontSize: Dimensions.fontSizeDefault,
+                          fontSize: Dimensions.fontSizeLarge,
                           color:
                               Theme.of(context).primaryColor.withOpacity(0.5)),
                     ),
@@ -215,7 +215,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     child: Text(
                       'promotional_activity'.tr,
                       style: robotoMedium.copyWith(
-                          fontSize: Dimensions.fontSizeDefault,
+                          fontSize: Dimensions.fontSizeLarge,
                           color:
                               Theme.of(context).primaryColor.withOpacity(0.5)),
                     ),
@@ -304,7 +304,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               child: Text(
                                 'earnings'.tr,
                                 style: robotoMedium.copyWith(
-                                    fontSize: Dimensions.fontSizeDefault,
+                                    fontSize: Dimensions.fontSizeLarge,
                                     color: Theme.of(context)
                                         .primaryColor
                                         .withOpacity(0.5)),
@@ -374,7 +374,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     child: Text(
                       'help_and_support'.tr,
                       style: robotoMedium.copyWith(
-                          fontSize: Dimensions.fontSizeDefault,
+                          fontSize: Dimensions.fontSizeLarge,
                           color:
                               Theme.of(context).primaryColor.withOpacity(0.5)),
                     ),
@@ -517,7 +517,7 @@ class _MenuScreenState extends State<MenuScreen> {
                               Get.find<AuthController>().isLoggedIn()
                                   ? 'logout'.tr
                                   : 'sign_in'.tr,
-                              style: robotoMedium)
+                              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1))
                         ]),
                   ),
                 ),

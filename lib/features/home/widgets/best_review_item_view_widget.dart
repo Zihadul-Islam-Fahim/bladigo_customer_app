@@ -27,7 +27,7 @@ class BestReviewItemViewWidget extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: ResponsiveHelper.isMobile(context) ? Dimensions.paddingSizeDefault : 0),
                   child: Row(children: [
-                      Text('best_reviewed_food'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600)),
+                      Text('best_reviewed_food'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600)),
                       const Spacer(),
 
                       ArrowIconButtonWidget(

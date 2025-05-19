@@ -42,7 +42,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                 ResponsiveHelper.isDesktop(context) ? Padding(
                   padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text(isRecentlyViewed ? 'recently_viewed_restaurants'.tr : 'popular_restaurants'.tr,
+                    Text(isRecentlyViewed ? 'recently_viewed_restaurants'.tr : 'popular_restaurants'.tr ,
                       style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600),
                     ),
 
@@ -54,7 +54,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeLarge),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text(isRecentlyViewed ? 'recently_viewed_restaurants'.tr : 'popular_restaurants'.tr,
-                      style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600),
+                      style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600),
                     ),
                     ArrowIconButtonWidget(onTap: () {
                       Get.toNamed(RouteHelper.getAllRestaurantRoute(isRecentlyViewed ? 'recently_viewed' : 'popular'));
@@ -81,7 +81,8 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                       return Padding(
                         padding: EdgeInsets.only(left: (ResponsiveHelper.isDesktop(context) && index == 0 && Get.find<LocalizationController>().isLtr) ? 0 : Dimensions.paddingSizeDefault),
                         child: Container(
-                          height: 185, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.7,
+
+                          height: 185, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
@@ -95,18 +96,19 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                               clipBehavior: Clip.none,
                               children: [
                                 Container(
-                                  height: 95, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.7,
+                                  height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.9,
                                   decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
+                                    borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusExtraLarge),),
                                     child: Stack(
                                       children: [
                                         CustomImageWidget(
                                           image: '${restaurantList[index].coverPhotoFullUrl}',
-                                          fit: BoxFit.cover, height: 95, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.7,
+                                          fit: BoxFit.cover, height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.9,
                                           isRestaurant: true,
+
                                         ),
 
                                         !isAvailable ? Positioned(
@@ -138,18 +140,26 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                 )) : const SizedBox(),
 
                                 Positioned(
-                                  top: 100, left: 85, right: 0,
+                                  top: 140, left: 10, right: 0,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       SizedBox(height: characteristics == '' ? Dimensions.paddingSizeSmall : 0),
 
-                                      Text(restaurantList[index].name!, overflow: TextOverflow.ellipsis, maxLines: 1, style: robotoBold),
+                                      Container(
+                                          height: 23,
+                                          decoration: BoxDecoration(
+                                            borderRadius: const BorderRadius.all(  Radius.circular(Dimensions.radiusDefault)),
+                                            color: Theme.of(context).cardColor,
+                                          ),
+                                          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+                                          child: Text(restaurantList[index].name!, overflow: TextOverflow.ellipsis, maxLines: 1, style: robotoBold)),
 
                                       Text(
                                         characteristics,
                                         overflow: TextOverflow.ellipsis, maxLines: 1,
-                                        style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
+                                        style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).highlightColor),
                                       ),
                                     ],
                                   ),
@@ -157,32 +167,42 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
 
 
                                 Positioned(
-                                  bottom: 15, left: 0, right: 0,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
+                                  bottom: 15, right: 15,
+                                  child: Container(
+                                    height: 23,
+                                //    width: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault), ),
+                                      color: Theme.of(context).cardColor,
+                                    ),
+                                    padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
 
-                                      restaurantList[index].ratingCount! > 0 ? IconWithTextRowWidget(
-                                        icon: Icons.star,
-                                        text: restaurantList[index].avgRating!.toStringAsFixed(1),
-                                        style: robotoBold.copyWith(fontSize: Dimensions.fontSizeSmall),
-                                      ) : const SizedBox(),
-                                      SizedBox(width: restaurantList[index].ratingCount! > 0 ? Dimensions.paddingSizeDefault : 0),
+                                        restaurantList[index].ratingCount! > 0 ? IconWithTextRowWidget(
+                                          icon: Icons.star,
+                                          text: restaurantList[index].avgRating!.toStringAsFixed(1),
+                                          style: robotoBold.copyWith(fontSize: Dimensions.fontSizeSmall),
+                                        ) : const SizedBox(),
+                                        SizedBox(width: restaurantList[index].ratingCount! > 0 ? Dimensions.paddingSizeDefault : 0),
 
-                                      restaurantList[index].freeDelivery! ? ImageWithTextRowWidget(
-                                        widget: Image.asset(Images.deliveryIcon, height: 20, width: 20),
-                                        text: 'free'.tr,
-                                        style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
-                                      ): const SizedBox(),
-                                      restaurantList[index].freeDelivery! ? const SizedBox(width: Dimensions.paddingSizeDefault) : const SizedBox(),
+                                        restaurantList[index].freeDelivery! ? ImageWithTextRowWidget(
+                                          widget: Image.asset(Images.deliveryIcon, height: 20, width: 20),
+                                          text: 'free'.tr,
+                                          style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
+                                        ): const SizedBox(),
+                                        restaurantList[index].freeDelivery! ? const SizedBox(width: Dimensions.paddingSizeDefault) : const SizedBox(),
 
-                                      IconWithTextRowWidget(
-                                        icon: Icons.access_time_outlined,
-                                        text: '${restaurantList[index].deliveryTime}',
-                                        style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
-                                      ),
+                                        IconWithTextRowWidget(
+                                          icon: Icons.access_time_outlined,
+                                          text: '${restaurantList[index].deliveryTime}',
+                                          style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
+                                        ),
 
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
 
@@ -205,7 +225,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                   child: Container(
                                     height: 23,
                                     decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
+                                      borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault)),
                                       color: Theme.of(context).cardColor,
                                     ),
                                     padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
@@ -220,7 +240,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                 ),
 
                                 Positioned(
-                                  top: 75, left: Dimensions.paddingSizeSmall,
+                                  top: 65, left: Dimensions.paddingSizeSmall,
                                   child: Container(
                                     height: 65, width: 65,
                                     decoration:  BoxDecoration(

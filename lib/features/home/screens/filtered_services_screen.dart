@@ -312,7 +312,7 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
 
   Widget _searchBar(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 12, right: 12),
+      padding: const EdgeInsets.only(left: 0, right: 0),
       child: InkWell(
         onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
         child: Row(
@@ -557,7 +557,7 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
                         Text(
                           widget.restaurant.name.toString(),
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 17,
                             fontWeight: FontWeight.w700,
 
                           ),

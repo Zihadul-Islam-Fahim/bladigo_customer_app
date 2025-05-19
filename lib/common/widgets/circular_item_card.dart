@@ -36,8 +36,8 @@ class CircularItemCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       child: CustomImageWidget(
                         image: imagePath,
-                        height: ResponsiveHelper.isMobile(context) ? 82 : 100,
-                        width: ResponsiveHelper.isMobile(context) ? 98 : 100,
+                        height: ResponsiveHelper.isMobile(context) ? 88 : 100,
+                        width: ResponsiveHelper.isMobile(context) ? 118 : 100,
                         fit: BoxFit.cover,
                       ),
                     )

@@ -67,7 +67,7 @@ class _HighlightWidgetViewState extends State<HighlightWidgetView> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('highlights_for_you'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Colors.white)),
+                      Text('highlights_for_you'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Colors.white)),
                       const SizedBox(width: 5),
 
                       Text('see_our_most_popular_restaurant_and_foods'.tr, style: robotoRegular.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall)),

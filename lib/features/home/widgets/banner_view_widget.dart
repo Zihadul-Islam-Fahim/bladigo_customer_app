@@ -69,9 +69,10 @@ class BannerViewWidget extends StatelessWidget {
 
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                      borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge),
                       boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 2, offset: const Offset(0, 1))],
                     ),
+                    clipBehavior: Clip.hardEdge,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
                       child: GetBuilder<SplashController>(builder: (splashController) {

@@ -24,7 +24,7 @@ class PortionWidget extends StatelessWidget {
             Image.asset(icon, height: 16, width: 16, color: Theme.of(context).textTheme.bodyMedium!.color),
             const SizedBox(width: Dimensions.paddingSizeSmall),
 
-            Expanded(child: Text(title, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault))),
+            Expanded(child: Text(title, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge1))),
 
             suffix != null ? Container(
               decoration: BoxDecoration(
