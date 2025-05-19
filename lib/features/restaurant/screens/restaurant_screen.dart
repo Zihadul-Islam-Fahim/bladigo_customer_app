@@ -64,7 +64,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
       if (Get.find<RestaurantController>().isSearching) {
         Get.find<RestaurantController>().changeSearchStatus(isUpdate: false);
       }
-      await Get.find<RestaurantController>()
+       await Get.find<RestaurantController>()
           .getRestaurantDetails(widget.restaurant!, slug: widget.slug);
       if (Get.find<CategoryController>().categoryList == null) {
         Get.find<CategoryController>().getCategoryList(true);
@@ -86,6 +86,8 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
           1,
           'all',
           false);
+
+      // Get.find<RestaurantController>().setSubCategoryList(widget.restaurant!.categoryId!);
     });
   }
 
@@ -111,7 +113,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
 
               // restController.setCategoryList();
 
-            restController.setSubCategoryList(widget.restaurant!.categoryId!);
+          restController.setSubCategoryList(widget.restaurant!.categoryId!);
 
 
 

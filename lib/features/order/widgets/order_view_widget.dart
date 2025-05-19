@@ -25,7 +25,7 @@ class OrderViewWidget extends StatelessWidget {
     final ScrollController scrollController = ScrollController();
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
+     // backgroundColor: Theme.of(context).cardColor,
       body: GetBuilder<OrderController>(builder: (orderController) {
         List<OrderModel>? orderList;
         bool paginate = false;
@@ -89,7 +89,7 @@ class OrderViewWidget extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               color: Theme.of(context).cardColor, borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                              boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 10, offset: const Offset(0, 1))],
+                             // boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 10, offset: const Offset(0, 1))],
                             ),
                             child: CustomInkWellWidget(
                               onTap: () {

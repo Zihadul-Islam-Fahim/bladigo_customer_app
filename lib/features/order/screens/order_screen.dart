@@ -41,6 +41,7 @@ class OrderScreenState extends State<OrderScreen> with TickerProviderStateMixin 
   Widget build(BuildContext context) {
     bool isLoggedIn = AuthHelper.isLoggedIn();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: CustomAppBarWidget(title: 'my_orders'.tr, isBackButtonExist: ResponsiveHelper.isDesktop(context)),
       endDrawer: const MenuDrawerWidget(), endDrawerEnableOpenDragGesture: false,
       body: isLoggedIn ? GetBuilder<OrderController>(
@@ -63,15 +64,15 @@ class OrderScreenState extends State<OrderScreen> with TickerProviderStateMixin 
                       alignment: ResponsiveHelper.isDesktop(context) ? Alignment.centerLeft : Alignment.center,
                       child: Container(
                         width: ResponsiveHelper.isDesktop(context) ? 350 : Dimensions.webMaxWidth,
-                        color: ResponsiveHelper.isDesktop(context) ? Colors.transparent : Theme.of(context).cardColor,
+                       // color: ResponsiveHelper.isDesktop(context) ? Colors.transparent : Theme.of(context).cardColor,
                         child: TabBar(
                           controller: _tabController,
                           indicatorColor: Theme.of(context).primaryColor,
                           indicatorWeight: 3,
                           labelColor: Theme.of(context).primaryColor,
                           unselectedLabelColor: Theme.of(context).disabledColor,
-                          unselectedLabelStyle: robotoRegular.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeSmall),
-                          labelStyle: robotoBold.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).primaryColor),
+                          unselectedLabelStyle: robotoRegular.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeLarge),
+                          labelStyle: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).primaryColor),
                           tabs: [
                             Tab(text: 'running'.tr),
                             Tab(text: 'subscription'.tr),
@@ -88,6 +89,7 @@ class OrderScreenState extends State<OrderScreen> with TickerProviderStateMixin 
 
             Expanded(child: TabBarView(
               controller: _tabController,
+
               children: const [
                 OrderViewWidget(isRunning: true),
                 OrderViewWidget(isRunning: false, isSubscription: true),

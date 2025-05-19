@@ -379,7 +379,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                                               if (isRestaurantOpen) {
                                                                                                 Get.toNamed(
                                                                                                   RouteHelper.getRestaurantRoute(cartController.cartList[0].product!.restaurantId),
-                                                                                                  arguments: RestaurantScreen(restaurant: Restaurant(id: cartController.cartList[0].product!.restaurantId)),
+                                                                                                  arguments: RestaurantScreen(restaurant: Restaurant(id: cartController.cartList[0].product!.restaurantId,categoryId: cartController.cartList[0].product!.categoryId )),
                                                                                                 );
                                                                                               } else {
                                                                                                 Get.offAllNamed(RouteHelper.getInitialRoute(fromSplash: true));

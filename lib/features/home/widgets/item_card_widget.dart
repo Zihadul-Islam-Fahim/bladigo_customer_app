@@ -330,7 +330,7 @@ class ItemCardWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 6,
             child: Padding(
               padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
               child: Column(
@@ -418,7 +418,7 @@ class ItemCardWidget extends StatelessWidget {
                               width: Dimensions.paddingSizeExtraSmall)
                           : const SizedBox(),
                       Text(PriceConverter.convertPrice(discountPrice),
-                          style: robotoBold.copyWith(fontSize: 16)),
+                          style: robotoBold.copyWith(fontSize: 18,color: Theme.of(context).primaryColor)),
                     ],
                   ),
                 ],

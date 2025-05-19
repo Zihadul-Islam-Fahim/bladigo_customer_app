@@ -378,6 +378,7 @@ class RestaurantController extends GetxController implements GetxService {
           categoryId,
           _restaurant!);
     }
+
   }
 
   Future<Restaurant?> getRestaurantDetails(Restaurant restaurant,

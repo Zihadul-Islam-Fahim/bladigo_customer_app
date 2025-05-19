@@ -36,7 +36,7 @@ class CuisineViewWidget extends StatelessWidget {
             children: [
               Padding(padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  Text('cuisine'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600,color: Colors.white)),
+                  Text('cuisine'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600,color: Colors.white)),
                   ArrowIconButtonWidget(onTap: () => Get.toNamed(RouteHelper.getCuisineRoute())),
                 ]),
               ),

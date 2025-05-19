@@ -20,12 +20,13 @@ class PriceConverter {
     if((price - tempPrice) == 0) {
       digitAfterDecimalPoint = 0;
     }
+    // ${Get.find<SplashController>().configModel!.currencySymbol!}
 
     bool isRightSide = Get.find<SplashController>().configModel!.currencySymbolDirection == 'right';
-    return '${isRightSide ? '' : '${Get.find<SplashController>().configModel!.currencySymbol!} '}'
+    return '${isRightSide ? '' : 'MAD '}'
         '${(toFixed(price)).toStringAsFixed(forDM ? 0 : digitAfterDecimalPoint)
         .replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}'
-        '${isRightSide ? ' ${Get.find<SplashController>().configModel!.currencySymbol!}' : ''}';
+        '${isRightSide ? 'MAD ' : ''}';
   }
 
   static Widget convertAnimationPrice(double? price, {double? discount, String? discountType, bool forDM = false, TextStyle? textStyle}) {
@@ -44,8 +45,8 @@ class PriceConverter {
         value: toFixed(price!),
         textStyle: textStyle ?? robotoMedium,
         fractionDigits: forDM ? 0 : Get.find<SplashController>().configModel!.digitAfterDecimalPoint!,
-        prefix: isRightSide ? '' : Get.find<SplashController>().configModel!.currencySymbol!,
-        suffix: isRightSide ? Get.find<SplashController>().configModel!.currencySymbol! : '',
+        prefix: isRightSide ? '' : 'MAD ',
+        suffix: isRightSide ? 'MAD ' : '',
       ),
     );
   }
@@ -71,7 +72,7 @@ class PriceConverter {
   }
 
   static String percentageCalculation(String price, String discount, String discountType) {
-    return '$discount${discountType == 'percent' ? '%' : Get.find<SplashController>().configModel!.currencySymbol} OFF';
+    return '$discount${discountType == 'percent' ? '%' : 'MAD '} OFF';
   }
 
   static double toFixed(double val) {

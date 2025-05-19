@@ -240,7 +240,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                 ),
 
                                 Positioned(
-                                  top: 65, left: Dimensions.paddingSizeSmall,
+                                  top: 15, left: Dimensions.paddingSizeSmall,
                                   child: Container(
                                     height: 65, width: 65,
                                     decoration:  BoxDecoration(

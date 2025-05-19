@@ -228,7 +228,8 @@ class CartSuggestProductWidget extends StatelessWidget {
                             child: Text(
                               isRestaurant ? restaurant!.name! : product!.name!,
                               style: robotoMedium.copyWith(
-                                  fontFamily: 'Roboto'
+                                  fontFamily: 'Roboto',
+                                fontSize: Dimensions.fontSizeLarge
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -269,7 +270,7 @@ class CartSuggestProductWidget extends StatelessWidget {
                               textDirection: TextDirection.ltr,
                               style: robotoMedium.copyWith(
                                 fontSize:
-                                Dimensions.fontSizeDefault,
+                                Dimensions.fontSizeSmall,
                                 color:
                                 Theme.of(context).disabledColor,
                                 decoration:

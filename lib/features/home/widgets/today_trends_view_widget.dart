@@ -48,7 +48,7 @@ class _TodayTrendsViewWidgetState extends State<TodayTrendsViewWidget> {
         return (campaignController.itemCampaignList != null && campaignController.itemCampaignList!.isEmpty) ? const SizedBox() : Padding(
           padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeLarge),
           child: Container(
-            height: ResponsiveHelper.isDesktop(context) ? 406 : 400,
+            height: ResponsiveHelper.isDesktop(context) ? 406 : 410,
             width: Dimensions.webMaxWidth,
             color: Theme.of(context).primaryColor.withOpacity(0.1),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

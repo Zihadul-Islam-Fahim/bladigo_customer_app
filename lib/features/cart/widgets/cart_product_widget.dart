@@ -173,7 +173,7 @@ class CartProductWidget extends StatelessWidget {
                                           cart.product!.name!,
                                           style: robotoMedium.copyWith(
                                               fontSize:
-                                                  Dimensions.fontSizeSmall),
+                                                  Dimensions.fontSizeLarge),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                         ),

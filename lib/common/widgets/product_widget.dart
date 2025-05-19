@@ -288,6 +288,8 @@ class ProductWidget extends StatelessWidget {
                                   discountType: discountType),
                               style: robotoMedium.copyWith(
                                   fontSize: Dimensions.fontSizeLarge,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold
                                 ),
                               textDirection: TextDirection.ltr,
                             ),
