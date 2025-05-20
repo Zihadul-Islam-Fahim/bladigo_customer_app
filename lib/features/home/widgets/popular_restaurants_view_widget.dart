@@ -43,6 +43,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text(isRecentlyViewed ? 'recently_viewed_restaurants'.tr : 'popular_restaurants'.tr ,
+                      overflow: TextOverflow.ellipsis,
                       style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600),
                     ),
 
@@ -53,8 +54,11 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                 ) : Padding(
                   padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeLarge),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text(isRecentlyViewed ? 'recently_viewed_restaurants'.tr : 'popular_restaurants'.tr,
-                      style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600),
+                    Expanded(
+                      child: Text(isRecentlyViewed ? 'recently_viewed_restaurants'.tr : 'popular_restaurants'.tr,
+                        overflow: TextOverflow.ellipsis,
+                        style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600),
+                      ),
                     ),
                     ArrowIconButtonWidget(onTap: () {
                       Get.toNamed(RouteHelper.getAllRestaurantRoute(isRecentlyViewed ? 'recently_viewed' : 'popular'));

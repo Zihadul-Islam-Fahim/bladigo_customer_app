@@ -12,6 +12,8 @@ import 'package:stackfood_multivendor/common/widgets/web_restaurant_widget.dart'
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../features/home/screens/filtered_services_screen.dart';
+
 class ProductViewWidget extends StatelessWidget {
   final List<Product?>? products;
   final List<Restaurant?>? restaurants;
@@ -61,13 +63,13 @@ class ProductViewWidget extends StatelessWidget {
     return Column(children: [
       !isNull
           ? length > 0
-              ? GridView.builder(
+              ? isRestaurant ? _restuView() :GridView.builder(
                   key: UniqueKey(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                      // mainAxisSpacing: 2,
                       crossAxisSpacing: 10,
-                      childAspectRatio: Platform.isIOS ? 0.80 :  0.72
+                      childAspectRatio: Platform.isIOS ? Get.width * 0.0018 :   Get.width * 0.0018 // 0.72
                       // crossAxisCount:2,
                       ),
                   physics: isScrollable
@@ -147,5 +149,23 @@ class ProductViewWidget extends StatelessWidget {
               },
             ),
     ]);
+  }
+
+  _restuView() {
+    return ListView.separated(
+      padding: EdgeInsets.only(top: 10, bottom: 12,left: 10,right: 10),
+      shrinkWrap: true,
+      primary: false,
+      itemBuilder: (context, index) {
+        final data = restaurants![index];
+        return restaurants != null
+            ? FilteredItemCard(restaurant: data!)
+            : Center(child: CircularProgressIndicator(),);
+      },
+      separatorBuilder: (context, index) {
+        return SizedBox(height: 4);
+      },
+      itemCount: restaurants!.length
+    );
   }
 }

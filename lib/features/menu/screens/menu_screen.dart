@@ -25,6 +25,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
+import '../../profile/widgets/profile_card_widget.dart';
+
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
@@ -35,7 +37,14 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
+
+    bool isLoggedIn = Get.find<AuthController>().isLoggedIn();
+    final bool showWalletCard = Get.find<SplashController>().configModel!.customerWalletStatus == 1
+        || Get.find<SplashController>().configModel!.loyaltyPointStatus == 1;
+
+
     return Scaffold(
+
       backgroundColor: Theme.of(context).cardColor,
       body: GetBuilder<ProfileController>(builder: (profileController) {
 
@@ -145,6 +154,37 @@ class _MenuScreenState extends State<MenuScreen> {
               ]),
             ),
           ),
+
+          (showWalletCard && isLoggedIn) ? Padding(
+            padding: const EdgeInsets.only(top: 16,left: 16,right: 16),
+            child: Row(children: [
+
+              Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? Expanded(child: ProfileCardWidget(
+                image: Images.loyaltyIcon,
+                data: profileController.userInfoModel?.loyaltyPoint != null ? profileController.userInfoModel!.loyaltyPoint.toString() : '0',
+                title: 'loyalty_points'.tr,
+              )) : const SizedBox(),
+
+              SizedBox(width: Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? Dimensions.paddingSizeSmall : 0),
+
+              isLoggedIn ?  Expanded(child: ProfileCardWidget(
+                image: Images.shoppingBagIcon,
+                data: profileController.userInfoModel?.orderCount != null ? profileController.userInfoModel!.orderCount.toString() : '0',
+                title: 'total_order'.tr,
+              )) : const SizedBox(),
+
+              SizedBox(width: Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? Dimensions.paddingSizeSmall : 0),
+
+              Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? Expanded(child: ProfileCardWidget(
+                image: Images.walletProfile,
+                data: PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance != null ? profileController.userInfoModel!.walletBalance : 0),
+                title: 'wallet_balance'.tr,
+              )) : const SizedBox(),
+
+            ]),
+          ) : const SizedBox(),
+
+
           Expanded(
               child: SingleChildScrollView(
             child: Ink(

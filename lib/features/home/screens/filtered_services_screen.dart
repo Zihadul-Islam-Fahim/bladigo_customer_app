@@ -118,7 +118,7 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
-                                childAspectRatio: 1,
+                                childAspectRatio: 0.96,
                                 crossAxisSpacing: 4,
                               ),
                               padding: const EdgeInsets.only(
@@ -570,7 +570,7 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
             ),
 
             Positioned(
-              bottom: 15, right: 15,
+              bottom: 53, right: 15,
               child: Container(
                 // height: 23,
                 //    width: 150,
@@ -608,7 +608,8 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
             ),
 
             Positioned(
-              bottom: 73, right: 15,
+
+              bottom: 15, right: 15,
               child: Container(
                 height: 23,
                 decoration: BoxDecoration(

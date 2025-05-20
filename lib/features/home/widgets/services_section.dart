@@ -34,7 +34,7 @@ class ServicesSection extends StatelessWidget {
           clipBehavior: Clip.none,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 0.98,
+              childAspectRatio: 0.90,
               crossAxisSpacing: 2,
               mainAxisSpacing: 2),
           padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault),

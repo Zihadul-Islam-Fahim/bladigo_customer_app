@@ -51,8 +51,10 @@ class AppTileTitleBar extends StatelessWidget {
               ),
               Text(title,
                   style: robotoBold.copyWith(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600)),
+                      fontSize: Get.width * 0.05,
+                      fontWeight: FontWeight.w600),
+
+              ),
             ],
           ),
           Visibility(

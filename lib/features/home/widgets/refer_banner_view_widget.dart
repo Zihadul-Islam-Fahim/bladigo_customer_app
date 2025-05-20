@@ -76,10 +76,28 @@ class ReferBannerViewWidget extends StatelessWidget {
               ),
 
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                CustomButtonWidget(buttonText: 'refer_now'.tr, width: ResponsiveHelper.isMobile(context) ? 90 : 120, height: ResponsiveHelper.isMobile(context) ? 35 : 40, isBold: true, fontSize: Dimensions.fontSizeSmall, textColor: Theme.of(context).primaryColor,
-                    radius: Dimensions.radiusSmall, color: Theme.of(context).cardColor,
-                    onPressed: ()=> Get.toNamed(RouteHelper.getReferAndEarnRoute())
+                
+                
+                InkWell(
+                  onTap: (){Get.toNamed(RouteHelper.getReferAndEarnRoute());},
+                  child: Container(
+                   // height: 35,
+                    width: 90,
+                    padding: EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white
+                    ),
+                    child: Center(
+                      child: Text("refer_now".tr,style: TextStyle(color: Theme.of(context).primaryColor),),
+                    ),
+                  ),
                 ),
+                
+                // CustomButtonWidget(buttonText: 'refer_now'.tr, width: ResponsiveHelper.isMobile(context) ? 90 : 120, height: ResponsiveHelper.isMobile(context) ? 35 : 40, isBold: true, fontSize: Dimensions.fontSizeSmall, textColor: Theme.of(context).primaryColor,
+                //     radius: Dimensions.radiusSmall, color: Theme.of(context).cardColor,
+                //     onPressed: ()=> Get.toNamed(RouteHelper.getReferAndEarnRoute())
+                // ),
               ],
               ),SizedBox(width: ResponsiveHelper.isMobile(context) ? Dimensions.paddingSizeSmall : 0),
             ],
