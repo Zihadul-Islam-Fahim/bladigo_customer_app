@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
 import 'package:stackfood_multivendor/common/widgets/circular_item_card.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_ink_well_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/hover_widgets/app_tile_title_bar.dart';
 import 'package:stackfood_multivendor/common/widgets/shimmer_widget.dart';
 import 'package:stackfood_multivendor/features/category/controllers/category_controller.dart';
 import 'package:stackfood_multivendor/features/home/screens/filtered_services_screen.dart';
-import 'package:stackfood_multivendor/features/mock_data/mock_data.dart';
 import 'package:stackfood_multivendor/helper/responsive_helper.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
 import 'package:stackfood_multivendor/util/dimensions.dart';
