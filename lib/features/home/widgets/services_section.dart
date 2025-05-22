@@ -50,7 +50,7 @@ class ServicesSection extends StatelessWidget {
             return categoryController.categoryList != null
                 ? CustomInkWellWidget(
                     padding: EdgeInsets.zero,
-                    highlightColor: Color(0xff2b9430),
+                   highlightColor: Colors.white,
                     onTap: () {
                       Get.to(
                         () => FilteredServicesScreen(category: data!),
