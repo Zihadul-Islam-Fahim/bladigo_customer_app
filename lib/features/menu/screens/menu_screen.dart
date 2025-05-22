@@ -52,7 +52,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
         return Column(children: [
           Container(
-            decoration: BoxDecoration(color: Theme.of(context).primaryColor,),
+            decoration: BoxDecoration(color: Theme.of(context).primaryColor.withOpacity(0.2),),
             child: Padding(
               padding: const EdgeInsets.only(
                 left: Dimensions.paddingSizeOverLarge,
@@ -108,7 +108,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                     : 'guest_user'.tr,
                                 style: robotoBold.copyWith(
                                     fontSize: Dimensions.fontSizeExtraLarge,
-                                    color: Theme.of(context).cardColor),
+                                    color: Colors.black),
                               ),
                         const SizedBox(
                             height: Dimensions.paddingSizeExtraSmall),
@@ -118,8 +118,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                     profileController
                                         .userInfoModel!.createdAt!),
                                 style: robotoMedium.copyWith(
-                                    fontSize: Dimensions.fontSizeSmall,
-                                    color: Theme.of(context).cardColor),
+                                    fontSize: Dimensions.fontSizeDefault,
+                                    color: Colors.black),
                               )
                             : InkWell(
                                 onTap: () async {

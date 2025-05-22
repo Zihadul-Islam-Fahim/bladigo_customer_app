@@ -164,32 +164,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeLarge),
                           child: Column(children: [
 
-                            (showWalletCard && isLoggedIn) ? Row(children: [
-
-                              Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? Expanded(child: ProfileCardWidget(
-                                image: Images.loyaltyIcon,
-                                data: profileController.userInfoModel?.loyaltyPoint != null ? profileController.userInfoModel!.loyaltyPoint.toString() : '0',
-                                title: 'loyalty_points'.tr,
-                              )) : const SizedBox(),
-
-                              SizedBox(width: Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? Dimensions.paddingSizeSmall : 0),
-
-                              isLoggedIn ?  Expanded(child: ProfileCardWidget(
-                                image: Images.shoppingBagIcon,
-                                data: profileController.userInfoModel?.orderCount != null ? profileController.userInfoModel!.orderCount.toString() : '0',
-                                title: 'total_order'.tr,
-                              )) : const SizedBox(),
-
-                              SizedBox(width: Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? Dimensions.paddingSizeSmall : 0),
-
-                              Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? Expanded(child: ProfileCardWidget(
-                                image: Images.walletProfile,
-                                data: PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance != null ? profileController.userInfoModel!.walletBalance : 0),
-                                title: 'wallet_balance'.tr,
-                              )) : const SizedBox(),
-
-                            ]) : const SizedBox(),
-                            const SizedBox(height: Dimensions.paddingSizeLarge),
+                            // (showWalletCard && isLoggedIn) ? Row(children: [
+                            //
+                            //   Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? Expanded(child: ProfileCardWidget(
+                            //     image: Images.loyaltyIcon,
+                            //     data: profileController.userInfoModel?.loyaltyPoint != null ? profileController.userInfoModel!.loyaltyPoint.toString() : '0',
+                            //     title: 'loyalty_points'.tr,
+                            //   )) : const SizedBox(),
+                            //
+                            //   SizedBox(width: Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? Dimensions.paddingSizeSmall : 0),
+                            //
+                            //   isLoggedIn ?  Expanded(child: ProfileCardWidget(
+                            //     image: Images.shoppingBagIcon,
+                            //     data: profileController.userInfoModel?.orderCount != null ? profileController.userInfoModel!.orderCount.toString() : '0',
+                            //     title: 'total_order'.tr,
+                            //   )) : const SizedBox(),
+                            //
+                            //   SizedBox(width: Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? Dimensions.paddingSizeSmall : 0),
+                            //
+                            //   Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? Expanded(child: ProfileCardWidget(
+                            //     image: Images.walletProfile,
+                            //     data: PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance != null ? profileController.userInfoModel!.walletBalance : 0),
+                            //     title: 'wallet_balance'.tr,
+                            //   )) : const SizedBox(),
+                            //
+                            // ]) : const SizedBox(),
+                            // const SizedBox(height: Dimensions.paddingSizeLarge),
 
                             isLoggedIn ? GetBuilder<AuthController>(builder: (authController) {
                               return ProfileButtonWidget(
