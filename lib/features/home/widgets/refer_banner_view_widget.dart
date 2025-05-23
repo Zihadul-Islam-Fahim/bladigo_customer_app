@@ -27,18 +27,52 @@ class ReferBannerViewWidget extends StatelessWidget {
         height: ResponsiveHelper.isMobile(context) ? 95 : 147,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-          gradient: LinearGradient(colors:[
-            Theme.of(context).colorScheme.tertiaryContainer,
-            Theme.of(context).colorScheme.tertiary,
-          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+          // gradient: LinearGradient(colors:[
+          //   Theme.of(context).colorScheme.tertiaryContainer,
+          //   Theme.of(context).colorScheme.tertiary,
+          // ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
         child: Stack(
           children: [
-            Positioned(right: Get.find<LocalizationController>().isLtr ? null : -rightValue,
-              child: Image.asset(Images.referBg, height: ResponsiveHelper.isMobile(context) ? 95 : 147,),
+            Positioned(
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                  child: Image.asset(Images.referBg, height: ResponsiveHelper.isMobile(context) ? 95 : 147,fit: BoxFit.cover,)),
             ),
-            Row(children: [
-              Expanded(
+            Positioned(
+              top: 0,bottom: 0,right: 20,
+              child: Column(mainAxisAlignment: MainAxisAlignment.center,
+
+                children: [
+
+
+                  InkWell(
+                    onTap: (){Get.toNamed(RouteHelper.getReferAndEarnRoute());},
+                    child: Container(
+                      // height: 35,
+                      width: 90,
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.white
+                      ),
+                      child: Center(
+                        child: Text("refer_now".tr,style: TextStyle(color: Theme.of(context).primaryColor),),
+                      ),
+                    ),
+                  ),
+
+                  // CustomButtonWidget(buttonText: 'refer_now'.tr, width: ResponsiveHelper.isMobile(context) ? 90 : 120, height: ResponsiveHelper.isMobile(context) ? 35 : 40, isBold: true, fontSize: Dimensions.fontSizeSmall, textColor: Theme.of(context).primaryColor,
+                  //     radius: Dimensions.radiusSmall, color: Theme.of(context).cardColor,
+                  //     onPressed: ()=> Get.toNamed(RouteHelper.getReferAndEarnRoute())
+                  // ),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+              SizedBox(
+                width: Get.width * 0.6,
                 child: Row(children: [
                   SizedBox(width: ResponsiveHelper.isDesktop(context) ? 180 : ResponsiveHelper.isMobile(context) ? 145 : 200),
 
@@ -75,31 +109,7 @@ class ReferBannerViewWidget extends StatelessWidget {
                 ]),
               ),
 
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                
-                
-                InkWell(
-                  onTap: (){Get.toNamed(RouteHelper.getReferAndEarnRoute());},
-                  child: Container(
-                   // height: 35,
-                    width: 90,
-                    padding: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.white
-                    ),
-                    child: Center(
-                      child: Text("refer_now".tr,style: TextStyle(color: Theme.of(context).primaryColor),),
-                    ),
-                  ),
-                ),
-                
-                // CustomButtonWidget(buttonText: 'refer_now'.tr, width: ResponsiveHelper.isMobile(context) ? 90 : 120, height: ResponsiveHelper.isMobile(context) ? 35 : 40, isBold: true, fontSize: Dimensions.fontSizeSmall, textColor: Theme.of(context).primaryColor,
-                //     radius: Dimensions.radiusSmall, color: Theme.of(context).cardColor,
-                //     onPressed: ()=> Get.toNamed(RouteHelper.getReferAndEarnRoute())
-                // ),
-              ],
-              ),SizedBox(width: ResponsiveHelper.isMobile(context) ? Dimensions.paddingSizeSmall : 0),
+             SizedBox(width: ResponsiveHelper.isMobile(context) ? Dimensions.paddingSizeSmall : 0),
             ],
             ),
           ],

@@ -200,7 +200,7 @@ class Images {
   //static const String nearbyRestaurant = 'assets/image/nearby_restaurant.png';
   //static const String nearbyLocation = 'assets/image/nearby_location.png';
   static const String enjoyOff = 'assets/image/enjoy_off.png';
-  static const String referBg = 'assets/image/refer_bg.png';
+  static const String referBg = 'assets/image/refer_bg.jpeg';
   static const String cuisineBgPng = 'assets/image/cuisine_bg.png';
   static const String deliveryIcon = 'assets/image/delivery_icon.png';
   static const String distanceKm = 'assets/image/distance_km.png';
