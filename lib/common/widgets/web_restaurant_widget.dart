@@ -57,7 +57,7 @@ class WebRestaurantWidget extends StatelessWidget {
                       ? restaurant!.discount!.discount : 0,
                   discountType: 'percent', freeDelivery: restaurant!.freeDelivery,
                 ),
-                Get.find<RestaurantController>().isOpenNow(restaurant!) ? const SizedBox() : const NotAvailableWidget(isRestaurant: true),
+                Get.find<RestaurantController>().isOpenNow(restaurant!) ? const SizedBox() :  NotAvailableWidget(isRestaurant: true),
                 Positioned(
                   top: Dimensions.paddingSizeExtraSmall, right: Dimensions.paddingSizeExtraSmall,
                   child: GetBuilder<FavouriteController>(builder: (wishController) {

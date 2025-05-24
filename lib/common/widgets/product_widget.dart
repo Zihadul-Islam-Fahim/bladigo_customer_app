@@ -87,6 +87,7 @@ class ProductWidget extends StatelessWidget {
       child: Container(
         margin: desktop ? null : const EdgeInsets.only(bottom: 2),
         decoration: BoxDecoration(
+
           borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
           // color: Theme.of(context).cardColor,
           //color: Colors.red,
@@ -99,6 +100,7 @@ class ProductWidget extends StatelessWidget {
           // ],
         ),
         child: CustomInkWellWidget(
+
           onTap: () {
             if (isRestaurant) {
               if (restaurant != null && restaurant!.restaurantStatus == 1) {
@@ -141,22 +143,23 @@ class ProductWidget extends StatelessWidget {
                     Stack(clipBehavior: Clip.none, children: [
                       ((image != null && image.isNotEmpty) || isRestaurant)
                           ? ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                            Dimensions.radiusDefault),
-                        child: CustomImageWidget(
-                          image:
-                          '${isRestaurant ? restaurant!.logoFullUrl : product!.imageFullUrl}',
-                          height: desktop
-                              ? 120
-                              : length == null
-                              ? 100
-                              : 190,
-                          width: desktop ? 120 : 190,
-                          fit: BoxFit.cover,
-                          isFood: !isRestaurant,
-                          isRestaurant: isRestaurant,
-                        ),
-                      )
+                              clipBehavior: Clip.hardEdge,
+                              borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
+                              child: CustomImageWidget(
+                                image:
+                                    '${isRestaurant ? restaurant!.logoFullUrl : product!.imageFullUrl}',
+                                height: desktop
+                                    ? 120
+                                    : length == null
+                                        ? 100
+                                        : 190,
+                                width: desktop ? 120 : 190,
+                                fit: BoxFit.cover,
+                                isFood: !isRestaurant,
+                                isRestaurant: isRestaurant,
+
+                              ),
+                            )
                           : isAvailable
                           ? const SizedBox()
                           : Container(
@@ -196,10 +199,11 @@ class ProductWidget extends StatelessWidget {
                             isRestaurant)
                             ? Colors.white
                             : Colors.black,
+                        borderRadius: Dimensions.radiusXExtraLarge,
                       ),
                       Positioned(
-                        bottom: 10,
-                        right: 10,
+                        bottom: 18,
+                        right: 17,
                         child: Container(
                           width: 24,
                           height: 24,

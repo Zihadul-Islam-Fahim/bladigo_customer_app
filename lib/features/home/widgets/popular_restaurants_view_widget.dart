@@ -144,7 +144,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                 )) : const SizedBox(),
 
                                 Positioned(
-                                  top: 140, left: 10, right: 0,
+                                  bottom: 5, left: 10,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,

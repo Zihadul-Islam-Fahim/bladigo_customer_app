@@ -56,7 +56,7 @@ class WebItemWidget extends StatelessWidget {
                 discount: product?.discount,
                 discountType: product?.discountType,
               ),
-              isAvailable ? const SizedBox() : const NotAvailableWidget(),
+              isAvailable ? const SizedBox() :  NotAvailableWidget(),
             ]),
 
             Expanded(

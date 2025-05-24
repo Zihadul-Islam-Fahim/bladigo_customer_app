@@ -78,7 +78,7 @@ class RestaurantsCardWidget extends StatelessWidget {
                             ),
                           ),
 
-                          isAvailable ? const SizedBox() : const NotAvailableWidget(isRestaurant: true),
+                          isAvailable ? const SizedBox() :  NotAvailableWidget(isRestaurant: true),
 
                         ],
                       ),

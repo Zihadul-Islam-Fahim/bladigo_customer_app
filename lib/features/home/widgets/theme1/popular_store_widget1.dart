@@ -85,7 +85,7 @@ class PopularStoreWidget1 extends StatelessWidget {
                             discountType: restaurantController.getDiscountType(restaurant[index]),
                             freeDelivery: restaurant[index].freeDelivery,
                           ),
-                          restaurantController.isOpenNow(restaurant[index]) ? const SizedBox() : const NotAvailableWidget(isRestaurant: true),
+                          restaurantController.isOpenNow(restaurant[index]) ? const SizedBox() :  NotAvailableWidget(isRestaurant: true),
                           Positioned(
                             top: Dimensions.paddingSizeExtraSmall, right: Dimensions.paddingSizeExtraSmall,
                             child: GetBuilder<FavouriteController>(builder: (favouriteController) {

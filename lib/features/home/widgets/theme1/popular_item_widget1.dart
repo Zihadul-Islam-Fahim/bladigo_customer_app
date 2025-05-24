@@ -83,7 +83,7 @@ class PopularItemWidget1 extends StatelessWidget {
                                 discount: ProductHelper.getDiscount(productList[index]),
                                 discountType: ProductHelper.getDiscountType(productList[index]),
                               ),
-                              ProductHelper.isAvailable(productList[index]) ? const SizedBox() : const NotAvailableWidget(),
+                              ProductHelper.isAvailable(productList[index]) ? const SizedBox() :  NotAvailableWidget(),
                             ]),
 
                             Expanded(

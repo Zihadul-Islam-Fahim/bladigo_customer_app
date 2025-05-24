@@ -85,7 +85,7 @@ class BestReviewedItemWidget1 extends StatelessWidget {
                             fromTop: 30,
                           ),
 
-                          ProductHelper.isAvailable(productList[index]) ? const SizedBox() : const NotAvailableWidget(isRestaurant: true),
+                          ProductHelper.isAvailable(productList[index]) ? const SizedBox() :  NotAvailableWidget(isRestaurant: true),
 
                           Positioned(
                             top: Dimensions.paddingSizeExtraSmall, left: Dimensions.paddingSizeExtraSmall,

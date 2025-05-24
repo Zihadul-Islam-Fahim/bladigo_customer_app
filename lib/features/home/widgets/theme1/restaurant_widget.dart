@@ -74,7 +74,7 @@ class RestaurantWidget extends StatelessWidget {
             ),
             Get.find<RestaurantController>().isOpenNow(restaurant!)
                 ? const SizedBox()
-                : const NotAvailableWidget(isRestaurant: true),
+                :  NotAvailableWidget(isRestaurant: true),
           ]),
           Expanded(
               child: Padding(
