@@ -57,8 +57,6 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
   Future<void> _initDataCall() async {
 
-  log("======================================> ${widget.restaurant!.name}");
-
 WidgetsBinding.instance.addPostFrameCallback((_) async
     {
       if (Get.find<RestaurantController>().isSearching) {

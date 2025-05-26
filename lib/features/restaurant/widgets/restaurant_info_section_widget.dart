@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:stackfood_multivendor/features/coupon/controllers/coupon_controller.dart';
 import 'package:stackfood_multivendor/features/language/controllers/localization_controller.dart';
 import 'package:stackfood_multivendor/features/restaurant/controllers/restaurant_controller.dart';
@@ -14,6 +16,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../../common/widgets/custom_favourite_widget.dart';
+import '../../../common/widgets/custom_snackbar_widget.dart';
+import '../../../helper/price_converter.dart';
+import '../../../helper/route_helper.dart';
+import '../../../util/app_constants.dart';
+import '../../address/domain/models/address_model.dart';
+import '../../favourite/controllers/favourite_controller.dart';
+
 class RestaurantInfoSectionWidget extends StatelessWidget {
   final Restaurant restaurant;
   final RestaurantController restController;
@@ -27,7 +37,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
     final double realSpaceNeeded = xyz/2;
 
     return SliverAppBar(
-      expandedHeight: isDesktop ? 350 : hasCoupon ? 400 : 300,
+      expandedHeight: isDesktop ? 350 : hasCoupon ? 300 : 300,
       toolbarHeight: isDesktop ? 150 : 90,
       pinned: true, floating: false, elevation: 0.5,
       backgroundColor: Theme.of(context).cardColor,
@@ -76,28 +86,344 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: Container(
-                        height: (hasCoupon ? 260 : 160) - (scrollingRate * 25),
+                        height: (hasCoupon ? 160 : 160) - (scrollingRate * 25),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).cardColor,
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1 - (0.1 * scrollingRate)), blurRadius: 10)]
+                          //boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1 - (0.1 * scrollingRate)), blurRadius: 10)]
                         ),
                         margin: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
                         padding: EdgeInsets.only(
-                          left: Get.find<LocalizationController>().isLtr ? 20 : 0,
+                       ///   left: Get.find<LocalizationController>().isLtr ? 20 : 0,
                           right: Get.find<LocalizationController>().isLtr ? 0 : 20,
                           top: scrollingRate * (context.height * 0.035)
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall - (scrollingRate * Dimensions.paddingSizeSmall)),
-                          child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
+                          padding: EdgeInsets.symmetric(vertical: 0),
+                          child: Stack(
+                                  //mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Positioned(
+                                      top: 30,
+                                      left: 15,
+                                      child: !isDesktop
+                                          ? Container(
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                border: Border.all(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    width: 0.2),
+                                              ),
+                                              padding: const EdgeInsets.all(2),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                child: Stack(children: [
+                                                  CustomImageWidget(
+                                                    image:
+                                                        '${restaurant.logoFullUrl}',
+                                                    height: 80 -
+                                                        (scrollingRate * 15),
+                                                    width: 80 -
+                                                        (scrollingRate * 15),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                  restController
+                                                          .isRestaurantOpenNow(
+                                                              restaurant
+                                                                  .active!,
+                                                              restaurant
+                                                                  .schedules)
+                                                      ? const SizedBox()
+                                                      : Positioned(
+                                                          left: 0,
+                                                          right: 0,
+                                                          bottom: 0,
+                                                          child: Container(
+                                                            height: 30,
+                                                            alignment: Alignment
+                                                                .center,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius: const BorderRadius
+                                                                  .vertical(
+                                                                  bottom: Radius
+                                                                      .circular(
+                                                                          Dimensions
+                                                                              .radiusSmall)),
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.6),
+                                                            ),
+                                                            child: Text(
+                                                              'closed_now'.tr,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: robotoRegular.copyWith(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      Dimensions
+                                                                          .fontSizeSmall),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                ]),
+                                              ),
+                                            )
+                                          : const SizedBox(),
+                                    ),
+                                    Positioned(
+                                      top: 80,
+                                      left: 110,
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              restaurant.name!,
+                                              style: robotoMedium.copyWith(
+                                                  fontSize: Dimensions
+                                                          .fontSizeOverLarge -
+                                                      (scrollingRate * 3),
+                                                  color: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyMedium!
+                                                      .color),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            const SizedBox(
+                                                height: Dimensions
+                                                    .paddingSizeExtraSmall),
+                                      Row(children: [
+                                            Text('start_from'.tr, style: robotoRegular.copyWith(
+                                              fontSize: Dimensions.fontSizeExtraSmall - (scrollingRate * 2), color: Theme.of(context).disabledColor,
+                                            )),
+                                            const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                                            Text(
+                                              PriceConverter.convertPrice(restaurant.minimumOrder), textDirection: TextDirection.ltr,
+                                              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraSmall - (scrollingRate * 2), color: Theme.of(context).primaryColor),
+                                            ),
+                                          ]),
 
-                            InfoViewWidget(restaurant: restaurant, restController: restController, scrollingRate: scrollingRate),
-                            SizedBox(height: Dimensions.paddingSizeLarge - (scrollingRate * (isDesktop ? 2 : Dimensions.paddingSizeLarge))),
+                                          ]),
+                                    ),
 
-                            scrollingRate < 0.8 ? CouponViewWidget(scrollingRate: scrollingRate) : const SizedBox(),
+                                    Positioned(
+                                       top: 135,
+                                        child: Container(
+                                        //  width: double.infinity * 0.9,
+                                          decoration: BoxDecoration(
+                                            // color: Colors.grey,
+                                            borderRadius: BorderRadius.circular(10),
+                                           // border: Border.all(color: Theme.of(context).primaryColor,width: 1.2)
+                                          ),
+                                          //width: double.infinity,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 8, vertical: 2),
+                                                decoration: BoxDecoration(
+                                                    // color: Colors.red,
+                                                    borderRadius:
+                                                    BorderRadius.circular(10)),
+                                                child: Row(
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    children: [
+                                                      Icon(Icons.access_time,
+                                                          color: Theme.of(context)
+                                                              .primaryColor,
+                                                          size: 25 -
+                                                              (scrollingRate *
+                                                                  (isDesktop
+                                                                      ? 2
+                                                                      : 20))),
+                                                      const SizedBox(width: 4),
+                                                      Text(restaurant.deliveryTime!,
+                                                          style: robotoRegular.copyWith(
+                                                              fontSize: Dimensions
+                                                                  .fontSizeDefault -
+                                                                  (scrollingRate *
+                                                                      (isDesktop
+                                                                          ? 2
+                                                                          : Dimensions
+                                                                          .fontSizeSmall)),
+                                                              color: Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyLarge!
+                                                                  .color)),
+                                                    ]),
+                                              ),
 
-                          ]),
+                                             SizedBox(width: 35,),
+
+
+                                              InkWell(
+                                                onTap: () => Get.toNamed(
+                                                    RouteHelper.getMapRoute(
+                                                      AddressModel(
+                                                        id: restaurant.id,
+                                                        address: restaurant.address,
+                                                        latitude: restaurant.latitude,
+                                                        longitude: restaurant.longitude,
+                                                        contactPersonNumber: '',
+                                                        contactPersonName: '',
+                                                        addressType: '',
+                                                      ),
+                                                      'restaurant',
+                                                      restaurantName: restaurant.name,
+                                                    )),
+                                                child: Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 8, vertical: 2),
+                                                  decoration: BoxDecoration(
+                                                      // color: Colors.red,
+                                                      borderRadius:
+                                                      BorderRadius.circular(10)),
+                                                  child: Row(
+                                                      mainAxisSize: MainAxisSize.min,
+                                                      children: [
+                                                        Image.asset(
+                                                            Images.restaurantLocationIcon,
+                                                            height: 25 -
+                                                                (scrollingRate *
+                                                                    (isDesktop ? 2 : 20)),
+                                                            width: 20 -
+                                                                (scrollingRate *
+                                                                    (isDesktop ? 2 : 20)),
+                                                            color: Theme.of(context)
+                                                                .primaryColor),
+                                                        const SizedBox(
+                                                            width: Dimensions
+                                                                .paddingSizeExtraSmall),
+                                                        Text('location'.tr,
+                                                            style: robotoRegular.copyWith(
+                                                                fontSize: Dimensions
+                                                                    .fontSizeDefault -
+                                                                    (scrollingRate *
+                                                                        (isDesktop
+                                                                            ? 2
+                                                                            : Dimensions
+                                                                            .fontSizeSmall)),
+                                                                color: Theme.of(context)
+                                                                    .textTheme
+                                                                    .bodyLarge!
+                                                                    .color)),
+                                                      ]),
+                                                ),
+                                              ),
+
+                                              SizedBox(width: 35,),
+
+                                              InkWell(
+                                                onTap: () => Get.toNamed(RouteHelper
+                                                    .getRestaurantReviewRoute(
+                                                        restaurant.id,
+                                                        restaurant.name,
+                                                        restaurant)),
+                                                child: Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 8, vertical: 2),
+                                                  decoration: BoxDecoration(
+                                                      // color: Colors.red,
+                                                      borderRadius:
+                                                          BorderRadius.circular(10)),
+                                                  child: Row(children: [
+                                                    Icon(Icons.star,
+                                                        color: Theme.of(context)
+                                                            .primaryColor,
+                                                        size: 25 -
+                                                            (scrollingRate *
+                                                                (isDesktop
+                                                                    ? 2
+                                                                    : 20))),
+                                                    const SizedBox(
+                                                        width: Dimensions
+                                                            .paddingSizeExtraSmall),
+                                                    Text(
+                                                      restaurant.avgRating!
+                                                          .toStringAsFixed(1),
+                                                      style: robotoMedium.copyWith(
+                                                          fontSize: Dimensions
+                                                                  .fontSizeDefault -
+                                                              (scrollingRate *
+                                                                  (isDesktop
+                                                                      ? 2
+                                                                      : Dimensions
+                                                                          .fontSizeSmall)),
+                                                          color: Theme.of(context)
+                                                              .textTheme
+                                                              .bodyLarge!
+                                                              .color),
+                                                    ),
+                                                  ]),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )),
+
+                                    Positioned(
+                                      top: 50,
+                                      right: 10,
+                                      child: AppConstants.webHostedUrl.isNotEmpty ? InkWell(
+                                        onTap: (){
+                                          if(isDesktop) {
+                                            // String? hostname = html.window.location.hostname;
+                                            // String protocol = html.window.location.protocol;
+                                            // String shareUrl = '$protocol//$hostname${restController.filteringUrl(restaurant.slug ?? '')}';
+                                            String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
+                                            Clipboard.setData(ClipboardData(text: shareUrl));
+                                            showCustomSnackBar('restaurant_url_copied'.tr, isError: false);
+                                          } else {
+                                            String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
+                                            Share.share(shareUrl);
+                                          }
+                                        },
+                                        child: Icon(
+                                          Icons.share, size: 20  - (scrollingRate * 4),
+                                        ),
+                                      ) : const SizedBox(),
+                                    ),
+
+                                    Positioned(
+                                      top: 50,
+                                      right: 40,
+                                      child: GetBuilder<FavouriteController>(builder: (favouriteController) {
+                                        bool isWished = favouriteController.wishRestIdList.contains(restaurant.id);
+                                        return CustomFavouriteWidget(
+                                          isWished: isWished,
+                                          isRestaurant: true,
+                                          restaurant: restaurant,
+                                          size: 24  - (scrollingRate * 4),
+                                        );
+                                      }),
+                                    ),
+
+
+                                    // InfoViewWidget(
+                                    //     restaurant: restaurant,
+                                    //     restController: restController,
+                                    //     scrollingRate: scrollingRate),
+                                    // SizedBox(
+                                    //     height: Dimensions.paddingSizeLarge -
+                                    //         (scrollingRate *
+                                    //             (isDesktop
+                                    //                 ? 2
+                                    //                 : Dimensions
+                                    //                     .paddingSizeLarge))),
+
+                                     // scrollingRate < 0.8 ? CouponViewWidget(scrollingRate: scrollingRate) : const SizedBox(),
+                                  ]),
                         ),
                       ),
                     ),
@@ -201,7 +527,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                 },
               ),
               background: Container(
-                margin: EdgeInsets.only(bottom: isDesktop ? 100 : (hasCoupon ? 200 : 100)),
+                margin: EdgeInsets.only(bottom: isDesktop ? 100 : (hasCoupon ? 100 : 100)),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.vertical(bottom: Radius.circular(Dimensions.radiusLarge)),
                   child: CustomImageWidget(
