@@ -139,8 +139,10 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                               ? CouponViewWidget(scrollingRate: 0)
                               : const SizedBox(),
                         ),
+                        SliverToBoxAdapter(child: SizedBox(height: 4,)),
 
                         SliverToBoxAdapter(
+
                           child: !isDesktop
                               ? Row(
                                 children: [
@@ -148,6 +150,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                       width: Dimensions.paddingSizeSmall),
                                   Expanded(
                                     child: TextField(
+
                                       controller: _searchController,
                                       textInputAction:
                                           TextInputAction.search,

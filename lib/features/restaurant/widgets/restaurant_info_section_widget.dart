@@ -235,6 +235,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                   fontSize: Dimensions
                                                           .fontSizeOverLarge -
                                                       (scrollingRate * 30),
+                                                  fontWeight: FontWeight.bold,
                                                   color: Theme.of(context)
                                                       .textTheme
                                                       .bodyMedium!

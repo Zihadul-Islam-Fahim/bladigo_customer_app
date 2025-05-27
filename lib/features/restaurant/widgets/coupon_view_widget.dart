@@ -40,7 +40,8 @@ class CouponViewWidget extends StatelessWidget {
                   return Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge),
-                      color: Theme.of(context).primaryColor.withOpacity(0.07),
+                      image: DecorationImage(image: AssetImage('assets/image/discount_bg.png'))
+                      //color: Theme.of(context).primaryColor.withOpacity(0.07),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     margin: const EdgeInsets.only(right: Dimensions.paddingSizeDefault,left:Dimensions.paddingSizeDefault, ),
@@ -51,7 +52,7 @@ class CouponViewWidget extends StatelessWidget {
                           Flexible(
                             child: Text(
                               '"${couponController.couponList![index].title!}"', maxLines: 1,
-                              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeDefault)), overflow: TextOverflow.ellipsis, color: Theme.of(context).textTheme.bodyLarge!.color),
+                              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1 - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeDefault)), overflow: TextOverflow.ellipsis, color: Theme.of(context).primaryColor,fontWeight: FontWeight.bold),
                             ),
                           ),
 
@@ -67,27 +68,28 @@ class CouponViewWidget extends StatelessWidget {
 
                         Text(
                           '${DateConverter.stringToReadableString(couponController.couponList![index].startDate!)} ${'to'.tr} ${DateConverter.stringToReadableString(couponController.couponList![index].expireDate!)}',
-                          style: robotoMedium.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeExtraSmall - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeExtraSmall))),
+                          style: robotoMedium.copyWith(color: Colors.black, fontSize: Dimensions.fontSizeDefault - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeExtraSmall))),
                           maxLines: 2, overflow: TextOverflow.ellipsis,
                         ),
 
                         Row(children: [
                           Text(
+
                             '${'min_purchase'.tr} ',
-                            style: robotoRegular.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeSmall - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeSmall))),
+                            style: robotoRegular.copyWith(color: Colors.orange, fontSize: Dimensions.fontSizeDefault - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeSmall))),
                             maxLines: 1, overflow: TextOverflow.ellipsis,
                           ),
                           SizedBox(width: Dimensions.paddingSizeExtraSmall - (scrollingRate * (isDesktop ? 2 : Dimensions.paddingSizeExtraSmall))),
 
                           Text(
                             PriceConverter.convertPrice(couponController.couponList![index].minPurchase),
-                            style: robotoMedium.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeSmall - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeSmall))),
+                            style: robotoMedium.copyWith(color: Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeSmall - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeSmall))),
                             maxLines: 1, overflow: TextOverflow.ellipsis, textDirection: TextDirection.ltr,
                           ),
                         ]),
                       ])),
 
-                      Image.asset(Images.restaurantCoupon, height: 55 - (scrollingRate * (isDesktop ? 2 : 55)), width: 55),
+                     // Image.asset(Images.restaurantCoupon, height: 55 - (scrollingRate * (isDesktop ? 2 : 55)), width: 55),
                     ]),
                   );
                 },
