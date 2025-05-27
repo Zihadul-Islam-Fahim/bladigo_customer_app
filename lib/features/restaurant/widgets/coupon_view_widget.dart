@@ -42,7 +42,7 @@ class CouponViewWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge),
                       color: Theme.of(context).primaryColor.withOpacity(0.07),
                     ),
-                    padding: EdgeInsets.all(Dimensions.paddingSizeSmall - (scrollingRate * (isDesktop ? 2 : Dimensions.paddingSizeSmall))),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     margin: const EdgeInsets.only(right: Dimensions.paddingSizeDefault),
                     child: Row(children: [
                       Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [

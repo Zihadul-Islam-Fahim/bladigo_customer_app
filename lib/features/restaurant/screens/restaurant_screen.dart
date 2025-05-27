@@ -28,6 +28,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../widgets/coupon_view_widget.dart';
+
 class RestaurantScreen extends StatefulWidget {
   final Restaurant? restaurant;
   final String slug;
@@ -125,255 +127,287 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                       physics: const AlwaysScrollableScrollPhysics(),
                       controller: scrollController,
                       slivers: [
+
                         RestaurantInfoSectionWidget(
                             restaurant: restaurant!,
                             restController: restController,
                             hasCoupon: hasCoupon),
+
+                      // hasCoupon ?   CouponViewWidget(scrollingRate: 1) : const SizedBox(),
                         SliverToBoxAdapter(
-                            child: Center(
-                                child: Container(
-                          width: Dimensions.webMaxWidth,
-                          color: Theme.of(context).cardColor,
-                          child: Column(children: [
-                            // isDesktop
-                            //     ? const SizedBox()
-                            //     : RestaurantDescriptionViewWidget(
-                            //         restaurant: restaurant),
-                            restaurant.discount != null
-                                ? Container(
-                                    width: context.width,
-                                    margin: const EdgeInsets.symmetric(
-                                        vertical: Dimensions.paddingSizeSmall,
-                                        horizontal:
-                                            Dimensions.paddingSizeLarge),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                            Dimensions.radiusSmall),
-                                        color: Theme.of(context).primaryColor),
-                                    padding: const EdgeInsets.all(
-                                        Dimensions.paddingSizeSmall),
-                                    child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            restaurant.discount!.discountType ==
-                                                    'percent'
-                                                ? '${restaurant.discount!.discount}% ${'off'.tr}'
-                                                : '${PriceConverter.convertPrice(restaurant.discount!.discount)} ${'off'.tr}',
-                                            style: robotoMedium.copyWith(
-                                                fontSize:
-                                                    Dimensions.fontSizeLarge,
-                                                color: Theme.of(context)
-                                                    .cardColor),
-                                          ),
-                                          Text(
-                                            restaurant.discount!.discountType ==
-                                                    'percent'
-                                                ? '${'enjoy'.tr} ${restaurant.discount!.discount}% ${'off_on_all_categories'.tr}'
-                                                : '${'enjoy'.tr} ${PriceConverter.convertPrice(restaurant.discount!.discount)}'
-                                                    ' ${'off_on_all_categories'.tr}',
-                                            style: robotoMedium.copyWith(
-                                                fontSize:
-                                                    Dimensions.fontSizeSmall,
-                                                color: Theme.of(context)
-                                                    .cardColor),
-                                          ),
-                                          SizedBox(
-                                              height: (restaurant.discount!
-                                                              .minPurchase !=
-                                                          0 ||
-                                                      restaurant.discount!
-                                                              .maxDiscount !=
-                                                          0)
-                                                  ? 5
-                                                  : 0),
-                                          restaurant.discount!.minPurchase != 0
-                                              ? Text(
-                                                  '[ ${'minimum_purchase'.tr}: ${PriceConverter.convertPrice(restaurant.discount!.minPurchase)} ]',
-                                                  style: robotoRegular.copyWith(
-                                                      fontSize: Dimensions
-                                                          .fontSizeExtraSmall,
-                                                      color: Theme.of(context)
-                                                          .cardColor),
-                                                )
-                                              : const SizedBox(),
-                                          restaurant.discount!.maxDiscount != 0
-                                              ? Text(
-                                                  '[ ${'maximum_discount'.tr}: ${PriceConverter.convertPrice(restaurant.discount!.maxDiscount)} ]',
-                                                  style: robotoRegular.copyWith(
-                                                      fontSize: Dimensions
-                                                          .fontSizeExtraSmall,
-                                                      color: Theme.of(context)
-                                                          .cardColor),
-                                                )
-                                              : const SizedBox(),
-                                          Text(
-                                            '[ ${'daily_time'.tr}: ${DateConverter.convertTimeToTime(restaurant.discount!.startTime!)} '
-                                            '- ${DateConverter.convertTimeToTime(restaurant.discount!.endTime!)} ]',
-                                            style: robotoRegular.copyWith(
-                                                fontSize: Dimensions
-                                                    .fontSizeExtraSmall,
-                                                color: Theme.of(context)
-                                                    .cardColor),
-                                          ),
-                                        ]),
-                                  )
-                                : const SizedBox(),
-                            SizedBox(
-                                height: (restaurant.announcementActive! &&
-                                        restaurant.announcementMessage != null)
-                                    ? 0
-                                    : Dimensions.paddingSizeSmall),
-                            ResponsiveHelper.isMobile(context)
-                                ? (restaurant.announcementActive! &&
-                                        restaurant.announcementMessage != null)
+                          child: hasCoupon
+                              ? CouponViewWidget(scrollingRate: 0)
+                              : const SizedBox(),
+                        ),
+
+                        SliverToBoxAdapter(
+                          child: Center(
+                            child: Container(
+                              width: Dimensions.webMaxWidth,
+                              color: Theme.of(context).cardColor,
+                              child: Column(children: [
+                                // isDesktop
+                                //     ? const SizedBox()
+                                //     : RestaurantDescriptionViewWidget(
+                                //         restaurant: restaurant),
+                                restaurant.discount != null
                                     ? Container(
-                                        decoration: const BoxDecoration(
-                                            color: Colors.green),
-                                        padding: const EdgeInsets.symmetric(
+                                        width: context.width,
+                                        margin: const EdgeInsets.symmetric(
                                             vertical:
                                                 Dimensions.paddingSizeSmall,
                                             horizontal:
                                                 Dimensions.paddingSizeLarge),
-                                        margin: const EdgeInsets.only(
-                                            bottom:
-                                                Dimensions.paddingSizeSmall),
-                                        child: Row(children: [
-                                          Image.asset(Images.announcement,
-                                              height: 26, width: 26),
-                                          const SizedBox(
-                                              width:
-                                                  Dimensions.paddingSizeSmall),
-                                          Flexible(
-                                              child: Text(
-                                            restaurant.announcementMessage ??
-                                                '',
-                                            style: robotoMedium.copyWith(
-                                                fontSize:
-                                                    Dimensions.fontSizeSmall,
-                                                color: Theme.of(context)
-                                                    .cardColor),
-                                          )),
-                                        ]),
-                                      )
-                                    : const SizedBox()
-                                : const SizedBox(),
-                            restController.recommendedProductModel != null &&
-                                    restController.recommendedProductModel!
-                                        .products!.isNotEmpty
-                                ? Container(
-                                    // color: Theme.of(context)
-                                    //     .primaryColor
-                                    //     .withOpacity(0.10),
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              top: Dimensions.paddingSizeSmall,
-                                              left: Dimensions.paddingSizeLarge,
-                                              bottom: Dimensions
-                                                  .paddingSizeExtraSmall,
-                                              right:
-                                                  Dimensions.paddingSizeLarge,
-                                            ),
-                                            child: Row(children: [
-                                              Expanded(
-                                                child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                          'recommend_for_you'
-                                                              .tr,
-                                                          style: robotoMedium.copyWith(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700)),
-                                                      const SizedBox(
-                                                          height: Dimensions
-                                                              .paddingSizeExtraSmall),
-                                                      Text(
-                                                          'here_is_what_you_might_like_to_test'
-                                                              .tr,
-                                                          style: robotoRegular.copyWith(
-                                                              fontSize: Dimensions
-                                                                  .fontSizeDefault,
-                                                              color: Theme.of(
-                                                                      context)
-                                                                  .disabledColor)),
-                                                    ],
-                                                ),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                                Dimensions.radiusSmall),
+                                            color:
+                                                Theme.of(context).primaryColor),
+                                        padding: const EdgeInsets.all(
+                                            Dimensions.paddingSizeSmall),
+                                        child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                restaurant.discount!
+                                                            .discountType ==
+                                                        'percent'
+                                                    ? '${restaurant.discount!.discount}% ${'off'.tr}'
+                                                    : '${PriceConverter.convertPrice(restaurant.discount!.discount)} ${'off'.tr}',
+                                                style: robotoMedium.copyWith(
+                                                    fontSize: Dimensions
+                                                        .fontSizeLarge,
+                                                    color: Theme.of(context)
+                                                        .cardColor),
                                               ),
-                                              ArrowIconButtonWidget(
-                                                onTap: () => Get.toNamed(
-                                                    RouteHelper.getPopularFoodRoute(
-                                                        false,
-                                                        fromIsRestaurantFood:
-                                                            true,
-                                                        restaurantId: widget
-                                                                .restaurant!
-                                                                .id ??
-                                                            Get.find<
-                                                                    RestaurantController>()
-                                                                .restaurant!
-                                                                .id!)),
+                                              Text(
+                                                restaurant.discount!
+                                                            .discountType ==
+                                                        'percent'
+                                                    ? '${'enjoy'.tr} ${restaurant.discount!.discount}% ${'off_on_all_categories'.tr}'
+                                                    : '${'enjoy'.tr} ${PriceConverter.convertPrice(restaurant.discount!.discount)}'
+                                                        ' ${'off_on_all_categories'.tr}',
+                                                style: robotoMedium.copyWith(
+                                                    fontSize: Dimensions
+                                                        .fontSizeSmall,
+                                                    color: Theme.of(context)
+                                                        .cardColor),
+                                              ),
+                                              SizedBox(
+                                                  height: (restaurant.discount!
+                                                                  .minPurchase !=
+                                                              0 ||
+                                                          restaurant.discount!
+                                                                  .maxDiscount !=
+                                                              0)
+                                                      ? 5
+                                                      : 0),
+                                              restaurant.discount!
+                                                          .minPurchase !=
+                                                      0
+                                                  ? Text(
+                                                      '[ ${'minimum_purchase'.tr}: ${PriceConverter.convertPrice(restaurant.discount!.minPurchase)} ]',
+                                                      style: robotoRegular.copyWith(
+                                                          fontSize: Dimensions
+                                                              .fontSizeExtraSmall,
+                                                          color:
+                                                              Theme.of(context)
+                                                                  .cardColor),
+                                                    )
+                                                  : const SizedBox(),
+                                              restaurant.discount!
+                                                          .maxDiscount !=
+                                                      0
+                                                  ? Text(
+                                                      '[ ${'maximum_discount'.tr}: ${PriceConverter.convertPrice(restaurant.discount!.maxDiscount)} ]',
+                                                      style: robotoRegular.copyWith(
+                                                          fontSize: Dimensions
+                                                              .fontSizeExtraSmall,
+                                                          color:
+                                                              Theme.of(context)
+                                                                  .cardColor),
+                                                    )
+                                                  : const SizedBox(),
+                                              Text(
+                                                '[ ${'daily_time'.tr}: ${DateConverter.convertTimeToTime(restaurant.discount!.startTime!)} '
+                                                '- ${DateConverter.convertTimeToTime(restaurant.discount!.endTime!)} ]',
+                                                style: robotoRegular.copyWith(
+                                                    fontSize: Dimensions
+                                                        .fontSizeExtraSmall,
+                                                    color: Theme.of(context)
+                                                        .cardColor),
                                               ),
                                             ]),
-                                          ),
-                                          SizedBox(
-                                            height: ResponsiveHelper.isDesktop(
-                                                    context)
-                                                ? 307
-                                                : 305,
-                                            width: context.width,
-                                            child: ListView.builder(
-                                              shrinkWrap: true,
-                                              scrollDirection: Axis.horizontal,
-                                              itemCount: restController
-                                                  .recommendedProductModel!
-                                                  .products!
-                                                  .length,
-                                              physics:
-                                                  const BouncingScrollPhysics(),
-                                              padding: const EdgeInsets.only(
+                                      )
+                                    : const SizedBox(),
+                                SizedBox(
+                                    height: (restaurant.announcementActive! &&
+                                            restaurant.announcementMessage !=
+                                                null)
+                                        ? 0
+                                        : Dimensions.paddingSizeSmall),
+                                ResponsiveHelper.isMobile(context)
+                                    ? (restaurant.announcementActive! &&
+                                            restaurant.announcementMessage !=
+                                                null)
+                                        ? Container(
+                                            decoration: const BoxDecoration(
+                                                color: Colors.green),
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical:
+                                                    Dimensions.paddingSizeSmall,
+                                                horizontal: Dimensions
+                                                    .paddingSizeLarge),
+                                            margin: const EdgeInsets.only(
+                                                bottom: Dimensions
+                                                    .paddingSizeSmall),
+                                            child: Row(children: [
+                                              Image.asset(Images.announcement,
+                                                  height: 26, width: 26),
+                                              const SizedBox(
+                                                  width: Dimensions
+                                                      .paddingSizeSmall),
+                                              Flexible(
+                                                  child: Text(
+                                                restaurant
+                                                        .announcementMessage ??
+                                                    '',
+                                                style: robotoMedium.copyWith(
+                                                    fontSize: Dimensions
+                                                        .fontSizeSmall,
+                                                    color: Theme.of(context)
+                                                        .cardColor),
+                                              )),
+                                            ]),
+                                          )
+                                        : const SizedBox()
+                                    : const SizedBox(),
+                                restController.recommendedProductModel !=
+                                            null &&
+                                        restController.recommendedProductModel!
+                                            .products!.isNotEmpty
+                                    ? Container(
+                                        // color: Theme.of(context)
+                                        //     .primaryColor
+                                        //     .withOpacity(0.10),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
                                                   top: Dimensions
-                                                      .paddingSizeExtraSmall,
+                                                      .paddingSizeSmall,
+                                                  left: Dimensions
+                                                      .paddingSizeLarge,
                                                   bottom: Dimensions
                                                       .paddingSizeExtraSmall,
                                                   right: Dimensions
-                                                      .paddingSizeDefault),
-                                              itemBuilder: (context, index) {
-                                                return Padding(
+                                                      .paddingSizeLarge,
+                                                ),
+                                                child: Row(children: [
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                            'recommend_for_you'
+                                                                .tr,
+                                                            style: robotoMedium
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        20,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700)),
+                                                        const SizedBox(
+                                                            height: Dimensions
+                                                                .paddingSizeExtraSmall),
+                                                        Text('here_is_what_you_might_like_to_test'.tr,
+                                                            style: robotoRegular.copyWith(
+                                                                fontSize: Dimensions
+                                                                    .fontSizeDefault,
+                                                                color: Theme.of(
+                                                                        context)
+                                                                    .disabledColor)),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  ArrowIconButtonWidget(
+                                                    onTap: () => Get.toNamed(
+                                                        RouteHelper.getPopularFoodRoute(
+                                                            false,
+                                                            fromIsRestaurantFood:
+                                                                true,
+                                                            restaurantId: widget
+                                                                    .restaurant!
+                                                                    .id ??
+                                                                Get.find<
+                                                                        RestaurantController>()
+                                                                    .restaurant!
+                                                                    .id!)),
+                                                  ),
+                                                ]),
+                                              ),
+                                              SizedBox(
+                                                height:
+                                                    ResponsiveHelper.isDesktop(
+                                                            context)
+                                                        ? 307
+                                                        : 305,
+                                                width: context.width,
+                                                child: ListView.builder(
+                                                  shrinkWrap: true,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: restController
+                                                      .recommendedProductModel!
+                                                      .products!
+                                                      .length,
+                                                  physics:
+                                                      const BouncingScrollPhysics(),
                                                   padding: const EdgeInsets
                                                       .only(
-                                                      left: Dimensions
+                                                      top: Dimensions
+                                                          .paddingSizeExtraSmall,
+                                                      bottom: Dimensions
+                                                          .paddingSizeExtraSmall,
+                                                      right: Dimensions
                                                           .paddingSizeDefault),
-                                                  child: ItemCardWidget(
-                                                    product: restController
-                                                        .recommendedProductModel!
-                                                        .products![index],
-                                                    isBestItem: false,
-                                                    isPopularNearbyItem: false,
-                                                    width: ResponsiveHelper
-                                                            .isDesktop(context)
-                                                        ? 200
-                                                        : MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.53,
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ]),
-                                  )
-                                : const SizedBox(),
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Padding(
+                                                      padding: const EdgeInsets
+                                                          .only(
+                                                          left: Dimensions
+                                                              .paddingSizeDefault),
+                                                      child: ItemCardWidget(
+                                                        product: restController
+                                                            .recommendedProductModel!
+                                                            .products![index],
+                                                        isBestItem: false,
+                                                        isPopularNearbyItem:
+                                                            false,
+                                                        width: ResponsiveHelper
+                                                                .isDesktop(
+                                                                    context)
+                                                            ? 200
+                                                            : MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                0.53,
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ]),
+                                      )
+                                    : const SizedBox(),
                               ]),
                             ),
                           ),
@@ -418,9 +452,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                             const Expanded(child: SizedBox()),
                                             isDesktop
                                                 ? Container(
-                                                    padding: const EdgeInsets
-                                                        .all(Dimensions
-                                                            .paddingSizeExtraSmall),
+                                                    padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
                                                     height: 35,
                                                     width: 320,
                                                     decoration: BoxDecoration(
