@@ -42,6 +42,50 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
       pinned: true, floating: false, elevation: 0.5,
       backgroundColor: Theme.of(context).cardColor,
       leadingWidth: 80,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+
+
+          Column(
+            children: [
+              GetBuilder<FavouriteController>(builder: (favouriteController) {
+                bool isWished = favouriteController.wishRestIdList.contains(restaurant.id);
+                return CustomFavouriteWidget(
+                  isWished: isWished,
+                  isRestaurant: true,
+                  restaurant: restaurant,
+                  size: 24  ,
+                );
+              }),
+              SizedBox(height: 4,),
+
+              AppConstants.webHostedUrl.isNotEmpty ? InkWell(
+                onTap: (){
+                  if(isDesktop) {
+                    // String? hostname = html.window.location.hostname;
+                    // String protocol = html.window.location.protocol;
+                    // String shareUrl = '$protocol//$hostname${restController.filteringUrl(restaurant.slug ?? '')}';
+                    String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
+                    Clipboard.setData(ClipboardData(text: shareUrl));
+                    showCustomSnackBar('restaurant_url_copied'.tr, isError: false);
+                  } else {
+                    String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
+                    Share.share(shareUrl);
+                  }
+                },
+                child: Icon(
+                  Icons.share, size: 20  ,
+                ),
+              ) : const SizedBox(),
+            ],
+          ),
+
+
+        ],
+      ),
       leading: !isDesktop ? IconButton(
         icon:Container(
           width: 50, // Adjust size as needed
@@ -111,9 +155,8 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 border: Border.all(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    width: 0.2),
+                                                    color: Colors.transparent,
+                                                    width: 2),
                                               ),
                                               padding: const EdgeInsets.all(2),
                                               child: ClipRRect(
@@ -176,6 +219,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                             )
                                           : const SizedBox(),
                                     ),
+
                                     Positioned(
                                       top: 80,
                                       left: 110,
@@ -190,7 +234,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                               style: robotoMedium.copyWith(
                                                   fontSize: Dimensions
                                                           .fontSizeOverLarge -
-                                                      (scrollingRate * 3),
+                                                      (scrollingRate * 30),
                                                   color: Theme.of(context)
                                                       .textTheme
                                                       .bodyMedium!
@@ -239,14 +283,15 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                 child: Row(
                                                     mainAxisSize: MainAxisSize.min,
                                                     children: [
-                                                      Icon(Icons.access_time,
-                                                          color: Theme.of(context)
-                                                              .primaryColor,
-                                                          size: 25 -
-                                                              (scrollingRate *
-                                                                  (isDesktop
-                                                                      ? 2
-                                                                      : 20))),
+                                                      // Icon(Icons.access_time,
+                                                      //     color: Theme.of(context)
+                                                      //         .primaryColor,
+                                                      //     size: 25 -
+                                                      //         (scrollingRate *
+                                                      //             (isDesktop
+                                                      //                 ? 2
+                                                      //                 : 20))),
+                                                      Image.asset("assets/image/restro_time.png",width: 25,),
                                                       const SizedBox(width: 4),
                                                       Text(restaurant.deliveryTime!,
                                                           style: robotoRegular.copyWith(
@@ -292,16 +337,17 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                   child: Row(
                                                       mainAxisSize: MainAxisSize.min,
                                                       children: [
-                                                        Image.asset(
-                                                            Images.restaurantLocationIcon,
-                                                            height: 25 -
-                                                                (scrollingRate *
-                                                                    (isDesktop ? 2 : 20)),
-                                                            width: 20 -
-                                                                (scrollingRate *
-                                                                    (isDesktop ? 2 : 20)),
-                                                            color: Theme.of(context)
-                                                                .primaryColor),
+                                                        // Image.asset(
+                                                        //     Images.restaurantLocationIcon,
+                                                        //     height: 25 -
+                                                        //         (scrollingRate *
+                                                        //             (isDesktop ? 2 : 20)),
+                                                        //     width: 20 -
+                                                        //         (scrollingRate *
+                                                        //             (isDesktop ? 2 : 20)),
+                                                        //     color: Theme.of(context)
+                                                        //         .primaryColor),
+                                                        Image.asset("assets/image/restro_location.png",width: 25,),
                                                         const SizedBox(
                                                             width: Dimensions
                                                                 .paddingSizeExtraSmall),
@@ -338,14 +384,15 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                       borderRadius:
                                                           BorderRadius.circular(10)),
                                                   child: Row(children: [
-                                                    Icon(Icons.star,
-                                                        color: Theme.of(context)
-                                                            .primaryColor,
-                                                        size: 25 -
-                                                            (scrollingRate *
-                                                                (isDesktop
-                                                                    ? 2
-                                                                    : 20))),
+                                                    // Icon(Icons.star,
+                                                    //     color: Theme.of(context)
+                                                    //         .primaryColor,
+                                                    //     size: 25 -
+                                                    //         (scrollingRate *
+                                                    //             (isDesktop
+                                                    //                 ? 2
+                                                    //                 : 20))),
+                                                    Image.asset("assets/image/restro-rating.png",width: 25,),
                                                     const SizedBox(
                                                         width: Dimensions
                                                             .paddingSizeExtraSmall),
@@ -372,42 +419,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                           ),
                                         )),
 
-                                    Positioned(
-                                      top: 50,
-                                      right: 10,
-                                      child: AppConstants.webHostedUrl.isNotEmpty ? InkWell(
-                                        onTap: (){
-                                          if(isDesktop) {
-                                            // String? hostname = html.window.location.hostname;
-                                            // String protocol = html.window.location.protocol;
-                                            // String shareUrl = '$protocol//$hostname${restController.filteringUrl(restaurant.slug ?? '')}';
-                                            String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
-                                            Clipboard.setData(ClipboardData(text: shareUrl));
-                                            showCustomSnackBar('restaurant_url_copied'.tr, isError: false);
-                                          } else {
-                                            String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
-                                            Share.share(shareUrl);
-                                          }
-                                        },
-                                        child: Icon(
-                                          Icons.share, size: 20  - (scrollingRate * 4),
-                                        ),
-                                      ) : const SizedBox(),
-                                    ),
 
-                                    Positioned(
-                                      top: 50,
-                                      right: 40,
-                                      child: GetBuilder<FavouriteController>(builder: (favouriteController) {
-                                        bool isWished = favouriteController.wishRestIdList.contains(restaurant.id);
-                                        return CustomFavouriteWidget(
-                                          isWished: isWished,
-                                          isRestaurant: true,
-                                          restaurant: restaurant,
-                                          size: 24  - (scrollingRate * 4),
-                                        );
-                                      }),
-                                    ),
 
 
                                     // InfoViewWidget(

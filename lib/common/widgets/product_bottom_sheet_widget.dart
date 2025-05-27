@@ -1270,31 +1270,31 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                   ),
                 ],
               ),
-              GetPlatform.isAndroid
-                  ? const SizedBox()
-                  : Positioned(
-                      top: 5,
-                      right: 10,
-                      child: InkWell(
-                        onTap: () => Get.back(),
-                        child: Container(
-                          padding: const EdgeInsets.all(
-                              Dimensions.paddingSizeExtraSmall),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withOpacity(0.3),
-                                  blurRadius: 5)
-                            ],
-                          ),
-                          child: const Icon(Icons.close, size: 14),
-                        ),
-                      ),
-                    ),
+              // GetPlatform.isAndroid
+              //     ? const SizedBox()
+              //     : Positioned(
+              //         top: 5,
+              //         right: 10,
+              //         child: InkWell(
+              //           onTap: () => Get.back(),
+              //           child: Container(
+              //             padding: const EdgeInsets.all(
+              //                 Dimensions.paddingSizeExtraSmall),
+              //             decoration: BoxDecoration(
+              //               color: Theme.of(context).cardColor,
+              //               shape: BoxShape.circle,
+              //               boxShadow: [
+              //                 BoxShadow(
+              //                     color: Theme.of(context)
+              //                         .primaryColor
+              //                         .withOpacity(0.3),
+              //                     blurRadius: 5)
+              //               ],
+              //             ),
+              //             child: const Icon(Icons.close, size: 14),
+              //           ),
+              //         ),
+              //       ),
             ],
           );
         }),

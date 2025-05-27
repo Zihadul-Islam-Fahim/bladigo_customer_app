@@ -169,8 +169,8 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                             borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
                                             borderSide : BorderSide(color: Theme.of(context).primaryColor)),
 
-                                        filled: true,
-                                        fillColor: Colors.grey.withOpacity(0.18),
+                                       filled: true,
+                                        fillColor: Colors.grey.withOpacity(0.08),
                                         isDense: true,
                                         prefixIcon: InkWell(
                                           onTap: () {
@@ -389,14 +389,15 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                         ? Container(
                                             decoration: const BoxDecoration(
                                                 color: Colors.green),
+
                                             padding: const EdgeInsets.symmetric(
                                                 vertical:
                                                     Dimensions.paddingSizeSmall,
                                                 horizontal: Dimensions
                                                     .paddingSizeLarge),
                                             margin: const EdgeInsets.only(
-                                                bottom: Dimensions
-                                                    .paddingSizeSmall),
+                                                bottom: Dimensions.paddingSizeSmall,top: Dimensions.paddingSizeSmall
+                                            ),
                                             child: Row(children: [
                                               Image.asset(Images.announcement,
                                                   height: 26, width: 26),
