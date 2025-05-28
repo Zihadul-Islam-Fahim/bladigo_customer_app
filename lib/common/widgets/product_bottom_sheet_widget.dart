@@ -514,15 +514,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                         .required!
                                                                     ? (product!.variations![index].multiSelect! ? product!.variations![index].min! : 1) >
                                                                             selectedCount
-                                                                        ? Theme.of(context)
-                                                                            .primaryColor
-                                                                        : Theme.of(context)
-                                                                            .primaryColor
-                                                                    : Theme.of(
-                                                                            context)
-                                                                        .primaryColor
-                                                                        .withOpacity(
-                                                                            0.9),
+                                                                        ? Theme.of(context).primaryColor
+                                                                        : Colors.transparent
+                                                                    : Colors.transparent,
                                                                 borderRadius:
                                                                     BorderRadius.circular(
                                                                         Dimensions
@@ -550,9 +544,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                           .required!
                                                                       ? (product!.variations![index].multiSelect! ? product!.variations![index].min! : 1) <=
                                                                               selectedCount
-                                                                          ? Colors.white
+                                                                          ? Theme.of(context).primaryColor
                                                                           : Colors.white
-                                                                      : Colors.white,
+                                                                      : Theme.of(context).primaryColor,
                                                                   fontSize:
                                                                       Dimensions
                                                                           .fontSizeSmall,
@@ -702,7 +696,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                                   product!.variations![index].variationValues![i].level!.trim(),
                                                                                   maxLines: 1,
                                                                                   overflow: TextOverflow.ellipsis,
-                                                                                  style: productController.selectedVariations[index][i]! ? robotoMedium : robotoRegular.copyWith(color: Theme.of(context).hintColor,fontSize: Dimensions.fontSizeLarge1),
+                                                                                  style: productController.selectedVariations[index][i]! ? robotoMedium : robotoMedium,
                                                                                 ),
                                                                               ),
                                                                               Flexible(

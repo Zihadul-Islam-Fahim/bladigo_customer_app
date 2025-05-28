@@ -44,24 +44,25 @@ class DiscountTagWidget extends StatelessWidget {
         ),
       ),
     ) : const SizedBox() : (discount! > 0 || freeDelivery!) ? Positioned(
-      bottom: 0, right: 0, left: 0,
+      bottom: 0,  left: 0,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(Dimensions.radiusSmall),
-            bottomRight: Radius.circular(Dimensions.radiusSmall),
-          ),
-          gradient: LinearGradient(colors: [
-            Theme.of(context).primaryColor,
-            Colors.black.withOpacity(0.0),
-          ], begin: Alignment.centerLeft, end: Alignment.centerRight),
+          borderRadius:  BorderRadius.circular(20),
+          border: Border.all(color: Colors.black),
+          color: Colors.white
+
+          // gradient: LinearGradient(colors: [
+          //   Theme.of(context).primaryColor,
+          //   Colors.black.withOpacity(0.0),
+          // ], begin: Alignment.centerLeft, end: Alignment.centerRight),
         ),
         child: Text(
           discount! > 0 ? '${(isRightSide || discountType == 'percent') ? '' : currencySymbol}$discount${discountType == 'percent' ? '%'
               : isRightSide ? currencySymbol : ''} ${'off'.tr}' : 'free_delivery'.tr,
           style: robotoMedium.copyWith(
-            color: Colors.white,
+            color: Colors.black,
             fontSize: fontSize ?? (ResponsiveHelper.isMobile(context) ? 14 : 16),
           ),
           textAlign: TextAlign.start,

@@ -18,7 +18,7 @@ class AppGradientBackground extends StatelessWidget {
       decoration: BoxDecoration(
 
 
-        image:  DecorationImage(image: Get.find<LocalizationController>().isLtr ? AssetImage("assets/image/new_header_bg.png",)
+        image:  DecorationImage(image: Get.find<LocalizationController>().isLtr ? AssetImage("assets/image/header_bg.jpeg",)
             : AssetImage("assets/image/image_header_flipped.jpg",),fit: BoxFit.cover),
         // gradient: RadialGradient(
         //   center: Alignment(-0.6, -0.3),

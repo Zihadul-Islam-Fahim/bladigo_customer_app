@@ -216,7 +216,7 @@ class ItemCardWidget extends StatelessWidget {
                                         },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Theme.of(context).cardColor,
+                                      color: Theme.of(context).primaryColor,
                                       shape: BoxShape.circle,
                                     ),
                                     padding: const EdgeInsets.all(
@@ -224,7 +224,7 @@ class ItemCardWidget extends StatelessWidget {
                                     child: Icon(
                                       Icons.add,
                                       size: 16,
-                                      color: Theme.of(context).primaryColor,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),
@@ -316,10 +316,10 @@ class ItemCardWidget extends StatelessWidget {
                                 width: 24,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Theme.of(context).cardColor,
+                                  color: Theme.of(context).primaryColor,
                                 ),
                                 child: Icon(Icons.add,
-                                    color: Theme.of(context).primaryColor,
+                                    color: Colors.white,
                                     size: 20),
                               ),
                             );
