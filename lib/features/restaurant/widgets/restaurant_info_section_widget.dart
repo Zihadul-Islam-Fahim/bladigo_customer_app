@@ -120,6 +120,8 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
               expandedTitleScale: isDesktop ? 1 : 1.1,
               title: CustomizableSpaceBarWidget(
                 builder: (context, scrollingRate) {
+                  print(scrollingRate);
+
                   return !isDesktop ? Container(
                     color: Theme.of(context).cardColor.withOpacity(scrollingRate),
                     padding: EdgeInsets.only(
@@ -136,12 +138,13 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                           borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
                           //boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1 - (0.1 * scrollingRate)), blurRadius: 10)]
                         ),
-                        margin: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
+                        margin: const EdgeInsets.symmetric(horizontal: 0, vertical: Dimensions.paddingSizeSmall),
                         padding: EdgeInsets.only(
                        ///   left: Get.find<LocalizationController>().isLtr ? 20 : 0,
                           right: Get.find<LocalizationController>().isLtr ? 0 : 20,
                           top: scrollingRate * (context.height * 0.035)
                         ),
+
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 0),
                           child: Stack(
@@ -149,7 +152,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                   children: [
                                     Positioned(
                                       top: 30,
-                                      left: 15,
+                                      left: 25,
                                       child: !isDesktop
                                           ? Container(
                                               decoration: BoxDecoration(
@@ -167,9 +170,9 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                     image:
                                                         '${restaurant.logoFullUrl}',
                                                     height: 80 -
-                                                        (scrollingRate * 15),
+                                                        (scrollingRate * 25),
                                                     width: 80 -
-                                                        (scrollingRate * 15),
+                                                        (scrollingRate * 25),
                                                     fit: BoxFit.cover,
                                                   ),
                                                   restController
@@ -221,8 +224,8 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                     ),
 
                                     Positioned(
-                                      top: 80,
-                                      left: 110,
+                                      top: scrollingRate == 0.0  ? 80 : 40,
+                                      left: 115,
                                       child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -232,9 +235,8 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                             Text(
                                               restaurant.name!,
                                               style: robotoMedium.copyWith(
-                                                  fontSize: Dimensions
-                                                          .fontSizeOverLarge -
-                                                      (scrollingRate * 30),
+                                                  fontSize: Dimensions.fontSizeOverLarge -
+                                                      (scrollingRate * 7),
                                                   fontWeight: FontWeight.bold,
                                                   color: Theme.of(context)
                                                       .textTheme
@@ -248,7 +250,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                     .paddingSizeExtraSmall),
                                       Row(children: [
                                             Text('start_from'.tr, style: robotoRegular.copyWith(
-                                              fontSize: Dimensions.fontSizeExtraSmall - (scrollingRate * 2), color: Theme.of(context).disabledColor,
+                                              fontSize: Dimensions.fontSizeExtraSmall , color: Theme.of(context).disabledColor,
                                             )),
                                             const SizedBox(width: Dimensions.paddingSizeExtraSmall),
                                             Text(
@@ -262,8 +264,9 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
 
                                     Positioned(
                                        top: 135,
+
                                         child: Container(
-                                        //  width: double.infinity * 0.9,
+                                        // width: double.infinity ,
                                           decoration: BoxDecoration(
                                             // color: Colors.grey,
                                             borderRadius: BorderRadius.circular(10),
@@ -271,7 +274,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                           ),
                                           //width: double.infinity,
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            mainAxisAlignment: MainAxisAlignment.end,
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Container(
@@ -292,6 +295,8 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                       //             (isDesktop
                                                       //                 ? 2
                                                       //                 : 20))),
+
+                                                      SizedBox(width: Get.width * 0.03,),
                                                       Image.asset("assets/image/restro_time.png",width: 25,),
                                                       const SizedBox(width: 4),
                                                       Text(restaurant.deliveryTime!,
@@ -310,7 +315,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                     ]),
                                               ),
 
-                                             SizedBox(width: 35,),
+                                            SizedBox(width: Get.width * 0.08,),
 
 
                                               InkWell(
@@ -369,7 +374,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                 ),
                                               ),
 
-                                              SizedBox(width: 35,),
+                                              SizedBox(width: Get.width * 0.08,),
 
                                               InkWell(
                                                 onTap: () => Get.toNamed(RouteHelper
