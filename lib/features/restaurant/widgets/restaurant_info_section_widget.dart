@@ -272,13 +272,13 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                             /// Delivery Time
                                             Expanded(
                                               child: Container(
-                                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                                                 decoration: BoxDecoration(
                                                  // color: Colors.red,
                                                   borderRadius: BorderRadius.circular(10),
                                                 ),
                                                 child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  mainAxisAlignment: MainAxisAlignment.start,
                                                   children: [
                                                     Image.asset("assets/image/restro_time.png", width: 20),
                                                     const SizedBox(width: 4),

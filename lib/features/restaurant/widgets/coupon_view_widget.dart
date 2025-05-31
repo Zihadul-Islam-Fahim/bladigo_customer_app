@@ -43,7 +43,7 @@ class CouponViewWidget extends StatelessWidget {
                       image: DecorationImage(image: AssetImage('assets/image/discount_bg.png'))
                       //color: Theme.of(context).primaryColor.withOpacity(0.07),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     margin: const EdgeInsets.only(right: Dimensions.paddingSizeDefault,left:Dimensions.paddingSizeDefault, ),
                     child: Row(children: [
                       Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -52,7 +52,7 @@ class CouponViewWidget extends StatelessWidget {
                           Flexible(
                             child: Text(
                               '"${couponController.couponList![index].title!}"', maxLines: 1,
-                              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1 - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeDefault)), overflow: TextOverflow.ellipsis, color: Theme.of(context).primaryColor,fontWeight: FontWeight.bold),
+                              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge - (scrollingRate * (isDesktop ? 2 : Dimensions.fontSizeDefault)), overflow: TextOverflow.ellipsis, color: Theme.of(context).primaryColor,fontWeight: FontWeight.bold),
                             ),
                           ),
 
