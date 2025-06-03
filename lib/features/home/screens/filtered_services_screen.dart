@@ -544,7 +544,7 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
 
 
             Positioned(
-              bottom: 20, left: 10, right: 0,
+              bottom: 20, left: 10,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -579,7 +579,7 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
                   borderRadius: BorderRadius.circular(48),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
-                child:                         Row(
+                child:Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(

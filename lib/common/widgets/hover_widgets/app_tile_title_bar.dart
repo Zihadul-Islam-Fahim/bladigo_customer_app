@@ -38,9 +38,9 @@ class AppTileTitleBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: 8,
+          Row(
+            // crossAxisAlignment: WrapCrossAlignment.center,
+            // spacing: 8,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -49,11 +49,17 @@ class AppTileTitleBar extends StatelessWidget {
                 width: 4.5,
                 height: 24,
               ),
-              Text(title,
-                  style: robotoBold.copyWith(
-                      fontSize: Get.width * 0.05,
-                      fontWeight: FontWeight.w600),
+              SizedBox(width: 5,),
+              SizedBox(
+                width: showSeeAll ? Get.width *0.72 : double.infinity,
+                child: Text(title,
+                    style: robotoBold.copyWith(
+                        fontSize: Get.width * 0.05,
+                        fontWeight: FontWeight.w600),
+                  maxLines: 2,
+                  overflow: TextOverflow.fade,
 
+                ),
               ),
             ],
           ),

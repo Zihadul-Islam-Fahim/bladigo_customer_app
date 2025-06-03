@@ -35,7 +35,7 @@ class ServicesSection extends StatelessWidget {
               childAspectRatio: 0.90,
               crossAxisSpacing: 2,
               mainAxisSpacing: 2),
-          padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault),
+          padding: const EdgeInsets.only(left: 0),
           itemCount: categoryController.categoryList != null
               ? categoryController.categoryList!.length > 8
                   ? 9

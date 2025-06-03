@@ -23,6 +23,7 @@ import '../../../helper/route_helper.dart';
 import '../../../util/app_constants.dart';
 import '../../address/domain/models/address_model.dart';
 import '../../favourite/controllers/favourite_controller.dart';
+import '../../splash/controllers/splash_controller.dart';
 
 class RestaurantInfoSectionWidget extends StatelessWidget {
   final Restaurant restaurant;
@@ -152,7 +153,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                   children: [
                                     Positioned(
                                       top:  scrollingRate == 0.0  ? 30 : 10 ,
-                                      left: 25,
+                                      left:  scrollingRate == 0.0 ? 25 : Get.find<LocalizationController>().isLtr ? 30 : 50,
                                       child: !isDesktop
                                           ? Container(
                                               decoration: BoxDecoration(
@@ -226,48 +227,52 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                     Positioned(
                                       top: scrollingRate == 0.0  ? 80 : 20,
                                       left: 115,
-                                      child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              restaurant.name!,
-                                              style: robotoMedium.copyWith(
-                                                  fontSize: Dimensions.fontSizeOverLarge -
-                                                      (scrollingRate * 7),
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium!
-                                                      .color),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            const SizedBox(
-                                                height: Dimensions
-                                                    .paddingSizeExtraSmall),
-                                      Row(children: [
-                                            Text('start_from'.tr, style: robotoRegular.copyWith(
-                                              fontSize: Dimensions.fontSizeExtraSmall , color: Theme.of(context).disabledColor,
-                                            )),
-                                            const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                                            Text(
-                                              PriceConverter.convertPrice(restaurant.minimumOrder), textDirection: TextDirection.ltr,
-                                              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraSmall - (scrollingRate * 2), color: Theme.of(context).primaryColor),
-                                            ),
-                                          ]),
+                                      child: SizedBox(
+                                        width: Get.width * 0.57,
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                restaurant.name!,
+                                                style: robotoMedium.copyWith(
+                                                    fontSize: Dimensions.fontSizeOverLarge -
+                                                        (scrollingRate * 7),
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium!
+                                                        .color),
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              const SizedBox(
+                                                  height: Dimensions
+                                                      .paddingSizeExtraSmall),
+                                        Row(children: [
+                                              Text('start_from'.tr, style: robotoRegular.copyWith(
+                                                fontSize: Dimensions.fontSizeExtraSmall , color: Theme.of(context).disabledColor,
+                                              )),
+                                              const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                                              Text(
+                                                PriceConverter.convertPrice(restaurant.minimumOrder), textDirection: TextDirection.ltr,
+                                                style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraSmall - (scrollingRate * 2), color: Theme.of(context).primaryColor),
+                                              ),
+                                            ]),
 
-                                          ]),
+                                            ]),
+                                      ),
                                     ),
 
                                     Positioned(
                                       top: 135,
                                       child: Container(
                                         width: Get.width, // full width
-                                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                                        padding: const EdgeInsets.symmetric(horizontal: 20),
                                         child: Row(
+
                                           children: [
                                             /// Delivery Time
                                             Expanded(
@@ -388,7 +393,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            const SizedBox(width: 8),
+                                             SizedBox(width: Get.find<LocalizationController>().isLtr ?  8 : 42),
                                           ],
                                         ),
                                       ),
