@@ -234,7 +234,7 @@ class SearchScreenState extends State<SearchScreen> {
                             decoration: BoxDecoration(
                               color: Theme.of(context).cardColor,
                               borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
-                              border: Border.all(color: Theme.of(context).disabledColor.withOpacity(0.6)),
+                              border: Border.all(color: Theme.of(context).primaryColor),
                             ),
                             child: Text(
                               product.name!,
