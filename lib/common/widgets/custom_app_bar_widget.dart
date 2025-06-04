@@ -48,7 +48,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
       backgroundColor: bgColor ?? Theme.of(context).cardColor,
       surfaceTintColor: Theme.of(context).cardColor,
       shadowColor: Theme.of(context).disabledColor.withOpacity(0.5),
-      elevation: 2,
+      elevation: 0,
       actions: showCart || onVegFilterTap != null ? [
         showCart ? IconButton(
           onPressed: () => Get.toNamed(RouteHelper.getCartRoute()),

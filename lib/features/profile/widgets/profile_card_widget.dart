@@ -11,7 +11,8 @@ class ProfileCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 112,
+      height: 118,
+      padding: EdgeInsets.all(6),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
         color: Theme.of(context).cardColor,
@@ -27,7 +28,10 @@ class ProfileCardWidget extends StatelessWidget {
         const SizedBox(height: Dimensions.paddingSizeExtraSmall),
         Text(title, style: robotoRegular.copyWith(
           fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor,
-        )),
+        ),
+         textAlign: TextAlign.center,
+
+        ),
       ]),
     );
   }

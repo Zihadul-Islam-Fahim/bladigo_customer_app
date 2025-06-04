@@ -52,13 +52,13 @@ class _MenuScreenState extends State<MenuScreen> {
 
         return Column(children: [
           Container(
-            decoration: BoxDecoration(color: Theme.of(context).primaryColor.withOpacity(0.2),),
+            decoration: BoxDecoration(color: Theme.of(context).cardColor),
             child: Padding(
               padding: const EdgeInsets.only(
                 left: Dimensions.paddingSizeOverLarge,
                 right: Dimensions.paddingSizeOverLarge,
-                top: 50,
-                bottom: Dimensions.paddingSizeOverLarge,
+                top: 60,
+                bottom: Dimensions.paddingSizeSmall,
               ),
               child: Row(children: [
                 Container(
