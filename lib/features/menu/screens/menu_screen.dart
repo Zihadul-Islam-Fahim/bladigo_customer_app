@@ -236,15 +236,15 @@ class _MenuScreenState extends State<MenuScreen> {
                           title: 'language'.tr,
                           onTap: () => _manageLanguageFunctionality(),
                           route: ''),
-                      ProfileButtonWidget(
-                        icon: Icons.tonality_outlined,
-                        title: 'dark_mode'.tr,
-                        isButtonActive: Get.isDarkMode,
-                        isThemeSwitchButton: true,
-                        onTap: () {
-                          Get.find<ThemeController>().toggleTheme();
-                        },
-                      ),
+                      // ProfileButtonWidget(
+                      //   icon: Icons.tonality_outlined,
+                      //   title: 'dark_mode'.tr,
+                      //   isButtonActive: Get.isDarkMode,
+                      //   isThemeSwitchButton: true,
+                      //   onTap: () {
+                      //     Get.find<ThemeController>().toggleTheme();
+                      //   },
+                      // ),
                     ]),
                   ),
                 ]),
