@@ -35,13 +35,13 @@ class CouponSection extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 10,
-                  offset: const Offset(0, 1))
-            ],
+            // boxShadow: [
+            //   BoxShadow(
+            //       color: Colors.grey.withOpacity(0.1),
+            //       spreadRadius: 1,
+            //       blurRadius: 10,
+            //       offset: const Offset(0, 1))
+            // ],
           ),
           padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
           margin: EdgeInsets.symmetric(
@@ -57,7 +57,7 @@ class CouponSection extends StatelessWidget {
                       const SizedBox(width: Dimensions.paddingSizeSmall),
                       Text('add_coupon'.tr,
                           style: robotoRegular.copyWith(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
+                              fontSize: 20, fontWeight: FontWeight.bold)),
                     ]),
                   ),
                   InkWell(

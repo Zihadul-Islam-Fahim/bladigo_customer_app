@@ -317,9 +317,11 @@ class _CartScreenState extends State<CartScreen> {
                                                                                 const SizedBox(height: Dimensions.paddingSizeSmall),
 
                                                                                 ConstrainedBox(
+
                                                                                   constraints: BoxConstraints(maxHeight: isDesktop ? MediaQuery.of(context).size.height * 0.4 : double.infinity),
-                                                                                  child: Card(
-                                                                                    color: Theme.of(context).scaffoldBackgroundColor,
+                                                                                  child: Container(
+
+                                                                                   // color: Theme.of(context).scaffoldBackgroundColor,
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -331,17 +333,17 @@ class _CartScreenState extends State<CartScreen> {
                                                                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                             children: [
                                                                                               Text(
-                                                                                                "Your Order",
+                                                                                                "Your Orders",
                                                                                                 style: robotoMedium.copyWith(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w500),
                                                                                               ),
                                                                                               TextButton(onPressed: () {}, child: Text("Clear Cart", style: robotoMedium.copyWith(color: Theme.of(context).primaryColor, fontSize: 13, fontWeight: FontWeight.w600)))
                                                                                             ],
                                                                                           ),
                                                                                         ),
-                                                                                        Divider(
-                                                                                          height: 0,
-                                                                                          color: Colors.grey.withOpacity(.2),
-                                                                                        ),
+                                                                                        // Divider(
+                                                                                        //   height: 0,
+                                                                                        //   color: Colors.grey.withOpacity(.2),
+                                                                                        // ),
                                                                                         SizedBox(height: 12),
                                                                                         ListView.separated(
                                                                                           physics: isDesktop ? const AlwaysScrollableScrollPhysics() : const NeverScrollableScrollPhysics(),
@@ -366,10 +368,10 @@ class _CartScreenState extends State<CartScreen> {
                                                                                             );
                                                                                           },
                                                                                         ),
-                                                                                        Divider(
-                                                                                          height: 8,
-                                                                                          color: Colors.grey.withOpacity(.2),
-                                                                                        ),
+                                                                                        // Divider(
+                                                                                        //   height: 8,
+                                                                                        //   color: Colors.grey.withOpacity(.2),
+                                                                                        // ),
 
                                                                                         Container(
                                                                                           alignment: Alignment.centerLeft,

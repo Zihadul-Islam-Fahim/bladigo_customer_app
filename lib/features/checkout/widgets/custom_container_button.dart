@@ -32,13 +32,13 @@ class CustomContainerCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: boxColor,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 8,
-              offset: const Offset(2, 4),
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.black.withOpacity(0.1),
+          //     blurRadius: 8,
+          //     offset: const Offset(2, 4),
+          //   ),
+          // ],
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),

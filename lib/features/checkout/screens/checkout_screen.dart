@@ -620,13 +620,13 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                                 : Container(
                                     decoration: BoxDecoration(
                                       color: Theme.of(context).cardColor,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Theme.of(context)
-                                                .primaryColor
-                                                .withOpacity(0.1),
-                                            blurRadius: 10)
-                                      ],
+                                      // boxShadow: [
+                                      //   BoxShadow(
+                                      //       color: Theme.of(context)
+                                      //           .primaryColor
+                                      //           .withOpacity(0.1),
+                                      //       blurRadius: 10)
+                                      // ],
                                     ),
                                     child: Column(
                                       children: [

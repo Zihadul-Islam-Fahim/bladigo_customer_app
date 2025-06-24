@@ -142,13 +142,13 @@ class TopSectionWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                        offset: const Offset(0, 1))
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //       color: Colors.grey.withOpacity(0.1),
+                  //       spreadRadius: 1,
+                  //       blurRadius: 10,
+                  //       offset: const Offset(0, 1))
+                  // ],
                 ),
                 margin: EdgeInsets.symmetric(
                     horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
@@ -234,13 +234,13 @@ class TopSectionWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                        offset: const Offset(0, 1))
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //       color: Colors.grey.withOpacity(0.1),
+                  //       spreadRadius: 1,
+                  //       blurRadius: 10,
+                  //       offset: const Offset(0, 1))
+                  // ],
                 ),
                 margin: EdgeInsets.symmetric(
                     horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
@@ -252,7 +252,7 @@ class TopSectionWidget extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('delivery_option'.tr, style: robotoMedium),
+                      Text('delivery_option'.tr, style: robotoMedium.copyWith(fontSize: 20)),
                       const SizedBox(height: Dimensions.paddingSizeDefault),
                       SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
@@ -387,7 +387,7 @@ class TopSectionWidget extends StatelessWidget {
         isDesktop
             ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 const SizedBox(height: Dimensions.paddingSizeLarge),
-                Text('additional_note'.tr, style: robotoMedium),
+                Text('additional_note'.tr, style: robotoMedium.copyWith(fontSize: 17)),
                 const SizedBox(height: Dimensions.paddingSizeSmall),
                 CustomTextFieldWidget(
                   controller: checkoutController.noteController,

@@ -41,7 +41,7 @@ class TipsWidget extends StatelessWidget {
               color: isSelected
                   ? Theme.of(context).primaryColor
                   : Theme.of(context).cardColor,
-              borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+              borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
               border: Border.all(color: Theme.of(context).disabledColor),
             ),
             child:

@@ -48,19 +48,19 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                 padding: EdgeInsets.symmetric(
                     horizontal: Dimensions.paddingSizeSmall),
                 child: Card(
-                  elevation: 2,
+                  elevation: 0,
                   child: Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
                       borderRadius:
                           BorderRadius.circular(Dimensions.radiusDefault),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                            offset: const Offset(0, 1))
-                      ],
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //       color: Colors.grey.withOpacity(0.1),
+                      //       spreadRadius: 1,
+                      //       blurRadius: 10,
+                      //       offset: const Offset(0, 1))
+                      // ],
                     ),
                     margin: EdgeInsets.symmetric(
                         horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
@@ -72,7 +72,7 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                         children: [
                           Row(children: [
                             Text('Tip Delivery Partner'.tr,
-                                style: robotoMedium),
+                                style: robotoMedium.copyWith(fontSize: 17)),
                             JustTheTooltip(
                               backgroundColor: Colors.black87,
                               controller: widget.tooltipController3,

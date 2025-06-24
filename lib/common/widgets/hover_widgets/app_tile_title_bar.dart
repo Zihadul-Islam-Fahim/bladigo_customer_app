@@ -132,16 +132,20 @@ class AppTileTitleBar2 extends StatelessWidget {
             spacing: 8,
             children: [
               Container(
+
                 decoration: BoxDecoration(
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(8)),
                 width: 4.5,
                 height: 24,
               ),
-              Text(title,
-                  style: robotoBold.copyWith(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w600)),
+              SizedBox(
+                width: Get.width* 0.7,
+                child: Text(title,
+                    style: robotoBold.copyWith(
+                        fontSize: 23,
+                        fontWeight: FontWeight.w600)),
+              ),
             ],
           ),
 

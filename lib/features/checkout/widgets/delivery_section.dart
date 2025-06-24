@@ -85,7 +85,7 @@ class _DeliverySectionState extends State<DeliverySection> {
                   padding: EdgeInsets.symmetric(
                       horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
                   child: Card(
-                    elevation: 2,
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: Container(
@@ -116,7 +116,7 @@ class _DeliverySectionState extends State<DeliverySection> {
                                   Text('Delivery Location'.tr,
                                       style: robotoMedium.copyWith(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 16,
+                                        fontSize: 20,
                                       )),
                                   CustomInkWellWidget(
                                     onTap: () async {
