@@ -233,7 +233,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
           builder: (controller) {
             return Positioned(
                     bottom: 8,
-                    left: controller.isLtr ? 12 : 280,
+                    left: controller.isLtr ? 12 : 250,
 
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -276,7 +276,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                          crossAxisAlignment: CrossAxisAlignment.start,
                          children: [
                            Text(
-                             'Hey there !',
+                             'hey_there'.tr,
                              style: GoogleFonts.montserratAlternates(
                                color: Colors.white,
                                fontSize: 18,
@@ -284,7 +284,15 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                              ),
                            ),
                            Text(
-                             'Login or create an account\nfor a faster experience ',
+                             'Login_or_create'.tr,
+                             style: GoogleFonts.poppins(
+                               color: Colors.white,
+                               fontSize: 11,
+                               fontWeight: FontWeight.w400,
+                             ),
+                           ),
+                           Text(
+                             'for_a_faster'.tr,
                              style: GoogleFonts.poppins(
                                color: Colors.white,
                                fontSize: 11,

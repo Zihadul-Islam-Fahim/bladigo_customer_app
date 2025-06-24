@@ -1198,7 +1198,13 @@
   "Profile" : "Profil",
 
   "enter_your_mobile": "Entrez votre numéro de téléphone portable",
-  "we_will_send_whatsapp": "Nous enverrons un code de vérification à ce numéro via WhatsApp"
+  "we_will_send_whatsapp": "Nous enverrons un code de vérification à ce numéro via WhatsApp",
+
+  "hey_there": "Salut !",
+  "Login_or_create": "Connectez-vous ou créez un compte",
+  "for_a_faster": "pour une expérience plus rapide"
+
+
 
 
 }

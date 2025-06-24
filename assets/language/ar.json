@@ -1202,6 +1202,10 @@
 
  "Fresh": "طازج",
  "Delicious": "لذيذ",
- "Quick": "سريع"
+ "Quick": "سريع",
+
+ "hey_there": "مرحبًا!",
+ "Login_or_create": "سجّل الدخول أو أنشئ حسابًا",
+ "for_a_faster": "لتجربة أسرع"
 
 }

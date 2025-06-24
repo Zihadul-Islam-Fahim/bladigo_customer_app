@@ -1200,5 +1200,12 @@
   "Profile" : "Perfil",
 
   "enter_your_mobile": "Ingresa tu número de teléfono móvil",
-  "we_will_send_whatsapp": "Enviaremos un código de verificación a este número por WhatsApp"
+  "we_will_send_whatsapp": "Enviaremos un código de verificación a este número por WhatsApp",
+
+
+  "hey_there": "¡Hola!",
+  "Login_or_create": "Inicia sesión o crea una cuenta",
+  "for_a_faster": "para una experiencia más rápida"
+
+
 }

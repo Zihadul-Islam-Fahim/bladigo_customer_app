@@ -1198,7 +1198,11 @@
   "Profile":"Profile",
 
   "enter_your_mobile": "Enter your mobile number",
-  "we_will_send_whatsapp": "We will send a verification code to this number in whatsapp"
+  "we_will_send_whatsapp": "We will send a verification code to this number in whatsapp",
+
+  "hey_there": "Hey there !",
+  "Login_or_create": "Login or create an account",
+  "for_a_faster" : "for a faster experience"
 
 
 }
