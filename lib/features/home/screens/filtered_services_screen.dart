@@ -325,20 +325,20 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: Dimensions.paddingSizeSmall),
                 decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.18),
+                    color: Colors.grey.withOpacity(0.08),
                     borderRadius: BorderRadius.circular(25),
-                    border: Border.all(color: Theme.of(context).primaryColor)
+                    // border: Border.all(color: Theme.of(context).primaryColor)
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      left: 2, right: 2, top: 16, bottom: 16),
+                      left: 10, right: 2, top: 16, bottom: 16),
                   child: Row(children: [
                     Image.asset(Images.searchIconNew, width: 16, height: 16),
                     const SizedBox(width: Dimensions.paddingSizeExtraSmall),
                     Expanded(
                       child: Text("What_you_like_to".tr,
                         style: robotoRegular.copyWith(
-                            fontSize: Dimensions.fontSizeSmall,
+                            fontSize: Dimensions.fontSizeDefault,
                             color: Colors.grey,
                             fontWeight: FontWeight.bold
                         ),

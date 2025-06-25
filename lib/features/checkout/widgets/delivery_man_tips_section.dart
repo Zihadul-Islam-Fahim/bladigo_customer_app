@@ -432,11 +432,11 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                 ),
               )
             : const SizedBox.shrink(),
-        SizedBox(
-            height: (!widget.takeAway &&
-                    Get.find<SplashController>().configModel!.dmTipsStatus == 1)
-                ? Dimensions.paddingSizeSmall
-                : 0),
+        // SizedBox(
+        //     height: (!widget.takeAway &&
+        //             Get.find<SplashController>().configModel!.dmTipsStatus == 1)
+        //         ? Dimensions.paddingSizeSmall
+        //         : 0),
       ],
     );
   }

@@ -569,11 +569,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Container(
                 transform: Matrix4.translationValues(0, -3, 0),
                 padding: const EdgeInsets.symmetric(
-                    horizontal: Dimensions.paddingSizeSmall),
+                    horizontal: Dimensions.paddingSizeDefault),
                 decoration: BoxDecoration(
                   color: Colors.grey.withOpacity(0.18),
                   borderRadius: BorderRadius.circular(25),
-                  border: Border.all(color: Theme.of(context).primaryColor)
+                //  border: Border.all(color: Theme.of(context).primaryColor,)
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(

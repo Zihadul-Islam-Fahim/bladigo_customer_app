@@ -252,7 +252,7 @@ class TopSectionWidget extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('delivery_option'.tr, style: robotoMedium.copyWith(fontSize: 20)),
+                      Text('delivery_option'.tr, style: robotoMedium.copyWith(fontSize: 20,fontWeight: FontWeight.bold)),
                       const SizedBox(height: Dimensions.paddingSizeDefault),
                       SingleChildScrollView(
                           scrollDirection: Axis.horizontal,

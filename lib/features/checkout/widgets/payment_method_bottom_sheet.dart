@@ -77,30 +77,30 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                   color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.vertical(top: const Radius.circular(Dimensions.radiusLarge), bottom: Radius.circular(ResponsiveHelper.isDesktop(context) ? Dimensions.radiusLarge : 0)),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeLarge),
+                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeSmall),
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
 
-                  ResponsiveHelper.isDesktop(context) ? Align(
-                    alignment: Alignment.topRight,
-                    child: InkWell(
-                      onTap: () => Get.back(),
-                      child: Container(
-                        height: 30, width: 30,
-                        margin: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall),
-                        decoration: BoxDecoration(color: Theme.of(context).cardColor, borderRadius: BorderRadius.circular(50)),
-                        child: const Icon(Icons.clear),
-                      ),
-                    ),
-                  ) : Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      height: 4, width: 35,
-                      margin: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall),
-                      decoration: BoxDecoration(color: Theme.of(context).disabledColor, borderRadius: BorderRadius.circular(10)),
-                    ),
-                  ),
+                  // ResponsiveHelper.isDesktop(context) ? Align(
+                  //   alignment: Alignment.topRight,
+                  //   child: InkWell(
+                  //     onTap: () => Get.back(),
+                  //     child: Container(
+                  //       height: 30, width: 30,
+                  //       margin: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall),
+                  //       decoration: BoxDecoration(color: Theme.of(context).cardColor, borderRadius: BorderRadius.circular(50)),
+                  //       child: const Icon(Icons.clear),
+                  //     ),
+                  //   ),
+                  // ) : Align(
+                  //   alignment: Alignment.center,
+                  //   child: Container(
+                  //     height: 4, width: 35,
+                  //     margin: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall),
+                  //     decoration: BoxDecoration(color: Theme.of(context).disabledColor, borderRadius: BorderRadius.circular(10)),
+                  //   ),
+                  // ),
 
-                  const SizedBox(height: Dimensions.paddingSizeLarge),
+                  // const SizedBox(height: Dimensions.paddingSizeLarge),
 
                   Flexible(
                     child: SingleChildScrollView(
@@ -108,33 +108,37 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
 
-                          Align(alignment: Alignment.center, child: Text('payment_method'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge))),
-                          const SizedBox(height: Dimensions.paddingSizeLarge),
+                          // Align(alignment: Alignment.center, child: Text('payment_method'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge))),
+                          // const SizedBox(height: Dimensions.paddingSizeLarge),
 
-                          !widget.isSubscriptionPackage && notHideCod ? Text('choose_payment_method'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault)) : const SizedBox(),
-                          SizedBox(height: !widget.isSubscriptionPackage && notHideCod ? Dimensions.paddingSizeExtraSmall : 0),
+                          // !widget.isSubscriptionPackage && notHideCod ? Text('choose_payment_method'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault)) : const SizedBox(),
+                          // SizedBox(height: !widget.isSubscriptionPackage && notHideCod ? Dimensions.paddingSizeExtraSmall : 0),
+                          //
+                          // !widget.isSubscriptionPackage && notHideCod ? Text(
+                          //   'click_one_of_the_option_below'.tr,
+                          //   style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+                          // ) : const SizedBox(),
+                          // SizedBox(height: !widget.isSubscriptionPackage && notHideCod ? Dimensions.paddingSizeLarge : 0),
 
-                          !widget.isSubscriptionPackage && notHideCod ? Text(
-                            'click_one_of_the_option_below'.tr,
-                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
-                          ) : const SizedBox(),
-                          SizedBox(height: !widget.isSubscriptionPackage && notHideCod ? Dimensions.paddingSizeLarge : 0),
+                          !widget.isSubscriptionPackage ? Column(
+                            children: [
+                              Row(children: [
+                                widget.isCashOnDeliveryActive && notHideCod ? Expanded(
+                                  child: PaymentButtonNew(
+                                    icon: Images.codIcon,
+                                    title: 'cash_on_delivery'.tr,
+                                    isSelected: checkoutController.paymentMethodIndex == 0,
+                                    onTap: () {
+                                      checkoutController.setPaymentMethod(0);
+                                    },
+                                  ),
+                                ) : const SizedBox(),
+                                // SizedBox(width: widget.isWalletActive && notHideWallet && !checkoutController.subscriptionOrder && isLoggedIn ? Dimensions.paddingSizeLarge : 0),
 
-                          !widget.isSubscriptionPackage ? Row(children: [
-                            widget.isCashOnDeliveryActive && notHideCod ? Expanded(
-                              child: PaymentButtonNew(
-                                icon: Images.codIcon,
-                                title: 'cash_on_delivery'.tr,
-                                isSelected: checkoutController.paymentMethodIndex == 0,
-                                onTap: () {
-                                  checkoutController.setPaymentMethod(0);
-                                },
-                              ),
-                            ) : const SizedBox(),
-                            SizedBox(width: widget.isWalletActive && notHideWallet && !checkoutController.subscriptionOrder && isLoggedIn ? Dimensions.paddingSizeLarge : 0),
 
-                            widget.isWalletActive && notHideWallet && !checkoutController.subscriptionOrder && isLoggedIn ? Expanded(
-                              child: PaymentButtonNew(
+
+                              ]),
+                              widget.isWalletActive && notHideWallet && !checkoutController.subscriptionOrder && isLoggedIn ? PaymentButtonNew(
                                 icon: Images.partialWallet,
                                 title: 'pay_via_wallet'.tr,
                                 isSelected: checkoutController.paymentMethodIndex == 1,
@@ -149,20 +153,19 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                                     Get.back();
                                   }
                                 },
-                              ),
-                            ) : const SizedBox(),
+                              ) : const SizedBox(),
+                            ],
+                          ) : const SizedBox(),
+                          // const SizedBox(height: Dimensions.paddingSizeLarge),
 
-                          ]) : const SizedBox(),
-                          const SizedBox(height: Dimensions.paddingSizeLarge),
-
-                          widget.isDigitalPaymentActive && notHideDigital && !checkoutController.subscriptionOrder ? Row(children: [
-                            Text('pay_via_online'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault)),
-                            Text(
-                              'faster_and_secure_way_to_pay_bill'.tr,
-                              style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
-                            ),
-                          ]) : const SizedBox(),
-                          SizedBox(height: widget.isDigitalPaymentActive && notHideDigital ? Dimensions.paddingSizeLarge : 0),
+                          // widget.isDigitalPaymentActive && notHideDigital && !checkoutController.subscriptionOrder ? Row(children: [
+                          //   Text('pay_via_online'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault)),
+                          //   Text(
+                          //     'faster_and_secure_way_to_pay_bill'.tr,
+                          //     style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+                          //   ),
+                          // ]) : const SizedBox(),
+                          // SizedBox(height: widget.isDigitalPaymentActive && notHideDigital ? Dimensions.paddingSizeLarge : 0),
 
                           widget.isDigitalPaymentActive && notHideDigital && !checkoutController.subscriptionOrder ? ListView.builder(
                               itemCount: Get.find<SplashController>().configModel!.activePaymentMethodList!.length,
@@ -193,18 +196,11 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                                         borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
                                         border: Border.all(color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor, width: 0.3),
                                     ),
-                                    padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeLarge),
+                                    padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeDefault),
                                     margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
                                     child: Row(children: [
-                                      Container(
-                                        height: 20, width: 20,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle, color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
-                                            border: Border.all(color: Theme.of(context).disabledColor)
-                                        ),
-                                        child: Icon(Icons.check, color: Theme.of(context).cardColor, size: 16),
-                                      ),
-                                      const SizedBox(width: Dimensions.paddingSizeDefault),
+
+                                      const SizedBox(width: Dimensions.paddingSizeSmall),
 
                                       CustomImageWidget(
                                         height: 20, fit: BoxFit.contain,
@@ -215,6 +211,15 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                                       Text(
                                         Get.find<SplashController>().configModel!.activePaymentMethodList![index].getWayTitle!,
                                         style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault),
+                                      ),
+                                      Spacer(),
+                                      Container(
+                                        height: 20, width: 20,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle, color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
+                                            border: Border.all(color: Theme.of(context).disabledColor)
+                                        ),
+                                        child: Icon(Icons.check, color: Theme.of(context).cardColor, size: 16),
                                       ),
                                     ]),
                                   ),
@@ -234,15 +239,15 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                     ),
                   ),
 
-                  SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
-                      child: CustomButtonWidget(
-                        buttonText: 'select'.tr,
-                        onPressed: () => Get.back(),
-                      ),
-                    ),
-                  ),
+                  // SafeArea(
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
+                  //     child: CustomButtonWidget(
+                  //       buttonText: 'select'.tr,
+                  //       onPressed: () => Get.back(),
+                  //     ),
+                  //   ),
+                  // ),
                 ]),
               );
             }

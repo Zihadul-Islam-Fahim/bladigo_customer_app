@@ -17,10 +17,10 @@ class PaymentButtonNew extends StatelessWidget {
         onTap: onTap as void Function()?,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+            borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
             border: Border.all(color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor.withOpacity(0.5)),
           ),
-          padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+          padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
           child: Row(children: [
             Image.asset(icon, width: 20, height: 20),
             const SizedBox(width: Dimensions.paddingSizeSmall),
@@ -28,7 +28,7 @@ class PaymentButtonNew extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
+                style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault),
               ),
             ),
 

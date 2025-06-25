@@ -167,10 +167,11 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                                 .disabledColor),
                                         border: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
-                                            borderSide : BorderSide(color: Theme.of(context).primaryColor)),
+                                            borderSide : BorderSide(color: Colors.transparent),
+                                        ),
                                         enabledBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
-                                            borderSide : BorderSide(color: Theme.of(context).primaryColor)),
+                                            borderSide : BorderSide(color: Colors.transparent)),
 
                                        filled: true,
                                         fillColor: Colors.grey.withOpacity(0.08),

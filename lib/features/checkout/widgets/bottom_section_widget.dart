@@ -72,11 +72,15 @@ class BottomSectionWidget extends StatelessWidget {
     bool isGuestLoggedIn = Get.find<AuthController>().isGuestLoggedIn();
     return Container(
       decoration: isDesktop ? BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
         // boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 10, offset: const Offset(0, 1))],
 
-      ) : null,
+      ) : BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+
+      ),
       padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
@@ -116,13 +120,13 @@ class BottomSectionWidget extends StatelessWidget {
               inputAction: TextInputAction.done,
               capitalization: TextCapitalization.sentences,
             ),
-            const SizedBox(height: Dimensions.paddingSizeLarge),
+            // const SizedBox(height: Dimensions.paddingSizeLarge),
 
 
             pricingView(context, isDesktop),
-            const SizedBox(height: Dimensions.paddingSizeLarge),
+            // const SizedBox(height: Dimensions.paddingSizeLarge),
 
-            const CheckoutCondition(),
+            // const CheckoutCondition(),
           ]),
         ) : const SizedBox(),
 
@@ -132,7 +136,7 @@ class BottomSectionWidget extends StatelessWidget {
         ) : const SizedBox(),
 
         isDesktop ? Padding(
-          padding: const EdgeInsets.only(top: Dimensions.paddingSizeLarge),
+          padding: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
           child: Column(
             children: [
 
@@ -186,7 +190,7 @@ class BottomSectionWidget extends StatelessWidget {
           trailing: Icon(checkoutController.isExpanded ? Icons.arrow_drop_up_rounded : Icons.arrow_drop_down_rounded, size: 34, color: Theme.of(context).textTheme.bodyLarge!.color),
           tilePadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
           onExpansionChanged: (value) => checkoutController.expandedUpdate(value),
-          initiallyExpanded: !isDesktop ? false : true,
+          initiallyExpanded: !isDesktop ? true : true,
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 

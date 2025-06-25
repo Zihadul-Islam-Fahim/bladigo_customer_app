@@ -69,8 +69,8 @@ class OrderPlaceButton extends StatelessWidget {
       padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
       child: SafeArea(
         child: CustomButtonWidget(
-            buttonText: 'place_order'.tr,
-            radius: Dimensions.radiusDefault,
+            buttonText: 'place_order'.tr + "                             "+ total.toString()+ " MAD",
+            radius: Dimensions.radiusXExtraLarge,
             isLoading: checkoutController.isLoading,
             onPressed: checkoutController.isDistanceLoading ? null : () {
           DateTime scheduleStartDate = _processScheduleStartDate();
