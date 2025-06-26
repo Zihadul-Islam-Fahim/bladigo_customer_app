@@ -111,11 +111,11 @@ class CheckoutButtonWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('subtotal'.tr,
-                            style: robotoMedium.copyWith(
+                            style: robotoMedium.copyWith(fontSize: 18,
                                 color: Theme.of(context).primaryColor)),
                         PriceConverter.convertAnimationPrice(
                             cartController.subTotal,
-                            textStyle: robotoRegular.copyWith(
+                            textStyle: robotoRegular.copyWith(fontSize: 18,
                                 color: Theme.of(context).primaryColor)),
                       ],
                     ),
@@ -124,8 +124,9 @@ class CheckoutButtonWidget extends StatelessWidget {
 
             GetBuilder<CartController>(builder: (cartController) {
               return CustomButtonWidget(
-                radius: 10,
+                radius: 40,
                 buttonText: 'confirm_delivery_details'.tr,
+
                 onPressed: cartController.isLoading ||
                         restaurantController.restaurant == null
                     ? null

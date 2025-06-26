@@ -120,11 +120,11 @@ class OnBoardingScreen extends StatelessWidget {
                   child: InkWell(
                     splashColor: Colors.transparent,
                     onTap: () {
-                      if(onBoardingController.selectedIndex != 2) {
-                        _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.ease);
-                      }else {
+                      // if(onBoardingController.selectedIndex != 0) {
+                      //   _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.ease);
+                      // }else {
                         _configureToRouteInitialPage();
-                      }
+                      // }
                     },
                     child: Container(
                       decoration: BoxDecoration(

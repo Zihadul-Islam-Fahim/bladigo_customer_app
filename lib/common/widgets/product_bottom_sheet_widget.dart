@@ -1214,7 +1214,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                 child: GetBuilder<CartController>(
                                     builder: (cartController) {
                                   return CustomButtonWidget(
-                                    radius: Dimensions.radiusDefault,
+                                    radius: 40,
                                     width: ResponsiveHelper.isDesktop(context)
                                         ? MediaQuery.of(context).size.width /
                                             2.0
@@ -1258,6 +1258,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                               ),
                             ],
                           ),
+                          SizedBox(height: 10,)
                         ],
                       ),
                     ),
