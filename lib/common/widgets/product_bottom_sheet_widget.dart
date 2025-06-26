@@ -1134,130 +1134,131 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                           vertical: Dimensions.paddingSizeDefault
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           // if (GetPlatform.isAndroid)
                           //   const SizedBox(height: 350),
+                          // Row(
+                          //     mainAxisAlignment:
+                          //         MainAxisAlignment.spaceBetween,
+                          //     children: [
+                          //       Text('${'total_amount'.tr}:',
+                          //           style: robotoMedium.copyWith(
+                          //               fontSize: Dimensions.fontSizeLarge,
+                          //               color:
+                          //                   Theme.of(context).primaryColor)),
+                          //       const SizedBox(
+                          //           width: Dimensions.paddingSizeExtraSmall),
+                          //       Row(children: [
+                          //         (priceWithAddonsVariation >
+                          //                 priceWithAddonsVariationWithDiscount)
+                          //             ? PriceConverter.convertAnimationPrice(
+                          //                 priceWithAddonsVariation,
+                          //                 textStyle: robotoMedium.copyWith(
+                          //                     color: Theme.of(context)
+                          //                         .disabledColor,
+                          //                     fontSize:
+                          //                         Dimensions.fontSizeSmall,
+                          //                     decoration:
+                          //                         TextDecoration.lineThrough),
+                          //               )
+                          //             : const SizedBox(),
+                          //         const SizedBox(
+                          //             width:
+                          //                 Dimensions.paddingSizeExtraSmall),
+                          //         PriceConverter.convertAnimationPrice(
+                          //           priceWithAddonsVariationWithDiscount,
+                          //           textStyle: robotoBold.copyWith(
+                          //             fontSize: 18,
+                          //               color:
+                          //                   Theme.of(context).primaryColor),
+                          //         ),
+                          //       ]),
+                          //     ]),
+                          // const SizedBox(height: Dimensions.paddingSizeSmall),
                           Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+
+                              mainAxisAlignment: MainAxisAlignment.center,
+
                               children: [
-                                Text('${'total_amount'.tr}:',
-                                    style: robotoMedium.copyWith(
-                                        fontSize: Dimensions.fontSizeLarge,
-                                        color:
-                                            Theme.of(context).primaryColor)),
-                                const SizedBox(
-                                    width: Dimensions.paddingSizeExtraSmall),
-                                Row(children: [
-                                  (priceWithAddonsVariation >
-                                          priceWithAddonsVariationWithDiscount)
-                                      ? PriceConverter.convertAnimationPrice(
-                                          priceWithAddonsVariation,
-                                          textStyle: robotoMedium.copyWith(
-                                              color: Theme.of(context)
-                                                  .disabledColor,
-                                              fontSize:
-                                                  Dimensions.fontSizeSmall,
-                                              decoration:
-                                                  TextDecoration.lineThrough),
-                                        )
-                                      : const SizedBox(),
-                                  const SizedBox(
-                                      width:
-                                          Dimensions.paddingSizeExtraSmall),
-                                  PriceConverter.convertAnimationPrice(
-                                    priceWithAddonsVariationWithDiscount,
-                                    textStyle: robotoBold.copyWith(
-                                      fontSize: 18,
-                                        color:
-                                            Theme.of(context).primaryColor),
-                                  ),
-                                ]),
-                              ]),
-                          const SizedBox(height: Dimensions.paddingSizeSmall),
-                          Row(
-                            children: [
-                              Row(children: [
-                                QuantityButton(
-                                  onTap: () {
-                                    if (productController.quantity! > 1) {
-                                      productController.setQuantity(
-                                          false,
-                                          product!.cartQuantityLimit,
-                                          product!.stockType,
-                                          product!.itemStock,
-                                          widget.isCampaign);
-                                    }
-                                  },
-                                  isIncrement: false,
-                                ),
-                                AnimatedFlipCounter(
-                                  duration: const Duration(milliseconds: 500),
-                                  value:
-                                      productController.quantity!.toDouble(),
-                                  textStyle: robotoMedium.copyWith(
-                                      fontSize: Dimensions.fontSizeLarge),
-                                ),
-                                QuantityButton(
-                                  onTap: () => productController.setQuantity(
-                                      true,
+                            QuantityButton(
+                              onTap: () {
+                                if (productController.quantity! > 1) {
+                                  productController.setQuantity(
+                                      false,
                                       product!.cartQuantityLimit,
                                       product!.stockType,
                                       product!.itemStock,
-                                      widget.isCampaign),
-                                  isIncrement: true,
-                                ),
-                              ]),
-                              const SizedBox(
-                                  width: Dimensions.paddingSizeSmall),
-                              Expanded(
-                                child: GetBuilder<CartController>(
-                                    builder: (cartController) {
-                                  return CustomButtonWidget(
-                                    radius: 40,
-                                    width: ResponsiveHelper.isDesktop(context)
-                                        ? MediaQuery.of(context).size.width /
-                                            2.0
-                                        : null,
-                                    isLoading: cartController.isLoading,
-                                    buttonText: (!product!.scheduleOrder! &&
-                                            !isAvailable)
-                                        ? 'not_available_now'.tr
-                                        : widget.isCampaign
-                                            ? 'order_now'.tr
-                                            : (widget.cart != null ||
-                                                    productController
-                                                            .cartIndex !=
-                                                        -1)
-                                                ? 'update_in_cart'.tr
-                                                : 'add_to_cart'.tr,
-                                    onPressed: (!product!.scheduleOrder! &&
-                                                !isAvailable) ||
-                                            (widget.cart != null &&
-                                                productController
-                                                        .checkOutOfStockVariationSelected(
-                                                            product
-                                                                ?.variations) !=
-                                                    null)
-                                        ? null
-                                        : () async {
-                                            _onButtonPressed(
-                                                productController,
-                                                cartController,
-                                                priceWithVariation,
-                                                priceWithDiscount,
-                                                price,
-                                                discount,
-                                                discountType,
-                                                addOnIdList,
-                                                addOnsList,
-                                                priceWithAddonsVariation);
-                                          },
-                                  );
-                                }),
-                              ),
-                            ],
+                                      widget.isCampaign);
+                                }
+                              },
+                              isIncrement: false,
+                            ),
+                            AnimatedFlipCounter(
+                              duration: const Duration(milliseconds: 500),
+                              value:
+                                  productController.quantity!.toDouble(),
+                              textStyle: robotoMedium.copyWith(
+                                  fontSize: Dimensions.fontSizeLarge),
+                            ),
+                            QuantityButton(
+                              onTap: () => productController.setQuantity(
+                                  true,
+                                  product!.cartQuantityLimit,
+                                  product!.stockType,
+                                  product!.itemStock,
+                                  widget.isCampaign),
+                              isIncrement: true,
+                            ),
+                          ],
                           ),
+                          const SizedBox(
+                              height: Dimensions.paddingSizeDefault),
+                          GetBuilder<CartController>(
+                              builder: (cartController) {
+                            return CustomButtonWidget(
+                              radius: 40,
+                              width: ResponsiveHelper.isDesktop(context)
+                                  ? MediaQuery.of(context).size.width /
+                                      2.0
+                                  : null,
+                              isLoading: cartController.isLoading,
+                              fontSize: 20,
+                              buttonText: (!product!.scheduleOrder! &&
+                                      !isAvailable)
+                                  ? 'not_available_now'.tr
+                                  : widget.isCampaign
+                                      ? 'order_now'.tr
+                                      : (widget.cart != null ||
+                                              productController
+                                                      .cartIndex !=
+                                                  -1)
+                                          ? 'update_in_cart'.tr
+                                          : 'add_to_cart'.tr + "                         $priceWithAddonsVariationWithDiscount MAD",
+                              onPressed: (!product!.scheduleOrder! &&
+                                          !isAvailable) ||
+                                      (widget.cart != null &&
+                                          productController
+                                                  .checkOutOfStockVariationSelected(
+                                                      product
+                                                          ?.variations) !=
+                                              null)
+                                  ? null
+                                  : () async {
+                                      _onButtonPressed(
+                                          productController,
+                                          cartController,
+                                          priceWithVariation,
+                                          priceWithDiscount,
+                                          price,
+                                          discount,
+                                          discountType,
+                                          addOnIdList,
+                                          addOnsList,
+                                          priceWithAddonsVariation);
+                                    },
+                            );
+                          }),
                           SizedBox(height: 10,)
                         ],
                       ),
