@@ -1,6 +1,7 @@
 class Images {
   static const String logo = 'assets/image/logo.png';
   static const String logoName = 'assets/image/logo_name.png';
+  static const String animatedLogo = 'assets/image/animated_logo.gif';
   static const String placeholder = 'assets/image/placeholder.svg';
   static const String arabic = 'assets/image/arabic.png';
   static const String spanish = 'assets/image/spanish.png';

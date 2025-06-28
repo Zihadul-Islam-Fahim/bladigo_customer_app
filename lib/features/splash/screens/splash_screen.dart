@@ -60,7 +60,10 @@ class SplashScreenState extends State<SplashScreen> {
     if(Get.find<AuthController>().isGuestLoggedIn() || Get.find<AuthController>().isLoggedIn()) {
       Get.find<CartController>().getCartDataOnline();
     }
-    _route();
+    Future.delayed(Duration(seconds: 2)).then((v){
+      _route();
+    });
+
 
   }
 
@@ -82,12 +85,10 @@ class SplashScreenState extends State<SplashScreen> {
       body: GetBuilder<SplashController>(builder: (splashController) {
         return Center(
           child: splashController.hasConnection ? Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             children: [
-              Image.asset(Images.logo, width: 100),
-              const SizedBox(height: Dimensions.paddingSizeLarge),
 
-              Image.asset(Images.logoName, width: 150),
+              Image.asset(Images.animatedLogo, fit: BoxFit.cover,),
             ],
           ) : NoInternetScreen(child: SplashScreen(notificationBody: widget.notificationBody, linkBody: widget.linkBody)),
         );
