@@ -80,176 +80,181 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RefreshIndicator(
-        onRefresh: () async {
-          await _reload();
-        },
-        child: SingleChildScrollView(
-          child: Column(
-            // controller: _scrollController,
-            // physics: AlwaysScrollableScrollPhysics(),
-            children: [
-              HomeScreenHeaderWidget(),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(left: 12, right: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _searchBar(context),
-                    SizedBox(height: 9),
-                    AppTileTitleBar(
-                      title: widget.category.name.toString(),
-                      onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
-                          arguments: widget.category),
-                    ),
-                    GetBuilder<CategoryController>(builder: (categoryController) {
-                      return categoryController.subCategoryList != null &&
-                              categoryController.subCategoryList!.isEmpty
-                          ? SizedBox.shrink()
-                          : SizedBox(
-                              // height: ResponsiveHelper.isMobile(context)
-                              //     ? 240
-                              //     : 280,
-                              child: GridView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              clipBehavior: Clip.none,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                childAspectRatio: 0.96,
-                                crossAxisSpacing: 4,
-                              ),
-                              padding: const EdgeInsets.only(
-                                  left: Dimensions.paddingSizeDefault),
-                              itemCount: categoryController.subCategoryList !=
-                                      null
-                                  ? categoryController.subCategoryList!.length > 9
-                                      ? 5
-                                      : categoryController.subCategoryList!.length
-                                  : 5,
-                              itemBuilder: (context, index) {
-                                final data = categoryController.subCategoryList !=
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await _reload();
+          },
+          child: SingleChildScrollView(
+            child: Column(
+              // controller: _scrollController,
+              // physics: AlwaysScrollableScrollPhysics(),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+        
+              children: [
+                HomeScreenHeaderWidget(),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12, right: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _searchBar(context),
+                      // SizedBox(height: 9),
+                      AppTileTitleBar(
+                        title: widget.category.name.toString(),
+                        onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
+                            arguments: widget.category),
+                      ),
+                      GetBuilder<CategoryController>(builder: (categoryController) {
+                        return categoryController.subCategoryList != null &&
+                                categoryController.subCategoryList!.isEmpty
+                            ? SizedBox.shrink()
+                            : SizedBox(
+                                // height: ResponsiveHelper.isMobile(context)
+                                //     ? 240
+                                //     : 280,
+                                child: GridView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                clipBehavior: Clip.none,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  childAspectRatio: 0.96,
+                                  crossAxisSpacing: 4,
+                                ),
+                                padding: const EdgeInsets.only(
+                                    left: Dimensions.paddingSizeDefault),
+                                itemCount: categoryController.subCategoryList !=
                                         null
-                                    ? categoryController.subCategoryList![index]
-                                    : null;
-                                return categoryController.subCategoryList != null
-                                    ? CustomInkWellWidget(
-                                        padding: EdgeInsets.zero,
-                                        radius: 8,
-                                        highlightColor: Color(0xff2b9430),
-                                        onTap: () => Get.toNamed(
-                                          RouteHelper.getCategoryProductRoute(
-                                            widget.category.id,
-                                            widget.category.name.toString(),
-                                          ),
-                                          arguments: index,
-                                        ),
-                                        // radius: 68,
-                                        child: SubServiceItemCard(
-                                          isNetworkImage: true,
-                                          filteredPage: true,
-                                          imagePath: "${data?.imageFullUrl}",
-                                          label: "${data?.name}",
-                                        ),
-                                      )
-                                    : Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        elevation: 0.5,
-                                        color: Colors.grey[100],
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            ShimmerWidget.rectangular(
-                                              height: ResponsiveHelper.isMobile(
-                                                      context)
-                                                  ? 70
-                                                  : 110,
-                                              width: ResponsiveHelper.isMobile(
-                                                      context)
-                                                  ? 80
-                                                  : 110,
+                                    ? categoryController.subCategoryList!.length > 9
+                                        ? 5
+                                        : categoryController.subCategoryList!.length
+                                    : 5,
+                                itemBuilder: (context, index) {
+                                  final data = categoryController.subCategoryList !=
+                                          null
+                                      ? categoryController.subCategoryList![index]
+                                      : null;
+                                  return categoryController.subCategoryList != null
+                                      ? CustomInkWellWidget(
+                                          padding: EdgeInsets.zero,
+                                          radius: 8,
+                                          highlightColor: Color(0xff2b9430),
+                                          onTap: () => Get.toNamed(
+                                            RouteHelper.getCategoryProductRoute(
+                                              widget.category.id,
+                                              widget.category.name.toString(),
                                             ),
-                                            SizedBox(
+                                            arguments: index,
+                                          ),
+                                          // radius: 68,
+                                          child: SubServiceItemCard(
+                                            isNetworkImage: true,
+                                            filteredPage: true,
+                                            imagePath: "${data?.imageFullUrl}",
+                                            label: "${data?.name}",
+                                          ),
+                                        )
+                                      : Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(8),
+                                          ),
+                                          elevation: 0.5,
+                                          color: Colors.grey[100],
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              ShimmerWidget.rectangular(
                                                 height: ResponsiveHelper.isMobile(
                                                         context)
-                                                    ? Dimensions
-                                                        .paddingSizeExtraSmall
-                                                    : Dimensions
-                                                        .paddingSizeLarge),
-                                            ShimmerWidget.rectangular(
-                                              height: 11,
-                                              width: 50,
-                                            ),
-                                          ],
-                                        ),
-                                      );
+                                                    ? 70
+                                                    : 110,
+                                                width: ResponsiveHelper.isMobile(
+                                                        context)
+                                                    ? 80
+                                                    : 110,
+                                              ),
+                                              SizedBox(
+                                                  height: ResponsiveHelper.isMobile(
+                                                          context)
+                                                      ? Dimensions
+                                                          .paddingSizeExtraSmall
+                                                      : Dimensions
+                                                          .paddingSizeLarge),
+                                              ShimmerWidget.rectangular(
+                                                height: 11,
+                                                width: 50,
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                },
+                              ));
+                      }),
+                      SizedBox(height: Dimensions.paddingSizeDefault),
+                      AppTileTitleBar2(
+                        title: "All_Available_Restaurants".tr,
+                        onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
+                            arguments: widget.category),
+                      ),
+                      SizedBox(height: Dimensions.paddingSizeDefault),
+                      GetBuilder<CategoryController>(builder: (catController) {
+                        return Column(
+                          children: [
+                            // if (restaturantController.categoryWiseRestaurantList ==
+                            //         null ||
+                            //     restaturantController.categoryWiseRestaurantList !=
+                            //             null &&
+                            //         restaturantController
+                            //             .categoryWiseRestaurantList!.isNotEmpty)
+                            //   AppTileTitleBar(
+                            //     title: widget.category.name.toString(),
+                            //     onTap: () {
+                            //       CategoryProductScreen.tabIndex = 1;
+                            //       Get.find<CategoryController>()
+                            //           .setRestaurant(true);
+                            //       Get.toNamed(
+                            //         RouteHelper.getCategoryProductRoute(
+                            //           widget.category.id,
+                            //           widget.category.name.toString(),
+                            //         ),
+                            //       );
+                            //     },
+                            //   ),
+                            ListView.separated(
+                              padding: EdgeInsets.only(top: 0, bottom: 12),
+                              shrinkWrap: true,
+                              primary: false,
+                              itemBuilder: (context, index) {
+                                final data = catController.categoryRestaurantList ==
+                                        null
+                                    ? null
+                                    : catController.categoryRestaurantList![index];
+                                return catController.categoryRestaurantList != null
+                                    ? FilteredItemCard(restaurant: data!)
+                                    : _restaurentShimmerWidget(context);
                               },
-                            ));
-                    }),
-                    SizedBox(height: Dimensions.paddingSizeDefault),
-                    AppTileTitleBar2(
-                      title: "All_Available_Restaurants".tr,
-                      onTap: () => Get.toNamed(RouteHelper.getCategoryRoute(),
-                          arguments: widget.category),
-                    ),
-                    SizedBox(height: Dimensions.paddingSizeDefault),
-                    GetBuilder<CategoryController>(builder: (catController) {
-                      return Column(
-                        children: [
-                          // if (restaturantController.categoryWiseRestaurantList ==
-                          //         null ||
-                          //     restaturantController.categoryWiseRestaurantList !=
-                          //             null &&
-                          //         restaturantController
-                          //             .categoryWiseRestaurantList!.isNotEmpty)
-                          //   AppTileTitleBar(
-                          //     title: widget.category.name.toString(),
-                          //     onTap: () {
-                          //       CategoryProductScreen.tabIndex = 1;
-                          //       Get.find<CategoryController>()
-                          //           .setRestaurant(true);
-                          //       Get.toNamed(
-                          //         RouteHelper.getCategoryProductRoute(
-                          //           widget.category.id,
-                          //           widget.category.name.toString(),
-                          //         ),
-                          //       );
-                          //     },
-                          //   ),
-                          ListView.separated(
-                            padding: EdgeInsets.only(top: 0, bottom: 12),
-                            shrinkWrap: true,
-                            primary: false,
-                            itemBuilder: (context, index) {
-                              final data = catController.categoryRestaurantList ==
+                              separatorBuilder: (context, index) {
+                                return SizedBox(height: 4);
+                              },
+                              itemCount: catController.categoryRestaurantList ==
                                       null
-                                  ? null
-                                  : catController.categoryRestaurantList![index];
-                              return catController.categoryRestaurantList != null
-                                  ? FilteredItemCard(restaurant: data!)
-                                  : _restaurentShimmerWidget(context);
-                            },
-                            separatorBuilder: (context, index) {
-                              return SizedBox(height: 4);
-                            },
-                            itemCount: catController.categoryRestaurantList ==
-                                    null
-                                ? 8
-                                : catController.categoryRestaurantList!.length,
-                          ),
-                        ],
-                      );
-                    }),
-                  ],
-                ),
-              )
-            ],
+                                  ? 8
+                                  : catController.categoryRestaurantList!.length,
+                            ),
+                          ],
+                        );
+                      }),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -312,65 +317,62 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
   }
 
   Widget _searchBar(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 0, right: 0),
-      child: InkWell(
-        onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 5,
-              child: Container(
-                transform: Matrix4.translationValues(0, -3, 0),
-                padding: const EdgeInsets.symmetric(
-                    horizontal: Dimensions.paddingSizeSmall),
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.08),
-                    borderRadius: BorderRadius.circular(25),
-                    // border: Border.all(color: Theme.of(context).primaryColor)
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 10, right: 2, top: 16, bottom: 16),
-                  child: Row(children: [
-                    Image.asset(Images.searchIconNew, width: 16, height: 16),
-                    const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                    Expanded(
-                      child: Text("What_you_like_to".tr,
-                        style: robotoRegular.copyWith(
-                            fontSize: Dimensions.fontSizeDefault,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold
-                        ),
+    return InkWell(
+      onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 5,
+            child: Container(
+              transform: Matrix4.translationValues(0, -3, 0),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: Dimensions.paddingSizeSmall),
+              decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.08),
+                  borderRadius: BorderRadius.circular(25),
+                  // border: Border.all(color: Theme.of(context).primaryColor)
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 10, right: 2, top: 16, bottom: 16),
+                child: Row(children: [
+                  Image.asset(Images.searchIconNew, width: 16, height: 16),
+                  const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                  Expanded(
+                    child: Text("What_you_like_to".tr,
+                      style: robotoRegular.copyWith(
+                          fontSize: Dimensions.fontSizeDefault,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold
                       ),
                     ),
-                  ]),
-                ),
+                  ),
+                ]),
               ),
             ),
-            // SizedBox(
-            //   width: 12,
-            // ),
-            // Expanded(
-            //   flex: 1,
-            //   child: Container(
-            //       transform: Matrix4.translationValues(0, -3, 0),
-            //       padding: const EdgeInsets.symmetric(
-            //           horizontal: Dimensions.paddingSizeSmall),
-            //       decoration: BoxDecoration(
-            //         color: Colors.grey.withOpacity(0.18),
-            //         borderRadius: BorderRadius.circular(8),
-            //         border: Border.all(color: Theme.of(context).primaryColor)
-            //       ),
-            //       child: Padding(
-            //         padding: const EdgeInsets.only(
-            //             left: 2, right: 2, top: 16, bottom: 16),
-            //         child:
-            //             Image.asset(Images.filterIcon, width: 16, height: 16),
-            //       )),
-            // )
-          ],
-        ),
+          ),
+          // SizedBox(
+          //   width: 12,
+          // ),
+          // Expanded(
+          //   flex: 1,
+          //   child: Container(
+          //       transform: Matrix4.translationValues(0, -3, 0),
+          //       padding: const EdgeInsets.symmetric(
+          //           horizontal: Dimensions.paddingSizeSmall),
+          //       decoration: BoxDecoration(
+          //         color: Colors.grey.withOpacity(0.18),
+          //         borderRadius: BorderRadius.circular(8),
+          //         border: Border.all(color: Theme.of(context).primaryColor)
+          //       ),
+          //       child: Padding(
+          //         padding: const EdgeInsets.only(
+          //             left: 2, right: 2, top: 16, bottom: 16),
+          //         child:
+          //             Image.asset(Images.filterIcon, width: 16, height: 16),
+          //       )),
+          // )
+        ],
       ),
     );
   }

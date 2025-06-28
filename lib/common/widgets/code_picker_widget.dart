@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -80,18 +82,18 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
   CountryCode? selectedItem;
   List<CountryCode>? elements = [];
   List<CountryCode>? favoriteElements = [];
-  
-  
+
+
   List<CountryCode> getCountryList(){
     List<Map<String, String>> jsonList = widget.countryList != null? widget.countryList! : [];
-    
+
     List<CountryCode> elements =
     jsonList.map((json) => CountryCode.fromJson(json)).toList();
-    
+
     if (widget.comparator != null) {
     elements.sort(widget.comparator);
     }
-    
+
     if (widget.countryFilter != null && widget.countryFilter!.isNotEmpty) {
     final uppercaseCustomList =
     widget.countryFilter!.map((c) => c.toUpperCase()).toList();
@@ -104,14 +106,14 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
     }
     return elements;
   }
-  
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     elements = elements!.map((e) => e.localize(context)).toList();
     _onInit(selectedItem!);
   }
-  
+
   @override
   void didUpdateWidget(CodePickerWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -131,11 +133,12 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
       _onInit(selectedItem!);
     }
   }
-  
+
   @override
   void initState() {
     super.initState();
     elements = getCountryList();
+    print(elements?.length.toString());
     if(widget.countryList != null && widget.countryList!.isNotEmpty){
       if (widget.initialSelection != null) {
         selectedItem = elements!.firstWhere(
@@ -147,7 +150,7 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
       } else {
         selectedItem = elements![0];
       }
-    
+
     favoriteElements = elements!.where((e) =>
     widget.favorite!.firstWhereOrNull((f) =>
     e.code!.toUpperCase() == f.toUpperCase() ||
@@ -156,9 +159,9 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
     null)
     .toList();
   }
-    
+
   }
-  
+
   void showCountryCodePickerDialog() {
     if (!GetPlatform.isAndroid && !GetPlatform.isIOS) {
       showDialog(
@@ -195,7 +198,7 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
           setState(() {
             selectedItem = e;
           });
-        
+
         _publishSelection(e);
       }
       });
@@ -229,26 +232,26 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
           setState(() {
             selectedItem = e;
           });
-        
+
         _publishSelection(e);
       }
       });
     }
   }
-  
+
   void _publishSelection(CountryCode e) {
     if (widget.onChanged != null) {
       widget.onChanged!(e);
     }
   }
-  
+
   void _onInit(CountryCode e) {
     if (widget.onInit != null) {
       widget.onInit!(e);
     }
   }
-  
-  
+
+
   @override
   Widget build(BuildContext context) {
     Widget child;

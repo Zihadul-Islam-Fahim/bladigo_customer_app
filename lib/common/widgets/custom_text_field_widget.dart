@@ -154,7 +154,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
             decoration: InputDecoration(
               errorMaxLines: 2,
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
                 borderSide: BorderSide(
                     style: widget.showBorder
                         ? BorderStyle.solid
@@ -163,7 +163,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
                     color: Theme.of(context).disabledColor),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
                 borderSide: BorderSide(
                     style: widget.showBorder
                         ? BorderStyle.solid
@@ -172,7 +172,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
                     color: Theme.of(context).primaryColor),
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
                 borderSide: BorderSide(
                     style: widget.showBorder
                         ? BorderStyle.solid
@@ -181,7 +181,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
                     color: Theme.of(context).primaryColor),
               ),
               errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
                 borderSide: BorderSide(
                     style: widget.showBorder
                         ? BorderStyle.solid
@@ -189,7 +189,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
                     color: Theme.of(context).colorScheme.error),
               ),
               focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
                 borderSide: BorderSide(
                     style: widget.showBorder
                         ? BorderStyle.solid
