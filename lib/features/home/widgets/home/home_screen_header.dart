@@ -36,7 +36,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
     return Stack(
       alignment: Alignment.topLeft,
       children: [
-        AppGradientBackground(height: isSecondScreen ? 210 : 220),
+        // AppGradientBackground(height: isSecondScreen ? 210 : 220),
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(top: 4, left: 4, right: 16),
@@ -104,7 +104,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                                 .tr
                                             : 'Deliver To'.tr,
                                         style: robotoMedium.copyWith(
-                                          color: Theme.of(context).cardColor,
+                                          color: Colors.black,
                                           fontSize: Dimensions
                                               .fontSizeDefault /* - (scrollingRate * Dimensions.fontSizeDefault)*/,
                                         ),
@@ -123,8 +123,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                                       .getAddressFromSharedPref()!
                                                   .address!,
                                               style: robotoRegular.copyWith(
-                                                color:
-                                                    Theme.of(context).cardColor,
+                                                color: Colors.black,
                                                 fontSize: Dimensions
                                                     .fontSizeSmall /* - (scrollingRate * Dimensions.fontSizeSmall)*/,
                                               ),
@@ -148,7 +147,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                InkWell(
+                Get.find<AuthController>().isLoggedIn() ? InkWell(
                   onTap: () {
                     debugPrint("click");
                     Get.toNamed(RouteHelper.getNotificationRoute());
@@ -180,7 +179,28 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                       ]),
                     );
                   }),
+                ) :
+                ElevatedButton(
+                  onPressed: () async {
+                    await Get.toNamed(
+                        RouteHelper.getSignInRoute(Get.currentRoute));
+                  },
+                  child: Text('SIGN UP'.tr),
+                  style: ElevatedButton.styleFrom(
+                      elevation: 8,
+                      textStyle: TextStyle(fontSize: 9),
+                      padding: EdgeInsets.only(
+                          left: 2, right: 2, top: 4, bottom: 4),
+                      backgroundColor: Color(0xff2B9430),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            8), // Makes the button rectangular
+                      ),
+                      maximumSize: Size(80, 32),
+                      minimumSize: Size(80, 32)),
                 )
+
               ],
             ),
           ),
@@ -229,109 +249,109 @@ class HomeScreenHeaderWidget extends StatelessWidget {
         //         ))
         //     :
 
-        GetBuilder<LocalizationController>(
-          builder: (controller) {
-            return Positioned(
-                    bottom: 8,
-                    left: controller.isLtr ? 12 : 250,
-
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 48,
-                        ),
-                       AuthHelper.isLoggedIn() ?
-                       Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         children: [
-                           Text(
-                              'Fresh'.tr,
-                              style: GoogleFonts.montserratAlternates(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                           Text(
-                             'Delicious'.tr,
-                             style: GoogleFonts.montserratAlternates(
-                               color: Colors.white,
-                               fontSize: 25,
-                               fontWeight: FontWeight.bold,
-                             ),
-                           ),
-                           Text(
-                              'Quick'.tr,
-                              style: GoogleFonts.montserratAlternates(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                         ],
-                       ) :
-                       Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         children: [
-                           Text(
-                             'hey_there'.tr,
-                             style: GoogleFonts.montserratAlternates(
-                               color: Colors.white,
-                               fontSize: 18,
-                               fontWeight: FontWeight.bold,
-                             ),
-                           ),
-                           Text(
-                             'Login_or_create'.tr,
-                             style: GoogleFonts.poppins(
-                               color: Colors.white,
-                               fontSize: 11,
-                               fontWeight: FontWeight.w400,
-                             ),
-                           ),
-                           Text(
-                             'for_a_faster'.tr,
-                             style: GoogleFonts.poppins(
-                               color: Colors.white,
-                               fontSize: 11,
-                               fontWeight: FontWeight.w400,
-                             ),
-                           ),
-
-                         ],
-                       )
-                        ,
-
-
-                        !Get.find<AuthController>().isLoggedIn() ?
-                        ElevatedButton(
-                          onPressed: () async {
-                            await Get.toNamed(
-                                RouteHelper.getSignInRoute(Get.currentRoute));
-                          },
-                          child: Text('SIGN UP'.tr),
-                          style: ElevatedButton.styleFrom(
-                              elevation: 8,
-                              textStyle: TextStyle(fontSize: 9),
-                              padding: EdgeInsets.only(
-                                  left: 2, right: 2, top: 4, bottom: 4),
-                              backgroundColor: Color(0xff2B9430),
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    8), // Makes the button rectangular
-                              ),
-                              maximumSize: Size(80, 32),
-                              minimumSize: Size(80, 32)),
-                        ):
-                            SizedBox()
-                      ],
-                    ),
-                  );
-          }
-        ),
+        // GetBuilder<LocalizationController>(
+        //   builder: (controller) {
+        //     return Positioned(
+        //             bottom: 8,
+        //             left: controller.isLtr ? 12 : 250,
+        //
+        //             child: Column(
+        //               mainAxisSize: MainAxisSize.min,
+        //               crossAxisAlignment: CrossAxisAlignment.start,
+        //               children: [
+        //                 SizedBox(
+        //                   height: 48,
+        //                 ),
+        //                AuthHelper.isLoggedIn() ?
+        //                Column(
+        //                  crossAxisAlignment: CrossAxisAlignment.start,
+        //                  children: [
+        //                    Text(
+        //                       'Fresh'.tr,
+        //                       style: GoogleFonts.montserratAlternates(
+        //                         color: Colors.white,
+        //                         fontSize: 25,
+        //                         fontWeight: FontWeight.bold,
+        //                       ),
+        //                     ),
+        //                    Text(
+        //                      'Delicious'.tr,
+        //                      style: GoogleFonts.montserratAlternates(
+        //                        color: Colors.white,
+        //                        fontSize: 25,
+        //                        fontWeight: FontWeight.bold,
+        //                      ),
+        //                    ),
+        //                    Text(
+        //                       'Quick'.tr,
+        //                       style: GoogleFonts.montserratAlternates(
+        //                         color: Colors.white,
+        //                         fontSize: 25,
+        //                         fontWeight: FontWeight.bold,
+        //                       ),
+        //                     ),
+        //                  ],
+        //                ) :
+        //                Column(
+        //                  crossAxisAlignment: CrossAxisAlignment.start,
+        //                  children: [
+        //                    Text(
+        //                      'hey_there'.tr,
+        //                      style: GoogleFonts.montserratAlternates(
+        //                        color: Colors.white,
+        //                        fontSize: 18,
+        //                        fontWeight: FontWeight.bold,
+        //                      ),
+        //                    ),
+        //                    Text(
+        //                      'Login_or_create'.tr,
+        //                      style: GoogleFonts.poppins(
+        //                        color: Colors.white,
+        //                        fontSize: 11,
+        //                        fontWeight: FontWeight.w400,
+        //                      ),
+        //                    ),
+        //                    Text(
+        //                      'for_a_faster'.tr,
+        //                      style: GoogleFonts.poppins(
+        //                        color: Colors.white,
+        //                        fontSize: 11,
+        //                        fontWeight: FontWeight.w400,
+        //                      ),
+        //                    ),
+        //
+        //                  ],
+        //                )
+        //                 ,
+        //
+        //
+        //                 !Get.find<AuthController>().isLoggedIn() ?
+        //                 ElevatedButton(
+        //                   onPressed: () async {
+        //                     await Get.toNamed(
+        //                         RouteHelper.getSignInRoute(Get.currentRoute));
+        //                   },
+        //                   child: Text('SIGN UP'.tr),
+        //                   style: ElevatedButton.styleFrom(
+        //                       elevation: 8,
+        //                       textStyle: TextStyle(fontSize: 9),
+        //                       padding: EdgeInsets.only(
+        //                           left: 2, right: 2, top: 4, bottom: 4),
+        //                       backgroundColor: Color(0xff2B9430),
+        //                       foregroundColor: Colors.white,
+        //                       shape: RoundedRectangleBorder(
+        //                         borderRadius: BorderRadius.circular(
+        //                             8), // Makes the button rectangular
+        //                       ),
+        //                       maximumSize: Size(80, 32),
+        //                       minimumSize: Size(80, 32)),
+        //                 ):
+        //                     SizedBox()
+        //               ],
+        //             ),
+        //           );
+        //   }
+        // ),
         // Positioned(
         //   bottom: -20,
         //   right: 0,

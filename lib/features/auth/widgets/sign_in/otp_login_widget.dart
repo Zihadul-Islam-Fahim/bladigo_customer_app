@@ -104,7 +104,7 @@ class OtpLoginWidget extends StatelessWidget {
             // height: isDesktop ? 50 : null,
             // width:  isDesktop ? 250 : null,
             buttonText: 'login'.tr,
-            radius: Dimensions.radiusDefault,
+            // radius: Dimensions.radiusDefault,
             isBold: isDesktop ? false : true,
             isLoading: authController.isLoading,
           //  color: GetPlatform.isAndroid ? Colors.white : null,

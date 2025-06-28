@@ -527,9 +527,10 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 16,
         ),
         _searchBar(context),
+        const BannerViewWidget(),
         ServicesSection(),
         // const WhatOnYourMindViewWidget(),
-        const BannerViewWidget(),
+
         const BadWeatherWidget(),
         const TodayTrendsViewWidget(),
       //  const LocationBannerViewWidget(),

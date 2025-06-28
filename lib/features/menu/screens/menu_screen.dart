@@ -194,17 +194,17 @@ class _MenuScreenState extends State<MenuScreen> {
               padding: const EdgeInsets.only(top: Dimensions.paddingSizeLarge),
               child: Column(children: [
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: Dimensions.paddingSizeDefault),
-                    child: Text(
-                      'general'.tr,
-                      style: robotoMedium.copyWith(
-                          fontSize: Dimensions.fontSizeLarge,
-                          color:
-                              Theme.of(context).primaryColor.withOpacity(0.5)),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(
+                  //       horizontal: Dimensions.paddingSizeDefault),
+                  //   child: Text(
+                  //     'general'.tr,
+                  //     style: robotoMedium.copyWith(
+                  //         fontSize: Dimensions.fontSizeLarge,
+                  //         color:
+                  //             Theme.of(context).primaryColor.withOpacity(0.5)),
+                  //   ),
+                  // ),
                   Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
@@ -236,120 +236,76 @@ class _MenuScreenState extends State<MenuScreen> {
                           title: 'language'.tr,
                           onTap: () => _manageLanguageFunctionality(),
                           route: ''),
-                      // ProfileButtonWidget(
-                      //   icon: Icons.tonality_outlined,
-                      //   title: 'dark_mode'.tr,
-                      //   isButtonActive: Get.isDarkMode,
-                      //   isThemeSwitchButton: true,
-                      //   onTap: () {
-                      //     Get.find<ThemeController>().toggleTheme();
-                      //   },
-                      // ),
-                    ]),
-                  ),
-                ]),
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: Dimensions.paddingSizeDefault),
-                    child: Text(
-                      'promotional_activity'.tr,
-                      style: robotoMedium.copyWith(
-                          fontSize: Dimensions.fontSizeLarge,
-                          color:
-                              Theme.of(context).primaryColor.withOpacity(0.5)),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      borderRadius:
-                          BorderRadius.circular(Dimensions.radiusDefault),
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //       color: Colors.grey.withOpacity(0.1),
-                      //       spreadRadius: 1,
-                      //       blurRadius: 10,
-                      //       offset: const Offset(0, 1))
-                      // ],
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: Dimensions.paddingSizeLarge,
-                        vertical: Dimensions.paddingSizeDefault),
-                    margin: const EdgeInsets.all(Dimensions.paddingSizeDefault),
-                    child: Column(children: [
+
                       PortionWidget(
                           icon: Images.couponIcon,
                           title: 'coupon'.tr,
                           route:
-                              RouteHelper.getCouponRoute(fromCheckout: false)),
+                          RouteHelper.getCouponRoute(fromCheckout: false)),
                       (Get.find<SplashController>()
-                                  .configModel!
-                                  .loyaltyPointStatus ==
-                              1)
+                          .configModel!
+                          .loyaltyPointStatus ==
+                          1)
                           ? PortionWidget(
-                              icon: Images.pointIcon,
-                              title: 'loyalty_points'.tr,
-                              route: RouteHelper.getLoyaltyRoute(),
-                              hideDivider: Get.find<SplashController>()
-                                          .configModel!
-                                          .customerWalletStatus ==
-                                      1
-                                  ? false
-                                  : true,
-                              suffix: !isLoggedIn
-                                  ? null
-                                  : '${profileController.userInfoModel?.loyaltyPoint != null ? Get.find<ProfileController>().userInfoModel!.loyaltyPoint.toString() : '0'} ${'points'.tr}',
-                            )
+                        icon: Images.pointIcon,
+                        title: 'loyalty_points'.tr,
+                        route: RouteHelper.getLoyaltyRoute(),
+                        hideDivider: Get.find<SplashController>()
+                            .configModel!
+                            .customerWalletStatus ==
+                            1
+                            ? false
+                            : true,
+                        suffix: !isLoggedIn
+                            ? null
+                            : '${profileController.userInfoModel?.loyaltyPoint != null ? Get.find<ProfileController>().userInfoModel!.loyaltyPoint.toString() : '0'} ${'points'.tr}',
+                      )
                           : const SizedBox(),
                       (Get.find<SplashController>()
-                                  .configModel!
-                                  .customerWalletStatus ==
-                              1)
+                          .configModel!
+                          .customerWalletStatus ==
+                          1)
                           ? PortionWidget(
-                              icon: Images.walletIcon,
-                              title: 'my_wallet'.tr,
-                              hideDivider: true,
-                              route: RouteHelper.getWalletRoute(
-                                  fromMenuPage: true),
-                              suffix: !isLoggedIn
-                                  ? null
-                                  : PriceConverter.convertPrice(
-                                      profileController.userInfoModel != null
-                                          ? Get.find<ProfileController>()
-                                              .userInfoModel!
-                                              .walletBalance
-                                          : 0),
-                            )
+                        icon: Images.walletIcon,
+                        title: 'my_wallet'.tr,
+                        hideDivider: false,
+                        route: RouteHelper.getWalletRoute(
+                            fromMenuPage: true),
+                        suffix: !isLoggedIn
+                            ? null
+                            : PriceConverter.convertPrice(
+                            profileController.userInfoModel != null
+                                ? Get.find<ProfileController>()
+                                .userInfoModel!
+                                .walletBalance
+                                : 0),
+                      )
                           : const SizedBox(),
-                    ]),
-                  )
-                ]),
-                (Get.find<SplashController>().configModel!.refEarningStatus ==
-                            1) ||
-                        (Get.find<SplashController>()
-                                .configModel!
-                                .toggleDmRegistration! &&
-                            !ResponsiveHelper.isDesktop(context)) ||
-                        (Get.find<SplashController>()
-                                .configModel!
-                                .toggleRestaurantRegistration! &&
-                            !ResponsiveHelper.isDesktop(context))
-                    ? Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: Dimensions.paddingSizeDefault),
-                              child: Text(
-                                'earnings'.tr,
-                                style: robotoMedium.copyWith(
-                                    fontSize: Dimensions.fontSizeLarge,
-                                    color: Theme.of(context)
-                                        .primaryColor
-                                        .withOpacity(0.5)),
-                              ),
-                            ),
+                      (Get.find<SplashController>().configModel!.refEarningStatus ==
+                          1) ||
+                          (Get.find<SplashController>()
+                              .configModel!
+                              .toggleDmRegistration! &&
+                              !ResponsiveHelper.isDesktop(context)) ||
+                          (Get.find<SplashController>()
+                              .configModel!
+                              .toggleRestaurantRegistration! &&
+                              !ResponsiveHelper.isDesktop(context))
+                          ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Padding(
+                            //   padding: const EdgeInsets.symmetric(
+                            //       horizontal: Dimensions.paddingSizeDefault),
+                            //   child: Text(
+                            //     'earnings'.tr,
+                            //     style: robotoMedium.copyWith(
+                            //         fontSize: Dimensions.fontSizeLarge,
+                            //         color: Theme.of(context)
+                            //             .primaryColor
+                            //             .withOpacity(0.5)),
+                            //   ),
+                            // ),
                             Container(
                               decoration: BoxDecoration(
                                 color: Theme.of(context).cardColor,
@@ -363,22 +319,22 @@ class _MenuScreenState extends State<MenuScreen> {
                                 //       offset: const Offset(0, 1))
                                 // ],
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: Dimensions.paddingSizeLarge,
-                                  vertical: Dimensions.paddingSizeDefault),
-                              margin: const EdgeInsets.all(
-                                  Dimensions.paddingSizeDefault),
+                              // padding: const EdgeInsets.symmetric(
+                              //     horizontal: Dimensions.paddingSizeLarge,
+                              //     vertical: Dimensions.paddingSizeDefault),
+                              // margin: const EdgeInsets.all(
+                              //     Dimensions.paddingSizeDefault),
                               child: Column(children: [
                                 (Get.find<SplashController>()
-                                            .configModel!
-                                            .refEarningStatus ==
-                                        1)
+                                    .configModel!
+                                    .refEarningStatus ==
+                                    1)
                                     ? PortionWidget(
-                                        icon: Images.referIcon,
-                                        title: 'refer_and_earn'.tr,
-                                        route:
-                                            RouteHelper.getReferAndEarnRoute(),
-                                      )
+                                  icon: Images.referIcon,
+                                  title: 'refer_and_earn'.tr,
+                                  route:
+                                  RouteHelper.getReferAndEarnRoute(),
+                                )
                                     : const SizedBox(),
                                 // (Get.find<SplashController>()
                                 //             .configModel!
@@ -406,7 +362,179 @@ class _MenuScreenState extends State<MenuScreen> {
                               ]),
                             )
                           ])
-                    : const SizedBox(),
+                          : const SizedBox(),
+
+                      // ProfileButtonWidget(
+                      //   icon: Icons.tonality_outlined,
+                      //   title: 'dark_mode'.tr,
+                      //   isButtonActive: Get.isDarkMode,
+                      //   isThemeSwitchButton: true,
+                      //   onTap: () {
+                      //     Get.find<ThemeController>().toggleTheme();
+                      //   },
+                      // ),
+                    ]),
+                  ),
+                ]),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(
+                  //       horizontal: Dimensions.paddingSizeDefault),
+                  //   child: Text(
+                  //     'promotional_activity'.tr,
+                  //     style: robotoMedium.copyWith(
+                  //         fontSize: Dimensions.fontSizeLarge,
+                  //         color:
+                  //             Theme.of(context).primaryColor.withOpacity(0.5)),
+                  //   ),
+                  // ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius:
+                          BorderRadius.circular(Dimensions.radiusDefault),
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //       color: Colors.grey.withOpacity(0.1),
+                      //       spreadRadius: 1,
+                      //       blurRadius: 10,
+                      //       offset: const Offset(0, 1))
+                      // ],
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: Dimensions.paddingSizeLarge,
+                        vertical: Dimensions.paddingSizeDefault),
+                    margin: const EdgeInsets.all(Dimensions.paddingSizeDefault),
+                    child: Column(children: [
+                      // PortionWidget(
+                      //     icon: Images.couponIcon,
+                      //     title: 'coupon'.tr,
+                      //     route:
+                      //         RouteHelper.getCouponRoute(fromCheckout: false)),
+                      // (Get.find<SplashController>()
+                      //             .configModel!
+                      //             .loyaltyPointStatus ==
+                      //         1)
+                      //     ? PortionWidget(
+                      //         icon: Images.pointIcon,
+                      //         title: 'loyalty_points'.tr,
+                      //         route: RouteHelper.getLoyaltyRoute(),
+                      //         hideDivider: Get.find<SplashController>()
+                      //                     .configModel!
+                      //                     .customerWalletStatus ==
+                      //                 1
+                      //             ? false
+                      //             : true,
+                      //         suffix: !isLoggedIn
+                      //             ? null
+                      //             : '${profileController.userInfoModel?.loyaltyPoint != null ? Get.find<ProfileController>().userInfoModel!.loyaltyPoint.toString() : '0'} ${'points'.tr}',
+                      //       )
+                      //     : const SizedBox(),
+                      // (Get.find<SplashController>()
+                      //             .configModel!
+                      //             .customerWalletStatus ==
+                      //         1)
+                      //     ? PortionWidget(
+                      //         icon: Images.walletIcon,
+                      //         title: 'my_wallet'.tr,
+                      //         hideDivider: true,
+                      //         route: RouteHelper.getWalletRoute(
+                      //             fromMenuPage: true),
+                      //         suffix: !isLoggedIn
+                      //             ? null
+                      //             : PriceConverter.convertPrice(
+                      //                 profileController.userInfoModel != null
+                      //                     ? Get.find<ProfileController>()
+                      //                         .userInfoModel!
+                      //                         .walletBalance
+                      //                     : 0),
+                      //       )
+                      //     : const SizedBox(),
+                    ]),
+                  )
+                ]),
+                // (Get.find<SplashController>().configModel!.refEarningStatus ==
+                //             1) ||
+                //         (Get.find<SplashController>()
+                //                 .configModel!
+                //                 .toggleDmRegistration! &&
+                //             !ResponsiveHelper.isDesktop(context)) ||
+                //         (Get.find<SplashController>()
+                //                 .configModel!
+                //                 .toggleRestaurantRegistration! &&
+                //             !ResponsiveHelper.isDesktop(context))
+                //     ? Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: [
+                //             // Padding(
+                //             //   padding: const EdgeInsets.symmetric(
+                //             //       horizontal: Dimensions.paddingSizeDefault),
+                //             //   child: Text(
+                //             //     'earnings'.tr,
+                //             //     style: robotoMedium.copyWith(
+                //             //         fontSize: Dimensions.fontSizeLarge,
+                //             //         color: Theme.of(context)
+                //             //             .primaryColor
+                //             //             .withOpacity(0.5)),
+                //             //   ),
+                //             // ),
+                //             Container(
+                //               decoration: BoxDecoration(
+                //                 color: Theme.of(context).cardColor,
+                //                 borderRadius: BorderRadius.circular(
+                //                     Dimensions.radiusDefault),
+                //                 // boxShadow: [
+                //                 //   BoxShadow(
+                //                 //       color: Colors.grey.withOpacity(0.1),
+                //                 //       spreadRadius: 1,
+                //                 //       blurRadius: 10,
+                //                 //       offset: const Offset(0, 1))
+                //                 // ],
+                //               ),
+                //               // padding: const EdgeInsets.symmetric(
+                //               //     horizontal: Dimensions.paddingSizeLarge,
+                //               //     vertical: Dimensions.paddingSizeDefault),
+                //               // margin: const EdgeInsets.all(
+                //               //     Dimensions.paddingSizeDefault),
+                //               child: Column(children: [
+                //                 (Get.find<SplashController>()
+                //                             .configModel!
+                //                             .refEarningStatus ==
+                //                         1)
+                //                     ? PortionWidget(
+                //                         icon: Images.referIcon,
+                //                         title: 'refer_and_earn'.tr,
+                //                         route:
+                //                             RouteHelper.getReferAndEarnRoute(),
+                //                       )
+                //                     : const SizedBox(),
+                //                 // (Get.find<SplashController>()
+                //                 //             .configModel!
+                //                 //             .toggleDmRegistration! &&
+                //                 //         !ResponsiveHelper.isDesktop(context))
+                //                 //     ? PortionWidget(
+                //                 //         icon: Images.dmIcon,
+                //                 //         title: 'join_as_a_delivery_man'.tr,
+                //                 //         route: RouteHelper
+                //                 //             .getDeliverymanRegistrationRoute(),
+                //                 //       )
+                //                 //     : const SizedBox(),
+                //                 // (Get.find<SplashController>()
+                //                 //             .configModel!
+                //                 //             .toggleRestaurantRegistration! &&
+                //                 //         !ResponsiveHelper.isDesktop(context))
+                //                 //     ? PortionWidget(
+                //                 //         icon: Images.storeIcon,
+                //                 //         title: 'open_store'.tr,
+                //                 //         hideDivider: true,
+                //                 //         route: RouteHelper
+                //                 //             .getRestaurantRegistrationRoute(),
+                //                 //       )
+                //                 //     : const SizedBox(),
+                //               ]),
+                //             )
+                //           ])
+                //     : const SizedBox(),
 
 
                 const SizedBox(height: Dimensions.paddingSizeOverLarge)
