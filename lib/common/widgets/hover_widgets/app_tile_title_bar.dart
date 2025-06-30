@@ -140,11 +140,17 @@ class AppTileTitleBar2 extends StatelessWidget {
                 height: 24,
               ),
               SizedBox(
-                // width: Get.width* 0.8,
+                width: Get.width* 0.9,
                 child: Text(title,
                     style: robotoBold.copyWith(
                         fontSize: 23,
-                        fontWeight: FontWeight.w600)),
+                        fontWeight: FontWeight.w600,
+
+                    ),
+                maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+
+                ),
               ),
             ],
           ),
