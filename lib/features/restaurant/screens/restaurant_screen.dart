@@ -557,7 +557,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                             ? SliverPersistentHeader(
                                 pinned: true,
                                 delegate: SliverDelegate(
-                                    height: 98,
+                                    height: 85,
                                     child: Center(
                                         child: Container(
                                       width: Dimensions.webMaxWidth,
@@ -578,40 +578,40 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                           vertical:
                                               Dimensions.paddingSizeExtraSmall),
                                       child: Column(children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: Dimensions.paddingSizeLarge,
-                                              right:
-                                                  Dimensions.paddingSizeLarge,
-                                              top: Dimensions.paddingSizeSmall),
-                                          child: Row(children: [
-                                            Text('all_food_items'.tr,
-                                                style: robotoBold.copyWith(
-                                                    fontSize: Dimensions
-                                                        .fontSizeExtraLarge)),
-                                            const Expanded(child: SizedBox()),
-
-                                            restController.type.isNotEmpty
-                                                ? VegFilterWidget(
-                                                    type: restController.type,
-                                                    onSelected: (String type) {
-                                                      restController
-                                                          .getRestaurantProductList(
-                                                              restController
-                                                                  .restaurant!
-                                                                  .id,
-                                                              1,
-                                                              type,
-                                                              true);
-                                                    },
-                                                  )
-                                                : const SizedBox(),
-                                          ]),
-                                        ),
+                                        // Padding(
+                                        //   padding: const EdgeInsets.only(
+                                        //       left: Dimensions.paddingSizeLarge,
+                                        //       right:
+                                        //           Dimensions.paddingSizeLarge,
+                                        //       top: Dimensions.paddingSizeSmall),
+                                        //   child: Row(children: [
+                                        //     Text('all_food_items'.tr,
+                                        //         style: robotoBold.copyWith(
+                                        //             fontSize: Dimensions
+                                        //                 .fontSizeExtraLarge)),
+                                        //     const Expanded(child: SizedBox()),
+                                        //
+                                        //     restController.type.isNotEmpty
+                                        //         ? VegFilterWidget(
+                                        //             type: restController.type,
+                                        //             onSelected: (String type) {
+                                        //               restController
+                                        //                   .getRestaurantProductList(
+                                        //                       restController
+                                        //                           .restaurant!
+                                        //                           .id,
+                                        //                       1,
+                                        //                       type,
+                                        //                       true);
+                                        //             },
+                                        //           )
+                                        //         : const SizedBox(),
+                                        //   ]),
+                                        // ),
                                         const Divider(
                                             thickness: 0.2, height: 10),
                                         SizedBox(
-                                          height: 32,
+                                          height: 36,
                                           child: ListView.builder(
                                             scrollDirection: Axis.horizontal,
                                             // itemCount: restController
@@ -683,7 +683,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                                               : robotoRegular.copyWith(
                                                                   fontSize:
                                                                       Dimensions
-                                                                          .fontSizeDefault),
+                                                                          .fontSizeLarge),
                                                         ),
                                                       ]),
                                                 ),

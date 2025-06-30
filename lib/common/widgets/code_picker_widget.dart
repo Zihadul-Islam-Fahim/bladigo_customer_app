@@ -107,6 +107,7 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
     return elements;
   }
 
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
