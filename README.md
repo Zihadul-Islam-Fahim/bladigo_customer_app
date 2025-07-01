@@ -1,4 +1,4 @@
-# Stackfood Multivendor App
+# Bladigo Multivendor App
 
 A new Flutter application.
 
