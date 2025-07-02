@@ -1224,6 +1224,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                   : null,
                               isLoading: cartController.isLoading,
                               fontSize: 20,
+                              hasPrice: true,
+                              price: "$priceWithAddonsVariationWithDiscount MAD",
                               buttonText: (!product!.scheduleOrder! &&
                                       !isAvailable)
                                   ? 'not_available_now'.tr
@@ -1234,7 +1236,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                       .cartIndex !=
                                                   -1)
                                           ? 'update_in_cart'.tr
-                                          : 'add_to_cart'.tr + "                         $priceWithAddonsVariationWithDiscount MAD",
+                                          : 'add_to_cart'.tr,
                               onPressed: (!product!.scheduleOrder! &&
                                           !isAvailable) ||
                                       (widget.cart != null &&

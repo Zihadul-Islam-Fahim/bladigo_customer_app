@@ -17,7 +17,9 @@ class CustomButtonWidget extends StatelessWidget {
   final Color? textColor;
   final bool isLoading;
   final bool isBold;
-  const CustomButtonWidget({super.key, this.onPressed, required this.buttonText, this.transparent = false, this.margin, this.width, this.height = 55,
+  final bool hasPrice;
+  final String price;
+  const CustomButtonWidget({super.key,this.hasPrice = false,this.price="0", this.onPressed, required this.buttonText, this.transparent = false, this.margin, this.width, this.height = 55,
     this.fontSize=18, this.radius = Dimensions.radiusXExtraLarge, this.icon, this.color, this.textColor, this.isLoading = false, this.isBold = true});
 
   @override
@@ -47,7 +49,27 @@ class CustomButtonWidget extends StatelessWidget {
 
           Text('loading'.tr, style: robotoMedium.copyWith(color: Colors.white)),
         ]),
-        ) : Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        ) : hasPrice ? Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(buttonText, textAlign: TextAlign.center, overflow: TextOverflow.fade,maxLines: 1, style: isBold ? robotoBold.copyWith(
+              color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
+              fontSize: fontSize ?? Dimensions.fontSizeLarge,
+            ) : robotoRegular.copyWith(
+              color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
+              fontSize: fontSize ?? Dimensions.fontSizeLarge,
+            )
+            ),
+            Text(price, textAlign: TextAlign.center, overflow: TextOverflow.fade,maxLines: 1, style: isBold ? robotoBold.copyWith(
+              color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
+              fontSize: fontSize ?? Dimensions.fontSizeLarge,
+            ) : robotoRegular.copyWith(
+              color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
+              fontSize: fontSize ?? Dimensions.fontSizeLarge,
+            )
+            )
+          ],
+        ): Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           icon != null ? Padding(
             padding: const EdgeInsets.only(right: Dimensions.paddingSizeExtraSmall),
             child: Icon(icon, color: transparent ? Theme.of(context).primaryColor : Theme.of(context).cardColor),
@@ -60,7 +82,7 @@ class CustomButtonWidget extends StatelessWidget {
               fontSize: fontSize ?? Dimensions.fontSizeLarge,
             )
           ),
-        ]),
+        ]) ,
       ),
     )));
   }

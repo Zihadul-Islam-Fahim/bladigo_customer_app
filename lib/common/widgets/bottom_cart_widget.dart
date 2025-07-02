@@ -35,15 +35,22 @@ class BottomCartWidget extends StatelessWidget {
                 //   style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Theme.of(context).primaryColor),
                 // ),
               ]),
+                CustomButtonWidget(
+                    buttonText: 'view_cart'.tr,
 
-              CustomButtonWidget(buttonText: 'view_cart'.tr + "                      "+ PriceConverter.convertPrice(cartController.calculationCart()).toString(), width: Get.width * 0.9, height: 52, onPressed: () async {
-                await Get.toNamed(RouteHelper.getCartRoute());
-                Get.find<RestaurantController>().makeEmptyRestaurant();
-                if(restaurantId != null) {
-                  Get.find<RestaurantController>().getRestaurantDetails(Restaurant(id: restaurantId));
-                }
-              })
-            ]),
+                    hasPrice: true,
+                    price: PriceConverter.convertPrice(cartController.calculationCart()).toString(),
+                    width: Get.width * 0.9,
+                    height: 52,
+                    onPressed: () async {
+                      await Get.toNamed(RouteHelper.getCartRoute());
+                      Get.find<RestaurantController>().makeEmptyRestaurant();
+                      if (restaurantId != null) {
+                        Get.find<RestaurantController>()
+                            .getRestaurantDetails(Restaurant(id: restaurantId));
+                      }
+                    })
+              ]),
           ),
         );
       });

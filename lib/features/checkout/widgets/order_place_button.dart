@@ -69,7 +69,10 @@ class OrderPlaceButton extends StatelessWidget {
       padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
       child: SafeArea(
         child: CustomButtonWidget(
-            buttonText: 'place_order'.tr + "                             "+ total.toString()+ " MAD",
+            buttonText: 'place_order'.tr,
+            hasPrice: true,
+            price: "$total MAD",
+
             radius: Dimensions.radiusXExtraLarge,
             isLoading: checkoutController.isLoading,
             onPressed: checkoutController.isDistanceLoading ? null : () {
