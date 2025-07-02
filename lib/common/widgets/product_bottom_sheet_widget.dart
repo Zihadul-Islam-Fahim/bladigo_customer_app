@@ -301,7 +301,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                   height: Dimensions
                                                       .paddingSizeExtraSmall),
                                               Text(product!.description ?? '',
-                                                  style: arial.copyWith(fontSize: 16),
+                                                  style: arial.copyWith(fontSize: 16,fontWeight: FontWeight.w300,color: Colors.grey),
                                                   textAlign:
                                                       TextAlign.justify),
                                               const SizedBox(
@@ -501,10 +501,13 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                     .variations![
                                                                         index]
                                                                     .name!,
+
                                                                 style: robotoBold
                                                                     .copyWith(
                                                                         fontSize:
-                                                                            Dimensions.fontSizeExtraLarge)),
+                                                                            Dimensions.fontSizeLarge),
+                                                              maxLines: 2,
+                                                              overflow: TextOverflow.ellipsis,),
                                                             Container(
                                                               decoration:
                                                                   BoxDecoration(
@@ -536,6 +539,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                             .tr
                                                                     : 'optional'
                                                                         .tr,
+
                                                                 style: robotoRegular
                                                                     .copyWith(
                                                                   color: product!
@@ -700,12 +704,14 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                                 ),
                                                                               ),
                                                                               Flexible(
-                                                                                child: (productController.selectedVariations[index][i]! && (productController.quantity == product!.variations![index].variationValues![i].currentStock))
-                                                                                    ? Text(
-                                                                                        ' (${'only'.tr} ${product!.variations![index].variationValues![i].currentStock} ${'item_available'.tr})',
-                                                                                        style: robotoRegular.copyWith(color: Colors.blue, fontSize: Dimensions.fontSizeExtraSmall),
-                                                                                      )
-                                                                                    : Text(
+                                                                                child:
+                                                                                // (productController.selectedVariations[index][i]! && (productController.quantity == product!.variations![index].variationValues![i].currentStock))
+                                                                                //     ? Text(
+                                                                                //         ' (${'only'.tr} ${product!.variations![index].variationValues![i].currentStock} ${'item_available'.tr})',
+                                                                                //         style: robotoRegular.copyWith(color: Colors.blue, fontSize: Dimensions.fontSizeExtraSmall),
+                                                                                //       )
+                                                                                //     :
+                                                                                Text(
                                                                                         ' (${'out_of_stock'.tr})',
                                                                                         maxLines: 1,
                                                                                         overflow: TextOverflow.ellipsis,
