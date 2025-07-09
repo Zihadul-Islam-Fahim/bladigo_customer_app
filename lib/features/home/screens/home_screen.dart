@@ -1,4 +1,5 @@
 import 'package:flutter/rendering.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:stackfood_multivendor/common/widgets/menu_drawer_widget.dart';
 import 'package:stackfood_multivendor/features/home/controllers/advertisement_controller.dart';
 import 'package:stackfood_multivendor/features/home/widgets/cashback_dialog_widget.dart';
@@ -40,6 +41,7 @@ import 'package:stackfood_multivendor/features/cuisine/controllers/cuisine_contr
 import 'package:stackfood_multivendor/features/location/controllers/location_controller.dart';
 import 'package:stackfood_multivendor/features/product/controllers/product_controller.dart';
 import 'package:stackfood_multivendor/features/review/controllers/review_controller.dart';
+import 'package:stackfood_multivendor/features/wallet/widgets/wallet_card_widget.dart';
 import 'package:stackfood_multivendor/helper/address_helper.dart';
 import 'package:stackfood_multivendor/helper/auth_helper.dart';
 import 'package:stackfood_multivendor/helper/responsive_helper.dart';
@@ -516,6 +518,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _mainContents(BuildContext context) {
+    final tooltipController = JustTheController();
     return Center(
         child: SizedBox(
       width: Dimensions.webMaxWidth,
@@ -528,6 +531,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         _searchBar(context),
         const BannerViewWidget(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: WalletCardWidget(tooltipController: tooltipController),
+        ),
         ServicesSection(),
         // const WhatOnYourMindViewWidget(),
 

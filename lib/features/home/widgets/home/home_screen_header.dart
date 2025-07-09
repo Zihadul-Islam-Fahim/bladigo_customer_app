@@ -57,32 +57,31 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Row(children: [
-                                AuthHelper.isLoggedIn()
-                                    ? Icon(
-                                        AddressHelper.getAddressFromSharedPref()!
-                                                    .addressType ==
-                                                'home'
-                                            ? Icons.home_filled
-                                            : AddressHelper.getAddressFromSharedPref()!
-                                                        .addressType ==
-                                                    'office'
-                                                ? Icons.work
-                                                : Icons.location_on,
-                                        size: 20,
-                                        color: Theme.of(context).cardColor,
-                                      )
-                                    : Container(
+                                // AuthHelper.isLoggedIn()
+                                    // ? Image.asset(
+                                    //     AddressHelper.getAddressFromSharedPref()!
+                                    //                 .addressType ==
+                                    //             'home'
+                                    //         ? Images.restLocation
+                                    //         : AddressHelper.getAddressFromSharedPref()!
+                                    //                     .addressType ==
+                                    //                 'office'
+                                    //             ? Icons.work
+                                    //             : Icons.location_on,
+                                    //     size: 20,
+                                    //     color: Theme.of(context).primaryColor,
+                                    //   )
+                                    // :
+                                Container(
                                         decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
                                                 BorderRadius.circular(100)),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8),
-                                          child: Icon(
-                                            Icons.location_on,
-                                            size: 24,
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                          child: Image.asset(
+                                           Images.restLocation,
+                                            width: 27,
                                           ),
                                         ),
                                       ),
@@ -158,8 +157,8 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                       radius: 20,
                       backgroundColor: Colors.white,
                       child: Stack(children: [
-                        Icon(Icons.notifications_outlined,
-                            size: 25, color: Colors.grey),
+                        Image.asset(Images.notification,
+                            width: 35, ),
                         notificationController.hasNotification
                             ? Positioned(
                                 top: 0,

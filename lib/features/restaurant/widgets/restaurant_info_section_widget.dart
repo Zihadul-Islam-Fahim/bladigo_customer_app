@@ -333,7 +333,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                   child: Row(
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
-                                                      Image.asset("assets/image/restro_location.png", width: 20),
+                                                      Image.asset(Images.restLocation, width: 20),
                                                       const SizedBox(width: 4),
                                                       Flexible(
                                                         child: Text(

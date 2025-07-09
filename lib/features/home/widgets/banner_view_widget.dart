@@ -45,6 +45,8 @@ class BannerViewWidget extends StatelessWidget {
               itemCount: homeController.bannerImageList!.isEmpty ? 1 : homeController.bannerImageList!.length,
               itemBuilder: (context, index, _) {
                 return InkWell(
+                  hoverColor: Colors.white,
+                  borderRadius: BorderRadius.circular(40),
                   onTap: () {
                     if(homeController.bannerDataList![index] is Product) {
                       Product? product = homeController.bannerDataList![index];
@@ -70,7 +72,7 @@ class BannerViewWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
                       borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge),
-                      boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 2, offset: const Offset(0, 1))],
+                      // boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 2, offset: const Offset(0, 1))],
                     ),
                     clipBehavior: Clip.hardEdge,
                     child: ClipRRect(

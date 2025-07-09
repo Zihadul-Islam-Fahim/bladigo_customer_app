@@ -31,29 +31,32 @@ class _LanguageScreenState extends State<LanguageScreen> {
       endDrawer: const MenuDrawerWidget(), endDrawerEnableOpenDragGesture: false,
       backgroundColor: Theme.of(context).cardColor,
       body: GetBuilder<LocalizationController>(builder: (localizationController) {
-        return ResponsiveHelper.isDesktop(context) ? const WebLanguageScreen() : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const SizedBox(height: 40),
+        return ResponsiveHelper.isDesktop(context) ? const WebLanguageScreen() : Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+          const SizedBox(height: 250),
 
-          const Align(
-            alignment: Alignment.center,
-            child: CustomAssetImageWidget(
-              Images.languageBg,
-              height: 210, width: 210,
-              fit: BoxFit.contain,
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge),
-            child: Text('choose_your_language'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
-          ),
-          const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+          // const Align(
+          //   alignment: Alignment.center,
+          //   child: CustomAssetImageWidget(
+          //     Images.languageBg,
+          //     height: 210, width: 210,
+          //     fit: BoxFit.contain,
+          //   ),
+          // ),
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge),
-            child: Text('choose_your_language_to_proceed'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
+            child: Text('choose_your_language'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1)),
           ),
-          const SizedBox(height: Dimensions.paddingSizeExtraLarge),
+          // const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+          //
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge),
+          //   child: Text('choose_your_language_to_proceed'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
+          // ),
+          const SizedBox(height: Dimensions.paddingSizeExtraOverLarge),
 
           Expanded(
             child: SingleChildScrollView(
@@ -77,7 +80,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeDefault, horizontal: Dimensions.paddingSizeExtraLarge),
             decoration: BoxDecoration(
               color: Theme.of(context).cardColor,
-              boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.3), blurRadius: 10, spreadRadius: 0)],
+              // boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.3), blurRadius: 10, spreadRadius: 0)],
             ),
             child: CustomButtonWidget(
               buttonText: 'next'.tr,
