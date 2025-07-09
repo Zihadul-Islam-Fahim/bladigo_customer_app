@@ -16,13 +16,13 @@ class ServicesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(
-        padding: const EdgeInsets.only(left: 12),
-        child: AppTileTitleBar(
-          title: 'What_would_you_like_to_order'.tr,
-          onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
-        ),
-      ),
+      // Padding(
+      //   padding: const EdgeInsets.only(left: 12),
+      //   child: AppTileTitleBar(
+      //     title: 'What_would_you_like_to_order'.tr,
+      //     onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
+      //   ),
+      // ),
       GetBuilder<CategoryController>(builder: (categoryController) {
         return SizedBox(
             // height: ResponsiveHelper.isMobile(context) ? 260 : 300,

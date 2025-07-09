@@ -273,6 +273,8 @@ class Images {
   static const String emptyChat = 'assets/image/empty_chat.svg';
   static const String emptyCoupon = 'assets/image/empty_coupon.svg';
   static const String emptyFood = 'assets/image/empty_food.svg';
+  static const String notification = 'assets/image/notification.png';
+  static const String restLocation = "assets/image/restro_location.png";
   static const String emptyNotification = 'assets/image/empty_notification.svg';
   static const String emptyOrder = 'assets/image/empty_order.svg';
   static const String emptyRestaurant = 'assets/image/empty_restaurant.svg';
