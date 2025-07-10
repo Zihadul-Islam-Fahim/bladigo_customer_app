@@ -23,9 +23,7 @@ class ServicesSection extends StatelessWidget {
       //     onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
       //   ),
       // ),
-      Row(
-        children: [],
-      ),
+
       GetBuilder<CategoryController>(builder: (categoryController) {
         return SizedBox(
             // height: ResponsiveHelper.isMobile(context) ? 260 : 300,

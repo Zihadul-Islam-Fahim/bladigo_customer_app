@@ -100,6 +100,8 @@ class Images {
   static const String loyaltyIcon = 'assets/image/loyalty_icon.png';
   static const String shoppingBagIcon = 'assets/image/shopping_bag_icon.png';
   static const String walletIcon = 'assets/image/wallet_icon.png';
+  static const String homeWallet = 'assets/image/home_wallet.png';
+  static const String locationRounded = 'assets/image/location_rounded.png';
   static const String dialogWarning = 'assets/image/dialog_warning.png';
   static const String messengerIcon = 'assets/image/messenger_icon.png';
   static const String whatsappIcon = 'assets/image/whatsapp_icon.png';

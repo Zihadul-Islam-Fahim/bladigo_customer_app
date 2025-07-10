@@ -29,81 +29,86 @@ class WalletCardWidget extends StatelessWidget {
 
               Container(
                 // height: 90,
-                width: Get.width * 0.75,
-                margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeExtraSmall),
-                padding: EdgeInsets.symmetric(horizontal:isDesktop ? 35 : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeDefault),
+                width: Get.width * 0.80,
+                margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeExtraSmall,left: 18),
+                padding: EdgeInsets.symmetric(horizontal:isDesktop ? 35 : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(Images.walletPay),fit: BoxFit.cover,),
-                  borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                  // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
+                  borderRadius: BorderRadius.circular(40),
+                  border: Border.all(color: Colors.grey.shade400),
                   
-                  color: Get.find<ThemeController>().darkTheme ? Colors.white60 : const Color(0xff3A3E42),
+                  color: Get.find<ThemeController>().darkTheme ? Colors.white60 : Colors.transparent,
                 ),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
-                  Text('wallet_amount'.tr,style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).cardColor)),
-                  const SizedBox(height: Dimensions.paddingSizeSmall),
-                
-                  Row(children: [
-                    Text(
-                      PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance??0), textDirection: TextDirection.ltr,
-                      style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Theme.of(context).cardColor),
-                    ),
-                    const SizedBox(width: Dimensions.paddingSizeSmall),
-                
-                    // Get.find<SplashController>().configModel!.addFundStatus! ? JustTheTooltip(
-                    //   backgroundColor: Colors.black87,
-                    //   controller: tooltipController,
-                    //   preferredDirection: AxisDirection.down,
-                    //   tailLength: 14,
-                    //   tailBaseWidth: 20,
-                    //   content: Padding(
-                    //     padding: const EdgeInsets.all(8.0),
-                    //     child: Text(
-                    //       'if_you_want_to_add_fund_to_your_wallet_then_click_add_fund_button'.tr,
-                    //       style: robotoRegular.copyWith(color: Colors.white),
-                    //     ),
-                    //   ),
-                    //   child: InkWell(
-                    //     onTap: () => tooltipController.showTooltip(),
-                    //     child: Icon(Icons.info_outline, color: Theme.of(context).cardColor),
-                    //   ),
-                    // ) : const SizedBox(),
-                  ]),
-                ]),
-              ),
-              Positioned(
-                top: 10,right: 20,
-                  child: Text("Top up",style: TextStyle(color: Colors.white),)
-              
-              ),
+                child: Row(
+                  children: [
+                    Image.asset(Images.homeWallet,width: 25,),
+                    SizedBox(width: 15,),
+                    Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisSize: MainAxisSize.min,mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Text('wallet_amount'.tr,style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black)),
+                      const SizedBox(width: Dimensions.paddingSizeSmall),
 
-              Get.find<SplashController>().configModel!.addFundStatus! ? Positioned(
-                top: 20, right: Get.find<LocalizationController>().isLtr ? 20 : null,
-                left: Get.find<LocalizationController>().isLtr ? null : 10,
-                bottom: 0,
-                child: InkWell(
-                  onTap: (){
-                    if(Get.find<SplashController>().configModel!.digitalPayment!) {
-                      Get.dialog(
-                        const Dialog(
-                          shadowColor: Colors.transparent,
-                          backgroundColor: Colors.transparent,
-                          surfaceTintColor: Colors.transparent,
-                          insetPadding: EdgeInsets.zero,
-                          child: SizedBox(width: 500, child: AddFundDialogueWidget()),
+                      Row(children: [
+                        Text(
+                          PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance??0), textDirection: TextDirection.ltr,
+                          style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Colors.black),
                         ),
-                      );
-                    } else {
-                      showCustomSnackBar('currently_digital_payment_is_not_available'.tr);
-                    }
+                        const SizedBox(width: Dimensions.paddingSizeSmall),
 
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).cardColor),
-                    padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-                    child: const Icon(Icons.add),
-                  ),
+                        // Get.find<SplashController>().configModel!.addFundStatus! ? JustTheTooltip(
+                        //   backgroundColor: Colors.black87,
+                        //   controller: tooltipController,
+                        //   preferredDirection: AxisDirection.down,
+                        //   tailLength: 14,
+                        //   tailBaseWidth: 20,
+                        //   content: Padding(
+                        //     padding: const EdgeInsets.all(8.0),
+                        //     child: Text(
+                        //       'if_you_want_to_add_fund_to_your_wallet_then_click_add_fund_button'.tr,
+                        //       style: robotoRegular.copyWith(color: Colors.white),
+                        //     ),
+                        //   ),
+                        //   child: InkWell(
+                        //     onTap: () => tooltipController.showTooltip(),
+                        //     child: Icon(Icons.info_outline, color: Theme.of(context).cardColor),
+                        //   ),
+                        // ) : const SizedBox(),
+                      ]),
+                    ]),
+                    Spacer(),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text("top_up".tr,style: TextStyle(color: Colors.black),),
+
+                        Get.find<SplashController>().configModel!.addFundStatus! ? InkWell(
+                          onTap: (){
+                            if(Get.find<SplashController>().configModel!.digitalPayment!) {
+                              Get.dialog(
+                                const Dialog(
+                                  shadowColor: Colors.transparent,
+                                  backgroundColor: Colors.transparent,
+                                  surfaceTintColor: Colors.transparent,
+                                  insetPadding: EdgeInsets.zero,
+                                  child: SizedBox(width: 500, child: AddFundDialogueWidget()),
+                                ),
+                              );
+                            } else {
+                              showCustomSnackBar('currently_digital_payment_is_not_available'.tr);
+                            }
+
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).primaryColor),
+                            padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
+                            child: const Icon(Icons.add,color: Colors.white,),
+                          ),
+                        ) : const SizedBox(),
+                      ],
+                    ),
+
+                  ],
                 ),
-              ) : const SizedBox(),
+              ),
 
               // Positioned(
               //   bottom: 0, right: 60,

@@ -531,9 +531,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         _searchBar(context),
         const BannerViewWidget(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: WalletCardWidget(tooltipController: tooltipController),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            WalletCardWidget(tooltipController: tooltipController),
+            InkWell(
+              onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
+              child: Text("See all   ",style: TextStyle(color: Theme.of(context).primaryColor),),
+            )
+          ],
         ),
         ServicesSection(),
         // const WhatOnYourMindViewWidget(),
