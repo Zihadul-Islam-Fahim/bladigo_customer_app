@@ -531,16 +531,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         _searchBar(context),
         const BannerViewWidget(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            WalletCardWidget(tooltipController: tooltipController),
-            InkWell(
-              onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
-              child: Text("See all   ",style: TextStyle(color: Theme.of(context).primaryColor),),
-            )
-          ],
-        ),
+        WalletSection(tooltipController, context),
         ServicesSection(),
         // const WhatOnYourMindViewWidget(),
 
@@ -569,6 +560,19 @@ class _HomeScreenState extends State<HomeScreen> {
         const PromotionalBannerViewWidget(),
       ]),
     ));
+  }
+
+  Row WalletSection(JustTheController tooltipController, BuildContext context) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          WalletCardWidget(tooltipController: tooltipController),
+          InkWell(
+            onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
+            child: Text("See all   ",style: TextStyle(color: Theme.of(context).primaryColor),),
+          )
+        ],
+      );
   }
 
   Widget _searchBar(BuildContext context) {

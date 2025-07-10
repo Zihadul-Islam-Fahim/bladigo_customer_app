@@ -50,7 +50,7 @@ class WalletCardWidget extends StatelessWidget {
                       Row(children: [
                         Text(
                           PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance??0), textDirection: TextDirection.ltr,
-                          style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Colors.black),
+                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Colors.black,fontWeight: FontWeight.w100),
                         ),
                         const SizedBox(width: Dimensions.paddingSizeSmall),
 

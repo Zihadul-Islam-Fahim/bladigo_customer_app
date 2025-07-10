@@ -80,7 +80,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8),
                                           child: Image.asset(
-                                           Images.restLocation,
+                                           Images.locationRounded,
                                             width: 27,
                                           ),
                                         ),
