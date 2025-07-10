@@ -26,11 +26,16 @@ class WalletCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(children: [
+
               Container(
-                margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeLarge),
-                padding: EdgeInsets.all(isDesktop ? 35 : Dimensions.paddingSizeExtraLarge),
+                // height: 90,
+                width: Get.width * 0.75,
+                margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeExtraSmall),
+                padding: EdgeInsets.symmetric(horizontal:isDesktop ? 35 : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeDefault),
                 decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(Images.walletPay),fit: BoxFit.cover,),
                   borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                  
                   color: Get.find<ThemeController>().darkTheme ? Colors.white60 : const Color(0xff3A3E42),
                 ),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
@@ -44,26 +49,31 @@ class WalletCardWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: Dimensions.paddingSizeSmall),
                 
-                    Get.find<SplashController>().configModel!.addFundStatus! ? JustTheTooltip(
-                      backgroundColor: Colors.black87,
-                      controller: tooltipController,
-                      preferredDirection: AxisDirection.down,
-                      tailLength: 14,
-                      tailBaseWidth: 20,
-                      content: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'if_you_want_to_add_fund_to_your_wallet_then_click_add_fund_button'.tr,
-                          style: robotoRegular.copyWith(color: Colors.white),
-                        ),
-                      ),
-                      child: InkWell(
-                        onTap: () => tooltipController.showTooltip(),
-                        child: Icon(Icons.info_outline, color: Theme.of(context).cardColor),
-                      ),
-                    ) : const SizedBox(),
+                    // Get.find<SplashController>().configModel!.addFundStatus! ? JustTheTooltip(
+                    //   backgroundColor: Colors.black87,
+                    //   controller: tooltipController,
+                    //   preferredDirection: AxisDirection.down,
+                    //   tailLength: 14,
+                    //   tailBaseWidth: 20,
+                    //   content: Padding(
+                    //     padding: const EdgeInsets.all(8.0),
+                    //     child: Text(
+                    //       'if_you_want_to_add_fund_to_your_wallet_then_click_add_fund_button'.tr,
+                    //       style: robotoRegular.copyWith(color: Colors.white),
+                    //     ),
+                    //   ),
+                    //   child: InkWell(
+                    //     onTap: () => tooltipController.showTooltip(),
+                    //     child: Icon(Icons.info_outline, color: Theme.of(context).cardColor),
+                    //   ),
+                    // ) : const SizedBox(),
                   ]),
                 ]),
+              ),
+              Positioned(
+                top: 10,right: 20,
+                  child: Text("Top up",style: TextStyle(color: Colors.white),)
+              
               ),
 
               Get.find<SplashController>().configModel!.addFundStatus! ? Positioned(
@@ -95,12 +105,12 @@ class WalletCardWidget extends StatelessWidget {
                 ),
               ) : const SizedBox(),
 
-              Positioned(
-                bottom: 0, right: 60,
-                child: Image.asset(
-                  Images.walletPay, height: 80, width: 80, opacity: const AlwaysStoppedAnimation(0.2),
-                ),
-              ),
+              // Positioned(
+              //   bottom: 0, right: 60,
+              //   child: Image.asset(
+              //     Images.walletPay, height: 80, width: 80, opacity: const AlwaysStoppedAnimation(0.2),
+              //   ),
+              // ),
 
             ]),
             isDesktop ? const SizedBox() : const SizedBox(height: Dimensions.paddingSizeLarge),

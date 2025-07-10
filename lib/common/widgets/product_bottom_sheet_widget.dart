@@ -1231,7 +1231,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                               isLoading: cartController.isLoading,
                               fontSize: 20,
                               hasPrice: true,
-                              price: "$priceWithAddonsVariationWithDiscount MAD",
+                              price: "${priceWithAddonsVariationWithDiscount.toStringAsFixed(2)} MAD",
                               buttonText: (!product!.scheduleOrder! &&
                                       !isAvailable)
                                   ? 'not_available_now'.tr
