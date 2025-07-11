@@ -12,8 +12,8 @@ class AppConstants {
   static const String webHostedUrl = 'https://bladigo.com';
   static const bool useReactWebsite = false;
 
-  static const String baseUrl = 'https://admin.bladigo.com';
-  // static const String baseUrl = 'https://ops-console.bladigo.com';
+  // static const String baseUrl = 'https://admin.bladigo.com';
+  static const String baseUrl = 'https://ops-console.bladigo.com';
   static const String categoryUri = '/api/v1/categories';
   static const String bannerUri = '/api/v1/banners';
   static const String restaurantProductUri = '/api/v1/products/latest';
