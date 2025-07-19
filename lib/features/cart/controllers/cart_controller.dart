@@ -240,7 +240,7 @@ class CartController extends GetxController implements GetxService {
       if (!fromDirectlyAdd) {
         Get.back();
       }
-      showCartSnackBarWidget();
+      // showCartSnackBarWidget();
     } else if (response.statusCode == 403 &&
         response.body['errors'][0]['code'] == 'stock_out') {
       showCustomSnackBar(response.body['errors'][0]['message']);
@@ -288,7 +288,7 @@ class CartController extends GetxController implements GetxService {
           onlineCartModel: onlineCartList));
       calculationCart();
       Get.back();
-      showCartSnackBarWidget();
+      // showCartSnackBarWidget();
     } else if (response.statusCode == 403 &&
         response.body['errors'][0]['code'] == 'stock_out') {
       showCustomSnackBar(response.body['errors'][0]['message']);

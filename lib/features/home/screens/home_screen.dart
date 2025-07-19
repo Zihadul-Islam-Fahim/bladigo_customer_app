@@ -562,8 +562,8 @@ class _HomeScreenState extends State<HomeScreen> {
     ));
   }
 
-  Row WalletSection(JustTheController tooltipController, BuildContext context) {
-    return Row(
+  Widget WalletSection(JustTheController tooltipController, BuildContext context) {
+    return Get.find<AuthController>().isLoggedIn() ? Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           WalletCardWidget(tooltipController: tooltipController),
@@ -572,7 +572,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text("See all   ",style: TextStyle(color: Theme.of(context).primaryColor),),
           )
         ],
-      );
+      ) : SizedBox.shrink();
   }
 
   Widget _searchBar(BuildContext context) {
