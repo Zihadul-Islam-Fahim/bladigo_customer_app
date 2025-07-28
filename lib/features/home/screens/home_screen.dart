@@ -531,7 +531,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         _searchBar(context),
         const BannerViewWidget(),
-        WalletSection(tooltipController, context),
+        _isLogin ?  WalletSection(tooltipController, context) : const SizedBox(),
         ServicesSection(),
         // const WhatOnYourMindViewWidget(),
 
