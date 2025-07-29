@@ -20,7 +20,7 @@ class BestReviewItemViewWidget extends StatelessWidget {
         return (reviewController.reviewedProductList !=null && reviewController.reviewedProductList!.isEmpty) ? const SizedBox() : Padding(
           padding:  EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeLarge),
           child: SizedBox(
-            height: ResponsiveHelper.isMobile(context) ? 340 : 355, width: Dimensions.webMaxWidth,
+            height: ResponsiveHelper.isMobile(context) ? 385 : 355, width: Dimensions.webMaxWidth,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start, children: [
 
@@ -53,7 +53,8 @@ class BestReviewItemViewWidget extends StatelessWidget {
                           child: ItemCardWidget(
                             isBestItem: true,
                             product: reviewController.reviewedProductList![index],
-                            width: ResponsiveHelper.isDesktop(context) ? 200 : MediaQuery.of(context).size.width * 0.53,
+                            width: ResponsiveHelper.isDesktop(context) ? 200 : 190,
+
                           ),
                         );
                       },

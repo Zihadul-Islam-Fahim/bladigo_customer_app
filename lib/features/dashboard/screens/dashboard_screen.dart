@@ -223,6 +223,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                             ),
                             KBottomNavItem(
                               imageAsset: 'assets/image/home.png',
+
                               label: 'Home'.tr,
                               isSelected: _pageIndex == 0,
                               onTap: () => _setPage(0),

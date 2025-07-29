@@ -59,6 +59,7 @@ class ItemCardWidget extends StatelessWidget {
 
     return Container(
       width: isPopularNearbyItem! ? double.infinity : width,
+
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
