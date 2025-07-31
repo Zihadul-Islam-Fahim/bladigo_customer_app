@@ -88,7 +88,7 @@ class SplashScreenState extends State<SplashScreen> {
             // mainAxisSize: MainAxisSize.max,
             children: [
 
-              Expanded(child: Image.asset(Images.animatedLogo, fit: BoxFit.fill,width: Get.width,)),
+              Expanded(child: Image.asset(Images.logo, fit: BoxFit.scaleDown,)),
             ],
           ) : NoInternetScreen(child: SplashScreen(notificationBody: widget.notificationBody, linkBody: widget.linkBody)),
         );
