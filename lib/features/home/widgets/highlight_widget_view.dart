@@ -46,8 +46,8 @@ class _HighlightWidgetViewState extends State<HighlightWidgetView> {
 
             Container(
               width: context.width,
-              height: Get.height * 0.45,
-              color: const Color(0xFF2B9430),
+              height: Get.height * 0.38,
+              // color: const Color(0xFF2B9430),
             ),
 
             // CustomAssetImageWidget(
@@ -58,28 +58,28 @@ class _HighlightWidgetViewState extends State<HighlightWidgetView> {
 
             Column(children: [
 
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault, top: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeExtraSmall,
-                ),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('highlights_for_you'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Colors.white)),
-                      const SizedBox(width: 5),
-
-                      Text('see_our_most_popular_restaurant_and_foods'.tr, style: robotoRegular.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall)),
-                    ],
-                  ),
-
-                  const CustomAssetImageWidget(
-                    Images.highlightIcon, height: 50, width: 50,
-                  ),
-
-                ]),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(
+              //     left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault, top: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeExtraSmall,
+              //   ),
+              //   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              //
+              //     Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         Text('highlights_for_you'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Colors.white)),
+              //         const SizedBox(width: 5),
+              //
+              //         Text('see_our_most_popular_restaurant_and_foods'.tr, style: robotoRegular.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall)),
+              //       ],
+              //     ),
+              //
+              //     const CustomAssetImageWidget(
+              //       Images.highlightIcon, height: 50, width: 50,
+              //     ),
+              //
+              //   ]),
+              // ),
 
               CarouselSlider.builder(
                 carouselController: _carouselController,
@@ -88,7 +88,7 @@ class _HighlightWidgetViewState extends State<HighlightWidgetView> {
                   enableInfiniteScroll: advertisementController.advertisementList!.length > 2,
                   autoPlay: advertisementController.autoPlay,
                   enlargeCenterPage: false,
-                  height: 280,
+                  height: 410,
                   viewportFraction: 1,
                   disableCenter: true,
                   onPageChanged: (index, reason) {
@@ -322,13 +322,13 @@ class _HighlightVideoWidgetState extends State<HighlightVideoWidget> {
         height: 280,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-          color: Theme.of(context).cardColor,
-          border: Border.all(color: Theme.of(context).disabledColor.withOpacity(0.07), width: 2),
+          // color: Theme.of(context).cardColor,
+          // border: Border.all(color: Theme.of(context).disabledColor.withOpacity(0.07), width: 2),
         ),
         child: Column(children: [
 
           Expanded(
-            flex: 5,
+            flex: 9,
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(Dimensions.radiusDefault)),
               child: Stack(
@@ -351,7 +351,7 @@ class _HighlightVideoWidgetState extends State<HighlightVideoWidget> {
 
                 Text(
                   widget.advertisement.title ?? '',
-                  style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, fontWeight: FontWeight.w600),
+                  style: robotoMedium.copyWith(fontSize: 22, fontWeight: FontWeight.w600),
                   maxLines: 1, overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: Dimensions.paddingSizeExtraSmall),
@@ -361,7 +361,7 @@ class _HighlightVideoWidgetState extends State<HighlightVideoWidget> {
                   Expanded(
                     child: Text(
                       widget.advertisement.description ?? '',
-                      style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+                      style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).hintColor),
                       maxLines: 2, overflow: TextOverflow.ellipsis,
                     ),
                   ),
