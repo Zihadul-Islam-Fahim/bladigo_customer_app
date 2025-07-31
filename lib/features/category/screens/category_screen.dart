@@ -134,14 +134,16 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          ClipRRect(
-                                            borderRadius: BorderRadius.circular(
-                                                Dimensions.radiusSmall),
-                                            child: CustomImageWidget(
-                                              height: 50,
-                                              width: 50,
-                                              fit: BoxFit.cover,
-                                              image: '${data.imageFullUrl}',
+                                          Expanded(
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(
+                                                  Dimensions.radiusSmall),
+                                              child: CustomImageWidget(
+                                                // height: 100,
+                                                // width: 100,
+                                                fit: BoxFit.cover,
+                                                image: '${data.imageFullUrl}',
+                                              ),
                                             ),
                                           ),
                                           const SizedBox(
@@ -152,7 +154,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                             textAlign: TextAlign.center,
                                             style: robotoMedium.copyWith(
                                                 fontSize:
-                                                    Dimensions.fontSizeSmall),
+                                                    Dimensions.fontSizeLarge),
                                             maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
                                           ),
