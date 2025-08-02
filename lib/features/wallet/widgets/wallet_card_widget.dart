@@ -44,12 +44,12 @@ class WalletCardWidget extends StatelessWidget {
                     Image.asset(Images.homeWallet,width: 25,),
                     SizedBox(width: 15,),
                     Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisSize: MainAxisSize.min,mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Text('wallet_amount'.tr,style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black)),
+                      SizedBox(width: Get.width * 0.23,child: Text('wallet_amount'.tr,style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black),overflow: TextOverflow.ellipsis,)),
                       const SizedBox(width: Dimensions.paddingSizeSmall),
 
                       Row(children: [
                         Text(
-                          PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance??0), textDirection: TextDirection.ltr,
+                          PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance??0), textDirection: TextDirection.ltr,overflow: TextOverflow.ellipsis,
                           style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Colors.black,fontWeight: FontWeight.w100),
                         ),
                         const SizedBox(width: Dimensions.paddingSizeSmall),
