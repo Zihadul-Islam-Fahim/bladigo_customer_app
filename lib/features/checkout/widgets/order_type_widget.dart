@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:stackfood_multivendor/util/dimensions.dart';
 import 'package:stackfood_multivendor/util/styles.dart';
 import 'package:flutter/material.dart';
@@ -28,11 +29,15 @@ class OrderTypeWidget extends StatelessWidget {
           ),
           const SizedBox(width: Dimensions.paddingSizeSmall),
 
-          Text(
-            title, maxLines: 1, overflow: TextOverflow.ellipsis,
-            style: robotoMedium.copyWith(
-              fontSize: Dimensions.fontSizeSmall,
-              color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
+          SizedBox(
+            width: Get.width * 0.24,
+            child: Text(
+              title, maxLines: 2, overflow: TextOverflow.ellipsis,
+              style: robotoMedium.copyWith(
+                fontSize: Dimensions.fontSizeSmall,
+                overflow: TextOverflow.ellipsis,
+                color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor,
+              ),
             ),
           ),
         ]),

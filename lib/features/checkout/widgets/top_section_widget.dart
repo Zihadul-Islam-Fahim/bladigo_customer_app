@@ -160,7 +160,7 @@ class TopSectionWidget extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('order_type'.tr, style: robotoMedium),
+                      Text('order_type'.tr, style: robotoMedium.copyWith(fontSize: 20,fontWeight: FontWeight.bold)),
                       const SizedBox(height: Dimensions.paddingSizeExtraSmall),
                       Row(children: [
                         Expanded(
