@@ -193,8 +193,8 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                                   child: Container(
                                     decoration: BoxDecoration(
                                         color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.05) : Colors.transparent,
-                                        borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                                        border: Border.all(color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor, width: 0.3),
+                                        borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
+                                        border: Border.all(color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor, width: 0.5),
                                     ),
                                     padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeDefault),
                                     margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
@@ -217,7 +217,7 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                                         height: 20, width: 20,
                                         decoration: BoxDecoration(
                                             shape: BoxShape.circle, color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
-                                            border: Border.all(color: Theme.of(context).disabledColor)
+                                            // border: Border.all(color: Theme.of(context).disabledColor)
                                         ),
                                         child: Icon(Icons.check, color: Theme.of(context).cardColor, size: 16),
                                       ),

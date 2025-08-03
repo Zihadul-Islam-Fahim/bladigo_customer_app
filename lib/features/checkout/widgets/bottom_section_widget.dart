@@ -124,7 +124,7 @@ class BottomSectionWidget extends StatelessWidget {
 
 
             pricingView(context, isDesktop),
-            // const SizedBox(height: Dimensions.paddingSizeLarge),
+            const SizedBox(height: 100),
 
             // const CheckoutCondition(),
           ]),
