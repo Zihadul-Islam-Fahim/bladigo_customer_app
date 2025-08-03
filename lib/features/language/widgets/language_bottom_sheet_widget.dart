@@ -42,7 +42,7 @@ class _LanguageBottomSheetWidgetState extends State<LanguageBottomSheetWidget> {
             Text('choose_your_language'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
             const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
-            Text('choose_your_language_to_proceed'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
+            // Text('choose_your_language_to_proceed'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
 
           ]),
           const SizedBox(height: Dimensions.paddingSizeExtraLarge),
