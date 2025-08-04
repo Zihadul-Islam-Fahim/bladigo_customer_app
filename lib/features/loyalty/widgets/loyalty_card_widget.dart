@@ -19,28 +19,29 @@ class LoyaltyCardWidget extends StatelessWidget {
     return GetBuilder<ProfileController>(builder: (userController) {
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
-            margin: EdgeInsets.only(top: ResponsiveHelper.isDesktop(context) ? 0 : Dimensions.paddingSizeLarge),
+            margin: EdgeInsets.only(top: ResponsiveHelper.isDesktop(context) ? 0 : Dimensions.paddingSizeExtraSmall),
             padding: EdgeInsets.symmetric(
-              horizontal: ResponsiveHelper.isDesktop(context) ? 35 : Dimensions.paddingSizeExtraOverLarge,
-              vertical: ResponsiveHelper.isDesktop(context) ? 35 : Dimensions.paddingSizeOverLarge,
+              horizontal: ResponsiveHelper.isDesktop(context) ? 35 : Dimensions.paddingSizeSmall,
+              vertical: ResponsiveHelper.isDesktop(context) ? 35 : Dimensions.paddingSizeSmall,
             ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-              color: Theme.of(context).disabledColor.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(color: Colors.black),
+              color: Colors.transparent,
             ),
             child:  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
               const SizedBox(width: Dimensions.paddingSizeExtraLarge),
 
-              Image.asset(Images.loyal , height: 70, width: 70, color: null),
-              const SizedBox(width: Dimensions.paddingSizeExtraOverLarge),
+              Image.asset(Images.loyal , height: 50, width: 60, color: null),
+              const SizedBox(width: Dimensions.paddingSizeDefault),
 
-              Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
+              Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start, children: [
 
                 ResponsiveHelper.isDesktop(context) ? const SizedBox() : Text(
                   'convertible_points'.tr,
-                  style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).textTheme.bodyLarge!.color),
+                  style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Theme.of(context).textTheme.bodyLarge!.color),
                 ),
-
+                const SizedBox(width: 20),
                 Text(
                   userController.userInfoModel?.loyaltyPoint == null ? '0' : userController.userInfoModel!.loyaltyPoint.toString(),
                   style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Theme.of(context).textTheme.bodyLarge!.color),

@@ -58,7 +58,7 @@ class Images {
   static const String restaurantJoin = 'assets/image/restaurant_join.png';
   static const String deliveryManJoin = 'assets/image/delivery_man_join.png';
   static const String wallet = 'assets/image/wallet.png';
-  static const String loyal = 'assets/image/loyal.png';
+  static const String loyal = 'assets/image/loyal_icon.png';
   static const String giftBox = 'assets/image/giftbox.gif';
   static const String referCode = 'assets/image/refer_code.png';
   static const String animateDeliveryMan = 'assets/image/delivery-man.gif';
