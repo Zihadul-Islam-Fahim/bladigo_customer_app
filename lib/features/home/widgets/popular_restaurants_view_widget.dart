@@ -36,7 +36,8 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
         return (restaurantList != null && restaurantList.isEmpty) ? const SizedBox() : Padding(
           padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeLarge),
           child: SizedBox(
-            height: 245, width: Dimensions.webMaxWidth,
+            // height: 285,
+            width: Dimensions.webMaxWidth,
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
                 ResponsiveHelper.isDesktop(context) ? Padding(
@@ -68,12 +69,14 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
 
 
                restaurantList != null ? SizedBox(
-                  height: 185,
+                  // height: 795,
                   child: ListView.builder(
-                    itemCount: restaurantList.length,
+                    itemCount: restaurantList.length >10 ? 10 : restaurantList.length,
                     padding: EdgeInsets.only(right: ResponsiveHelper.isMobile(context) ? Dimensions.paddingSizeDefault : 0),
-                    scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.vertical,
                     physics: const BouncingScrollPhysics(),
+                    primary: false,
+                    shrinkWrap: true,
                     itemBuilder: (context, index) {
                       bool isAvailable = restaurantList[index].open == 1 && restaurantList[index].active!;
                       String characteristics = '';
@@ -86,7 +89,8 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                         padding: EdgeInsets.only(left: (ResponsiveHelper.isDesktop(context) && index == 0 && Get.find<LocalizationController>().isLtr) ? 0 : Dimensions.paddingSizeDefault),
                         child: Container(
 
-                          height: 185, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.9,
+                          height: 195,
+                          width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
@@ -100,6 +104,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                               clipBehavior: Clip.none,
                               children: [
                                 Container(
+                                  margin: EdgeInsets.only(bottom: 10),
                                   height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.9,
                                   decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
