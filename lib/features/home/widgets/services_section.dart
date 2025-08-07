@@ -51,9 +51,18 @@ class ServicesSection extends StatelessWidget {
                     padding: EdgeInsets.zero,
                    highlightColor: Colors.white,
                     onTap: () {
-                      Get.to(
-                        () => FilteredServicesScreen(category: data!),
-                      );
+                      Get.find<CategoryController>()
+                          .getSubCategoryList(data?.id.toString());
+
+                        // () => FilteredServicesScreen(category: data!),
+                        Get.toNamed(
+                          RouteHelper.getCategoryProductRoute(
+                            data?.id,
+                            data?.name ?? "",
+                          ),
+                          arguments: 0,
+                        );
+
                     },
                     radius: 68,
                     child: CircularItemCard(

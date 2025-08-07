@@ -51,7 +51,6 @@ class _BadWeatherWidgetState extends State<BadWeatherWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     return _showAlert && _message != null && _message!.isNotEmpty ? Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
