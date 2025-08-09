@@ -223,6 +223,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                             ),
                             KBottomNavItem(
                               imageAsset: 'assets/image/home.png',
+                              selectedImage: 'assets/image/home_filled.png',
 
                               label: 'Home'.tr,
                               isSelected: _pageIndex == 0,
@@ -231,6 +232,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                             Spacer(),
                             KBottomNavItem(
                               imageAsset: 'assets/image/my_order.png',
+                              selectedImage: 'assets/image/order_filled.png',
                               label: 'My_orders'.tr,
                               isSelected: _pageIndex == 3,
                               onTap: () => _setPage(3),
@@ -240,6 +242,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                             Spacer(),
                             KBottomNavItem(
                               imageAsset: 'assets/image/fav.png',
+                              selectedImage: 'assets/image/fav_filled.png',
                               label: 'Favorites'.tr,
                               isSelected: _pageIndex == 1,
                               onTap: () => _setPage(1),
@@ -247,6 +250,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                             Spacer(),
                             KBottomNavItem(
                               imageAsset: 'assets/image/person.png',
+                              selectedImage: 'assets/image/person_filled.png',
                               label: 'Profile'.tr,
                               isSelected: _pageIndex == 4,
                               onTap: () => _setPage(4),
@@ -324,6 +328,7 @@ class DashboardScreenState extends State<DashboardScreen> {
 
 class KBottomNavItem extends StatelessWidget {
   final String? imageAsset;
+  final String? selectedImage;
   final String? label;
   final IconData? iconData;
   final bool isSelected;
@@ -332,6 +337,7 @@ class KBottomNavItem extends StatelessWidget {
   const KBottomNavItem({
     super.key,
     this.imageAsset,
+    this.selectedImage,
     this.label,
     this.iconData,
     required this.isSelected,
@@ -347,13 +353,16 @@ class KBottomNavItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           imageAsset != null
-              ? Image.asset(
+              ?isSelected ? Image.asset(
+            selectedImage!,
+            height: 24,
+            width: 24,
+
+          ) : Image.asset(
                   imageAsset!,
                   height: 24,
                   width: 24,
-                  color: isSelected
-                      ? Theme.of(context).primaryColor
-                      : Theme.of(context).disabledColor,
+
                 )
               : Icon(
                   iconData,
