@@ -358,7 +358,7 @@ class ItemCardWidget extends StatelessWidget {
                       Flexible(
                           child: Text(product.name ?? '',
                               style: robotoMedium.copyWith(
-                                fontSize: 22
+                                fontSize: 18
                               ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1)),
@@ -394,7 +394,7 @@ class ItemCardWidget extends StatelessWidget {
                                 width: Dimensions.paddingSizeExtraSmall),
                             Text('(${product.ratingCount})',
                                 style: robotoRegular.copyWith(
-                                    fontSize: Dimensions.fontSizeLarge1,
+                                    fontSize: Dimensions.fontSizeLarge,
                                     color: Theme.of(context).disabledColor)),
                           ],
                         )
@@ -408,7 +408,7 @@ class ItemCardWidget extends StatelessWidget {
                       discountPrice < price
                           ? Text(PriceConverter.convertPrice(price),
                               style: robotoRegular.copyWith(
-                                  fontSize: Dimensions.fontSizeLarge,
+                                  fontSize: Dimensions.fontSizeDefault,
                                   color: Theme.of(context).disabledColor,
                                   decoration: TextDecoration.lineThrough,
                                   decorationColor:
@@ -419,7 +419,7 @@ class ItemCardWidget extends StatelessWidget {
                               width: Dimensions.paddingSizeExtraSmall)
                           : const SizedBox(),
                       Text(PriceConverter.convertPrice(discountPrice),
-                          style: robotoBold.copyWith(fontSize: 18,color: Theme.of(context).primaryColor)),
+                          style: robotoBold.copyWith(fontSize: 15,color: Theme.of(context).primaryColor)),
                     ],
                   ),
                 ],

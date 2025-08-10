@@ -531,15 +531,9 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                                         isBestItem: false,
                                                         isPopularNearbyItem:
                                                             false,
-                                                        width: ResponsiveHelper
-                                                                .isDesktop(
-                                                                    context)
+                                                        width: ResponsiveHelper.isDesktop(context)
                                                             ? 200
-                                                            : MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width *
-                                                                0.53,
+                                                            : MediaQuery.of(context).size.width * 0.43,
                                                       ),
                                                     );
                                                   },
