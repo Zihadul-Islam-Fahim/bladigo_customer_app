@@ -30,8 +30,9 @@ class BottomButton extends StatelessWidget {
       child: Column(children: [
 
         CustomButtonWidget(
-          radius: Dimensions.radiusDefault,
+          radius: Dimensions.radiusXExtraLarge,
           buttonText: 'user_current_location'.tr,
+
           onPressed: () async {
             _checkPermission(() async {
               Get.dialog(const CustomLoaderWidget(), barrierDismissible: false);
@@ -63,7 +64,7 @@ class BottomButton extends StatelessWidget {
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
               side: BorderSide(width: 2, color: Theme.of(context).primaryColor),
-              borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+              borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
             ),
             minimumSize: const Size(Dimensions.webMaxWidth, 50),
             padding: EdgeInsets.zero,

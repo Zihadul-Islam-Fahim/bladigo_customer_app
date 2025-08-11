@@ -178,7 +178,7 @@ class SearchScreenState extends State<SearchScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
                           decoration: BoxDecoration(
                             color: Theme.of(context).disabledColor.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                            borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
                             border: Border.all(color: Theme.of(context).disabledColor.withOpacity(0.6)),
                           ),
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -233,7 +233,7 @@ class SearchScreenState extends State<SearchScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
                             decoration: BoxDecoration(
                               color: Theme.of(context).cardColor,
-                              borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                              borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
                               border: Border.all(color: Theme.of(context).primaryColor),
                             ),
                             child: Text(
