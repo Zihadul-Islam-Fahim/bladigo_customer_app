@@ -17,10 +17,10 @@ class BottomCartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CartController>(builder: (cartController) {
         return Container(
-          height: GetPlatform.isIOS ? 100 : 70, width: Get.width,
-          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraLarge),
+          height: GetPlatform.isIOS ? 100 : 80, width: Get.width,
+          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault,vertical: 10),
           decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
+              color: Colors.transparent,
             // boxShadow: [BoxShadow(color: const Color(0xFF2A2A2A).withOpacity(0.1), blurRadius: 10, offset: const Offset(0, -5))],
           ),
           child: SafeArea(
@@ -37,6 +37,7 @@ class BottomCartWidget extends StatelessWidget {
               ]),
                 CustomButtonWidget(
                     buttonText: 'view_cart'.tr,
+
 
                     hasPrice: true,
                     price: PriceConverter.convertPrice(cartController.calculationCart()).toString(),

@@ -152,7 +152,7 @@ class ProductWidget extends StatelessWidget {
                                     ? 120
                                     : length == null
                                         ? 100
-                                        : 190,
+                                        : 170,
                                 width: desktop ? 120 : 190,
                                 fit: BoxFit.cover,
                                 isFood: !isRestaurant,
