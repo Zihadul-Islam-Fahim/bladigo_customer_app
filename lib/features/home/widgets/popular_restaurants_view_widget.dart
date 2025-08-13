@@ -425,7 +425,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
 
 
                                   Positioned(
-                                    top: Dimensions.paddingSizeSmall, right: Dimensions.paddingSizeSmall,
+                                    top: Dimensions.paddingSizeSmall, right: Dimensions.paddingSizeLarge,
                                     child: GetBuilder<FavouriteController>(builder: (favouriteController) {
                                       bool isWished = favouriteController.wishRestIdList.contains(restaurantList[index].id);
                                         return CustomFavouriteWidget(

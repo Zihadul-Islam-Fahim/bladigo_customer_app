@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../../common/widgets/custom_asset_image_widget.dart';
 import '../../../common/widgets/custom_favourite_widget.dart';
 import '../../../common/widgets/custom_snackbar_widget.dart';
 import '../../../helper/price_converter.dart';
@@ -77,9 +78,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                     Share.share(shareUrl);
                   }
                 },
-                child: Icon(
-                  Icons.share, size: 20  ,
-                ),
+                child: CustomAssetImageWidget( Images.share , height: 20, width: 20),
               ) : const SizedBox(),
             ],
           ),

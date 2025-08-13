@@ -69,6 +69,7 @@ class Images {
   static const String onTheWayGif = 'assets/image/on_the_way.gif';
   static const String homeDelivery = 'assets/image/home_delivery.png';
   static const String takeaway = 'assets/image/takeaway.png';
+  static const String share = 'assets/image/share_icon.png';
   static const String pendingGif = 'assets/image/pending.gif';
   static const String processingGif = 'assets/image/processing.gif';
   static const String handoverGif = 'assets/image/handover.gif';
@@ -231,7 +232,7 @@ class Images {
   static const String pdfIcon = 'assets/image/pdf.png';
   static const String menu = 'assets/image/menu.png';
   static const String orderMenuIcon = 'assets/image/order_menu_icon.png';
-  static const String favouriteIcon = 'assets/image/favourite_icon.svg';
+  static const String favouriteIcon = 'assets/image/favourite_icon.png';
   static const String unFavouriteIcon = 'assets/image/unfavourite_icon.svg';
   static const String halalIcon = 'assets/image/halal_icon.png';
   static const String houseIcon = 'assets/image/house_icon.png';

@@ -53,15 +53,16 @@ class ServicesSection extends StatelessWidget {
                     onTap: () {
                       Get.find<CategoryController>()
                           .getSubCategoryList(data?.id.toString());
+                      Get.to(() => FilteredServicesScreen(category: data!),);
 
-                        // () => FilteredServicesScreen(category: data!),
-                        Get.toNamed(
-                          RouteHelper.getCategoryProductRoute(
-                            data?.id,
-                            data?.name ?? "",
-                          ),
-                          arguments: 0,
-                        );
+                        // Get.toNamed(
+                        //
+                        //   RouteHelper.getCategoryProductRoute(
+                        //     data?.id,
+                        //     data?.name ?? "",
+                        //   ),
+                        //   arguments: 0,
+                        // );
 
                     },
                     radius: 68,

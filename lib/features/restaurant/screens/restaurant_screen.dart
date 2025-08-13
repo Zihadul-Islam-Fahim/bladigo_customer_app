@@ -61,6 +61,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
 WidgetsBinding.instance.addPostFrameCallback((_) async
     {
+
+
+
       if (Get.find<RestaurantController>().isSearching) {
         Get.find<RestaurantController>().changeSearchStatus(isUpdate: false);
       }
@@ -80,6 +83,8 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
           widget.restaurant!.id ??
               Get.find<RestaurantController>().restaurant!.id!,
           false);
+
+
       Get.find<RestaurantController>().getRestaurantProductList(
           widget.restaurant!.id ??
               Get.find<RestaurantController>().restaurant!.id!,
@@ -87,7 +92,8 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
           'all',
           false);
 
-      // Get.find<RestaurantController>().setSubCategoryList(widget.restaurant!.categoryId!);
+      // Get.find<RestaurantController>().setSubCategoryList(Get.find<RestaurantController>().restaurant!.categoryId!);
+      // Get.find<CategoryController>().getSubCategoryList(Get.find<RestaurantController>().restaurant!.categoryId.toString());
     });
   }
 
