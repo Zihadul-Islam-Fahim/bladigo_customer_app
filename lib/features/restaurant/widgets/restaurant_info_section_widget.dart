@@ -51,34 +51,42 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
         children: [
 
 
-          Column(
+          Row(
             children: [
               GetBuilder<FavouriteController>(builder: (favouriteController) {
                 bool isWished = favouriteController.wishRestIdList.contains(restaurant.id);
-                return CustomFavouriteWidget(
-                  isWished: isWished,
-                  isRestaurant: true,
-                  restaurant: restaurant,
-                  size: 24  ,
+                return Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),
+                  child: CustomFavouriteWidget(
+                    isWished: isWished,
+                    isRestaurant: true,
+                    restaurant: restaurant,
+                    size: 20  ,
+                  ),
                 );
               }),
-              SizedBox(height: 4,),
+              SizedBox(width: 10,),
 
-              AppConstants.webHostedUrl.isNotEmpty ? InkWell(
-                onTap: (){
-                  if(isDesktop) {
-                    // String? hostname = html.window.location.hostname;
-                    // String protocol = html.window.location.protocol;
-                    // String shareUrl = '$protocol//$hostname${restController.filteringUrl(restaurant.slug ?? '')}';
-                    String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
-                    Clipboard.setData(ClipboardData(text: shareUrl));
-                    showCustomSnackBar('restaurant_url_copied'.tr, isError: false);
-                  } else {
-                    String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
-                    Share.share(shareUrl);
-                  }
-                },
-                child: CustomAssetImageWidget( Images.share , height: 20, width: 20),
+              AppConstants.webHostedUrl.isNotEmpty ? Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),
+                child: InkWell(
+                  onTap: (){
+                    if(isDesktop) {
+                      // String? hostname = html.window.location.hostname;
+                      // String protocol = html.window.location.protocol;
+                      // String shareUrl = '$protocol//$hostname${restController.filteringUrl(restaurant.slug ?? '')}';
+                      String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
+                      Clipboard.setData(ClipboardData(text: shareUrl));
+                      showCustomSnackBar('restaurant_url_copied'.tr, isError: false);
+                    } else {
+                      String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
+                      Share.share(shareUrl);
+                    }
+                  },
+                  child: CustomAssetImageWidget( Images.share , height: 20, width: 20),
+                ),
               ) : const SizedBox(),
             ],
           ),
