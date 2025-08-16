@@ -17,7 +17,7 @@ class BottomCartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CartController>(builder: (cartController) {
         return Container(
-          height: GetPlatform.isIOS ? 100 : 80, width: Get.width,
+          height: GetPlatform.isIOS ? 110 : 100, width: Get.width,
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault,vertical: 10),
           decoration: BoxDecoration(
               color: Colors.transparent,
