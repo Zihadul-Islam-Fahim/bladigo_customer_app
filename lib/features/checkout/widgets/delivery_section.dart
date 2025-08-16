@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_ink_well_widget.dart';
 import 'package:stackfood_multivendor/features/checkout/controllers/checkout_controller.dart';
@@ -19,6 +21,10 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../../profile/controllers/profile_controller.dart';
+import '../../splash/controllers/splash_controller.dart';
+import '../../splash/controllers/theme_controller.dart';
 
 class DeliverySection extends StatefulWidget {
   final CheckoutController checkoutController;
@@ -55,6 +61,25 @@ class _DeliverySectionState extends State<DeliverySection> {
         }
       });
     }
+    _initCall();
+  }
+
+  CameraPosition? _cameraPosition;
+  late LatLng _initialPosition;
+
+
+
+  _initCall()async{
+    Get.find<LocationController>().setAddressTypeIndex(0, notify: false);
+    if (Get.find<AuthController>().isLoggedIn() && Get.find<ProfileController>().userInfoModel == null) {
+      Get.find<ProfileController>().getUserInfo();
+    }
+
+    _initialPosition = LatLng(
+      double.parse(Get.find<SplashController>().configModel?.defaultLocation?.lat ?? '0'),
+      double.parse(Get.find<SplashController>().configModel?.defaultLocation?.lng ?? '0'),
+    );
+
   }
 
   @override
@@ -131,7 +156,9 @@ class _DeliverySectionState extends State<DeliverySection> {
                                               Dimensions.paddingSizeSmall),
                                       // child: Icon(Icons.arrow_drop_down_rounded,
                                       //     size: 40),
-                                      child: Text(
+                                      child:
+
+                                      Text(
                                         'Change',
                                         style: TextStyle(
                                           color: Colors.green,
@@ -274,6 +301,75 @@ class _DeliverySectionState extends State<DeliverySection> {
                                 child: const SizedBox(),
                               ),
                             ),
+                            Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5),
+                                child:GetBuilder<LocationController>(builder: (locationController) {
+                                  final checkoutController = Get.find<CheckoutController>();
+                                  return Container(
+                                    height: 180,width: double.infinity,
+                                    child:        Container(
+                                      height: isDesktop ? 260 : 145,
+                                      width: MediaQuery.of(context).size.width,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                                        // border: Border.all(width: 1.5, color: Theme.of(context).primaryColor.withOpacity(0.5)),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                                        child: Stack(clipBehavior: Clip.none, children: [
+
+                                          GoogleMap(
+                                            initialCameraPosition: CameraPosition(target: _initialPosition, zoom: 17),
+                                            minMaxZoomPreference: const MinMaxZoomPreference(0, 16),
+                                            onTap: isDesktop ? null : (latLng) async {
+                                              await Get.toNamed(
+                                                  RouteHelper.getEditAddressRoute(
+                                                      checkoutController.guestAddress,
+                                                      fromGuest: false));
+                                            },
+                                            zoomControlsEnabled: false,
+                                            compassEnabled: false,
+                                            indoorViewEnabled: true,
+                                            mapToolbarEnabled: false,
+                                            onCameraIdle: () {
+                                              locationController.updatePosition(_cameraPosition, true);
+                                            },
+                                            onCameraMove: ((position) => _cameraPosition = position),
+                                            onMapCreated: (GoogleMapController controller) {
+                                              locationController.setMapController(controller);
+
+                                              locationController.getCurrentLocation(true, mapController: controller);
+
+                                            },
+                                            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                                              Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                                              Factory<PanGestureRecognizer>(() => PanGestureRecognizer()),
+                                              Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()),
+                                              Factory<TapGestureRecognizer>(() => TapGestureRecognizer()),
+                                              Factory<VerticalDragGestureRecognizer>(() => VerticalDragGestureRecognizer()),
+                                            },
+                                            style: Get.isDarkMode ? Get.find<ThemeController>().darkMap : Get.find<ThemeController>().lightMap,
+                                          ),
+
+                                          locationController.loading ? const Center(child: CircularProgressIndicator()) : const SizedBox(),
+
+                                          Center(
+                                            child: !locationController.loading ? Image.asset(Images.pickMarker, height: 50, width: 50) : const CircularProgressIndicator(),
+                                          ),
+
+
+
+
+
+                                        ]),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                )
+
+                            ),
                             Container(
                               constraints: BoxConstraints(
                                   minHeight: ResponsiveHelper.isDesktop(context)
@@ -413,7 +509,7 @@ class _DeliverySectionState extends State<DeliverySection> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Delivery Location',
+                      'Delivery Address',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
