@@ -467,8 +467,8 @@ class _DeliverySectionState extends State<DeliverySection> {
                             //     ),
                             //   ],
                             // ),
-                            const SizedBox(
-                                height: Dimensions.paddingSizeExtraSmall),
+                            // const SizedBox(
+                            //     height: Dimensions.paddingSizeExtraSmall),
                           ]),
                     ),
                   ),

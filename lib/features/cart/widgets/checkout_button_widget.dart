@@ -1,6 +1,7 @@
 import 'package:stackfood_multivendor/common/widgets/custom_button_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_snackbar_widget.dart';
 import 'package:stackfood_multivendor/features/cart/controllers/cart_controller.dart';
+import 'package:stackfood_multivendor/features/checkout/screens/checkout_screen.dart';
 import 'package:stackfood_multivendor/features/coupon/controllers/coupon_controller.dart';
 import 'package:stackfood_multivendor/features/restaurant/controllers/restaurant_controller.dart';
 import 'package:stackfood_multivendor/features/splash/controllers/splash_controller.dart';
@@ -155,7 +156,8 @@ class CheckoutButtonWidget extends StatelessWidget {
     } */
     else {
       Get.find<CouponController>().removeCouponData(false);
-      Get.toNamed(RouteHelper.getCheckoutRoute('cart'));
+      // Get.toNamed(RouteHelper.getCheckoutRoute('cart'));
+      Get.to(()=> CheckoutScreen(fromCart: true, cartList: cartController.cartList));
     }
   }
 }

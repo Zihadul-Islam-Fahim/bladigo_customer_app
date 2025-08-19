@@ -24,6 +24,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 
+import '../../cart/domain/models/cart_model.dart';
+
 class TopSectionWidget extends StatelessWidget {
   final double charge;
   final double deliveryCharge;
@@ -41,6 +43,7 @@ class TopSectionWidget extends StatelessWidget {
   final bool isWalletActive;
   final bool fromCart;
   final double total;
+  final List<CartModel>? cartList;
   final JustTheController tooltipController3;
   final JustTheController tooltipController2;
   final TextEditingController guestNameTextEditingController;
@@ -85,7 +88,8 @@ class TopSectionWidget extends StatelessWidget {
       required this.deliveryChargeForView,
       required this.deliveryFeeTooltipController,
       required this.badWeatherCharge,
-      required this.extraChargeForToolTip});
+      required this.extraChargeForToolTip,
+        required this.cartList});
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +105,12 @@ class TopSectionWidget extends StatelessWidget {
             height: isGuestLoggedIn && !isDesktop
                 ? Dimensions.paddingSizeSmall
                 : 0),
+
+        _yourOrders(),
+
+
+
+        // const SizedBox(height: Dimensions.paddingSizeDefault),
 
         isGuestLoggedIn
             ? GuestLoginWidget(
@@ -219,14 +229,14 @@ class TopSectionWidget extends StatelessWidget {
                     ]),
               )
             : const SizedBox(),
-        SizedBox(
-            height: ResponsiveHelper.isMobile(context)
-                ? Dimensions.paddingSizeSmall
-                : isCashOnDeliveryActive &&
-                        restaurantSubscriptionActive &&
-                        isLoggedIn
-                    ? Dimensions.paddingSizeSmall
-                    : 0),
+        // SizedBox(
+        //     height: ResponsiveHelper.isMobile(context)
+        //         ? Dimensions.paddingSizeSmall
+        //         : isCashOnDeliveryActive &&
+        //                 restaurantSubscriptionActive &&
+        //                 isLoggedIn
+        //             ? Dimensions.paddingSizeSmall
+        //             : 0),
 
         checkoutController.restaurant != null
             ? Container(
@@ -308,7 +318,7 @@ class TopSectionWidget extends StatelessWidget {
                 : charge != -1 ? PriceConverter.convertPrice(checkoutController.orderType == 'delivery' ? charge : deliveryCharge)
                 : 'calculating'.tr}', textDirection: TextDirection.ltr)) : const SizedBox(),*/
 
-        const SizedBox(height: Dimensions.paddingSizeSmall),
+        // const SizedBox(height: Dimensions.paddingSizeSmall),
 
         /// Time Slot
         TimeSlotSection(
@@ -328,7 +338,7 @@ class TopSectionWidget extends StatelessWidget {
           guestEmailController: guestEmailController,
           guestEmailNode: guestEmailNode,
         ),
-        const SizedBox(height: Dimensions.paddingSizeSmall),
+        // const SizedBox(height: Dimensions.paddingSizeSmall),
 
         /// Coupon
         !ResponsiveHelper.isDesktop(context) && !isGuestLoggedIn
@@ -342,10 +352,10 @@ class TopSectionWidget extends StatelessWidget {
                 total: total,
               )
             : const SizedBox(),
-        SizedBox(
-            height: !ResponsiveHelper.isDesktop(context)
-                ? Dimensions.paddingSizeSmall
-                : 0),
+        // SizedBox(
+        //     height: !ResponsiveHelper.isDesktop(context)
+        //         ? Dimensions.paddingSizeSmall
+        //         : 0),
 
         ///DmTips
         DeliveryManTipsSection(
@@ -403,6 +413,43 @@ class TopSectionWidget extends StatelessWidget {
             : const SizedBox(),
       ]);
     });
+  }
+
+  Container _yourOrders() {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('Your Orders'.tr, style: robotoMedium.copyWith(
+                    fontSize: 20, fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Column(
+              children: [
+                ListView.separated(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.symmetric(horizontal: 6,vertical: 4),
+
+
+                    itemBuilder: (context, index) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(cartList![index].product?.name ?? ""),
+                      Text( "X ${cartList![index].quantity}" ?? ""),
+                    ],
+                  );
+                }, separatorBuilder: (_, __) {
+                  return SizedBox(height: 2,);
+                }, itemCount: cartList?.length ?? 0),
+              ],
+            ),
+          ],
+        ),
+      );
   }
 
   // void _checkPermission(Function onTap) async {

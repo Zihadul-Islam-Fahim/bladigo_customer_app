@@ -438,7 +438,7 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                                                             badWeatherCharge:
                                                                 badWeatherChargeForToolTip,
                                                             extraChargeForToolTip:
-                                                                extraChargeForToolTip,
+                                                                extraChargeForToolTip, cartList: widget.cartList,
                                                           )),
                                                       const SizedBox(
                                                           width: Dimensions
@@ -556,7 +556,7 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                                                       badWeatherCharge:
                                                           badWeatherChargeForToolTip,
                                                       extraChargeForToolTip:
-                                                          extraChargeForToolTip,
+                                                          extraChargeForToolTip, cartList: widget.cartList,
                                                     ),
                                                     BottomSectionWidget(
                                                       isCashOnDeliveryActive:

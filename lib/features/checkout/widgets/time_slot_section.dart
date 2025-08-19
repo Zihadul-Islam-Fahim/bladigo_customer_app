@@ -108,11 +108,11 @@ class TimeSlotSection extends StatelessWidget {
             child: TimeSlotBottomSheet(tomorrowClosed: tomorrowClosed, todayClosed: todayClosed, restaurant: checkoutController.restaurant!),
           ) : const SizedBox(),
 
-          const SizedBox(height: Dimensions.paddingSizeLarge),
+          // const SizedBox(height: Dimensions.paddingSizeLarge),
         ]),
       ) : const SizedBox(),
 
-      SizedBox(height: (fromCart && !checkoutController.subscriptionOrder && checkoutController.restaurant!.scheduleOrder!) ? Dimensions.paddingSizeSmall : 0),
+      // SizedBox(height: (fromCart && !checkoutController.subscriptionOrder && checkoutController.restaurant!.scheduleOrder!) ? Dimensions.paddingSizeSmall : 0),
 
     ]);
   }

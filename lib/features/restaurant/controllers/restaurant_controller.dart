@@ -371,6 +371,7 @@ class RestaurantController extends GetxController implements GetxService {
   // }
 
   void setSubCategoryList(int categoryId) {
+
     if (Get.find<CategoryController>().subCategoryList != null &&
         _restaurant != null) {
       _subCategoryList = restaurantServiceInterface.setSubCategories(
