@@ -50,6 +50,7 @@ class ServicesSection extends StatelessWidget {
                 ? CustomInkWellWidget(
                     padding: EdgeInsets.zero,
                    highlightColor: Colors.white,
+
                     onTap: () {
                       Get.find<CategoryController>()
                           .getSubCategoryList(data?.id.toString());
@@ -74,7 +75,7 @@ class ServicesSection extends StatelessWidget {
                   )
                 : Card(
                     shape: CircleBorder(),
-                    elevation: 8,
+                    elevation: 0,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
