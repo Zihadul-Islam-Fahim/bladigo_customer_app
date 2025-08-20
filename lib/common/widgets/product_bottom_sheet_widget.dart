@@ -432,10 +432,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                     .min!
                                                                 : 1) <=
                                                             selectedCount
-                                                        ? Dimensions
-                                                            .paddingSizeSmall
-                                                        : Dimensions
-                                                            .paddingSizeSmall
+                                                        ? 0
+                                                        : 0
                                                     : 0),
                                                 margin: EdgeInsets.only(
                                                     bottom: index !=
@@ -457,14 +455,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                         .min!
                                                                     : 1) <=
                                                                 selectedCount
-                                                            ? Theme.of(context)
-                                                                .primaryColor
-                                                                .withOpacity(
-                                                                    0.05)
-                                                            : Theme.of(context)
-                                                                .disabledColor
-                                                                .withOpacity(
-                                                                    0.05)
+                                                            ? Colors.transparent
+                                                            : Colors.transparent
                                                         : Colors.transparent,
                                                     border: Border.all(
                                                         color: product!
