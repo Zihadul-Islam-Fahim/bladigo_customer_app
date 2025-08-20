@@ -21,7 +21,7 @@ class CuisineViewWidget extends StatelessWidget {
     return GetBuilder<CuisineController>(builder: (cuisineController) {
         return (cuisineController.cuisineModel != null && cuisineController.cuisineModel!.cuisines!.isEmpty) ? const SizedBox() : Container(
           width: Dimensions.webMaxWidth,
-          margin: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeLarge),
+          margin: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall),
           decoration: BoxDecoration(
            // color: Theme.of(context).primaryColor,
             // image: DecorationImage(
@@ -34,7 +34,8 @@ class CuisineViewWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
+              const SizedBox(height: Dimensions.paddingSizeSmall),
+              Padding(padding: const EdgeInsets.symmetric(horizontal :Dimensions.paddingSizeLarge),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                   Text('cuisine'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600,color: Colors.black)),
                   ArrowIconButtonWidget(onTap: () => Get.toNamed(RouteHelper.getCuisineRoute())),
@@ -65,7 +66,7 @@ class CuisineViewWidget extends StatelessWidget {
                 },
               )  : const CuisineShimmer(),
 
-              const SizedBox(height: Dimensions.paddingSizeLarge),
+              // const SizedBox(height: Dimensions.paddingSizeLarge),
             ],
           ),
         );

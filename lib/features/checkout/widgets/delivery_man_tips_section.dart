@@ -406,6 +406,7 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                                       },
                                     ),
                                   ),
+
                                   const SizedBox(
                                       width: Dimensions.paddingSizeSmall),
                                   InkWell(

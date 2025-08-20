@@ -34,7 +34,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
       // }
 
         return (restaurantList != null && restaurantList.isEmpty) ? const SizedBox() : Padding(
-          padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeLarge),
+          padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? 0 : Dimensions.paddingSizeLarge),
           child: SizedBox(
             // height: 285,
             width: Dimensions.webMaxWidth,

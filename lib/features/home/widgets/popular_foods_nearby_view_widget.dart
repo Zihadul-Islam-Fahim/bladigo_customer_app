@@ -24,7 +24,7 @@ class _PopularFoodNearbyViewWidgetState extends State<PopularFoodNearbyViewWidge
   Widget build(BuildContext context) {
     return GetBuilder<ProductController>(builder: (productController) {
         return (productController.popularProductList !=null && productController.popularProductList!.isEmpty) ? const SizedBox() : Padding(
-          padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeLarge),
+          padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? Dimensions.paddingSizeExtraSmall : Dimensions.paddingSizeLarge),
           child: SizedBox(
             height: ResponsiveHelper.isMobile(context) ? 360 : 375, width: Dimensions.webMaxWidth,
             child: Column(
