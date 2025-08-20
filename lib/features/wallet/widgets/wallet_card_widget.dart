@@ -23,15 +23,15 @@ class WalletCardWidget extends StatelessWidget {
     return GetBuilder<ProfileController>(
       builder: (profileController) {
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Stack(children: [
 
               Container(
-                // height: 90,
-                width: Get.width * 0.80,
+                height: 70,
+                // width: Get.width * 0.50,
                 margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeExtraSmall,left: 18),
-                padding: EdgeInsets.symmetric(horizontal:isDesktop ? 35 : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
+                padding: EdgeInsets.symmetric(horizontal:isDesktop ? 35 : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeExtraSmall),
                 decoration: BoxDecoration(
                   // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
                   borderRadius: BorderRadius.circular(40),
@@ -41,16 +41,18 @@ class WalletCardWidget extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Image.asset(Images.homeWallet,width: 25,),
+                    Image.asset(Images.walletProfile,width: 25,),
                     SizedBox(width: 15,),
-                    Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisSize: MainAxisSize.min,mainAxisAlignment: MainAxisAlignment.center, children: [
-                      SizedBox(width: Get.width * 0.23,child: Text('wallet_amount'.tr,style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black),overflow: TextOverflow.ellipsis,)),
+                    Column(crossAxisAlignment: CrossAxisAlignment.center, mainAxisSize: MainAxisSize.min,mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Text('wallet_amount'.tr,style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black),overflow: TextOverflow.ellipsis,),
                       const SizedBox(width: Dimensions.paddingSizeSmall),
 
-                      Row(children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
                         Text(
                           PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance??0), textDirection: TextDirection.ltr,overflow: TextOverflow.ellipsis,
-                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Colors.black,fontWeight: FontWeight.w100),
+                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Colors.black,fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(width: Dimensions.paddingSizeSmall),
 
@@ -124,7 +126,7 @@ class WalletCardWidget extends StatelessWidget {
             isDesktop ? Text('how_to_use'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)) : const SizedBox(),
             isDesktop ? const SizedBox(height: Dimensions.paddingSizeDefault) : const SizedBox(),
 
-            !isDesktop ? const SizedBox() : const WalletStepper(),
+            // !isDesktop ? const SizedBox() : const WalletStepper(),
           ],
         );
       }

@@ -56,6 +56,8 @@ import 'package:get/get.dart';
 
 import '../../../common/widgets/app_gradient_bg.dart';
 import '../../../common/widgets/custom_ink_well_widget.dart';
+import '../../profile/widgets/profile_card_widget.dart';
+import '../../splash/controllers/theme_controller.dart';
 import '../widgets/services_section.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -564,12 +566,67 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget WalletSection(JustTheController tooltipController, BuildContext context) {
     return Get.find<AuthController>().isLoggedIn() ? Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          WalletCardWidget(tooltipController: tooltipController),
-          InkWell(
-            onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
-            child: Text("See all   ",style: TextStyle(color: Theme.of(context).primaryColor),),
+          Expanded(
+            flex: 3,
+              child: WalletCardWidget(tooltipController: tooltipController),
+          ),
+          SizedBox(width: 10,),
+          Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? 
+          Expanded(
+            flex: 2,
+            child: GetBuilder<ProfileController>(
+                        builder: (profileController) {
+            return Container(
+              height: 70,
+              margin: EdgeInsets.only(top:  Dimensions.paddingSizeExtraSmall,left: 8),
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
+              decoration: BoxDecoration(
+                // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
+                borderRadius: BorderRadius.circular(40),
+                border: Border.all(color: Colors.grey.shade400),
+            
+                color: Get.find<ThemeController>().darkTheme ? Colors.white60 : Colors.transparent,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(Images.loyal,width: 40,height: 40,),
+                  SizedBox(width: 10,),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('loyalty_points'.tr,style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black),overflow: TextOverflow.ellipsis,),
+                      Text(profileController.userInfoModel?.loyaltyPoint != null ? profileController.userInfoModel!.loyaltyPoint.toString() : '0',
+                        style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Colors.black,fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )
+            
+                ],
+              ),
+            ) ;
+            // ProfileCardWidget(
+            //   image: Images.loyaltyIcon,
+            //   data: profileController.userInfoModel?.loyaltyPoint != null ? profileController.userInfoModel!.loyaltyPoint.toString() : '0',
+            //   title: 'loyalty_points'.tr,
+            // );
+                        }
+                      ),
+          ) : const SizedBox(),
+          Expanded(
+            child: Container(
+              height: 70,
+              child: Center(
+                child: InkWell(
+                  onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
+                  child: Text("See all   ",style: TextStyle(color: Theme.of(context).primaryColor),),
+                ),
+              ),
+            ),
           )
         ],
       ) : SizedBox.shrink();
