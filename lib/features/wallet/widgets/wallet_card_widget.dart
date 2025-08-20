@@ -100,7 +100,7 @@ class WalletCardWidget extends StatelessWidget {
 
                           },
                           child: Container(
-                            decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).primaryColor),
+                            decoration: BoxDecoration(shape: BoxShape.circle, color: Color.fromRGBO(0, 191, 99, 1)),
                             padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
                             child: const Icon(Icons.add,color: Colors.white,),
                           ),

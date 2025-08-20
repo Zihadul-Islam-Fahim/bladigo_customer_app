@@ -604,19 +604,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Colors.black,fontWeight: FontWeight.bold),
                       )
                     ],
-                  )
-            
-                ],
-              ),
-            ) ;
-            // ProfileCardWidget(
-            //   image: Images.loyaltyIcon,
-            //   data: profileController.userInfoModel?.loyaltyPoint != null ? profileController.userInfoModel!.loyaltyPoint.toString() : '0',
-            //   title: 'loyalty_points'.tr,
-            // );
-                        }
-                      ),
-          ) : const SizedBox(),
+             )
+          ],
+       ),
+     );
+   }),
+     ) : const SizedBox(),
           Expanded(
             child: Container(
               height: 70,

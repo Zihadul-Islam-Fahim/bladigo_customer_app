@@ -116,7 +116,8 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          Flexible(
+                                          SizedBox(
+                                            width: 190,
                                             child: Text(
                                               AddressHelper
                                                       .getAddressFromSharedPref()!
@@ -130,75 +131,77 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                               overflow: TextOverflow.ellipsis,
                                             ),
                                           ),
-                                          Icon(
-                                            Icons.arrow_drop_down,
-                                            color: Theme.of(context).cardColor,
-                                            size: 16 /*- (scrollingRate * 16)*/,
-                                          ),
+                                          // Icon(
+                                          //   Icons.arrow_drop_down,
+                                          //   color: Theme.of(context).cardColor,
+                                          //   size: 16 /*- (scrollingRate * 16)*/,
+                                          // ),
+
                                         ],
                                       ),
                                     ],
                                   ),
                                 ),
+                                Image.asset(Images.logoName,width: 150,)
                               ]),
                             ]);
                       }),
                     ),
                   ),
                 ),
-                Get.find<AuthController>().isLoggedIn() ? InkWell(
-                  onTap: () {
-                    debugPrint("click");
-                    Get.toNamed(RouteHelper.getNotificationRoute());
-                  },
-                  child: GetBuilder<NotificationController>(
-                      builder: (notificationController) {
-                    return CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Colors.white,
-                      child: Stack(children: [
-                        Image.asset(Images.notification,
-                            width: 35, ),
-                        notificationController.hasNotification
-                            ? Positioned(
-                                top: 0,
-                                right: 0,
-                                child: Container(
-                                  height: 10,
-                                  width: 10,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).primaryColor,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 1,
-                                        color: Theme.of(context).cardColor),
-                                  ),
-                                ))
-                            : const SizedBox(),
-                      ]),
-                    );
-                  }),
-                ) :
-                ElevatedButton(
-                  onPressed: () async {
-                    await Get.toNamed(
-                        RouteHelper.getSignInRoute(Get.currentRoute));
-                  },
-                  child: Text('SIGN UP'.tr),
-                  style: ElevatedButton.styleFrom(
-                      elevation: 8,
-                      textStyle: TextStyle(fontSize: 9),
-                      padding: EdgeInsets.only(
-                          left: 2, right: 2, top: 4, bottom: 4),
-                      backgroundColor: Color(0xff2B9430),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            8), // Makes the button rectangular
-                      ),
-                      maximumSize: Size(80, 32),
-                      minimumSize: Size(80, 32)),
-                )
+                // Get.find<AuthController>().isLoggedIn() ? InkWell(
+                //   onTap: () {
+                //     debugPrint("click");
+                //     Get.toNamed(RouteHelper.getNotificationRoute());
+                //   },
+                //   child: GetBuilder<NotificationController>(
+                //       builder: (notificationController) {
+                //     return CircleAvatar(
+                //       radius: 20,
+                //       backgroundColor: Colors.white,
+                //       child: Stack(children: [
+                //         Image.asset(Images.notification,
+                //             width: 35, ),
+                //         notificationController.hasNotification
+                //             ? Positioned(
+                //                 top: 0,
+                //                 right: 0,
+                //                 child: Container(
+                //                   height: 10,
+                //                   width: 10,
+                //                   decoration: BoxDecoration(
+                //                     color: Theme.of(context).primaryColor,
+                //                     shape: BoxShape.circle,
+                //                     border: Border.all(
+                //                         width: 1,
+                //                         color: Theme.of(context).cardColor),
+                //                   ),
+                //                 ))
+                //             : const SizedBox(),
+                //       ]),
+                //     );
+                //   }),
+                // ) :
+                // ElevatedButton(
+                //   onPressed: () async {
+                //     await Get.toNamed(
+                //         RouteHelper.getSignInRoute(Get.currentRoute));
+                //   },
+                //   child: Text('SIGN UP'.tr),
+                //   style: ElevatedButton.styleFrom(
+                //       elevation: 8,
+                //       textStyle: TextStyle(fontSize: 9),
+                //       padding: EdgeInsets.only(
+                //           left: 2, right: 2, top: 4, bottom: 4),
+                //       backgroundColor: Color(0xff2B9430),
+                //       foregroundColor: Colors.white,
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(
+                //             8), // Makes the button rectangular
+                //       ),
+                //       maximumSize: Size(80, 32),
+                //       minimumSize: Size(80, 32)),
+                // )
 
               ],
             ),
