@@ -376,7 +376,7 @@ class KBottomNavItem extends StatelessWidget {
               style: TextStyle(
                 color: isSelected
                     ? Theme.of(context).primaryColor
-                    : Theme.of(context).disabledColor,
+                    : Colors.black,
                 fontSize: 12,
               ),
             ),
