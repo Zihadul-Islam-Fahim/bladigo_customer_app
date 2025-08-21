@@ -114,6 +114,7 @@ class ItemCardWidget extends StatelessWidget {
                     ? Positioned(
                         top: Dimensions.paddingSizeSmall,
                         right: Dimensions.paddingSizeSmall,
+
                         child: GetBuilder<FavouriteController>(
                             builder: (favouriteController) {
                           bool isWished = favouriteController.wishProductIdList
@@ -130,6 +131,7 @@ class ItemCardWidget extends StatelessWidget {
                     ? Positioned(
                         top: isCampaignItem ? 10 : 40,
                         right: 9,
+
                         child: const CustomAssetImageWidget(
                           Images.halalIcon,
                           height: 30,
@@ -164,6 +166,7 @@ class ItemCardWidget extends StatelessWidget {
                           ? Container(
                               decoration: BoxDecoration(
                                 color: Theme.of(context).primaryColor,
+
                                 borderRadius: BorderRadius.circular(
                                     Dimensions.radiusExtraLarge),
                               ),

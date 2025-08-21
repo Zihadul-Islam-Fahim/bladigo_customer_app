@@ -25,21 +25,23 @@ class DiscountTagWidget extends StatelessWidget {
 
     return !isProductBottomSheet ? (discount! > 0 || freeDelivery!) ? Positioned(
       top: 8, left: 4,
-      child: CustomPaint(
-        size: const Size(100, 24),
-        painter: LabelPaint(),
-        child: Container(
-          padding: EdgeInsets.only(left:8,right:8,top:6,bottom:6),
-          child: Align(
-            child: Text(
-              discount! > 0 ? '${(isRightSide || discountType == 'percent') ? '' : currencySymbol}$discount${discountType == 'percent' ? '%'
-                  : isRightSide ? currencySymbol : ''} ${'off'.tr}' : 'free_delivery'.tr,
-              style: robotoMedium.copyWith(
-                color: Colors.white,
-                fontSize: fontSize ?? (ResponsiveHelper.isMobile(context) ? 8 : 10),
-              ),
-              textAlign: TextAlign.center,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge)
+        ),
+        padding: EdgeInsets.only(left:8,right:8,top:6,bottom:6),
+        margin: EdgeInsets.only(left: 6),
+        child: Align(
+          child: Text(
+            discount! > 0 ? '${(isRightSide || discountType == 'percent') ? '' : currencySymbol}$discount${discountType == 'percent' ? '%'
+                : isRightSide ? currencySymbol : ''} ${'off'.tr}' : 'free_delivery'.tr,
+            style: robotoMedium.copyWith(
+              color: Colors.black,
+              fontSize: fontSize ?? (ResponsiveHelper.isMobile(context) ? 8 : 10),
             ),
+            textAlign: TextAlign.center,
           ),
         ),
       ),
@@ -78,7 +80,7 @@ class LabelPaint extends CustomPainter {
     // Draw the pill-shaped label background
     Paint paint = Paint()
       ..style = PaintingStyle.fill
-      ..color = Color(0xff2b9430).withOpacity(0.8);
+      ..color = Colors.white;
 
     RRect roundedRect = RRect.fromRectAndRadius(
       Rect.fromLTWH(0, 0, size.width, size.height),

@@ -1234,7 +1234,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                       .cartIndex !=
                                                   -1)
                                           ? 'update_in_cart'.tr
-                                          : 'add_to_cart'.tr,
+                                          : ("${'add'.tr} ${productController.quantity} ${"for".tr}"),
                               onPressed: (!product!.scheduleOrder! &&
                                           !isAvailable) ||
                                       (widget.cart != null &&
