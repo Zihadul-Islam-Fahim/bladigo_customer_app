@@ -30,7 +30,7 @@ class WalletCardWidget extends StatelessWidget {
               Container(
                 height: 70,
                 // width: Get.width * 0.50,
-                margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeExtraSmall,left: 18),
+                margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeExtraSmall,left: 10,right: 10),
                 padding: EdgeInsets.symmetric(horizontal:isDesktop ? 35 : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeExtraSmall),
                 decoration: BoxDecoration(
                   // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
@@ -101,7 +101,7 @@ class WalletCardWidget extends StatelessWidget {
                           },
                           child: Container(
                             decoration: BoxDecoration(shape: BoxShape.circle, color: Color.fromRGBO(0, 191, 99, 1)),
-                            padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
+                            padding: const EdgeInsets.all(2),
                             child: const Icon(Icons.add,color: Colors.white,),
                           ),
                         ) : const SizedBox(),

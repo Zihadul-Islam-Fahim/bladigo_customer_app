@@ -154,13 +154,13 @@ class DeliveryOptionButton extends StatelessWidget {
                     checkoutController.setOrderType(value);
                   },
                   iconColor: checkoutController.orderType == value
-                      ? Theme.of(context).cardColor
+                      ? Colors.black
                       : Theme.of(context).disabledColor,
                   boxColor: checkoutController.orderType == value
-                      ? Theme.of(context).primaryColor
+                      ? Color.fromRGBO(215, 253, 212, 1)
                       : Colors.white,
                   textColor: checkoutController.orderType == value
-                      ? Theme.of(context).cardColor
+                      ? Colors.black
                       : Theme.of(context).hintColor,
                 ),
         );

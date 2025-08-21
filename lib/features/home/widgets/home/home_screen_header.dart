@@ -101,7 +101,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                                     .getAddressFromSharedPref()!
                                                 .addressType!
                                                 .tr
-                                            : 'Deliver To'.tr,
+                                            : 'deliver_to'.tr,
                                         style: robotoMedium.copyWith(
                                           color: Colors.black,
                                           fontSize: Dimensions
@@ -117,7 +117,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                             MainAxisAlignment.start,
                                         children: [
                                           SizedBox(
-                                            width: 190,
+                                            width: 160,
                                             child: Text(
                                               AddressHelper
                                                       .getAddressFromSharedPref()!

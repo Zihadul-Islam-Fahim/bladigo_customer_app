@@ -573,7 +573,7 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 3,
               child: WalletCardWidget(tooltipController: tooltipController),
           ),
-          SizedBox(width: 10,),
+          // SizedBox(width: 10,),
           Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? 
           Expanded(
             flex: 2,
@@ -581,7 +581,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (profileController) {
             return Container(
               height: 70,
-              margin: EdgeInsets.only(top:  Dimensions.paddingSizeExtraSmall,left: 8),
+              margin: EdgeInsets.only(top:  Dimensions.paddingSizeExtraSmall,left: 4),
               padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
               decoration: BoxDecoration(
                 // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
@@ -616,7 +616,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Center(
                 child: InkWell(
                   onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
-                  child: Text("See all   ",style: TextStyle(color: Theme.of(context).primaryColor),),
+                  child: Text("see_all".tr,style: TextStyle(color: Theme.of(context).primaryColor),),
                 ),
               ),
             ),
