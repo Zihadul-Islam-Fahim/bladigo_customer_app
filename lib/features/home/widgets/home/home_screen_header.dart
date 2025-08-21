@@ -142,14 +142,15 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                Image.asset(Images.logoName,width: 150,)
+
                               ]),
                             ]);
                       }),
                     ),
                   ),
                 ),
-                // Get.find<AuthController>().isLoggedIn() ? InkWell(
+                Get.find<AuthController>().isLoggedIn() ?
+                // InkWell(
                 //   onTap: () {
                 //     debugPrint("click");
                 //     Get.toNamed(RouteHelper.getNotificationRoute());
@@ -181,27 +182,29 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                 //       ]),
                 //     );
                 //   }),
-                // ) :
-                // ElevatedButton(
-                //   onPressed: () async {
-                //     await Get.toNamed(
-                //         RouteHelper.getSignInRoute(Get.currentRoute));
-                //   },
-                //   child: Text('SIGN UP'.tr),
-                //   style: ElevatedButton.styleFrom(
-                //       elevation: 8,
-                //       textStyle: TextStyle(fontSize: 9),
-                //       padding: EdgeInsets.only(
-                //           left: 2, right: 2, top: 4, bottom: 4),
-                //       backgroundColor: Color(0xff2B9430),
-                //       foregroundColor: Colors.white,
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(
-                //             8), // Makes the button rectangular
-                //       ),
-                //       maximumSize: Size(80, 32),
-                //       minimumSize: Size(80, 32)),
                 // )
+                Image.asset(Images.logoName,width: 150,)
+                    :
+                ElevatedButton(
+                  onPressed: () async {
+                    await Get.toNamed(
+                        RouteHelper.getSignInRoute(Get.currentRoute));
+                  },
+                  child: Text('SIGN UP'.tr),
+                  style: ElevatedButton.styleFrom(
+                      elevation: 8,
+                      textStyle: TextStyle(fontSize: 9),
+                      padding: EdgeInsets.only(
+                          left: 2, right: 2, top: 4, bottom: 4),
+                      backgroundColor: Color(0xff2B9430),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            8), // Makes the button rectangular
+                      ),
+                      maximumSize: Size(80, 32),
+                      minimumSize: Size(80, 32)),
+                )
 
               ],
             ),

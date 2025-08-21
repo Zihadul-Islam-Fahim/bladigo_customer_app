@@ -339,8 +339,8 @@ class ItemCardWidget extends StatelessWidget {
                     ? CrossAxisAlignment.center
                     : CrossAxisAlignment.start,
                 mainAxisAlignment: product.ratingCount! > 0
-                    ? MainAxisAlignment.spaceBetween
-                    : MainAxisAlignment.spaceEvenly,
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.start,
                 children: [
                   Text(
                     product.restaurantName ?? '',
@@ -358,7 +358,7 @@ class ItemCardWidget extends StatelessWidget {
                       Flexible(
                           child: Text(product.name ?? '',
                               style: robotoMedium.copyWith(
-                                fontSize: 18
+                                fontSize: 18,fontWeight: FontWeight.bold
                               ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1)),
