@@ -554,7 +554,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // _configModel.popularRestaurant == 1
         //     ? const PopularRestaurantsViewWidget()
         //     : const SizedBox(),
-        const ReferBannerViewWidget(),
+        // const ReferBannerViewWidget(),
         _isLogin
             ? const PopularRestaurantsViewWidget(isRecentlyViewed: true)
             : const SizedBox(),

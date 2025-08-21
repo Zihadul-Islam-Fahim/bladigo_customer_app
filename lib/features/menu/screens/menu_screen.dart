@@ -25,6 +25,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
+import '../../home/widgets/refer_banner_view_widget.dart';
 import '../../profile/widgets/profile_card_widget.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -52,7 +53,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
         return Column(children: [
           Container(
-            decoration: BoxDecoration(color: Theme.of(context).cardColor),
+            decoration: BoxDecoration(color: Color.fromRGBO(0, 191, 99, 1)),
             child: Padding(
               padding: const EdgeInsets.only(
                 left: Dimensions.paddingSizeOverLarge,
@@ -61,25 +62,25 @@ class _MenuScreenState extends State<MenuScreen> {
                 bottom: Dimensions.paddingSizeSmall,
               ),
               child: Row(children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).cardColor,
-                    shape: BoxShape.circle,
-                  ),
-                  padding: const EdgeInsets.all(1),
-                  child: ClipOval(
-                      child: CustomImageWidget(
-                    placeholder: isLoggedIn
-                        ? Images.profilePlaceholder
-                        : Images.guestIcon,
-                    image:
-                        '${(profileController.userInfoModel != null && isLoggedIn) ? profileController.userInfoModel!.imageFullUrl : ''}',
-                    height: 70,
-                    width: 70,
-                    fit: BoxFit.cover,
-                    imageColor: isLoggedIn ? Theme.of(context).hintColor : null,
-                  )),
-                ),
+                // Container(
+                //   decoration: BoxDecoration(
+                //     color: Theme.of(context).cardColor,
+                //     shape: BoxShape.circle,
+                //   ),
+                //   padding: const EdgeInsets.all(1),
+                //   child: ClipOval(
+                //       child: CustomImageWidget(
+                //     placeholder: isLoggedIn
+                //         ? Images.profilePlaceholder
+                //         : Images.guestIcon,
+                //     image:
+                //         '${(profileController.userInfoModel != null && isLoggedIn) ? profileController.userInfoModel!.imageFullUrl : ''}',
+                //     height: 70,
+                //     width: 70,
+                //     fit: BoxFit.cover,
+                //     imageColor: isLoggedIn ? Theme.of(context).hintColor : null,
+                //   )),
+                // ),
                 const SizedBox(width: Dimensions.paddingSizeDefault),
                 Expanded(
                   child: Column(
@@ -107,7 +108,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                     ? '${profileController.userInfoModel?.fName} ${profileController.userInfoModel?.lName}'
                                     : 'guest_user'.tr,
                                 style: robotoBold.copyWith(
-                                    fontSize: Dimensions.fontSizeExtraLarge,
+                                    fontSize: 30,
                                     color: Colors.black),
                               ),
                         const SizedBox(
@@ -184,6 +185,8 @@ class _MenuScreenState extends State<MenuScreen> {
             ]),
           ) : const SizedBox(),
 
+          const ReferBannerViewWidget(),
+
 
           Expanded(
               child: SingleChildScrollView(
@@ -219,14 +222,18 @@ class _MenuScreenState extends State<MenuScreen> {
                       // ],
                     ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: Dimensions.paddingSizeLarge,
-                        vertical: Dimensions.paddingSizeDefault),
+                        horizontal: Dimensions.paddingSizeSmall,
+                        vertical: Dimensions.paddingSizeSmall),
                     margin: const EdgeInsets.all(Dimensions.paddingSizeDefault),
                     child: Column(children: [
                       PortionWidget(
                           icon: Images.profileIcon,
                           title: 'profile'.tr,
                           route: RouteHelper.getProfileRoute()),
+                      PortionWidget(
+                          icon: Images.notification,
+                          title: 'Notification'.tr,
+                          route: RouteHelper.getNotificationRoute()),
                       PortionWidget(
                           icon: Images.addressIcon,
                           title: 'my_address'.tr,
