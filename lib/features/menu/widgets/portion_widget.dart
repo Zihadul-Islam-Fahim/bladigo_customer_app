@@ -28,11 +28,11 @@ class PortionWidget extends StatelessWidget {
 
             suffix != null ? Container(
               decoration: BoxDecoration(
-                color: Color.fromRGBO(214, 252, 211, 1),
+                color: Color.fromRGBO(0, 191, 99, 1),
                 borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
               ),
               padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall, horizontal: Dimensions.paddingSizeSmall),
-              child: Text(suffix!, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black)),
+              child: Text(suffix!, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.white)),
             ) : const SizedBox(),
           ]),
           hideDivider ? const SizedBox() : const Divider()

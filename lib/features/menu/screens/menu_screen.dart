@@ -53,7 +53,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
         return Column(children: [
           Container(
-            decoration: BoxDecoration(color: Color.fromRGBO(0, 191, 99, 1)),
+            decoration: BoxDecoration(color: Theme.of(context).primaryColor),
             child: Padding(
               padding: const EdgeInsets.only(
                 left: Dimensions.paddingSizeOverLarge,
@@ -109,7 +109,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                     : 'guest_user'.tr,
                                 style: robotoBold.copyWith(
                                     fontSize: 30,
-                                    color: Colors.black),
+                                    color: Colors.white),
                               ),
                         const SizedBox(
                             height: Dimensions.paddingSizeExtraSmall),
@@ -120,7 +120,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                         .userInfoModel!.createdAt!),
                                 style: robotoMedium.copyWith(
                                     fontSize: Dimensions.fontSizeDefault,
-                                    color: Colors.black),
+                                    color: Colors.white),
                               )
                             : InkWell(
                                 onTap: () async {

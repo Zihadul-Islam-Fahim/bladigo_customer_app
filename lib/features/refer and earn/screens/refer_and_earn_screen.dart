@@ -233,7 +233,7 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
             ),
             child: Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor.withOpacity(0.1),
+                color: Color.fromRGBO(0, 191, 99, 1),
                 borderRadius : const BorderRadius.only(
                   topLeft: Radius.circular(Dimensions.paddingSizeExtraLarge),
                   topRight : Radius.circular(Dimensions.paddingSizeExtraLarge),
