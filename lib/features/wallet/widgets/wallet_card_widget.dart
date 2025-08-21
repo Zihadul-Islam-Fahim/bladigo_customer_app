@@ -30,7 +30,7 @@ class WalletCardWidget extends StatelessWidget {
               Container(
                 height: 70,
                 // width: Get.width * 0.50,
-                margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeExtraSmall,left: 10,right: 10),
+                margin: EdgeInsets.only(top: isDesktop ? 0 : Dimensions.paddingSizeExtraSmall,left: 10,right: 4),
                 padding: EdgeInsets.symmetric(horizontal:isDesktop ? 35 : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeExtraSmall),
                 decoration: BoxDecoration(
                   // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
@@ -52,7 +52,7 @@ class WalletCardWidget extends StatelessWidget {
                           children: [
                         Text(
                           PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance??0), textDirection: TextDirection.ltr,overflow: TextOverflow.ellipsis,
-                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Colors.black,fontWeight: FontWeight.bold),
+                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: Colors.black,fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(width: Dimensions.paddingSizeSmall),
 

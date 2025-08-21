@@ -181,7 +181,6 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                     bottom: 15, right: 15,
                                     child: Container(
                                       height: 23,
-                                      //    width: 150,
                                       decoration: BoxDecoration(
                                         borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault), ),
                                         color: Theme.of(context).cardColor,
@@ -199,12 +198,6 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                           ) : const SizedBox(),
                                           SizedBox(width: restaurantList[index].ratingCount! > 0 ? Dimensions.paddingSizeDefault : 0),
 
-                                          restaurantList[index].freeDelivery! ? ImageWithTextRowWidget(
-                                            widget: Image.asset(Images.deliveryIcon, height: 20, width: 20),
-                                            text: 'free'.tr,
-                                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
-                                          ): const SizedBox(),
-                                          restaurantList[index].freeDelivery! ? const SizedBox(width: Dimensions.paddingSizeDefault) : const SizedBox(),
 
                                           IconWithTextRowWidget(
                                             icon: Icons.access_time_outlined,
@@ -215,6 +208,28 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+                                  ),
+
+                                  Positioned(
+                                    bottom: 50,right: 20,
+                                    child: restaurantList[index].freeDelivery! ? Container(
+                                      height: 23,
+                                      //    width: 150,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault), ),
+                                        color: Colors.yellow,
+                                      ),
+                                      padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+                                      child: ImageWithTextRowWidget(
+                                        widget: Image.asset(
+                                            Images.onTheWayGif, height: 40,
+                                            width: 30),
+                                        text: 'free_delivery'.tr,
+                                        style: robotoRegular.copyWith(
+                                            fontSize: Dimensions.fontSizeSmall),
+                                      ),
+                                    )
+                                        : const SizedBox(),
                                   ),
 
 
@@ -405,12 +420,8 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                           ) : const SizedBox(),
                                           SizedBox(width: restaurantList[index].ratingCount! > 0 ? Dimensions.paddingSizeDefault : 0),
 
-                                          restaurantList[index].freeDelivery! ? ImageWithTextRowWidget(
-                                            widget: Image.asset(Images.deliveryIcon, height: 20, width: 20),
-                                            text: 'free'.tr,
-                                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
-                                          ): const SizedBox(),
-                                          restaurantList[index].freeDelivery! ? const SizedBox(width: Dimensions.paddingSizeDefault) : const SizedBox(),
+
+                                          // restaurantList[index].freeDelivery! ? const SizedBox(width: Dimensions.paddingSizeDefault) : const SizedBox(),
 
                                           IconWithTextRowWidget(
                                             icon: Icons.access_time_outlined,
@@ -421,6 +432,28 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+                                  ),
+
+                                  Positioned(
+                                    bottom: 50,right: 20,
+                                    child: restaurantList[index].freeDelivery! ? Container(
+                                      height: 23,
+                                      //    width: 150,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault), ),
+                                        color: Colors.yellow,
+                                      ),
+                                      padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+                                      child: ImageWithTextRowWidget(
+                                        widget: Image.asset(
+                                            Images.deliveryIcon, height: 20,
+                                            width: 20),
+                                        text: 'free_delivery'.tr,
+                                        style: robotoRegular.copyWith(
+                                            fontSize: Dimensions.fontSizeSmall),
+                                      ),
+                                    )
+                                        : const SizedBox(),
                                   ),
 
 

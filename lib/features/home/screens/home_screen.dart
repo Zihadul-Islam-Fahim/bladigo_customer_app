@@ -575,19 +575,19 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            flex: 3,
+            flex: 55,
               child: WalletCardWidget(tooltipController: tooltipController),
           ),
           // SizedBox(width: 10,),
           Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? 
           Expanded(
-            flex: 2,
+            flex: 25,
             child: GetBuilder<ProfileController>(
                         builder: (profileController) {
             return Container(
               height: 70,
               margin: EdgeInsets.only(top:  Dimensions.paddingSizeExtraSmall,left: 4),
-              padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
               decoration: BoxDecoration(
                 // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
                 borderRadius: BorderRadius.circular(40),
@@ -615,7 +615,7 @@ class _HomeScreenState extends State<HomeScreen> {
      );
    }),
      ) : const SizedBox(),
-          Expanded(
+          Expanded(flex: 12,
             child: Container(
               height: 70,
               child: Center(
