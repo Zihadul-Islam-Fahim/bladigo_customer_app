@@ -53,7 +53,12 @@ class _MenuScreenState extends State<MenuScreen> {
 
         return Column(children: [
           Container(
-            decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage("assets/image/profile_header.png",),fit: BoxFit.cover)
+                // color: Theme.of(context).primaryColor
+              
+
+            ),
             child: Padding(
               padding: const EdgeInsets.only(
                 left: Dimensions.paddingSizeOverLarge,
@@ -166,14 +171,6 @@ class _MenuScreenState extends State<MenuScreen> {
                 title: 'loyalty_points'.tr,
               )) : const SizedBox(),
 
-              SizedBox(width: Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? Dimensions.paddingSizeSmall : 0),
-
-              isLoggedIn ?  Expanded(child: ProfileCardWidget(
-                image: Images.shoppingBagIcon,
-                data: profileController.userInfoModel?.orderCount != null ? profileController.userInfoModel!.orderCount.toString() : '0',
-                title: 'total_order'.tr,
-              )) : const SizedBox(),
-
               SizedBox(width: Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? Dimensions.paddingSizeSmall : 0),
 
               Get.find<SplashController>().configModel!.customerWalletStatus == 1 ? Expanded(child: ProfileCardWidget(
@@ -181,6 +178,17 @@ class _MenuScreenState extends State<MenuScreen> {
                 data: PriceConverter.convertPrice(profileController.userInfoModel?.walletBalance != null ? profileController.userInfoModel!.walletBalance : 0),
                 title: 'wallet_balance'.tr,
               )) : const SizedBox(),
+
+              SizedBox(width: Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 ? Dimensions.paddingSizeSmall : 0),
+
+
+              isLoggedIn ?  Expanded(child: ProfileCardWidget(
+                image: Images.shoppingBagIcon,
+                data: profileController.userInfoModel?.orderCount != null ? profileController.userInfoModel!.orderCount.toString() : '0',
+                title: 'total_order'.tr,
+              )) : const SizedBox(),
+
+
 
             ]),
           ) : const SizedBox(),
@@ -231,7 +239,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           title: 'profile'.tr,
                           route: RouteHelper.getProfileRoute()),
                       PortionWidget(
-                          icon: Images.notification,
+                          icon: "assets/image/notification_new.png",
                           title: 'Notification'.tr,
                           route: RouteHelper.getNotificationRoute()),
                       PortionWidget(

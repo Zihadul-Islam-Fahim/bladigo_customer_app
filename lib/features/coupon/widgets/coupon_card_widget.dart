@@ -27,9 +27,10 @@ class CouponCardWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+        borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
         boxShadow: [BoxShadow(color: Get.isDarkMode ? Colors.black.withOpacity(0.2) : Colors.grey.withOpacity(0.2), spreadRadius: 1, blurRadius: 10, offset: const Offset(0, 1))],
       ),
+      clipBehavior: Clip.hardEdge,
       child: Stack(children: [
 
         ClipRRect(
@@ -40,17 +41,22 @@ class CouponCardWidget extends StatelessWidget {
               Get.find<ThemeController>().darkTheme ? Images.couponBgDark : Images.couponBgLight,
               height: ResponsiveHelper.isMobilePhone() ? 160 : 150, width: size.width,
               fit: ResponsiveHelper.isMobilePhone() ? BoxFit.cover : BoxFit.contain,
+              color: Color.fromRGBO(0, 191, 99, 0.7),
             ),
           ),
         ),
 
         Container(
           alignment: Alignment.center,
+
+
           child: Row(children: [
 
             Container(
               alignment: Alignment.center,
-
+              decoration: BoxDecoration(
+                  // gradient: LinearGradient(colors: [Colors.yellow,Colors.green])
+              ),
               width: ResponsiveHelper.isDesktop(context) ? 150 : size.width * 0.3,
               child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Image.asset(
@@ -63,20 +69,20 @@ class CouponCardWidget extends StatelessWidget {
                 Text(
                   '${couponList![index].couponType == 'free_delivery' ? '' : couponList![index].discount}${couponList![index].discountType == 'percent' ? '%'
                       : couponList![index].couponType == 'free_delivery' ?  'free_delivery'.tr
-                      : Get.find<SplashController>().configModel!.currencySymbol} ${couponList![index].couponType == 'free_delivery' ? '' : 'off'.tr}',
-                  style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge),
+                      : " MAD"} ${couponList![index].couponType == 'free_delivery' ? '' : 'off'.tr}',
+                  style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge,color: Colors.white),
                 ),
                 const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
                 couponList![index].restaurant == null ?  Flexible(child: Text(
                   couponList![index].couponType == 'restaurant_wise' ?
                   '${'on'.tr} ${couponList![index].data}' : 'on_all_store'.tr,
-                  style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Theme.of(context).disabledColor),
+                  style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Colors.white),
                   maxLines: 2, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,
                 )) : Flexible(child: Text(
                   couponList![index].couponType == 'default' ?
                   '${couponList![index].restaurant!.name}' : '',
-                  style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Theme.of(context).disabledColor),
+                  style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Theme.of(context).cardColor),
                   maxLines: 1, overflow: TextOverflow.ellipsis,
                 )),
               ]),
@@ -118,12 +124,12 @@ class CouponCardWidget extends StatelessWidget {
 
                         Text(
                           '${couponList![index].code}',
-                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
+                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall,color: Colors.white),
                           maxLines: 1, overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(width: Dimensions.paddingSizeSmall),
 
-                        Icon(Icons.copy_rounded, color: Theme.of(context).primaryColor, size: 20),
+                        Icon(Icons.copy_rounded, color: Theme.of(context).cardColor, size: 20),
 
                       ]),
                     ),
@@ -133,24 +139,24 @@ class CouponCardWidget extends StatelessWidget {
 
                 Text(
                   '${DateConverter.stringDateTimeToDate(couponList![index].startDate!)} ${'to'.tr} ${DateConverter.stringDateTimeToDate(couponList![index].expireDate!)}',
-                  style: robotoMedium.copyWith(color: Theme.of(context).textTheme.bodyLarge?.color, fontSize: Dimensions.fontSizeSmall),
+                  style: robotoMedium.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall),
                   maxLines: 1, overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
 
-                  Text('*', style: robotoRegular.copyWith(color: Theme.of(context).colorScheme.error, fontSize: Dimensions.fontSizeSmall)),
+                  Text('*', style: robotoRegular.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall)),
 
                   Text(
                     '${'min_purchase'.tr} ',
-                    style: robotoRegular.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeSmall),
+                    style: robotoRegular.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall),
                     maxLines: 1, overflow: TextOverflow.ellipsis,
                   ),
 
                   Text(
                     PriceConverter.convertPrice(couponList![index].minPurchase),
-                    style: robotoMedium.copyWith(color: Theme.of(context).disabledColor, fontSize: Dimensions.fontSizeSmall),
+                    style: robotoMedium.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall),
                     maxLines: 1, overflow: TextOverflow.ellipsis, textDirection: TextDirection.ltr,
                   ),
 
