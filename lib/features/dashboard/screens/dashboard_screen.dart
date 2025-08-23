@@ -362,13 +362,14 @@ class KBottomNavItem extends StatelessWidget {
                   imageAsset!,
                   height: 24,
                   width: 24,
+            color: Colors.grey,
 
                 )
               : Icon(
                   iconData,
                   color: isSelected
                       ? Theme.of(context).primaryColor
-                      : Theme.of(context).disabledColor,
+                      : Colors.grey,
                 ),
           if (label != null)
             Text(
@@ -376,7 +377,7 @@ class KBottomNavItem extends StatelessWidget {
               style: TextStyle(
                 color: isSelected
                     ? Theme.of(context).primaryColor
-                    : Colors.black,
+                    : Colors.grey,
                 fontSize: 12,
               ),
             ),
