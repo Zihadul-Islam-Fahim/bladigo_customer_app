@@ -192,12 +192,12 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
                         color: Theme.of(context).textTheme.bodyLarge!.color,
                       ),
                     ),
-                    IconButton(
-                      onPressed: () => Get.toNamed(RouteHelper.getCartRoute()),
-                      icon: CartWidget(
-                          color: Theme.of(context).textTheme.bodyLarge!.color,
-                          size: 25),
-                    ),
+                    // IconButton(
+                    //   onPressed: () => Get.toNamed(RouteHelper.getCartRoute()),
+                    //   icon: CartWidget(
+                    //       color: Theme.of(context).textTheme.bodyLarge!.color,
+                    //       size: 25),
+                    // ),
                     VegFilterWidget(
                         type: catController.type,
                         fromAppBar: true,
@@ -247,6 +247,13 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
                   ],
                 ),
           endDrawer: const MenuDrawerWidget(),
+          floatingActionButton:  IconButton(
+          onPressed: () => Get.toNamed(RouteHelper.getCartRoute()),
+          icon: CartWidget(
+              color: Theme.of(context).primaryColor,
+
+              size: 42),
+                    ),
           endDrawerEnableOpenDragGesture: false,
           body: Column(children: [
             (catController.subCategoryList != null &&

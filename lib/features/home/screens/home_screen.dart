@@ -587,7 +587,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return Container(
               height: 70,
               margin: EdgeInsets.only(top:  Dimensions.paddingSizeExtraSmall,left: 4),
-              padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall, vertical: Dimensions.paddingSizeSmall),
               decoration: BoxDecoration(
                 // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
                 borderRadius: BorderRadius.circular(40),
@@ -599,8 +599,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(Images.loyal,width: 40,height: 40,),
-                  SizedBox(width: 10,),
+                  Image.asset(Images.loyal,width: 32,height: 32,),
+                  SizedBox(width: 5,),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -17,6 +17,7 @@ import 'package:stackfood_multivendor/features/dashboard/widgets/bottom_nav_item
 import 'package:stackfood_multivendor/features/dashboard/widgets/running_order_view_widget.dart';
 import 'package:stackfood_multivendor/features/favourite/screens/favourite_screen.dart';
 import 'package:stackfood_multivendor/features/loyalty/controllers/loyalty_controller.dart';
+import 'package:stackfood_multivendor/features/wallet/screens/wallet_screen.dart';
 import 'package:stackfood_multivendor/helper/responsive_helper.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
 import 'package:stackfood_multivendor/util/dimensions.dart';
@@ -73,6 +74,7 @@ class DashboardScreenState extends State<DashboardScreen> {
     _screens = [
       const HomeScreen(),
       const FavouriteScreen(),
+      const WalletScreen(),
       const CartScreen(fromNav: true),
       const OrderScreen(),
       const MenuScreen()
@@ -197,7 +199,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                       ),
                     );
         }),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: ResponsiveHelper.isDesktop(context)
             ? const SizedBox()
             : GetBuilder<OrderController>(builder: (orderController) {
@@ -238,7 +240,14 @@ class DashboardScreenState extends State<DashboardScreen> {
                               onTap: () => _setPage(3),
                             ),
                             Spacer(),
-                            const Expanded(child: SizedBox()),
+                            // const Expanded(child: SizedBox()),
+                            KBottomNavItem(
+                              imageAsset: 'assets/image/wallet.png',
+                              selectedImage: 'assets/image/wallet_profile.png',
+                              label: 'Wallet'.tr,
+                              isSelected: _pageIndex == 2,
+                              onTap: () => _setPage(2),
+                            ),
                             Spacer(),
                             KBottomNavItem(
                               imageAsset: 'assets/image/fav.png',
@@ -353,7 +362,8 @@ class KBottomNavItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           imageAsset != null
-              ?isSelected ? Image.asset(
+              ?
+          isSelected ? Image.asset(
             selectedImage!,
             height: 24,
             width: 24,
