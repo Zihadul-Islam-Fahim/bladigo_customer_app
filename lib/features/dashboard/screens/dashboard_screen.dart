@@ -261,8 +261,8 @@ class DashboardScreenState extends State<DashboardScreen> {
                               imageAsset: 'assets/image/person.png',
                               selectedImage: 'assets/image/person_filled.png',
                               label: 'Profile'.tr,
-                              isSelected: _pageIndex == 4,
-                              onTap: () => _setPage(4),
+                              isSelected: _pageIndex == 5,
+                              onTap: () => _setPage(5),
                             ),
                             SizedBox(
                               width: 12,

@@ -56,20 +56,20 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
               GetBuilder<FavouriteController>(builder: (favouriteController) {
                 bool isWished = favouriteController.wishRestIdList.contains(restaurant.id);
                 return Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(4),
                   decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),
                   child: CustomFavouriteWidget(
                     isWished: isWished,
                     isRestaurant: true,
                     restaurant: restaurant,
-                    size: 20  ,
+                    size: 20,
                   ),
                 );
               }),
               SizedBox(width: 10,),
 
               AppConstants.webHostedUrl.isNotEmpty ? Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),
                 child: InkWell(
                   onTap: (){
@@ -96,11 +96,12 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
       ),
       leading: !isDesktop ? IconButton(
         icon:Container(
-          width: 50, // Adjust size as needed
-          height: 50,
+          // width: 20, // Adjust size as needed
+          // height: 20,
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
+            shape: BoxShape.circle,
             // Rounded corners
             border: Border.all(
               color: Colors.white,
@@ -109,7 +110,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
           ),
           child: Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Colors.black,
             size: 24,
           ),
         ),

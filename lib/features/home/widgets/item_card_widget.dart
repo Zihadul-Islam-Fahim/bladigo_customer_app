@@ -98,7 +98,7 @@ class ItemCardWidget extends StatelessWidget {
                         ? const BorderRadius.only(
                             topLeft: Radius.circular(Dimensions.radiusDefault),
                             topRight: Radius.circular(Dimensions.radiusDefault))
-                        : BorderRadius.circular(Dimensions.radiusDefault),
+                        : BorderRadius.circular(Dimensions.radiusXExtraLarge),
                     child: CustomImageWidget(
                       image: !isCampaignItem
                           ? '${product.imageFullUrl}'
@@ -334,9 +334,9 @@ class ItemCardWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 6,
+            flex: 3,
             child: Padding(
-              padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
+              padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
               child: Column(
                 crossAxisAlignment: isBestItem == true
                     ? CrossAxisAlignment.center

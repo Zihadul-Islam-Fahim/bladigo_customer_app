@@ -503,7 +503,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                                     ResponsiveHelper.isDesktop(
                                                             context)
                                                         ? 307
-                                                        : 305,
+                                                        : 280,
                                                 width: context.width,
                                                 child: ListView.builder(
                                                   shrinkWrap: true,
@@ -519,8 +519,8 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                                       .only(
                                                       top: Dimensions
                                                           .paddingSizeExtraSmall,
-                                                      bottom: Dimensions
-                                                          .paddingSizeExtraSmall,
+                                                      // bottom: Dimensions
+                                                      //     .paddingSizeExtraSmall,
                                                       right: Dimensions
                                                           .paddingSizeDefault),
                                                   itemBuilder:
@@ -557,7 +557,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                             ? SliverPersistentHeader(
                                 pinned: true,
                                 delegate: SliverDelegate(
-                                    height: 85,
+                                    height: 60,
                                     child: Center(
                                         child: Container(
                                       width: Dimensions.webMaxWidth,
@@ -575,8 +575,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                               ],
                                       ),
                                       padding: const EdgeInsets.symmetric(
-                                          vertical:
-                                              Dimensions.paddingSizeExtraSmall),
+                                          vertical:5),
                                       child: Column(children: [
                                         // Padding(
                                         //   padding: const EdgeInsets.only(
@@ -642,7 +641,8 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                                       horizontal: Dimensions
                                                           .paddingSizeSmall,
                                                       vertical: Dimensions
-                                                          .paddingSizeExtraSmall),
+                                                          .paddingSizeExtraSmall
+                                                  ),
                                                   margin: const EdgeInsets.only(
                                                       right: Dimensions
                                                           .paddingSizeSmall),

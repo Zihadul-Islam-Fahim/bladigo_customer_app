@@ -198,14 +198,14 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                     Get.back();
                                   },
                                   child: Container(
-                                    width: 50, // Adjust size as needed
-                                    height: 50,
+                                    width: 40, // Adjust size as needed
+                                    height: 40,
                                     decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.circular(12),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(50),
                                       // Rounded corners
                                       border: Border.all(
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         width: 2,
                                       ),
                                     ),

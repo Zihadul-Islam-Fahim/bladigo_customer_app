@@ -67,9 +67,9 @@ class ProductViewWidget extends StatelessWidget {
                   key: UniqueKey(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                     // mainAxisSpacing: 2,
+                     // mainAxisSpacing: 20,
                       crossAxisSpacing: 10,
-                      childAspectRatio: Platform.isIOS ? Get.width * 0.0018 :   Get.width * 0.0018 // 0.72
+                      childAspectRatio: Platform.isIOS ? Get.width * 0.0019 :   Get.width * 0.0018 // 0.72
                       // crossAxisCount:2,
                       ),
                   physics: isScrollable
