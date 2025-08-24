@@ -18,18 +18,18 @@ final robotoMedium = TextStyle(
 
 final robotoBold = TextStyle(
   fontFamily: AppConstants.fontFamily,
-  fontWeight: FontWeight.w700,
-  fontSize: Dimensions.fontSizeDefault,
-);
-
-final robotoBlack = TextStyle(
-  fontFamily: 'Roboto',
   fontWeight: FontWeight.w900,
   fontSize: Dimensions.fontSizeDefault,
 );
 
-final arial = TextStyle(
-
+final robotoBlack = TextStyle(
+  fontFamily: AppConstants.fontFamily,
+  fontWeight: FontWeight.w700,
   fontSize: Dimensions.fontSizeDefault,
-  fontFamily: "arial"
 );
+
+// final arial = TextStyle(
+//
+//   fontSize: Dimensions.fontSizeDefault,
+//   fontFamily: "arial"
+// );

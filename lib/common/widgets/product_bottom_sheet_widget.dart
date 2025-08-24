@@ -264,9 +264,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                             children: [
                                               Text(
                                                 product!.name ?? '',
-                                                style: TextStyle(
+                                                style: robotoBold.copyWith(
                                                     fontSize: 23,
-                                                    fontFamily: 'arial',
+                                                    fontFamily: 'sf',
                                                   fontWeight: FontWeight.bold
 
                                                 ),
@@ -302,8 +302,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                               const SizedBox(
                                                   height: Dimensions
                                                       .paddingSizeExtraSmall),
-                                              Text(product!.description ?? '',
-                                                  style: arial.copyWith(fontSize: 16,fontWeight: FontWeight.w300,color: Colors.grey),
+                                              Text(product!.description.toString() ?? '',
+                                                  style: robotoBlack.copyWith(fontSize: 15,color: Colors.grey),
                                                   textAlign:
                                                       TextAlign.justify),
                                               const SizedBox(
@@ -321,7 +321,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text('nutrition_details'.tr,
-                                                  style: robotoBold.copyWith(
+                                                  style: robotoBlack.copyWith(
                                                       fontSize: Dimensions
                                                           .fontSizeLarge)),
                                               const SizedBox(
@@ -334,7 +334,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                 return Text(
                                                   '${product!.nutritionsName![index]}${product!.nutritionsName!.length - 1 == index ? '.' : ', '}',
                                                   style:
-                                                      robotoRegular.copyWith(
+                                                      robotoMedium.copyWith(
+                                                        fontSize: 15,
                                                           color: Theme.of(
                                                                   context)
                                                               .textTheme
@@ -359,7 +360,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text('allergic_ingredients'.tr,
-                                                  style: robotoBold.copyWith(
+                                                  style: robotoBlack.copyWith(
                                                       fontSize: Dimensions
                                                           .fontSizeLarge)),
                                               const SizedBox(
@@ -372,7 +373,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                 return Text(
                                                   '${product!.allergiesName![index]}${product!.allergiesName!.length - 1 == index ? '.' : ', '}',
                                                   style:
-                                                      robotoRegular.copyWith(
+                                                      robotoBlack.copyWith(
                                                           color: Theme.of(
                                                                   context)
                                                               .textTheme
@@ -490,18 +491,21 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                               CrossAxisAlignment
                                                                   .center,
                                                           children: [
-                                                            Text(
-                                                                product!
-                                                                    .variations![
-                                                                        index]
-                                                                    .name!,
+                                                            SizedBox(
+                                                              width: Get.width * 0.75,
+                                                              child: Text(
+                                                                  product!
+                                                                      .variations![
+                                                                          index]
+                                                                      .name!,
 
-                                                                style: robotoBold
-                                                                    .copyWith(
-                                                                        fontSize:
-                                                                            Dimensions.fontSizeLarge),
-                                                              maxLines: 2,
-                                                              overflow: TextOverflow.ellipsis,),
+                                                                  style: robotoBlack
+                                                                      .copyWith(
+                                                                          fontSize:
+                                                                              Dimensions.fontSizeLarge),
+                                                                maxLines: 2,
+                                                                overflow: TextOverflow.ellipsis,),
+                                                            ),
                                                             Container(
                                                               decoration:
                                                                   BoxDecoration(
@@ -694,10 +698,12 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                                   product!.variations![index].variationValues![i].level!.trim(),
                                                                                   maxLines: 1,
                                                                                   overflow: TextOverflow.ellipsis,
-                                                                                  style: productController.selectedVariations[index][i]! ? robotoMedium : robotoMedium,
+                                                                                  style: productController.selectedVariations[index][i]! ? robotoMedium.copyWith(fontSize: 16) : robotoMedium.copyWith(fontSize: 16),
                                                                                 ),
                                                                               ),
-                                                                              Flexible(
+                                                              (product!.variations![index].variationValues![i].stockType != 'unlimited' && product!.variations![index].variationValues![i].currentStock != null && product!.variations![index].variationValues![i].currentStock! <= 0) ?
+
+                                                              Flexible(
                                                                                 child:
                                                                                 // (productController.selectedVariations[index][i]! && (productController.quantity == product!.variations![index].variationValues![i].currentStock))
                                                                                 //     ? Text(
@@ -710,20 +716,20 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                                         maxLines: 1,
                                                                                         overflow: TextOverflow.ellipsis,
                                                                                         style: (product!.variations![index].variationValues![i].stockType != 'unlimited' && product!.variations![index].variationValues![i].currentStock != null && product!.variations![index].variationValues![i].currentStock! <= 0) ? robotoMedium.copyWith(color: Theme.of(context).colorScheme.error, fontSize: Dimensions.fontSizeExtraSmall) : robotoRegular.copyWith(color: Colors.transparent),
-                                                                                      ),
-                                                                              ),
+                                                                                      )
+                                                                              ) : SizedBox.shrink(),
                                                                             ]),
                                                                       ),
-                                                                      (price > priceWithDiscount) &&
-                                                                              (discountType == 'percent')
-                                                                          ? Text(
-                                                                              PriceConverter.convertPrice(product!.variations![index].variationValues![i].optionPrice),
-                                                                              maxLines: 1,
-                                                                              overflow: TextOverflow.ellipsis,
-                                                                              textDirection: TextDirection.ltr,
-                                                                              style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).disabledColor, decoration: TextDecoration.lineThrough),
-                                                                            )
-                                                                          : const SizedBox(),
+                                                                      // (price > priceWithDiscount) &&
+                                                                      //         (discountType == 'percent')
+                                                                      //     ? Text(
+                                                                      //         PriceConverter.convertPrice(product!.variations![index].variationValues![i].optionPrice),
+                                                                      //         maxLines: 1,
+                                                                      //         overflow: TextOverflow.ellipsis,
+                                                                      //         textDirection: TextDirection.ltr,
+                                                                      //         style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).disabledColor, decoration: TextDecoration.lineThrough),
+                                                                      //       )
+                                                                      //     : const SizedBox(),
                                                                       SizedBox(
                                                                           width: price > priceWithDiscount
                                                                               ? Dimensions.paddingSizeExtraSmall
@@ -744,26 +750,34 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                           ? Checkbox(
                                                                               value: productController.selectedVariations[index][i],
                                                                               activeColor: Theme.of(context).primaryColor,
-                                                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1)),
+                                                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                                                                               onChanged: (bool? newValue) {
                                                                                 productController.setCartVariationIndex(index, i, product, product!.variations![index].multiSelect!);
                                                                                 productController.setExistInCartForBottomSheet(product!, productController.selectedVariations);
                                                                               },
+
                                                                               visualDensity: const VisualDensity(horizontal: -3, vertical: -3),
                                                                               side: BorderSide(width: 2, color: Theme.of(context).hintColor),
                                                                             )
-                                                                          : Radio(
-                                                                              value: i,
-                                                                              groupValue: productController.selectedVariations[index].indexOf(true),
-                                                                              onChanged: (dynamic value) {
-                                                                                productController.setCartVariationIndex(index, i, product, product!.variations![index].multiSelect!);
-                                                                                productController.setExistInCartForBottomSheet(product!, productController.selectedVariations);
-                                                                              },
-                                                                              activeColor: Theme.of(context).primaryColor,
-                                                                              toggleable: false,
-                                                                              visualDensity: const VisualDensity(horizontal: -3, vertical: -3),
-                                                                              fillColor: WidgetStateColor.resolveWith((states) => productController.selectedVariations[index][i]! ? Theme.of(context).primaryColor : Theme.of(context).disabledColor),
-                                                                            ),
+                                                                          : Checkbox(
+                                                                        value: productController.selectedVariations[index][i],
+                                                                        activeColor: Theme.of(context).primaryColor,
+                                                                        shape: RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.circular(5), // rounded rect
+                                                                        ),
+                                                                        onChanged: (bool? newValue) {
+                                                                          // force single selection logic
+                                                                          productController.setCartVariationIndex(
+                                                                              index, i, product, product!.variations![index].multiSelect!);
+                                                                          productController.setExistInCartForBottomSheet(
+                                                                              product!, productController.selectedVariations);
+                                                                        },
+                                                                        visualDensity: const VisualDensity(horizontal: -3, vertical: -3),
+                                                                        side: BorderSide(
+                                                                          width: 2,
+                                                                          color: Theme.of(context).hintColor,
+                                                                        ),
+                                                                      ),
                                                                     ]),
                                                               ),
                                                             );
@@ -800,7 +814,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                             .spaceBetween,
                                                     children: [
                                                       Text('addons'.tr,
-                                                          style: robotoBold
+                                                          style: robotoBlack
                                                               .copyWith(
                                                                   fontSize:
                                                                       Dimensions
@@ -1035,9 +1049,11 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                             )
                                                           : const SizedBox(),
                                                       Checkbox(
+
                                                         value: productController
                                                                 .addOnActiveList[
                                                             index],
+
                                                         activeColor:
                                                             Theme.of(context)
                                                                 .primaryColor,
@@ -1045,7 +1061,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        1)),
+                                                                        5)),
                                                         onChanged:
                                                             (bool? newValue) {
                                                           if (!productController

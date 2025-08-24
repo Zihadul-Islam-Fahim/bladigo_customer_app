@@ -121,6 +121,17 @@ flutter:
         - asset: assets/font/Roboto-Black.ttf
           weight: 900
 
+    - family: sf
+      fonts:
+        - asset: assets/font/SF-Pro-Rounded-Regular.otf
+          weight: 400
+        - asset: assets/font/SF-Pro-Rounded-Medium.otf
+          weight: 500
+        - asset: assets/font/SF-Pro-Rounded-Black.otf
+          weight: 700
+        - asset: assets/font/SF-Pro-Rounded-Bold.otf
+          weight: 900
+
 
     - family: arial
       fonts:
