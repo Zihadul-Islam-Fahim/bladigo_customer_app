@@ -95,11 +95,12 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
       body: Container(
         width: 550,
         margin: EdgeInsets.only(top: GetPlatform.isWeb ? 0 : 0),
+
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          color: Colors.transparent,
           borderRadius: ResponsiveHelper.isMobile(context)
               ? const BorderRadius.vertical(
-                  top: Radius.circular(Dimensions.radiusExtraLarge))
+                  top: Radius.circular(0))
               : const BorderRadius.all(
                   Radius.circular(Dimensions.radiusExtraLarge)),
         ),
@@ -152,7 +153,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                      height: GetPlatform.isIOS || GetPlatform.isDesktop
+                      height: GetPlatform.isDesktop
                           ? Dimensions.paddingSizeLarge
                           : 0),
                   (product!.imageFullUrl != null &&
@@ -178,7 +179,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                       ? double.infinity
                                       : 240,
                                   height: ResponsiveHelper.isMobile(context)
-                                      ? 260
+                                      ? 300
                                       : 140,
                                   fit: BoxFit.cover,
                                 ),
@@ -188,7 +189,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                 discount: discount,
                                 discountType: discountType,
                                 isProductBottomSheet: true),
-                            Padding(
+                            Container(
+                              margin: EdgeInsets.only(top: GetPlatform.isAndroid ? 0 : 20),
                               padding: const EdgeInsets.all(
                                   Dimensions.paddingSizeLarge),
                               child: Align(
