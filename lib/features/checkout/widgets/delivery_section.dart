@@ -342,13 +342,13 @@ class _DeliverySectionState extends State<DeliverySection> {
                                               locationController.getCurrentLocation(true, mapController: controller);
 
                                             },
-                                            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-                                              Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
-                                              Factory<PanGestureRecognizer>(() => PanGestureRecognizer()),
-                                              Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()),
-                                              Factory<TapGestureRecognizer>(() => TapGestureRecognizer()),
-                                              Factory<VerticalDragGestureRecognizer>(() => VerticalDragGestureRecognizer()),
-                                            },
+                                            // gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                                            //   Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                                            //   Factory<PanGestureRecognizer>(() => PanGestureRecognizer()),
+                                            //   Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()),
+                                            //   Factory<TapGestureRecognizer>(() => TapGestureRecognizer()),
+                                            //   Factory<VerticalDragGestureRecognizer>(() => VerticalDragGestureRecognizer()),
+                                            // },
                                             style: Get.isDarkMode ? Get.find<ThemeController>().darkMap : Get.find<ThemeController>().lightMap,
                                           ),
 
