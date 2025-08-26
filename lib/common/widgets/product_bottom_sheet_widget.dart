@@ -1449,8 +1449,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
       Get.dialog(
           ConfirmationDialogWidget(
             icon: Images.warning,
-            title: 'are_you_sure_to_reset'.tr,
-            description: 'if_you_continue'.tr,
+            title: 'start_a_new_cart'.tr,
+            description: 'a_new_order_will_clear'.tr + " ${Get.find<CartController>().cartList[0].product!.restaurantName}",
             onYesPressed: () {
               Get.back();
               cartController.clearCartOnline().then((success) async {

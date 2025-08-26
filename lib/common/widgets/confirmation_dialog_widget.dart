@@ -31,10 +31,10 @@ class ConfirmationDialogWidget extends StatelessWidget {
           padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
 
-            Padding(
-              padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
-              child: Image.asset(icon, width: 50, height: 50),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
+            //   child: Image.asset(icon, width: 50, height: 50),
+            // ),
 
             title != null ? Padding(
               padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge),
@@ -48,7 +48,7 @@ class ConfirmationDialogWidget extends StatelessWidget {
               padding: EdgeInsets.all(isDelete == true ? Dimensions.paddingSizeSmall : Dimensions.paddingSizeLarge),
               child: Text(description, style: isDelete == true? robotoRegular : robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge), textAlign: TextAlign.center),
             ),
-            const SizedBox(height: Dimensions.paddingSizeLarge),
+            // const SizedBox(height: Dimensions.paddingSizeLarge),
 
             GetBuilder<ProfileController>(builder: (userController) {
               return GetBuilder<AuthController>(builder: (authController) {
@@ -58,7 +58,7 @@ class ConfirmationDialogWidget extends StatelessWidget {
                       onPressed: () => isLogOut ? onYesPressed() : onNoPressed != null ? onNoPressed!() : Get.back(),
                       style: TextButton.styleFrom(
                         backgroundColor: isDelete == true ? Theme.of(context).colorScheme.error : Theme.of(context).disabledColor.withOpacity(0.3), minimumSize: const Size(Dimensions.webMaxWidth, 40), padding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusSmall)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusDefault)),
                       ),
                       child: Text(
                         isLogOut ? isDelete == true ? 'delete'.tr : 'yes'.tr : isDelete == true ? 'cancel'.tr : 'no'.tr, textAlign: TextAlign.center,
@@ -72,7 +72,7 @@ class ConfirmationDialogWidget extends StatelessWidget {
                       textColor: isDelete == true ? Theme.of(context).disabledColor : Theme.of(context).cardColor,
                       buttonText: isLogOut ? isDelete == true ? 'cancel'.tr : 'no'.tr : isDelete == true ? 'delete'.tr : 'yes'.tr,
                       onPressed: () => isLogOut ? Get.back() : onYesPressed(),
-                      radius: Dimensions.radiusSmall, height: 40,
+                      radius: Dimensions.radiusDefault, height: 40,
                     )),
 
                   ]);

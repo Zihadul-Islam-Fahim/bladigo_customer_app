@@ -383,6 +383,8 @@
   "enter_points": "Introduce puntos..",
   "wallet_amount": "Balance",
   "for": "para",
+  "start_a_new_cart": "Quieres empezar un nuevo pedido?",
+  "a_new_order_will_clear": "Un nuevo pedido eliminará todos los pedidos del restaurante anterior",
   "enter_amount": "Ingrese el monto..",
   "congratulations": "¡Felicitaciones!",
   "you_have_earned": "te has ganado",

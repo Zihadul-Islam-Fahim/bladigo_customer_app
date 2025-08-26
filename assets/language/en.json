@@ -164,6 +164,8 @@
   "save_location": "Save Location",
   "pick_address": "Pick Address",
   "are_you_sure_to_reset": "Are you sure want to reset?",
+  "start_a_new_cart": "Start a new cart?",
+  "a_new_order_will_clear": "A new order will clear your cart with",
   "if_you_change_location": "You have some foods in your cart. If you change your location, your cart and other data related to your current delivery location will be reset.",
   "if_you_continue": "You have food from another restaurant in cart. If you continue, your all previous food from cart will be removed.",
   "yes_and_continue": "Yes and Continue",

@@ -242,8 +242,8 @@ class DashboardScreenState extends State<DashboardScreen> {
                             Spacer(),
                             // const Expanded(child: SizedBox()),
                             KBottomNavItem(
-                              imageAsset: 'assets/image/wallet.png',
-                              selectedImage: 'assets/image/wallet_profile.png',
+                              imageAsset: 'assets/image/wallet_bottom.png',
+                              selectedImage: 'assets/image/wallet_bottom.png',
                               label: 'Wallet'.tr,
                               isSelected: _pageIndex == 2,
                               onTap: () => _setPage(2),

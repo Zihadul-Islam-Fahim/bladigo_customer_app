@@ -40,7 +40,7 @@ class CartWidget extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: fromRestaurant
                         ? Theme.of(context).cardColor
-                        : Colors.yellow,
+                        : Colors.red,
                     border: Border.all(
                         width: size < 20 ? 0.7 : 1,
                         color: fromRestaurant
@@ -53,7 +53,7 @@ class CartWidget extends StatelessWidget {
                       fontSize: size < 20 ? size / 3 : size / 3,
                       color: fromRestaurant
                           ? Theme.of(context).primaryColor
-                          : Colors.black,
+                          : Colors.white,
                     ),
                   ),
                 ),
