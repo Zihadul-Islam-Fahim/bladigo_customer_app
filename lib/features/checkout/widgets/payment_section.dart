@@ -26,11 +26,12 @@ class PaymentSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
         // boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 10, offset: const Offset(0, 1))],
       ),
-      margin: EdgeInsets.symmetric(horizontal: ResponsiveHelper.isDesktop(context) ? 0 : Dimensions.fontSizeDefault),
+      margin: EdgeInsets.symmetric(horizontal: ResponsiveHelper.isDesktop(context) ? 0 : 0),
       padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeSmall),
       child: Column(children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text('choose_payment_method'.tr, style: robotoMedium.copyWith(fontSize: 20)),
+          Text('choose_payment_method'.tr, style: robotoBlack.copyWith(fontSize: 20)),
+          SizedBox(height: Dimensions.paddingSizeDefault,)
 
           // InkWell(
           //   onTap: (){
@@ -57,7 +58,11 @@ class PaymentSection extends StatelessWidget {
           // ),
         ]),
 
-        const Divider(),
+        // Container(
+        //   height: 1,
+        //   width: double.infinity,
+        //   color: Colors.grey[300],
+        // ),
 
         // Container(
         //   decoration: ResponsiveHelper.isDesktop(context) ? BoxDecoration(
@@ -116,7 +121,7 @@ class PaymentSection extends StatelessWidget {
           isCashOnDeliveryActive: isCashOnDeliveryActive, isDigitalPaymentActive: isDigitalPaymentActive,
           isWalletActive: isWalletActive, totalPrice: total, isOfflinePaymentActive: isOfflinePaymentActive,
         ),
-        SizedBox(height: ResponsiveHelper.isDesktop(context) ? 0 : Dimensions.paddingSizeSmall),
+        // SizedBox(height: ResponsiveHelper.isDesktop(context) ? 0 : Dimensions.paddingSizeSmall),
       ]),
     );
   }

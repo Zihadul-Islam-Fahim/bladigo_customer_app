@@ -73,11 +73,13 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
           return GetBuilder<BusinessController>(builder: (businessController) {
               return Container(
                 constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.9),
+                margin: EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
-                  borderRadius: BorderRadius.vertical(top: const Radius.circular(Dimensions.radiusLarge), bottom: Radius.circular(ResponsiveHelper.isDesktop(context) ? Dimensions.radiusLarge : 0)),
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.all( const Radius.circular(Dimensions.radiusLarge)),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeSmall),
+                // padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeSmall),
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
 
                   // ResponsiveHelper.isDesktop(context) ? Align(
@@ -138,6 +140,11 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
 
 
                               ]),
+                              Container(
+                                height: 1,
+                                width: double.infinity,
+                                color: Colors.grey[300],
+                              ),
                               widget.isWalletActive && notHideWallet && !checkoutController.subscriptionOrder && isLoggedIn ? PaymentButtonNew(
                                 icon: Images.partialWallet,
                                 title: 'pay_via_wallet'.tr,
@@ -166,7 +173,11 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                           //   ),
                           // ]) : const SizedBox(),
                           // SizedBox(height: widget.isDigitalPaymentActive && notHideDigital ? Dimensions.paddingSizeLarge : 0),
-
+                          Container(
+                            height: 1,
+                            width: double.infinity,
+                            color: Colors.grey[300],
+                          ),
                           widget.isDigitalPaymentActive && notHideDigital && !checkoutController.subscriptionOrder ? ListView.builder(
                               itemCount: Get.find<SplashController>().configModel!.activePaymentMethodList!.length,
                               shrinkWrap: true,
@@ -192,9 +203,9 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.05) : Colors.transparent,
+                                        // color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.05) : Colors.transparent,
                                         borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
-                                        border: Border.all(color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor, width: 0.5),
+                                        // border: Border.all(color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor, width: 0.5),
                                     ),
                                     padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeDefault),
                                     margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),

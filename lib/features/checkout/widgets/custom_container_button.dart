@@ -28,24 +28,14 @@ class CustomContainerCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         // height: Get.height * .09,
-        width: Get.width * .42,
-        decoration: BoxDecoration(
-          color: boxColor,
-          borderRadius: BorderRadius.circular(12),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: Colors.black.withOpacity(0.1),
-          //     blurRadius: 8,
-          //     offset: const Offset(2, 4),
-          //   ),
-          // ],
-        ),
+        // width: Get.width * .42,
+
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SvgPicture.asset(
                 svgAsset,
@@ -53,7 +43,7 @@ class CustomContainerCard extends StatelessWidget {
                 width: 32,
                 color: iconColor,
               ),
-              const SizedBox(width: Dimensions.paddingSizeExtraOverLarge),
+              const SizedBox(width: Dimensions.paddingSizeDefault),
               Text(
                 text,
                 style: robotoMedium.copyWith(
