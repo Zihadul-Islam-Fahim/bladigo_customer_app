@@ -235,16 +235,16 @@ class DashboardScreenState extends State<DashboardScreen> {
                             KBottomNavItem(
                               imageAsset: 'assets/image/my_order.png',
                               selectedImage: 'assets/image/order_filled.png',
-                              label: 'My_orders'.tr,
-                              isSelected: _pageIndex == 3,
-                              onTap: () => _setPage(3),
+                              label: 'my_orders'.tr,
+                              isSelected: _pageIndex == 4,
+                              onTap: () => _setPage(4),
                             ),
                             Spacer(),
                             // const Expanded(child: SizedBox()),
                             KBottomNavItem(
                               imageAsset: 'assets/image/wallet_bottom.png',
                               selectedImage: 'assets/image/wallet_bottom.png',
-                              label: 'Wallet'.tr,
+                              label: 'wallet'.tr,
                               isSelected: _pageIndex == 2,
                               onTap: () => _setPage(2),
                             ),
@@ -267,7 +267,8 @@ class DashboardScreenState extends State<DashboardScreen> {
                             SizedBox(
                               width: 12,
                             )
-                          ]),
+                          ],
+                          ),
                         ),
                       );
               }),

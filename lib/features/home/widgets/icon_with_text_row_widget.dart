@@ -14,7 +14,7 @@ class IconWithTextRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Icon(icon, color: color ?? Theme.of(context).primaryColor, size: 20),
         const SizedBox(width: Dimensions.paddingSizeExtraSmall),
@@ -38,7 +38,7 @@ class ImageWithTextRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         widget,
         const SizedBox(width: Dimensions.paddingSizeExtraSmall),

@@ -146,7 +146,7 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                                 color: Colors.grey[300],
                               ),
                               widget.isWalletActive && notHideWallet && !checkoutController.subscriptionOrder && isLoggedIn ? PaymentButtonNew(
-                                icon: Images.partialWallet,
+                                icon: Images.walletProfile,
                                 title: 'pay_via_wallet'.tr,
                                 isSelected: checkoutController.paymentMethodIndex == 1,
                                 onTap: () {

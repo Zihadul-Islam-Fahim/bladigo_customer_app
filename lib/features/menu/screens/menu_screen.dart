@@ -296,6 +296,19 @@ class _MenuScreenState extends State<MenuScreen> {
                                 : 0),
                       )
                           : const SizedBox(),
+                      Get.find<AuthController>().isLoggedIn() ?
+                      PortionWidget(
+                        icon: Images.shoppingBagIcon,
+                        title: 'my_orders'.tr,
+                        hideDivider: false,
+                        route: "",
+                        suffix: !isLoggedIn
+                            ? null
+                            : profileController.userInfoModel?.orderCount != null ? profileController.userInfoModel!.orderCount.toString() : '0',
+                      )
+
+
+                          :SizedBox.shrink(),
                       (Get.find<SplashController>().configModel!.refEarningStatus ==
                           1) ||
                           (Get.find<SplashController>()

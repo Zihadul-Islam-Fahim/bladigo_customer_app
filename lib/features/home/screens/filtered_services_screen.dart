@@ -21,7 +21,11 @@ import 'package:stackfood_multivendor/util/dimensions.dart';
 import 'package:stackfood_multivendor/util/images.dart';
 import 'package:stackfood_multivendor/util/styles.dart';
 
+import '../../../common/widgets/custom_favourite_widget.dart';
 import '../../../common/widgets/custom_image_widget.dart';
+import '../../favourite/controllers/favourite_controller.dart';
+import '../../language/controllers/localization_controller.dart';
+import '../widgets/icon_with_text_row_widget.dart';
 
 class FilteredServicesScreen extends StatefulWidget {
   const FilteredServicesScreen({super.key, required this.category});
@@ -226,8 +230,8 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
                             //       );
                             //     },
                             //   ),
-                            ListView.separated(
-                              padding: EdgeInsets.only(top: 0, bottom: 12),
+                            ListView.builder(
+                              padding: EdgeInsets.only(top: 0, bottom: 0),
                               shrinkWrap: true,
                               primary: false,
                               itemBuilder: (context, index) {
@@ -239,9 +243,7 @@ class _FilteredServicesScreenState extends State<FilteredServicesScreen> {
                                     ? FilteredItemCard(restaurant: data!)
                                     : _restaurentShimmerWidget(context);
                               },
-                              separatorBuilder: (context, index) {
-                                return SizedBox(height: 4);
-                              },
+
                               itemCount: catController.categoryRestaurantList ==
                                       null
                                   ? 8
@@ -516,8 +518,19 @@ class FilteredItemCard extends StatefulWidget {
 }
 
 class _FilteredItemCardState extends State<FilteredItemCard> {
+
+
   @override
   Widget build(BuildContext context) {
+
+   final restController = Get.find<RestaurantController>();
+   bool isAvailable = widget.restaurant.open == 1 && widget.restaurant.active!;
+   String characteristics = '';
+   if(widget.restaurant.characteristics != null) {
+
+       characteristics = '$characteristics${characteristics.isNotEmpty ? ', ' : ''}';
+
+   }
     return CustomInkWellWidget(
       onTap: () => Get.toNamed(
         RouteHelper.getRestaurantRoute(widget.restaurant.id),
@@ -525,224 +538,202 @@ class _FilteredItemCardState extends State<FilteredItemCard> {
       ),
       radius: 8,
       child: SizedBox(
-       // height: 160,
-        child: Stack(
-          children: [
-            Container(
-              height: 250,
-             margin: EdgeInsets.symmetric(vertical: 4),
-             width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.99,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
-              ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusExtraLarge),),
-                child: CustomImageWidget(
-                  image: widget.restaurant.coverPhotoFullUrl.toString(),
-                  fit: BoxFit.cover, height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.9,
-                ),
-              ),
-            ),
-
-
-            Positioned(
-              bottom: 20, left: 10,
+        // height: 260,
+        child:  Padding(
+              padding: EdgeInsets.only(left:  0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(height: widget.restaurant.characteristics == '' ? Dimensions.paddingSizeSmall : 0),
-
                   Container(
-                      height: 23,
+
+                    height: 195,
+                    // width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                    ),
+                    child: CustomInkWellWidget(
+                      onTap: () => Get.toNamed(RouteHelper.getRestaurantRoute(widget.restaurant.id),
+                        arguments: RestaurantScreen(restaurant: widget.restaurant),
+                      ),
+                      radius: Dimensions.radiusDefault,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(bottom: 10),
+                            height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.95,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusExtraLarge),),
+                              child: Stack(
+                                children: [
+                                  CustomImageWidget(
+                                    image: '${widget.restaurant.coverPhotoFullUrl}',
+                                    fit: BoxFit.cover, height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.92,
+                                    isRestaurant: true,
+
+                                  ),
+
+                                  !isAvailable ? Positioned(
+                                    top: 0, left: 0, right: 0, bottom: 0,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
+                                        color: Colors.black.withOpacity(0.3),
+                                      ),
+                                    ),
+                                  ) : const SizedBox(),
+                                ],
+                              ),
+                            ),
+                          ),
+
+                          !isAvailable ? Positioned(top: 30, left: 60, child: Container(
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.error.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(Dimensions.radiusLarge)
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: Dimensions.fontSizeExtraLarge, vertical: Dimensions.paddingSizeExtraSmall),
+                            child: Row(children: [
+                              Icon(Icons.access_time, size: 12, color: Theme.of(context).cardColor),
+                              const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                              Text('closed_now'.tr, style: robotoMedium.copyWith(color: Theme.of(context).cardColor, fontSize: Dimensions.fontSizeSmall)),
+                            ]),
+                          )) : const SizedBox(),
+
+                          Positioned(
+                            top: Dimensions.paddingSizeSmall, right: Dimensions.paddingSizeSmall,
+                            child: GetBuilder<FavouriteController>(builder: (favouriteController) {
+                              bool isWished = favouriteController.wishRestIdList.contains(widget.restaurant.id);
+                              return CustomFavouriteWidget(
+                                isWished: isWished,
+                                isRestaurant: true,
+                                restaurant: widget.restaurant,
+                              );
+                            }
+                            ),
+                          ),
+
+                          Positioned(
+                            bottom: 20, right: 10,
+                            child: Container(
+                              height: 23,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault)),
+                                color: Theme.of(context).cardColor,
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+                              child: Center(
+                                child: Text( '${restController.getRestaurantDistance(
+                                  LatLng(double.parse(widget.restaurant.latitude!), double.parse(widget.restaurant.longitude!)),
+                                ).toStringAsFixed(2)} ${'km'.tr}',
+                                  style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          Positioned(
+                            top: 15, left: Dimensions.paddingSizeSmall,
+                            child: Container(
+                              height: 65, width: 65,
+                              decoration:  BoxDecoration(
+                                color: Theme.of(context).cardColor,
+                                border: Border.all(color: Theme.of(context).disabledColor.withOpacity(0.1), width: 3),
+                                borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                                child: CustomImageWidget(
+                                  image: '${widget.restaurant.logoFullUrl}',
+                                  fit: BoxFit.cover, height: 65, width: 65,
+                                  isRestaurant: true,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    // height: 23,
                       decoration: BoxDecoration(
                         borderRadius: const BorderRadius.all(  Radius.circular(Dimensions.radiusDefault)),
                         color: Theme.of(context).cardColor,
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
-                      child: Text(widget.restaurant.name!, overflow: TextOverflow.ellipsis, maxLines: 1, style: robotoBold)),
+                      // margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeExtraSmall),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(widget.restaurant.name!, overflow: TextOverflow.ellipsis, maxLines: 1, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1)),
+                          characteristics == "" ? SizedBox.shrink() :Text(
+                            characteristics,
+                            overflow: TextOverflow.ellipsis, maxLines: 1,
+                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
+                          ),
+                        ],
+                      )),
 
-                  widget.restaurant.characteristics == '' ?  Text(
-                    widget.restaurant.characteristics![0].toString(),
-                    overflow: TextOverflow.ellipsis, maxLines: 1,
-                    style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).highlightColor),
-                  ) : SizedBox.shrink(),
+                  Container(
+                    // height: 23,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault), ),
+                      color: Theme.of(context).cardColor,
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+
+                        widget.restaurant.ratingCount! > 0 ? IconWithTextRowWidget(
+                          icon: Icons.star,
+                          text: widget.restaurant.avgRating!.toStringAsFixed(1),
+                          style: robotoBold.copyWith(fontSize: Dimensions.fontSizeSmall),
+                        ) : const SizedBox(),
+                        SizedBox(width: widget.restaurant.ratingCount! > 0 ? Dimensions.paddingSizeDefault : 0),
+
+
+                        IconWithTextRowWidget(
+                          icon: Icons.access_time_outlined,
+                          text: '${widget.restaurant.deliveryTime}',
+                          style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                  widget.restaurant.freeDelivery! ? Container(
+                    height: 23,
+                    // width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault), ),
+                      // color: Colors.yellow,
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+                    child: ImageWithTextRowWidget(
+                      widget: Image.asset(
+                          Images.deliveryIcon, height: 20,
+                          width: 20),
+                      text: 'free_delivery'.tr,
+                      style: robotoRegular.copyWith(
+                          fontSize: Dimensions.fontSizeSmall),
+                    ),
+                  )
+                      : const SizedBox(),
+                  SizedBox(height: 12,)
+
+
                 ],
               ),
-            ),
-
-            Positioned(
-              bottom: 53, right: 15,
-              child: Container(
-                // height: 23,
-                //    width: 150,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(48),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
-                child:Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 10,
-                        right: 0,
-                        top: 2,
-                        bottom: 2,
-                      ),
-                      child: widget.restaurant.ratings?.isEmpty ?? true ? Text(
-                        '0 ⭐',
-                        style: TextStyle(color: Colors.white),
-                      ): Text('${widget.restaurant.ratings?[0].toString()} ⭐'),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      '(${widget.restaurant.ratingCount})',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-
-            Positioned(
-
-              bottom: 15, right: 15,
-              child: Container(
-                height: 23,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all( Radius.circular(Dimensions.radiusDefault)),
-                  color: Theme.of(context).cardColor,
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
-                child: Center(
-                  child:                         Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.start,
-                    spacing: 6,
-                    children: [
-                      _iconLabel(
-                          icon: Icons.access_time,
-                          label:
-                          widget.restaurant.deliveryTime.toString()),
-                      _iconLabel(
-                          icon: Icons.moped,
-                          label:  (Get.find<RestaurantController>().getRestaurantDistance(LatLng(double.parse(widget.restaurant.latitude!), double.parse(widget.restaurant.longitude!)),).toStringAsFixed(2) + 'km'.tr)),
-                      // _iconLabel(
-                      //     icon: Icons.local_offer_outlined,
-                      //     label: widget.restaurant.discount.toString(),
-                      //     textColor: Theme.of(context).primaryColor),
-                    ],
-                  )
-                  ,
-                ),
-              ),
-            ),
-
-            Positioned(
-              top: 65, left: Dimensions.paddingSizeSmall,
-              child: Container(
-                height: 65, width: 65,
-                decoration:  BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  border: Border.all(color: Theme.of(context).disabledColor.withOpacity(0.1), width: 3),
-                  borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
-                  child: CustomImageWidget(
-                    image: '${widget.restaurant.logoFullUrl}',
-                    fit: BoxFit.cover, height: 65, width: 65,
-                    isRestaurant: true,
-                  ),
-                ),
-              ),
-            ),
-
-            // Padding(
-            //   padding: const EdgeInsets.only(
-            //     left: 2,
-            //     right: 8,
-            //     top: 10,
-            //     bottom: 10,
-            //   ),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       SizedBox(width: 8),
-            //       Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         mainAxisAlignment: MainAxisAlignment.start,
-            //         children: [
-            //           Text(
-            //             widget.restaurant.name.toString(),
-            //             style: TextStyle(
-            //               fontSize: 17,
-            //               fontWeight: FontWeight.w700,
-            //
-            //             ),
-            //           ),
-            //           SizedBox(height: 4),
-            //           Row(
-            //             children: [
-            //               Container(
-            //                 decoration: BoxDecoration(
-            //                   color: Theme.of(context).primaryColor,
-            //                   borderRadius: BorderRadius.circular(48),
-            //                 ),
-            //                 child: Padding(
-            //                   padding: const EdgeInsets.only(
-            //                     left: 10,
-            //                     right: 10,
-            //                     top: 2,
-            //                     bottom: 2,
-            //                   ),
-            //                   child: widget.restaurant.ratings?.isEmpty ?? true ? Text(
-            //                     '0 ⭐',
-            //                     style: TextStyle(color: Colors.white),
-            //                   ): Text('${widget.restaurant.ratings?[0].toString()} ⭐'),
-            //                 ),
-            //               ),
-            //               SizedBox(width: 10),
-            //               Text(
-            //                 '${widget.restaurant.ratingCount} People Rated',
-            //                 style: TextStyle(
-            //                   color: Color(0xFF8C8C8C),
-            //                   fontSize: 11,
-            //                   fontWeight: FontWeight.w500,
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //           SizedBox(height: 8),
-            //           Wrap(
-            //             crossAxisAlignment: WrapCrossAlignment.start,
-            //             spacing: 6,
-            //             children: [
-            //               _iconLabel(
-            //                   icon: Icons.access_time,
-            //                   label:
-            //                       widget.restaurant.deliveryTime.toString()),
-            //               _iconLabel(
-            //                   icon: Icons.moped,
-            //                   label: widget.restaurant.discount.toString()),
-            //               _iconLabel(
-            //                   icon: Icons.local_offer_outlined,
-            //                   label: widget.restaurant.discount.toString(),
-            //                   textColor: Theme.of(context).primaryColor),
-            //             ],
-            //           )
-            //         ],
-            //       )
-            //     ],
-            //   ),
-            // ),
-          ],
-        ),
+            )
       ),
     );
   }
