@@ -223,16 +223,25 @@ class ProductWidget extends StatelessWidget {
                     ]),
                     const SizedBox(width: Dimensions.paddingSizeExtraLarge),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
+                          isRestaurant  ? SizedBox.shrink() : inRestaurant ? SizedBox.shrink() : Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 2.0),
+                            child: Text("${"by".tr} ${product!.restaurantName!}" ,
+                              style: robotoMedium.copyWith(
+                                fontSize: Dimensions.fontSizeSmall,
+                                color: Colors.grey
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),Padding(
                             padding: const EdgeInsets.symmetric(vertical: 2.0),
                             child: Text(
                               isRestaurant ? restaurant!.name! : product!.name!,
                               style: robotoMedium.copyWith(
-                                  fontFamily: 'Roboto',
                                 fontSize: Dimensions.fontSizeLarge,
                               ),
                               maxLines: 1,

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:stackfood_multivendor/common/models/product_model.dart';
 import 'package:stackfood_multivendor/common/models/restaurant_model.dart';
 import 'package:stackfood_multivendor/common/widgets/product_view_widget.dart';
@@ -43,7 +44,7 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, initialIndex: 0, vsync: this);
+    _tabController = TabController(length: 2, initialIndex: 0, vsync: this,);
     // _tabController?.index = CategoryProductScreen.tabIndex;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final categoryController = Get.find<CategoryController>();
@@ -402,6 +403,8 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
               },
               child: TabBarView(
                 controller: _tabController,
+                // dragStartBehavior: DragStartBehavior.start,
+
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   SingleChildScrollView(
