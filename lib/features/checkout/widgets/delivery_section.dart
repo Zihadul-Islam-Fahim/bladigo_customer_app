@@ -307,7 +307,7 @@ class _DeliverySectionState extends State<DeliverySection> {
                                 child:GetBuilder<LocationController>(builder: (locationController) {
                                   final checkoutController = Get.find<CheckoutController>();
                                   return Container(
-                                    height: 180,width: double.infinity,
+                                    height: 120,width: double.infinity,
                                     child:        Container(
                                       height: isDesktop ? 260 : 145,
                                       width: MediaQuery.of(context).size.width,

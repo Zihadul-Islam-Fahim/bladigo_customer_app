@@ -24,11 +24,21 @@ class BannerViewWidget extends StatelessWidget {
     return GetBuilder<HomeController>(builder: (homeController) {
       return (homeController.bannerImageList != null && homeController.bannerImageList!.isEmpty) ? const SizedBox() : Container(
         width: MediaQuery.of(context).size.width,
-        height: GetPlatform.isDesktop ? 500 : 250,
+        height: GetPlatform.isDesktop ? 500 : 315,
         padding: const EdgeInsets.only(top: Dimensions.paddingSizeDefault),
         child: homeController.bannerImageList != null ? Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10,left: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('today_top_offer'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600)),
+                  Text('feeling_hungry'.tr, style: robotoBold.copyWith(fontSize: 13,color: Colors.grey, fontWeight: FontWeight.w400)),
+                ],
+              ),
+            ),
             CarouselSlider.builder(
               options: CarouselOptions(
                 viewportFraction: 0.935,

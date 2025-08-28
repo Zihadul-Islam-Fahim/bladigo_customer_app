@@ -16,13 +16,13 @@ class ServicesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      // Padding(
-      //   padding: const EdgeInsets.only(left: 12),
-      //   child: AppTileTitleBar(
-      //     title: 'What_would_you_like_to_order'.tr,
-      //     onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
-      //   ),
-      // ),
+      Padding(
+        padding: const EdgeInsets.only(left: 12),
+        child: AppTileTitleBar(
+          title: 'what_are_you_craving_for'.tr,
+          onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
+        ),
+      ),
 
       GetBuilder<CategoryController>(builder: (categoryController) {
         return SizedBox(
@@ -32,8 +32,8 @@ class ServicesSection extends StatelessWidget {
           shrinkWrap: true,
           clipBehavior: Clip.none,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 0.90,
+              crossAxisCount: 4,
+              childAspectRatio: 0.72,
               crossAxisSpacing: 2,
               mainAxisSpacing: 2),
           padding: const EdgeInsets.only(left: 0),

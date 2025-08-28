@@ -591,9 +591,9 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(
                 // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
                 borderRadius: BorderRadius.circular(40),
-                border: Border.all(color: Colors.grey.shade400),
+                border: Border.all(color: Colors.grey.shade200),
             
-                color: Get.find<ThemeController>().darkTheme ? Colors.white60 : Colors.transparent,
+                color: Get.find<ThemeController>().darkTheme ? Colors.white60 : Theme.of(context).primaryColor.withOpacity(0.1),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -615,17 +615,18 @@ class _HomeScreenState extends State<HomeScreen> {
      );
    }),
      ) : const SizedBox(),
-          Expanded(flex: 12,
-            child: Container(
-              height: 70,
-              child: Center(
-                child: InkWell(
-                  onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
-                  child: Text("see_all".tr,style: TextStyle(color: Theme.of(context).primaryColor),),
-                ),
-              ),
-            ),
-          )
+          SizedBox(width: 12,)
+          // Expanded(flex: 12,
+          //   child: Container(
+          //     height: 70,
+          //     child: Center(
+          //       child: InkWell(
+          //         onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
+          //         child: Text("see_all".tr,style: TextStyle(color: Theme.of(context).primaryColor),),
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ) : SizedBox.shrink();
   }

@@ -1197,6 +1197,9 @@
 
   "All_Available_Restaurants" :     "Todos los restaurantes disponibles",
 
+  "total_orders": "Órdenes totales",
+  "by": "por",
+
   "Home" : "Inicio",
   "My orders" : "Mis pedidos",
   "Favorites" : "Favoritos",

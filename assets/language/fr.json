@@ -1197,6 +1197,9 @@
   "What_would_you_like_to_order" : "Que souhaitez-vous commander ?",
   "All_Available_Restaurants" :     "Tous les restaurants disponibles",
 
+  "total_orders": "Commandes totales  ",
+  "by": "par ",
+
   "Home" :  "Accueil",
   "My orders" : "Mes commandes",
   "Favorites" : "Favoris",

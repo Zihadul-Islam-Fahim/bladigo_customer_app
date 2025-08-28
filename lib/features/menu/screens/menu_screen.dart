@@ -300,9 +300,9 @@ class _MenuScreenState extends State<MenuScreen> {
                       Get.find<AuthController>().isLoggedIn() ?
                       PortionWidget(
                         icon: Images.shoppingBagIcon,
-                        title: 'my_orders'.tr,
+                        title: 'total_orders'.tr,
                         hideDivider: false,
-                        route: "",
+                        route: RouteHelper.getOrderRoute(),
                         suffix: !isLoggedIn
                             ? null
                             : profileController.userInfoModel?.orderCount != null ? profileController.userInfoModel!.orderCount.toString() : '0',

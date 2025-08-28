@@ -35,13 +35,13 @@ class WalletCardWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   // image: DecorationImage(image: AssetImage(Images.homeWallet),fit: BoxFit.scaleDown,),
                   borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: Colors.grey.shade400),
+                  border: Border.all(color: Colors.grey.shade200),
                   
-                  color: Get.find<ThemeController>().darkTheme ? Colors.white60 : Colors.transparent,
+                  color: Get.find<ThemeController>().darkTheme ? Colors.white60 : Theme.of(context).primaryColor.withOpacity(0.1),
                 ),
                 child: Row(
                   children: [
-                    Image.asset(Images.walletProfile,width: 25,),
+                    Image.asset(Images.walletBottomNav,width: 25,),
                     SizedBox(width: 15,),
                     Column(crossAxisAlignment: CrossAxisAlignment.center, mainAxisSize: MainAxisSize.min,mainAxisAlignment: MainAxisAlignment.center, children: [
                       Text('wallet_amount'.tr,style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.black),overflow: TextOverflow.ellipsis,),

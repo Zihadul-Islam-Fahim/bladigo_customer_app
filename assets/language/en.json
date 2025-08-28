@@ -1193,23 +1193,24 @@
   "password_reset_successfully": "Password reset successfully",
   "or_login_with": "Or Login with",
   "confirm": "Confirm",
-
   "What_you_like_to": "Search for a restaurant or food",
   "What_would_you_like_to_order":"What would you like to order",
   "All_Available_Restaurants":"All Available Restaurants",
-
+  "total_orders": "Total Orders",
+  "by": "by",
   "Home": "Home",
   "My_orders":"My orders",
-
   "Favorites":"Favorites",
   "Profile":"Profile",
-
   "enter_your_mobile": "Enter your mobile number",
   "we_will_send_whatsapp": "We will send a verification code to this number in whatsapp",
-
   "hey_there": "Hey there !",
   "Login_or_create": "Login or create an account",
-  "for_a_faster" : "for a faster experience"
+  "for_a_faster" : "for a faster experience",
+
+  "today_top_offer": "Today's Top Offers",
+  "what_are_you_craving_for": "What are you craving for?",
+  "feeling_hungry": "Feeling hungry? Grab the latest offers to save more!"
 
 
 }

@@ -1197,6 +1197,9 @@
  "What_would_you_like_to_order" : "ماذا تريد أن تطلب؟",
  "All_Available_Restaurants" : "جميع المطاعم المتاحة",
 
+ "total_orders": "الطلبات الإجمالية",
+ "by": "بواسطة",
+
  "Home" : "الرئيسية",
  "my_orders" : "طلباتي",
  "Favorites" : "المفضلة",

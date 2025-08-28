@@ -58,7 +58,7 @@ class CircularItemCard extends StatelessWidget {
                 label,
                 style: robotoMedium.copyWith(
                   fontSize: 18,
-                fontWeight: FontWeight.bold
+                // fontWeight: FontWeight.bold
                 //  color: Theme.of(context).scaffoldBackgroundColor
                 ),
                 maxLines: 1,
