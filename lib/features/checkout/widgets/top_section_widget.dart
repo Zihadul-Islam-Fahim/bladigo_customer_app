@@ -271,7 +271,7 @@ class TopSectionWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color:
-                          Colors.grey)
+                          Colors.grey.withOpacity(0.4))
                         ),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

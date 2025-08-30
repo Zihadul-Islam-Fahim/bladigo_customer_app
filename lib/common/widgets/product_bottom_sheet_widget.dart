@@ -641,6 +641,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                   Dimensions
                                                                       .paddingSizeExtraSmall),
                                                               child: InkWell(
+                                                                splashColor: Colors.white,
+                                                                highlightColor: Colors.white,
+
                                                                 onTap: () =>
                                                                     productController
                                                                         .showMoreSpecificSection(
@@ -674,6 +677,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                           .paddingSizeExtraSmall
                                                                       : 0),
                                                               child: InkWell(
+                                                                splashColor: Colors.white,
+                                                                highlightColor: Colors.white,
+
                                                                 onTap: () {
                                                                   productController.setCartVariationIndex(
                                                                       index,
@@ -867,6 +873,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                 itemBuilder:
                                                     (context, index) {
                                                   return InkWell(
+                                                    splashColor: Colors.transparent,
                                                     onTap: () {
                                                       if (!productController
                                                               .addOnActiveList[
