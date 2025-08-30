@@ -214,7 +214,7 @@ class AppConstants {
   ];
 
   /// Delivery Tips
-  static List<String> tips = ['0', '15', '10', '20', '40', 'custom'];
+  static List<String> tips = ['0', '15', '10', '20', '40', '0'];
   static List<String> deliveryInstructionList = [
     'Deliver to front door',
     'Deliver to the reception desk',

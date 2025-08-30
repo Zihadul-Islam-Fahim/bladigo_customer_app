@@ -64,7 +64,7 @@ class CheckoutController extends GetxController implements GetxService {
   bool _isDistanceLoading = false;
   bool get isDistanceLoading => _isDistanceLoading;
 
-  int _selectedTips = 0;
+  int _selectedTips = 5;
   int get selectedTips => _selectedTips;
 
   double _tips = 0.0;
@@ -161,7 +161,7 @@ class CheckoutController extends GetxController implements GetxService {
   bool _canShowTimeSlot = false;
   bool get canShowTimeSlot => _canShowTimeSlot;
 
-  bool _canShowTipsField = false;
+  bool _canShowTipsField = true;
   bool get canShowTipsField => _canShowTipsField;
 
   bool _isExpanded = false;
@@ -339,7 +339,7 @@ class CheckoutController extends GetxController implements GetxService {
   }
 
   void updateTips(int index, {bool notify = true}) {
-    _selectedTips = index;
+    _selectedTips = 5;
     _tips = checkoutServiceInterface.updateTips(index, _selectedTips);
 
     if(notify) {

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:stackfood_multivendor/features/checkout/controllers/checkout_controller.dart';
 import 'package:stackfood_multivendor/features/checkout/widgets/tips_widget.dart';
 import 'package:stackfood_multivendor/features/profile/controllers/profile_controller.dart';
@@ -34,6 +36,7 @@ class DeliveryManTipsSection extends StatefulWidget {
 
 class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
   bool canCheckSmall = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -154,6 +157,7 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                           const SizedBox(height: Dimensions.paddingSizeSmall),
 
                           SizedBox(
+
                             height: (widget.checkoutController.selectedTips ==
                                         AppConstants.tips.length - 1) &&
                                     widget.checkoutController.canShowTipsField
@@ -223,6 +227,7 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                                                         .checkoutController
                                                         .tips);
                                           }
+
                                         },
                                       );
                                     },
@@ -407,25 +412,25 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                                     ),
                                   ),
 
-                                  const SizedBox(
-                                      width: Dimensions.paddingSizeSmall),
-                                  InkWell(
-                                    onTap: () {
-                                      widget.checkoutController.updateTips(0);
-                                      widget.checkoutController.showTipsField();
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Theme.of(context)
-                                            .primaryColor
-                                            .withOpacity(0.5),
-                                      ),
-                                      padding: const EdgeInsets.all(
-                                          Dimensions.paddingSizeSmall),
-                                      child: const Icon(Icons.clear),
-                                    ),
-                                  ),
+                                  // const SizedBox(
+                                  //     width: Dimensions.paddingSizeSmall),
+                                  // InkWell(
+                                  //   onTap: () {
+                                  //     widget.checkoutController.updateTips(0);
+                                  //     widget.checkoutController.showTipsField();
+                                  //   },
+                                  //   child: Container(
+                                  //     decoration: BoxDecoration(
+                                  //       shape: BoxShape.circle,
+                                  //       color: Theme.of(context)
+                                  //           .primaryColor
+                                  //           .withOpacity(0.5),
+                                  //     ),
+                                  //     padding: const EdgeInsets.all(
+                                  //         Dimensions.paddingSizeSmall),
+                                  //     child: const Icon(Icons.clear),
+                                  //   ),
+                                  // ),
                                 ])
                               : const SizedBox(),
                         ]),

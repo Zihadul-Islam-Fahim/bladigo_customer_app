@@ -191,7 +191,7 @@ class CheckoutService implements CheckoutServiceInterface {
     if(selectedTips == 0 || selectedTips == AppConstants.tips.length -1) {
       tips = 0;
     }else{
-      tips = double.parse(AppConstants.tips[index]);
+      // tips = double.parse(AppConstants.tips[index]);
     }
     return tips;
   }
