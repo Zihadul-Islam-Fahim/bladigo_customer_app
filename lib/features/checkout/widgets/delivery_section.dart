@@ -108,7 +108,7 @@ class _DeliverySectionState extends State<DeliverySection> {
           : !takeAway
               ? Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
+                      horizontal: isDesktop ? 0 : Dimensions.paddingSizeSmall),
                   child: Card(
                     elevation: 0,
                     shape: RoundedRectangleBorder(

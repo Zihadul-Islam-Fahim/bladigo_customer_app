@@ -335,6 +335,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             //             .withOpacity(0.5)),
                             //   ),
                             // ),
+                            PortionWidget(icon: Images.chatIcon, title: 'live_chat'.tr, route: RouteHelper.getConversationRoute()),
                             Container(
                               decoration: BoxDecoration(
                                 color: Theme.of(context).cardColor,

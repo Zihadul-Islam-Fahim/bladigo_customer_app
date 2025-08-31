@@ -49,7 +49,7 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                 Get.find<SplashController>().configModel!.dmTipsStatus == 1)
             ? Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.paddingSizeSmall),
+                    horizontal: 0),
                 child: Card(
                   elevation: 0,
                   child: Container(

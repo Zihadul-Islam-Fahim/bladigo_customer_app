@@ -47,7 +47,7 @@ class CouponSection extends StatelessWidget {
           margin: EdgeInsets.symmetric(
               horizontal: isDesktop
                   ? Dimensions.paddingSizeLarge
-                  : Dimensions.paddingSizeDefault),
+                  : Dimensions.paddingSizeExtraSmall),
           child: (couponController.discount! <= 0 &&
                   !couponController.freeDelivery)
               ? Row(children: [

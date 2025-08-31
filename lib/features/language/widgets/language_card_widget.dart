@@ -41,8 +41,8 @@ class LanguageCardWidget extends StatelessWidget {
         ),
         child: Row(children: [
 
-          Image.asset(languageModel.imageUrl!, width: 36, height: 36),
-          const SizedBox(width: Dimensions.paddingSizeSmall),
+          // Image.asset(languageModel.imageUrl!, width: 36, height: 36),
+          // const SizedBox(width: Dimensions.paddingSizeSmall),
 
           Text(languageModel.languageName!, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge)),
           const Spacer(),

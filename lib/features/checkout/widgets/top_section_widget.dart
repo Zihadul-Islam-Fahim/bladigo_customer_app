@@ -267,7 +267,7 @@ class TopSectionWidget extends StatelessWidget {
                       const SizedBox(height: Dimensions.paddingSizeDefault),
                       Container(
 
-                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        padding: EdgeInsets.symmetric(horizontal: 6),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color:
