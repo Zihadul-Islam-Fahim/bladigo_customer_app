@@ -96,7 +96,7 @@ class BottomViewWidget extends StatelessWidget {
               padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
               child: TextButton(
                 style: TextButton.styleFrom(minimumSize: const Size(1, 50), shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                  borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
                   side: BorderSide(width: 2, color: Theme.of(context).disabledColor),
                 )),
                 onPressed: () {
