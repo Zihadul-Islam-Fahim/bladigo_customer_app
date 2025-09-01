@@ -234,7 +234,7 @@ class OrderInfoSection extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(children: [
-                      trackViewSeparator(Images.addressHomeIcon),
+                      trackViewSeparator(Images.shop),
                       Expanded(child: trackView(context, status: status >= 1 ? true : false)),
                       trackViewSeparator(Images.bell),
 

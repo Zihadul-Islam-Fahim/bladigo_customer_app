@@ -26,6 +26,7 @@ import 'package:stackfood_multivendor/common/widgets/custom_dialog_widget.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vibration/vibration.dart';
 
 class DashboardScreen extends StatefulWidget {
   final int pageIndex;
@@ -328,7 +329,10 @@ class DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  void _setPage(int pageIndex) {
+  Future<void> _setPage(int pageIndex) async {
+    if (await Vibration.hasVibrator() ?? false) {
+    Vibration.vibrate(duration: 50); // 100ms vibration
+    }
     setState(() {
       _pageController!.jumpToPage(pageIndex);
       _pageIndex = pageIndex;

@@ -1,5 +1,6 @@
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_favourite_widget.dart';
@@ -32,6 +33,7 @@ import 'package:stackfood_multivendor/common/widgets/custom_button_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vibration/vibration.dart';
 
 class ProductBottomSheetWidget extends StatefulWidget {
   final Product? product;
@@ -492,7 +494,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                   .center,
                                                           children: [
                                                             SizedBox(
-                                                              width: Get.width * 0.75,
+                                                              width: Get.width * 0.7,
                                                               child: Text(
                                                                   product!
                                                                       .variations![
@@ -1335,6 +1337,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
     List<AddOns> addOnsList,
     double priceWithAddonsVariation,
   ) async {
+    if (await Vibration.hasVibrator() ?? false) {
+      Vibration.vibrate(duration: 50); // 100ms vibration
+    }
     _processVariationWarning(productController);
 
     if (productController.canAddToCartProduct) {
