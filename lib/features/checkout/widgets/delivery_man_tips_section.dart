@@ -65,16 +65,16 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                       //       offset: const Offset(0, 1))
                       // ],
                     ),
-                    margin: EdgeInsets.symmetric(
-                        horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
+                    // margin: EdgeInsets.symmetric(
+                    //     horizontal: isDesktop ? 0 : Dimensions.paddingSizeDefault),
                     padding: EdgeInsets.all(isDesktop
                         ? Dimensions.paddingSizeLarge
-                        : Dimensions.paddingSizeSmall),
+                        : Dimensions.paddingSizeDefault),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(children: [
-                            Text('Tip Delivery Partner'.tr,
+                            Text('tip_DM'.tr,
                                 style: robotoMedium.copyWith(fontSize: 17)),
                             JustTheTooltip(
                               backgroundColor: Colors.black87,
@@ -145,7 +145,7 @@ class _DeliveryManTipsSectionState extends State<DeliveryManTipsSection> {
                           // ),
                           // const SizedBox(height: 8),
                           Text(
-                            'Helping Your Delivery Partner By Adding Tip.',
+                            'helping_dm'.tr,
                             style: TextStyle(
                               color: Colors.grey[600],
                               fontSize: 14,

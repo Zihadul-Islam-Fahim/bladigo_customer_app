@@ -1192,28 +1192,28 @@
   "password_reset_successfully": "تم إعادة تعيين كلمة المرور بنجاح",
   "or_login_with": "أو تسجيل الدخول باستخدام",
   "confirm": "يتأكد",
-
  "What_you_like_to" : "ابحث عن مطعم أو طعام",
  "What_would_you_like_to_order" : "ماذا تريد أن تطلب؟",
  "All_Available_Restaurants" : "جميع المطاعم المتاحة",
-
  "total_orders": "الطلبات الإجمالية",
  "by": "بواسطة",
-
  "Home" : "الرئيسية",
- "my_orders" : "طلباتي",
  "Favorites" : "المفضلة",
  "Profile" : "حسابي",
-
  "enter_your_mobile": "أدخل رقم هاتفك المحمول",
  "we_will_send_whatsapp": "سنرسل رمز التحقق إلى هذا الرقم عبر واتساب",
-
  "Fresh": "طازج",
  "Delicious": "لذيذ",
  "Quick": "سريع",
-
  "hey_there": "مرحبًا!",
  "Login_or_create": "سجّل الدخول أو أنشئ حسابًا",
- "for_a_faster": "لتجربة أسرع"
+ "for_a_faster": "لتجربة أسرع",
+ "today_top_offer": "أفضل العروض اليوم",
+ "what_are_you_craving_for": "ما الذي تشتهيه؟",
+ "feeling_hungry": "تشعر بالجوع؟ استفد من أحدث العروض لتوفر المزيد!",
+ "your_orders": "طلباتك",
+ "tip_DM": "إعطاء إكرامية لشريك التوصيل",
+ "helping_dm": "ساعد شريك التوصيل الخاص بك بإضافة إكرامية",
+ "delivery_location": "عنوان التوصيل"
 
 }

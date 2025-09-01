@@ -108,7 +108,7 @@ class _DeliverySectionState extends State<DeliverySection> {
           : !takeAway
               ? Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: isDesktop ? 0 : Dimensions.paddingSizeSmall),
+                      horizontal: isDesktop ? 0 : 0),
                   child: Card(
                     elevation: 0,
                     shape: RoundedRectangleBorder(
@@ -138,7 +138,7 @@ class _DeliverySectionState extends State<DeliverySection> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Delivery Location'.tr,
+                                  Text('delivery_location'.tr,
                                       style: robotoMedium.copyWith(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,

@@ -1192,25 +1192,27 @@
   "password_reset_successfully": "Mot de passe réinitialisé avec succès",
   "or_login_with": "Ou connectez-vous avec",
   "confirm": "Confirmer",
-
   "What_you_like_to" : "Rechercher un restaurant ou un plat",
   "What_would_you_like_to_order" : "Que souhaitez-vous commander ?",
   "All_Available_Restaurants" :     "Tous les restaurants disponibles",
-
   "total_orders": "Commandes totales  ",
   "by": "par ",
-
   "Home" :  "Accueil",
   "My orders" : "Mes commandes",
   "Favorites" : "Favoris",
   "Profile" : "Profil",
-
   "enter_your_mobile": "Entrez votre numéro de téléphone portable",
   "we_will_send_whatsapp": "Nous enverrons un code de vérification à ce numéro via WhatsApp",
-
   "hey_there": "Salut !",
   "Login_or_create": "Connectez-vous ou créez un compte",
-  "for_a_faster": "pour une expérience plus rapide"
+  "for_a_faster": "pour une expérience plus rapide",
+  "today_top_offer": "Meilleures Offres du Jour",
+  "what_are_you_craving_for": "Qu'est-ce qui vous fait envie ?",
+  "feeling_hungry": "Vous avez faim ? Profitez des dernières offres pour économiser plus !",
+  "your_orders": "Vos Commandes",
+  "tip_DM": "Donner un pourboire au livreur",
+  "helping_dm": "Aidez votre livreur en ajoutant un pourboire",
+  "delivery_location": "Adresse de Livraison"
 
 
 

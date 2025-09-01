@@ -1190,28 +1190,27 @@
   "password_reset_successfully": "Restablecimiento de contraseña exitoso",
   "or_login_with": "O inicia sesión con",
   "confirm": "Confirmar",
-
   "What_you_like_to" : "Buscar un restaurante o comida",
-
   "What_would_you_like_to_order" : "¿Qué te gustaría pedir?",
-
   "All_Available_Restaurants" :     "Todos los restaurantes disponibles",
-
   "total_orders": "Órdenes totales",
   "by": "por",
-
   "Home" : "Inicio",
   "My orders" : "Mis pedidos",
   "Favorites" : "Favoritos",
   "Profile" : "Perfil",
-
   "enter_your_mobile": "Ingresa tu número de teléfono móvil",
   "we_will_send_whatsapp": "Enviaremos un código de verificación a este número por WhatsApp",
-
-
   "hey_there": "¡Hola!",
   "Login_or_create": "Inicia sesión o crea una cuenta",
-  "for_a_faster": "para una experiencia más rápida"
+  "for_a_faster": "para una experiencia más rápida",
+  "today_top_offer": "Las Mejores Ofertas de Hoy",
+  "what_are_you_craving_for": "¿Qué se te antoja?",
+  "feeling_hungry": "¿Tienes hambre? ¡Aprovecha las últimas ofertas para ahorrar más!",
+  "your_orders": "Tus Pedidos",
+  "tip_DM": "Propina para el repartidor",
+  "helping_dm": "Ayuda a tu repartidor añadiendo una propina",
+  "delivery_location": "Dirección de Entrega"
 
 
 }

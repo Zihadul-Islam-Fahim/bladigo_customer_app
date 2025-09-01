@@ -43,11 +43,11 @@ class CouponSection extends StatelessWidget {
             //       offset: const Offset(0, 1))
             // ],
           ),
-          padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-          margin: EdgeInsets.symmetric(
-              horizontal: isDesktop
-                  ? Dimensions.paddingSizeLarge
-                  : Dimensions.paddingSizeExtraSmall),
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          // margin: EdgeInsets.symmetric(
+          //     horizontal: isDesktop
+          //         ? Dimensions.paddingSizeLarge
+          //         : Dimensions.paddingSizeExtraSmall),
           child: (couponController.discount! <= 0 &&
                   !couponController.freeDelivery)
               ? Row(children: [

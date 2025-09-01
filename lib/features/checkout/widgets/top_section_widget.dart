@@ -160,8 +160,8 @@ class TopSectionWidget extends StatelessWidget {
                   //       offset: const Offset(0, 1))
                   // ],
                 ),
-                margin: EdgeInsets.symmetric(
-                    horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
+                // margin: EdgeInsets.symmetric(
+                //     horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
                 padding: EdgeInsets.symmetric(
                     vertical: Dimensions.paddingSizeSmall,
                     horizontal: isDesktop
@@ -253,12 +253,12 @@ class TopSectionWidget extends StatelessWidget {
                   //       offset: const Offset(0, 1))
                   // ],
                 ),
-                margin: EdgeInsets.symmetric(
-                    horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
+                // margin: EdgeInsets.symmetric(
+                //     horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
                 padding: EdgeInsets.symmetric(
                     horizontal: isDesktop
                         ? Dimensions.paddingSizeLarge
-                        : Dimensions.paddingSizeSmall,
+                        : Dimensions.paddingSizeDefault,
                     vertical: Dimensions.paddingSizeSmall),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -434,13 +434,13 @@ class TopSectionWidget extends StatelessWidget {
 
   Container _yourOrders() {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge),
+        padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text('Your Orders'.tr, style: robotoMedium.copyWith(
+                Text('your_orders'.tr, style: robotoMedium.copyWith(
                     fontSize: 20, fontWeight: FontWeight.bold)),
               ],
             ),
