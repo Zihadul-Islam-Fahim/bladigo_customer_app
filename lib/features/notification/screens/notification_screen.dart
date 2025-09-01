@@ -142,7 +142,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
                           },
                           child: Container(
-                            color: isSeen ? Theme.of(context).cardColor : Theme.of(context).hintColor.withOpacity(0.05),
+                            color: isSeen ? Theme.of(context).cardColor : Theme.of(context).cardColor,
                             padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeLarge, horizontal: Dimensions.paddingSizeLarge),
                             child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
@@ -205,7 +205,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           ),
                         ),
 
-                        Container(height: 0.8, color: Theme.of(context).disabledColor.withOpacity(0.5)),
+                        // Container(height: 0.8, color: Theme.of(context).disabledColor.withOpacity(0.5)),
 
                       ]);
                     },
