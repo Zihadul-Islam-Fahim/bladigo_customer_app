@@ -55,6 +55,18 @@ class OrderInfoSection extends StatelessWidget {
     bool isDesktop = ResponsiveHelper.isDesktop(context);
     bool isGuestLoggedIn = Get.find<AuthController>().isGuestLoggedIn();
 
+
+    String? orderStatus = order.orderStatus ?? '';
+    int status = 0;
+
+    if(orderStatus == AppConstants.pending){
+      status = 1;
+    }else if(orderStatus == AppConstants.accepted || orderStatus == AppConstants.processing || orderStatus == AppConstants.confirmed){
+      status = 2;
+    }else if(orderStatus == AppConstants.handover || orderStatus == AppConstants.pickedUp){
+      status = 3;
+    }
+
     bool ongoing = (order.orderStatus != 'delivered' && order.orderStatus != 'failed'
         && order.orderStatus != 'refund_requested' && order.orderStatus != 'refunded'
         && order.orderStatus != 'refund_request_canceled' && order.orderStatus != 'canceled');
@@ -192,27 +204,51 @@ class OrderInfoSection extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           DateConverter.isBeforeTime(order.scheduleAt) ? (!cancelled && ongoing && !subscription) ? Column(children: [
 
-            ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset(order.orderStatus == 'pending' ? Images.pendingOrderDetails : (order.orderStatus == 'confirmed' || order.orderStatus == 'processing' || order.orderStatus == 'handover')
-                ? Images.preparingFoodOrderDetails : Images.animateDeliveryMan, fit: BoxFit.contain, height: 180)),
-            const SizedBox(height: Dimensions.paddingSizeDefault),
+            // ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset(order.orderStatus == 'pending' ? Images.pendingOrderDetails : (order.orderStatus == 'confirmed' || order.orderStatus == 'processing' || order.orderStatus == 'handover')
+            //     ? Images.preparingFoodOrderDetails : Images.animateDeliveryMan, fit: BoxFit.contain, height: 180)),
+            // const SizedBox(height: Dimensions.paddingSizeDefault),
 
-            Text('your_food_will_delivered_within'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).disabledColor)),
-            const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+            // Text('your_food_will_delivered_within'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).disabledColor)),
+            // const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
-            Center(
-              child: Row(mainAxisSize: MainAxisSize.min, children: [
+            // Center(
+            //   child: Row(mainAxisSize: MainAxisSize.min, children: [
+            //
+            //     Text(
+            //       DateConverter.differenceInMinute(order.restaurant!.deliveryTime, order.createdAt, order.processingTime, order.scheduleAt) < 5 ? '1 - 5'
+            //           : '${DateConverter.differenceInMinute(order.restaurant!.deliveryTime, order.createdAt, order.processingTime, order.scheduleAt)-5} '
+            //           '- ${DateConverter.differenceInMinute(order.restaurant!.deliveryTime, order.createdAt, order.processingTime, order.scheduleAt)}',
+            //       style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge), textDirection: TextDirection.ltr,
+            //     ),
+            //     const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+            //
+            //     Text('min'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).primaryColor)),
+            //   ]),
+            // ),
 
-                Text(
-                  DateConverter.differenceInMinute(order.restaurant!.deliveryTime, order.createdAt, order.processingTime, order.scheduleAt) < 5 ? '1 - 5'
-                      : '${DateConverter.differenceInMinute(order.restaurant!.deliveryTime, order.createdAt, order.processingTime, order.scheduleAt)-5} '
-                      '- ${DateConverter.differenceInMinute(order.restaurant!.deliveryTime, order.createdAt, order.processingTime, order.scheduleAt)}',
-                  style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge), textDirection: TextDirection.ltr,
-                ),
-                const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+            SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault,
+                    vertical: Dimensions.paddingSizeSmall),
+                child: Row(children: [
+                  trackViewSeparator(Images.homeDelivery,color: Theme.of(context).primaryColor),
+                  Expanded(child: trackView(context, status: status >= 1 ? true : false)),
+                  trackViewSeparator(Images.cookingGif,color: Theme.of(context).primaryColor),
 
-                Text('min'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).primaryColor)),
-              ]),
+
+                  Expanded(child: trackView(context, status: status >= 2 ? true : false)),
+                  trackViewSeparator(Images.cart,color: Theme.of(context).primaryColor),
+
+                  Expanded(child: trackView(context, status: status >= 3 ? true : false)),
+                  trackViewSeparator(Images.deliveryIcon,),
+
+                  Expanded(child: trackView(context, status: status >= 4 ? true : false)),
+                  trackViewSeparator(Images.homeIcon,color: Theme.of(context).primaryColor),
+                ]),
+              ),
             ),
+
+
             const SizedBox(height: Dimensions.paddingSizeExtraLarge),
 
           ]) : const SizedBox() : const SizedBox(),
@@ -903,6 +939,26 @@ class OrderInfoSection extends StatelessWidget {
         ),
       ]),
     ]);
+  }
+
+  Container trackViewSeparator(String image, {Color? color}) {
+    return Container(
+      padding: EdgeInsets.all(6),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: Colors.grey)),
+      child: Image.asset(
+        image,
+        width: 18,
+        height: 18,
+        color: color,
+      ),
+    );
+  }
+
+  Widget trackView(BuildContext context, {required bool status}) {
+    return Container(height: 5, decoration: BoxDecoration(color: status ? Theme.of(context).primaryColor
+        : Theme.of(context).disabledColor.withOpacity(0.5), borderRadius: BorderRadius.circular(Dimensions.radiusDefault)));
   }
 }
 
