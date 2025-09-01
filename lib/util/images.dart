@@ -202,6 +202,10 @@ class Images {
   static const String facebookIcon = 'assets/image/facebook_icon.png';
   static const String note = 'assets/image/note.png';
   static const String couponIcon1 = 'assets/image/coupon_icon1.png';
+  static const String cooking = 'assets/image/cooking.png';
+  static const String checkPng = 'assets/image/check.png';
+  static const String motorcycle = 'assets/image/motorcycle.png';
+  static const String bell = 'assets/image/bell.png';
   //static const String nearbyRestaurant = 'assets/image/nearby_restaurant.png';
   //static const String nearbyLocation = 'assets/image/nearby_location.png';
   static const String enjoyOff = 'assets/image/enjoy_off.png';

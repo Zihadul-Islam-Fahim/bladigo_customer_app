@@ -226,25 +226,43 @@ class OrderInfoSection extends StatelessWidget {
             //   ]),
             // ),
 
-            SizedBox(
+            Container(
+              decoration: BoxDecoration(color: Theme.of(context).primaryColor,borderRadius: BorderRadius.circular(20)),
+              margin: EdgeInsets.all(10),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault,
-                    vertical: Dimensions.paddingSizeSmall),
-                child: Row(children: [
-                  trackViewSeparator(Images.homeDelivery,color: Theme.of(context).primaryColor),
-                  Expanded(child: trackView(context, status: status >= 1 ? true : false)),
-                  trackViewSeparator(Images.cookingGif,color: Theme.of(context).primaryColor),
+                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeExtraLarge),
+                child: Column(
+                  children: [
+                    Row(children: [
+                      trackViewSeparator(Images.bell),
+                      Expanded(child: trackView(context, status: status >= 1 ? true : false)),
+                      trackViewSeparator(Images.bell),
 
 
-                  Expanded(child: trackView(context, status: status >= 2 ? true : false)),
-                  trackViewSeparator(Images.cart,color: Theme.of(context).primaryColor),
+                      Expanded(child: trackView(context, status: status >= 2 ? true : false)),
+                      trackViewSeparator(Images.cooking),
 
-                  Expanded(child: trackView(context, status: status >= 3 ? true : false)),
-                  trackViewSeparator(Images.deliveryIcon,),
+                      Expanded(child: trackView(context, status: status >= 3 ? true : false)),
+                      trackViewSeparator(Images.motorcycle,),
 
-                  Expanded(child: trackView(context, status: status >= 4 ? true : false)),
-                  trackViewSeparator(Images.homeIcon,color: Theme.of(context).primaryColor),
-                ]),
+                      Expanded(child: trackView(context, status: status >= 4 ? true : false)),
+                      trackViewSeparator(Images.checkPng),
+                    ]),
+                    SizedBox(height: 16,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("order".tr,style: robotoBlack.copyWith(fontSize: Dimensions.fontSizeLarge,color: Colors.white,),),
+                        SizedBox(width: 4,),
+                        Text(
+                          delivered ? '${'delivered_at'.tr} ${DateConverter.dateTimeStringToDateTime(order.delivered!)}'
+                              : subscription ? order.subscription!.status!.tr : order.orderStatus!.tr,
+                          style: robotoBlack.copyWith(fontSize: Dimensions.fontSizeLarge,color: Colors.white,),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
 
@@ -941,7 +959,7 @@ class OrderInfoSection extends StatelessWidget {
     ]);
   }
 
-  Container trackViewSeparator(String image, {Color? color}) {
+  Container trackViewSeparator(String image, ) {
     return Container(
       padding: EdgeInsets.all(6),
       decoration: BoxDecoration(
@@ -951,13 +969,13 @@ class OrderInfoSection extends StatelessWidget {
         image,
         width: 18,
         height: 18,
-        color: color,
+
       ),
     );
   }
 
   Widget trackView(BuildContext context, {required bool status}) {
-    return Container(height: 5, decoration: BoxDecoration(color: status ? Theme.of(context).primaryColor
+    return Container(height: 5, decoration: BoxDecoration(color: status ? Colors.yellow
         : Theme.of(context).disabledColor.withOpacity(0.5), borderRadius: BorderRadius.circular(Dimensions.radiusDefault)));
   }
 }

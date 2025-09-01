@@ -73,14 +73,14 @@ class OrderProductWidget extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.start,children: [
                 Expanded(child: Text(
                   orderDetails.foodDetails!.name!,
-                  style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),
+                  style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault),
                   maxLines: 2, overflow: TextOverflow.ellipsis,
                 )),
                 const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                Text('${'quantity'.tr}: ', style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
+                Text('${'quantity'.tr}: ', style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault)),
                 Text(
                   orderDetails.quantity.toString(),
-                  style: robotoMedium.copyWith(color: Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeSmall),
+                  style: robotoMedium.copyWith(color: Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeDefault),
                 ),
               ]),
               const SizedBox(height: Dimensions.paddingSizeExtraSmall),
