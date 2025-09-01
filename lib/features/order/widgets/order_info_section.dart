@@ -113,28 +113,28 @@ class OrderInfoSection extends StatelessWidget {
                     order.restaurant!.name!, maxLines: 1, overflow: TextOverflow.ellipsis,
                     style: robotoBold.copyWith(fontSize: 20),
                   ),
-                  const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-                  Text(
-                    order.restaurant!.address!, maxLines: 1, overflow: TextOverflow.ellipsis,
-                    style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
-                  ),
+                  // const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+                  //
+                  // Text(
+                  //   order.restaurant!.address!, maxLines: 1, overflow: TextOverflow.ellipsis,
+                  //   style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
+                  // ),
 
                 ])),
 
-                (takeAway && (pending || accepted || confirmed || processing || order.orderStatus == 'handover'
-                    || pickedUp)) ? TextButton.icon(
-                  onPressed: () async {
-                    String url ='https://www.google.com/maps/dir/?api=1&destination=${order.restaurant!.latitude}'
-                        ',${order.restaurant!.longitude}&mode=d';
-                    if (await canLaunchUrlString(url)) {
-                      await launchUrlString(url, mode: LaunchMode.externalApplication);
-                    }else {
-                      showCustomSnackBar('unable_to_launch_google_map'.tr);
-                    }
-                  },
-                  icon: const Icon(Icons.directions), label: Text('direction'.tr),
-                ) : const SizedBox(),
+                // (takeAway && (pending || accepted || confirmed || processing || order.orderStatus == 'handover'
+                //     || pickedUp)) ? TextButton.icon(
+                //   onPressed: () async {
+                //     String url ='https://www.google.com/maps/dir/?api=1&destination=${order.restaurant!.latitude}'
+                //         ',${order.restaurant!.longitude}&mode=d';
+                //     if (await canLaunchUrlString(url)) {
+                //       await launchUrlString(url, mode: LaunchMode.externalApplication);
+                //     }else {
+                //       showCustomSnackBar('unable_to_launch_google_map'.tr);
+                //     }
+                //   },
+                //   icon: const Icon(Icons.directions), label: Text('direction'.tr),
+                // ) : const SizedBox(),
 
                 (showChatPermission && !delivered && order.orderStatus != 'failed' && !cancelled && order.orderStatus != 'refunded' && !isGuestLoggedIn) ? InkWell(
                   onTap: () async {
@@ -234,7 +234,7 @@ class OrderInfoSection extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(children: [
-                      trackViewSeparator(Images.bell),
+                      trackViewSeparator(Images.addressHomeIcon),
                       Expanded(child: trackView(context, status: status >= 1 ? true : false)),
                       trackViewSeparator(Images.bell),
 

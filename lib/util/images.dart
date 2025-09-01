@@ -224,6 +224,7 @@ class Images {
   static const String editDelivery = 'assets/image/edit_delivery.png';
   static const String orders = 'assets/image/orders.png';
   static const String bankInfoIcon = 'assets/image/bank_info.png';
+  static const String restroTrack = 'assets/image/restro_track.png';
   static const String offlinePaymentIcon =
       'assets/image/offline_payment_icon.png';
   static const String announcement = 'assets/image/announcement.png';

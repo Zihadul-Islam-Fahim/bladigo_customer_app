@@ -144,7 +144,7 @@ class OrderViewWidget extends StatelessWidget {
                                           padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeExtraSmall),
                                           margin: EdgeInsets.only(bottom: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeOverLarge : Dimensions.paddingSizeDefault),
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+                                            borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
                                             color: orderList[index].orderStatus == 'pending' || orderList[index].orderStatus == 'processing' ? Colors.blue.withOpacity(0.15) : orderList[index].orderStatus == 'accepted'
                                                 || orderList[index].orderStatus == 'confirmed' ? Colors.green.withOpacity(0.15) : Theme.of(context).primaryColor.withOpacity(0.15),
                                           ),
@@ -159,16 +159,16 @@ class OrderViewWidget extends StatelessWidget {
                                           child: Container(
                                             padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: 7),
                                             decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
-                                              color: Theme.of(context).primaryColor,
-                                              border: Border.all(width: 1, color: Theme.of(context).primaryColor),
+                                              borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
+                                              // color: Theme.of(context).primaryColor,
+                                              border: Border.all(width: 1, color: Colors.black),
                                             ),
                                             child: Row(children: [
                                               Text('track_order'.tr, style: robotoMedium.copyWith(
-                                                fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).cardColor,
+                                                fontSize: Dimensions.fontSizeSmall, color: Colors.black,
                                               )),
                                               const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                                              Image.asset(Images.tracking, height: 20, width: 20, color: Theme.of(context).cardColor),
+                                              Image.asset(Images.motorcycle, height: 20, width: 20,color: Theme.of(context).primaryColor, ),
                                             ]),
                                           ),
                                         ),
