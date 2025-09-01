@@ -565,19 +565,19 @@ class OrderInfoSection extends StatelessWidget {
                 ]),
               ),
 
-              Column(children: [
-                subscription ? const SizedBox() : const Divider(height: Dimensions.paddingSizeLarge),
+              // Column(children: [
+                // subscription ? const SizedBox() : const Divider(height: Dimensions.paddingSizeLarge),
 
-                Row(children: [
-                  Text('${'cutlery'.tr}: ', style: robotoRegular),
-                  const Expanded(child: SizedBox()),
-
-                  Text(
-                    order.cutlery! ? 'yes'.tr : 'no'.tr,
-                    style: robotoRegular,
-                  ),
-                ]),
-              ]),
+                // Row(children: [
+                //   Text('${'cutlery'.tr}: ', style: robotoRegular),
+                //   const Expanded(child: SizedBox()),
+                //
+                //   Text(
+                //     order.cutlery! ? 'yes'.tr : 'no'.tr,
+                //     style: robotoRegular,
+                //   ),
+                // ]),
+              // ]),
 
               order.unavailableItemNote != null ? Column(
                 children: [
