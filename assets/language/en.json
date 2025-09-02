@@ -1213,7 +1213,9 @@
   "your_orders": "Your Orders",
   "tip_DM": "Tip delivery partner",
   "helping_dm": "Helping your delivery partner by adding tip",
-  "delivery_location": "Delivery Address"
+  "delivery_location": "Delivery Address",
+
+  "location_details": "Location details"
 
 
 }

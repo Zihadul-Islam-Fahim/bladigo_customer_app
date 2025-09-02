@@ -289,7 +289,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                 return _screens[index];
               },
             ),
-            persistentContentHeight: 100,
+            persistentContentHeight: 120,
             onIsContractedCallback: () {
               if (!orderController.showOneOrder) {
                 orderController.showOrders();
@@ -302,27 +302,45 @@ class DashboardScreenState extends State<DashboardScreen> {
             },
             enableToggle: true,
             expandableContent: (ResponsiveHelper.isDesktop(context) ||
-                    !_isLogin ||
-                    orderController.runningOrderList == null ||
-                    orderController.runningOrderList!.isEmpty ||
-                    !orderController.showBottomSheet)
+                !_isLogin ||
+                orderController.runningOrderList == null ||
+                orderController.runningOrderList!.isEmpty ||
+                !orderController.showBottomSheet)
                 ? const SizedBox()
                 : Dismissible(
-                    key: UniqueKey(),
-                    onDismissed: (direction) {
+              key: UniqueKey(),
+              onDismissed: (direction) {
+                if (orderController.showBottomSheet) {
+                  orderController.showRunningOrders();
+                }
+              },
+              child: Stack(
+                children: [
+                  RunningOrderViewWidget(
+                    reversOrder: reversOrder,
+                    onMoreClick: () {
                       if (orderController.showBottomSheet) {
                         orderController.showRunningOrders();
                       }
+                      _setPage(3);
                     },
-                    child: RunningOrderViewWidget(
-                        reversOrder: reversOrder,
-                        onMoreClick: () {
-                          if (orderController.showBottomSheet) {
-                            orderController.showRunningOrders();
-                          }
-                          _setPage(3);
-                        }),
                   ),
+                  // Positioned(
+                  //   top: 0,
+                  //   left: 0,
+                  //   right: 0,
+                  //   child: IconButton(
+                  //     icon: Icon(Icons.close),
+                  //     onPressed: () {
+                  //       if (orderController.showBottomSheet) {
+                  //         orderController.showRunningOrders();
+                  //       }
+                  //     },
+                  //   ),
+                  // ),
+                ],
+              ),
+            ),
           );
         }),
       ),

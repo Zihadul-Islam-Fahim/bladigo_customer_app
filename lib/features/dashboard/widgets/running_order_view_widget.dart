@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:stackfood_multivendor/features/order/controllers/order_controller.dart';
 import 'package:stackfood_multivendor/features/order/domain/models/order_model.dart';
 import 'package:stackfood_multivendor/features/order/screens/order_details_screen.dart';
@@ -30,17 +31,9 @@ class RunningOrderViewWidget extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: Column(children: [
+            SizedBox(height: 10,),
 
-            Center(
-              child: Container(
-                margin: const EdgeInsets.only(top: Dimensions.paddingSizeDefault),
-                height: 3, width: 40,
-                decoration: BoxDecoration(
-                    color: Theme.of(context).highlightColor,
-                    borderRadius: BorderRadius.circular(Dimensions.paddingSizeExtraSmall)
-                ),
-              ),
-            ),
+
 
             ListView.builder(
                 itemCount: reversOrder.length,
@@ -76,7 +69,7 @@ class RunningOrderViewWidget extends StatelessWidget {
                       }
                     },
                     child: Container(
-                      margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeExtraSmall, top: Dimensions.paddingSizeSmall),
+                      margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeExtraSmall, top: Dimensions.paddingSizeExtraSmall),
 
                       child:  Padding(
                         padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
@@ -90,7 +83,7 @@ class RunningOrderViewWidget extends StatelessWidget {
                                 child: Image.asset( status == 2 ? orderStatus == AppConstants.confirmed || orderStatus == AppConstants.accepted ? Images.processingGif
                                     : Images.cookingGif : status == 3
                                     ? orderStatus == AppConstants.handover ? Images.handoverGif : Images.onTheWayGif : Images.pendingGif,
-                                    height: 60, width: 60, fit: BoxFit.fill,color: Theme.of(context).primaryColor,),
+                                    height: 60, width: 60, fit: BoxFit.fill,color: Colors.yellow,),
                               ),
                             ),
                           ),
@@ -102,7 +95,7 @@ class RunningOrderViewWidget extends StatelessWidget {
                                 crossAxisAlignment: isFirstOrder ? CrossAxisAlignment.center : CrossAxisAlignment.start, children: [
                                   Row( mainAxisAlignment: isFirstOrder ? MainAxisAlignment.center : MainAxisAlignment.start, children: [
 
-                                    Text('${'your_order_is'.tr} ', style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault)),
+                                    // Text('${'your_order_is'.tr} ', style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault)),
                                     Text(reversOrder[index].orderStatus!.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).primaryColor)),
                                   ]) ,
                                   const SizedBox(height: Dimensions.paddingSizeExtraSmall),
@@ -116,36 +109,58 @@ class RunningOrderViewWidget extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault,
                                           vertical: Dimensions.paddingSizeSmall),
-                                      child: Row(children: [
+                                      child:                     Row(children: [
+                                        trackViewSeparator(Images.shop),
                                         Expanded(child: trackView(context, status: status >= 1 ? true : false)),
-                                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                                        trackViewSeparator(Images.bell),
+
 
                                         Expanded(child: trackView(context, status: status >= 2 ? true : false)),
-                                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                                        trackViewSeparator(Images.cooking),
 
                                         Expanded(child: trackView(context, status: status >= 3 ? true : false)),
-                                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                                        trackViewSeparator(Images.motorcycle,),
 
                                         Expanded(child: trackView(context, status: status >= 4 ? true : false)),
+                                        trackViewSeparator(Images.checkPng),
                                       ]),
                                     ),
                                   ) : const SizedBox()
 
                                 ]),
                           ),
-
-                          Container(
-                            padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
-                            decoration: BoxDecoration(color: Theme.of(context).primaryColor.withOpacity(0.1), shape: BoxShape.circle),
-                            child: isFirstOrder ? !(reversOrder.length < 2) ? InkWell(
-                              onTap: onMoreClick,
-                              child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                Text('+${reversOrder.length - 1}', style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).primaryColor)),
-                                Text('more'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Theme.of(context).primaryColor)),
-                              ]),
-                            ) : Icon(Icons.arrow_forward, size: 18, color: Theme.of(context).primaryColor)
-                                : Icon(Icons.arrow_forward, size: 18, color: Theme.of(context).primaryColor),
+                          Column(
+                            children: [
+                              InkWell(
+                                onTap: (){
+                                  orderController.showRunningOrders();
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: Dimensions.paddingSizeDefault),
+                                  height: 40, width: 40,
+                                  decoration: BoxDecoration(
+                                      // color: Theme.of(context).highlightColor,
+                                      borderRadius: BorderRadius.circular(Dimensions.paddingSizeExtraSmall)
+                                  ),
+                                  child: Icon(Icons.close_rounded,size: 35,),
+                                ),
+                              ),
+                              SizedBox(height: 20,)
+                            ],
                           ),
+
+                          // Container(
+                          //   padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
+                          //   decoration: BoxDecoration(color: Colors.yellow.withOpacity(0.4), shape: BoxShape.circle),
+                          //   child: isFirstOrder ? !(reversOrder.length < 2) ? InkWell(
+                          //     onTap: onMoreClick,
+                          //     child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                          //       Text('+${reversOrder.length - 1}', style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).primaryColor)),
+                          //       Text('more'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Theme.of(context).primaryColor)),
+                          //     ]),
+                          //   ) : Icon(Icons.arrow_forward, size: 18, color: Theme.of(context).primaryColor)
+                          //       : Icon(Icons.arrow_forward, size: 18, color: Theme.of(context).primaryColor),
+                          // ),
 
                         ]),
                       ) ,
@@ -156,6 +171,22 @@ class RunningOrderViewWidget extends StatelessWidget {
         ),
       );
     });
+  }
+
+  Container trackViewSeparator(String image, ) {
+    return Container(
+      padding: EdgeInsets.all(6),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: Colors.grey)),
+      child: Image.asset(
+        image,
+        width: 18,
+        height: 18,
+        color: Color.fromRGBO(39, 148, 55, 1),
+
+      ),
+    );
   }
 
   Widget trackView(BuildContext context, {required bool status}) {

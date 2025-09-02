@@ -86,7 +86,7 @@ class AddressCardWidget extends StatelessWidget {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(address?.addressType?.tr ?? '',
+                                  Text("location_details".tr ?? '',
                                       style: robotoMedium),
                                   Text(
                                     (address?.house != null ? "House No:- ${address?.house},  " : '') +
