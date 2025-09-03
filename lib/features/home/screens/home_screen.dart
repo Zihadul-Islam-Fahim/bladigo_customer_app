@@ -561,9 +561,9 @@ class _HomeScreenState extends State<HomeScreen> {
         // _configModel.popularFood == 1
         //     ? const PopularFoodNearbyViewWidget()
         //     : const SizedBox(),
-        _configModel.newRestaurant == 1
-            ? const NewOnStackFoodViewWidget(isLatest: true)
-            : const SizedBox(),
+        // _configModel.newRestaurant == 1
+        //     ? const NewOnStackFoodViewWidget(isLatest: true)
+        //     : const SizedBox(),
         const PromotionalBannerViewWidget(),
       ]),
     ));
