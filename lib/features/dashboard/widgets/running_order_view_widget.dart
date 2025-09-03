@@ -83,7 +83,7 @@ class RunningOrderViewWidget extends StatelessWidget {
                                 child: Image.asset( status == 2 ? orderStatus == AppConstants.confirmed || orderStatus == AppConstants.accepted ? Images.processingGif
                                     : Images.cookingGif : status == 3
                                     ? orderStatus == AppConstants.handover ? Images.handoverGif : Images.onTheWayGif : Images.pendingGif,
-                                    height: 60, width: 60, fit: BoxFit.fill,color: Colors.yellow,),
+                                    height: 60, width: 60, fit: BoxFit.fill,color: Colors.black,),
                               ),
                             ),
                           ),
