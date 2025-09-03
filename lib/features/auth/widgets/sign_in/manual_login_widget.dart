@@ -140,7 +140,7 @@ class ManualLoginWidget extends StatelessWidget {
               height: isDesktop ? 50 : null,
               width:  isDesktop ? 250 : null,
               buttonText: 'login'.tr,
-              radius: isDesktop ? Dimensions.radiusSmall : Dimensions.radiusDefault,
+              radius: isDesktop ? Dimensions.radiusSmall : Dimensions.radiusXExtraLarge,
               isBold: isDesktop ? false : true,
               isLoading: authController.isLoading,
               onPressed: onClickLoginButton,

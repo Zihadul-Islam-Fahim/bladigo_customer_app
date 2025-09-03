@@ -265,7 +265,7 @@ class SignUpWidgetState extends State<SignUpWidget> {
                   CustomButtonWidget(
                     height: isDesktop ? 50 : null,
                     width:  isDesktop ? 250 : null,
-                    radius: isDesktop ? Dimensions.radiusSmall : Dimensions.radiusDefault,
+                    radius: isDesktop ? Dimensions.radiusSmall : Dimensions.radiusXExtraLarge,
                     isBold: !isDesktop,
                     fontSize: isDesktop ? Dimensions.fontSizeSmall : null,
                     buttonText: 'sign_up'.tr,
