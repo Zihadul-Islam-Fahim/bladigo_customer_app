@@ -15,6 +15,9 @@ import 'package:stackfood_multivendor/common/widgets/veg_filter_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/web_menu_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vibration/vibration.dart';
+
+import '../../../util/app_constants.dart';
 
 class CategoryProductScreen extends StatefulWidget {
   final String? categoryID;
@@ -252,7 +255,6 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
           onPressed: () => Get.toNamed(RouteHelper.getCartRoute()),
           icon: CartWidget(
               color: Theme.of(context).primaryColor,
-
               size: 42),
                     ),
           endDrawerEnableOpenDragGesture: false,
@@ -274,8 +276,15 @@ class CategoryProductScreenState extends State<CategoryProductScreen>
                       physics: const BouncingScrollPhysics(),
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap: () => catController.setSubCategoryIndex(
-                              index, widget.categoryID),
+                          onTap: () async {
+
+                            if (await Vibration.hasVibrator() ?? false) {
+                            Vibration.vibrate(duration: AppConstants.vibrationDuration); // 100ms vibration
+                            }
+
+                            catController.setSubCategoryIndex(
+                                index, widget.categoryID);
+                          },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: Dimensions.paddingSizeSmall,

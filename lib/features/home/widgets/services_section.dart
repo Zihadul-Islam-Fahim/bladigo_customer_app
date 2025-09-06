@@ -8,7 +8,9 @@ import 'package:stackfood_multivendor/features/category/controllers/category_con
 import 'package:stackfood_multivendor/features/home/screens/filtered_services_screen.dart';
 import 'package:stackfood_multivendor/helper/responsive_helper.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
+import 'package:stackfood_multivendor/util/app_constants.dart';
 import 'package:stackfood_multivendor/util/dimensions.dart';
+import 'package:vibration/vibration.dart';
 
 class ServicesSection extends StatelessWidget {
   const ServicesSection({super.key});
@@ -51,7 +53,13 @@ class ServicesSection extends StatelessWidget {
                     padding: EdgeInsets.zero,
                    highlightColor: Colors.white,
 
-                    onTap: () {
+                    onTap: () async {
+
+                      //Vibration
+                      if (await Vibration.hasVibrator() ?? false) {
+                      Vibration.vibrate(duration: AppConstants.vibrationDuration); // 50ms vibration
+                      }
+
                       Get.find<CategoryController>()
                           .getSubCategoryList(data?.id.toString());
                       // Get.to(() => FilteredServicesScreen(category: data!),);

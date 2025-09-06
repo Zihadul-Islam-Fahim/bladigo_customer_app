@@ -13,6 +13,9 @@ class AppConstants {
   static const String webHostedUrl = 'https://bladigo.com';
   static const bool useReactWebsite = false;
 
+  //vibration
+  static const int vibrationDuration = 50;
+
   static const String baseUrl = 'https://admin.bladigo.com';
   // static const String baseUrl = 'https://ops-console.bladigo.com';
   static const String categoryUri = '/api/v1/categories';

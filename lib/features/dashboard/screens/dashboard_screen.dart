@@ -20,6 +20,7 @@ import 'package:stackfood_multivendor/features/loyalty/controllers/loyalty_contr
 import 'package:stackfood_multivendor/features/wallet/screens/wallet_screen.dart';
 import 'package:stackfood_multivendor/helper/responsive_helper.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
+import 'package:stackfood_multivendor/util/app_constants.dart';
 import 'package:stackfood_multivendor/util/dimensions.dart';
 import 'package:stackfood_multivendor/common/widgets/cart_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_dialog_widget.dart';
@@ -126,6 +127,8 @@ class DashboardScreenState extends State<DashboardScreen> {
           context: Get.context!,
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
+          showDragHandle: true,
+          enableDrag: false,
           builder: (con) => const AddressBottomSheet(),
         ).then((value) {
           Get.find<DashboardController>().hideSuggestedLocation();
@@ -349,7 +352,7 @@ class DashboardScreenState extends State<DashboardScreen> {
 
   Future<void> _setPage(int pageIndex) async {
     if (await Vibration.hasVibrator() ?? false) {
-    Vibration.vibrate(duration: 50); // 100ms vibration
+    Vibration.vibrate(duration: AppConstants.vibrationDuration); // 100ms vibration
     }
     setState(() {
       _pageController!.jumpToPage(pageIndex);

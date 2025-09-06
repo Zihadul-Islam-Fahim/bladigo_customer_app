@@ -83,7 +83,7 @@ class RunningOrderViewWidget extends StatelessWidget {
                                 child: Image.asset( status == 2 ? orderStatus == AppConstants.confirmed || orderStatus == AppConstants.accepted ? Images.processingGif
                                     : Images.cookingGif : status == 3
                                     ? orderStatus == AppConstants.handover ? Images.handoverGif : Images.onTheWayGif : Images.pendingGif,
-                                    height: 60, width: 60, fit: BoxFit.fill,color: Colors.black,),
+                                    height: 60, width: 60, fit: BoxFit.fill,color: Colors.grey,),
                               ),
                             ),
                           ),
@@ -142,7 +142,7 @@ class RunningOrderViewWidget extends StatelessWidget {
                                       // color: Theme.of(context).highlightColor,
                                       borderRadius: BorderRadius.circular(Dimensions.paddingSizeExtraSmall)
                                   ),
-                                  child: Icon(Icons.close_rounded,size: 35,),
+                                  child: Icon(Icons.close_rounded,size: 35,color: Colors.grey,),
                                 ),
                               ),
                               SizedBox(height: 20,)

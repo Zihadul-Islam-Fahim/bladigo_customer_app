@@ -25,6 +25,7 @@ import 'package:stackfood_multivendor/helper/date_converter.dart';
 import 'package:stackfood_multivendor/helper/price_converter.dart';
 import 'package:stackfood_multivendor/helper/responsive_helper.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
+import 'package:stackfood_multivendor/util/app_constants.dart';
 import 'package:stackfood_multivendor/util/dimensions.dart';
 import 'package:stackfood_multivendor/util/images.dart';
 import 'package:stackfood_multivendor/util/styles.dart';
@@ -682,7 +683,13 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                 splashColor: Colors.white,
                                                                 highlightColor: Colors.white,
 
-                                                                onTap: () {
+                                                                onTap: () async {
+
+                                                                  //vibration
+                                                                  if (await Vibration.hasVibrator() ?? false) {
+                                                                  Vibration.vibrate(duration: AppConstants.vibrationDuration); // 100ms vibration
+                                                                  }
+
                                                                   productController.setCartVariationIndex(
                                                                       index,
                                                                       i,
@@ -759,7 +766,12 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                               value: productController.selectedVariations[index][i],
                                                                               activeColor: Theme.of(context).primaryColor,
                                                                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                                                                              onChanged: (bool? newValue) {
+                                                                              onChanged: (bool? newValue) async {
+
+                                                                                if (await Vibration.hasVibrator() ?? false) {
+                                                                                Vibration.vibrate(duration: AppConstants.vibrationDuration); // 100ms vibration
+                                                                                }
+
                                                                                 productController.setCartVariationIndex(index, i, product, product!.variations![index].multiSelect!);
                                                                                 productController.setExistInCartForBottomSheet(product!, productController.selectedVariations);
                                                                               },
@@ -773,8 +785,13 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                         shape: RoundedRectangleBorder(
                                                                           borderRadius: BorderRadius.circular(5), // rounded rect
                                                                         ),
-                                                                        onChanged: (bool? newValue) {
+                                                                        onChanged: (bool? newValue) async {
                                                                           // force single selection logic
+
+                                                                          if (await Vibration.hasVibrator() ?? false) {
+                                                                          Vibration.vibrate(duration: AppConstants.vibrationDuration); // 100ms vibration
+                                                                          }
+
                                                                           productController.setCartVariationIndex(
                                                                               index, i, product, product!.variations![index].multiSelect!);
                                                                           productController.setExistInCartForBottomSheet(
@@ -876,7 +893,11 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                     (context, index) {
                                                   return InkWell(
                                                     splashColor: Colors.transparent,
-                                                    onTap: () {
+                                                    onTap: () async {
+
+                                                      if (await Vibration.hasVibrator() ?? false) {
+                                                      Vibration.vibrate(duration: AppConstants.vibrationDuration); // 100ms vibration
+                                                      }
                                                       if (!productController
                                                               .addOnActiveList[
                                                           index]) {
@@ -1045,6 +1066,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                                     Expanded(
                                                                       child:
                                                                           InkWell(
+                                                                            splashColor: Colors.white,
+                                                                            highlightColor: Colors.white,
                                                                         onTap: () => productController.setAddOnQuantity(
                                                                             true,
                                                                             index,
@@ -1337,8 +1360,9 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
     List<AddOns> addOnsList,
     double priceWithAddonsVariation,
   ) async {
+
     if (await Vibration.hasVibrator() ?? false) {
-      Vibration.vibrate(duration: 50); // 100ms vibration
+      Vibration.vibrate(duration: AppConstants.vibrationDuration); // 100ms vibration
     }
     _processVariationWarning(productController);
 
@@ -1464,6 +1488,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
             title: 'start_a_new_cart'.tr,
             description: 'a_new_order_will_clear'.tr + " ${Get.find<CartController>().cartList[0].product!.restaurantName}",
             onYesPressed: () {
+
+
               Get.back();
               cartController.clearCartOnline().then((success) async {
                 if (success) {
