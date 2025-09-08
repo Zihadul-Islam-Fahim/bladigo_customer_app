@@ -1266,6 +1266,8 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                               builder: (cartController) {
                             return CustomButtonWidget(
                               radius: 40,
+
+                              productQuantity: productController.quantity,
                               width: ResponsiveHelper.isDesktop(context)
                                   ? MediaQuery.of(context).size.width /
                                       2.0
@@ -1284,7 +1286,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                                                       .cartIndex !=
                                                   -1)
                                           ? 'update_in_cart'.tr
-                                          : ("${'add'.tr} ${productController.quantity} ${"for".tr}"),
+                                          : "showInCircle",
                               onPressed: (!product!.scheduleOrder! &&
                                           !isAvailable) ||
                                       (widget.cart != null &&
@@ -1486,7 +1488,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
           ConfirmationDialogWidget(
             icon: Images.warning,
             title: 'start_a_new_cart'.tr,
-            description: 'a_new_order_will_clear'.tr + " ${Get.find<CartController>().cartList[0].product!.restaurantName}",
+            description: "${'a_new_order_will_clear'.tr} ${Get.find<CartController>().cartList[0].product!.restaurantName}",
             onYesPressed: () {
 
 

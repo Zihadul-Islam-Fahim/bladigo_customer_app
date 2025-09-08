@@ -19,8 +19,9 @@ class CustomButtonWidget extends StatelessWidget {
   final bool isBold;
   final bool hasPrice;
   final String price;
+  final int? productQuantity;
   const CustomButtonWidget({super.key,this.hasPrice = false,this.price="0", this.onPressed, required this.buttonText, this.transparent = false, this.margin, this.width, this.height = 55,
-    this.fontSize=18, this.radius = Dimensions.radiusXExtraLarge, this.icon, this.color, this.textColor, this.isLoading = false, this.isBold = true});
+    this.fontSize=18, this.radius = Dimensions.radiusXExtraLarge, this.icon, this.color, this.textColor, this.isLoading = false, this.isBold = true, this.productQuantity});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,44 @@ class CustomButtonWidget extends StatelessWidget {
         ) : hasPrice ? Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text(buttonText, textAlign: TextAlign.center, overflow: TextOverflow.fade,maxLines: 1, style: isBold ? robotoBold.copyWith(
+            buttonText == "showInCircle" ?
+
+                Row(
+                  children: [
+                    Text("add".tr, textAlign: TextAlign.center, overflow: TextOverflow.fade,maxLines: 1, style: isBold ? robotoBold.copyWith(
+                      color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
+                      fontSize: fontSize ?? Dimensions.fontSizeLarge,
+                    ) : robotoRegular.copyWith(
+                      color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
+                      fontSize: fontSize ?? Dimensions.fontSizeLarge,
+                    )
+                    ),
+                    Container(
+                      decoration: BoxDecoration(color: Colors.white,shape: BoxShape.circle),
+                      padding: EdgeInsets.all(5),
+                      margin: EdgeInsets.symmetric(horizontal: 4),
+                      child: Text(productQuantity.toString(), textAlign: TextAlign.center, overflow: TextOverflow.fade,maxLines: 1, style: isBold ? robotoBold.copyWith(
+                        color: textColor ?? ( Theme.of(context).primaryColor ),
+                        fontSize: fontSize ?? Dimensions.fontSizeLarge,
+                      ) : robotoRegular.copyWith(
+                        color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.black),
+                        fontSize: fontSize ?? Dimensions.fontSizeLarge,
+                      )
+                      ),
+                    ),
+                    Text("for".tr, textAlign: TextAlign.center, overflow: TextOverflow.fade,maxLines: 1, style: isBold ? robotoBold.copyWith(
+                      color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
+                      fontSize: fontSize ?? Dimensions.fontSizeLarge,
+                    ) : robotoRegular.copyWith(
+                      color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
+                      fontSize: fontSize ?? Dimensions.fontSizeLarge,
+                    )
+                    )
+                  ],
+                )
+
+
+           : Text(buttonText, textAlign: TextAlign.center, overflow: TextOverflow.fade,maxLines: 1, style: isBold ? robotoBold.copyWith(
               color: textColor ?? (transparent ? Theme.of(context).primaryColor : Colors.white),
               fontSize: fontSize ?? Dimensions.fontSizeLarge,
             ) : robotoRegular.copyWith(
