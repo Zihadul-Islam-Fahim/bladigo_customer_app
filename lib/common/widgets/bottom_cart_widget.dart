@@ -16,43 +16,45 @@ class BottomCartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CartController>(builder: (cartController) {
-        return Container(
-
-          height: GetPlatform.isIOS ? 110 : 100, width: Get.width,
-          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault,vertical: 10),
-          decoration: BoxDecoration(
-              color: Colors.transparent,
-            // boxShadow: [BoxShadow(color: const Color(0xFF2A2A2A).withOpacity(0.1), blurRadius: 10, offset: const Offset(0, -5))],
-          ),
-          child: SafeArea(
-            child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-
-              Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
-                // Text('${'item'.tr}: ${cartController.cartList.length}', style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge)),
-                // const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-                // Text(
-                //   '${'total'.tr}: ${PriceConverter.convertPrice(cartController.calculationCart())}',
-                //   style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Theme.of(context).primaryColor),
-                // ),
-              ]),
-                CustomButtonWidget(
-                    buttonText: 'view_cart'.tr,
-
-
-                    hasPrice: true,
-                    price: PriceConverter.convertPrice(cartController.calculationCart()).toString(),
-                    width: Get.width * 0.9,
-                    height: 52,
-                    onPressed: () async {
-                      await Get.toNamed(RouteHelper.getCartRoute());
-                      Get.find<RestaurantController>().makeEmptyRestaurant();
-                      if (restaurantId != null) {
-                        Get.find<RestaurantController>()
-                            .getRestaurantDetails(Restaurant(id: restaurantId));
-                      }
-                    })
-              ]),
+        return SafeArea(
+          child: Container(
+          
+            height: GetPlatform.isIOS ? 80 : 80, width: Get.width,
+            padding:  EdgeInsets.only(left: Dimensions.paddingSizeDefault,right: Dimensions.paddingSizeDefault,top: 10,bottom: GetPlatform.isIOS ? 10 : 10),
+            decoration: BoxDecoration(
+                color: Colors.transparent,
+              // boxShadow: [BoxShadow(color: const Color(0xFF2A2A2A).withOpacity(0.1), blurRadius: 10, offset: const Offset(0, -5))],
+            ),
+            child: SafeArea(
+              child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          
+                Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
+                  // Text('${'item'.tr}: ${cartController.cartList.length}', style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge)),
+                  // const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+          
+                  // Text(
+                  //   '${'total'.tr}: ${PriceConverter.convertPrice(cartController.calculationCart())}',
+                  //   style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Theme.of(context).primaryColor),
+                  // ),
+                ]),
+                  CustomButtonWidget(
+                      buttonText: 'view_cart'.tr,
+          
+          
+                      hasPrice: true,
+                      price: PriceConverter.convertPrice(cartController.calculationCart()).toString(),
+                      width: Get.width * 0.9,
+                      height: 52,
+                      onPressed: () async {
+                        await Get.toNamed(RouteHelper.getCartRoute());
+                        Get.find<RestaurantController>().makeEmptyRestaurant();
+                        if (restaurantId != null) {
+                          Get.find<RestaurantController>()
+                              .getRestaurantDetails(Restaurant(id: restaurantId));
+                        }
+                      })
+                ]),
+            ),
           ),
         );
       });
