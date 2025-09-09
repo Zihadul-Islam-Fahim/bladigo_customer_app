@@ -25,8 +25,8 @@ class QuantityButton extends StatelessWidget {
         margin:
             const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
         decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(5),
+          shape: BoxShape.circle,
+          // borderRadius: BorderRadius.circular(5),
           border: Border.all(
               width: 1,
               color: showRemoveIcon
