@@ -15,7 +15,7 @@ class Images {
   static const String lock = 'assets/image/lock.png';
   static const String mail = 'assets/image/mail.png';
   static const String map = 'assets/image/map.png';
-  static const String restaurantMarker = 'assets/image/nearby_restaurants.png';
+  static const String restaurantMarker = 'assets/image/nearby_location.png';
   static const String deliveryManMarker =
       'assets/image/delivery_man_marker.png';
   static const String nearbyRestaurantMarkerSvg =
@@ -44,7 +44,7 @@ class Images {
   static const String update = 'assets/image/update.png';
   //static const String deliveryLocation = 'assets/image/delivery_location.png';
   static const String forgot = 'assets/image/forgot.png';
-  static const String pickMarker = 'assets/image/pick_marker.png';
+  static const String pickMarker = 'assets/image/nearby_restaurants.png';
   static const String house = 'assets/image/house.png';
   static const String tracking = 'assets/image/tracking.png';
   static const String myLocationMarker = 'assets/image/my_location_marker.png';
