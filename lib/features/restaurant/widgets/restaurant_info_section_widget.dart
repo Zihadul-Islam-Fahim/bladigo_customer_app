@@ -129,8 +129,6 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
               expandedTitleScale: isDesktop ? 1 : 1.1,
               title: CustomizableSpaceBarWidget(
                 builder: (context, scrollingRate) {
-                  print(scrollingRate);
-
                   return !isDesktop ? Container(
                     color: Theme.of(context).cardColor.withOpacity(scrollingRate),
                     padding: EdgeInsets.only(
@@ -246,7 +244,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                               Text(
                                                 restaurant.name!,
                                                 style: robotoMedium.copyWith(
-                                                    fontSize: Dimensions.fontSizeOverLarge -
+                                                    fontSize: 21 -
                                                         (scrollingRate * 7),
                                                     fontWeight: FontWeight.bold,
                                                     color: Theme.of(context)

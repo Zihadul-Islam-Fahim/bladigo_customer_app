@@ -19,7 +19,7 @@ class BottomCartWidget extends StatelessWidget {
         return SafeArea(
           child: Container(
           
-            height: GetPlatform.isIOS ? 80 : 80, width: Get.width,
+            height: GetPlatform.isIOS ? 85 : 85, width: Get.width,
             padding:  EdgeInsets.only(left: Dimensions.paddingSizeDefault,right: Dimensions.paddingSizeDefault,top: 10,bottom: GetPlatform.isIOS ? 10 : 10),
             decoration: BoxDecoration(
                 color: Colors.transparent,
@@ -44,7 +44,7 @@ class BottomCartWidget extends StatelessWidget {
                       hasPrice: true,
                       price: PriceConverter.convertPrice(cartController.calculationCart()).toString(),
                       width: Get.width * 0.9,
-                      height: 52,
+                      // height: 58,
                       onPressed: () async {
                         await Get.toNamed(RouteHelper.getCartRoute());
                         Get.find<RestaurantController>().makeEmptyRestaurant();

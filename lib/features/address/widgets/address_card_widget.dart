@@ -63,69 +63,53 @@ class AddressCardWidget extends StatelessWidget {
                     ),
           child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
             Expanded(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                  // mainAxisSize: MainAxisSize.min,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+
                   children: [
-                    Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomAssetImageWidget(
-                            address?.addressType == 'home'
-                                ? Images.home
-                                : address?.addressType == 'office'
-                                    ? Images.officeIcon
-                                    : Images.otherIcon,
-                            height:
-                                ResponsiveHelper.isDesktop(context) ? 25 : 30,
-                            width:
-                                ResponsiveHelper.isDesktop(context) ? 25 : 30,
-                          ),
-                          const SizedBox(width: Dimensions.paddingSizeSmall),
-                          Flexible(
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("location_details".tr ?? '',
-                                      style: robotoMedium),
-                                  Text(
-                                    (address?.house != null ? "House No:- ${address?.house},  " : '') +
-                                        (address?.floor != null
-                                            ? "Floor:- ${address?.floor},   "
-                                            : '') +
-                                        (address?.road != null
-                                            ? "Road No:- ${address?.road}, "
-                                            : '') +
-                                        (address?.address != null
-                                            ? ("\nAddress:- ${address?.address}")
-                                            : ''),
-                                    style: robotoRegular.copyWith(
-                                        fontSize: Dimensions.fontSizeSmall,
-                                        color: Theme.of(context).disabledColor),
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ]),
-                          ),
-                        ]),
+                    CustomAssetImageWidget(
+                      Images.addressIcon,
+                      height: ResponsiveHelper.isDesktop(context) ? 25 : 30,
+                      width:
+                          ResponsiveHelper.isDesktop(context) ? 25 : 30,
+                    ),
+                    const SizedBox(width: Dimensions.paddingSizeSmall),
+                    Text(
+                      (address?.house != null ? "House No:- ${address?.house},  " : '') +
+                          (address?.floor != null
+                              ? "Floor:- ${address?.floor},   "
+                              : '') +
+                          (address?.road != null
+                              ? "Road No:- ${address?.road}, "
+                              : '') +
+                          (address?.address != null
+                              ? ("Address:- ${address?.address}")
+                              : ''),
+                      style: robotoRegular.copyWith(
+                          fontSize: Dimensions.fontSizeDefault,
+                          color: Theme.of(context).disabledColor),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ]),
             ),
-            fromAddress
-                ? IconButton(
-                    icon: Icon(Icons.edit,
-                        color: Theme.of(context).disabledColor,
-                        size: ResponsiveHelper.isDesktop(context) ? 25 : 20),
-                    onPressed: onEditPressed as void Function()?,
-                  )
-                : const SizedBox(),
-            fromAddress
-                ? IconButton(
-                    icon: Icon(CupertinoIcons.delete,
-                        color: Theme.of(context).colorScheme.error,
-                        size: ResponsiveHelper.isDesktop(context) ? 25 : 20),
-                    onPressed: onRemovePressed as void Function()?,
-                  )
-                : const SizedBox(),
+            // fromAddress
+            //     ? IconButton(
+            //         icon: Icon(Icons.edit,
+            //             color: Theme.of(context).disabledColor,
+            //             size: ResponsiveHelper.isDesktop(context) ? 25 : 20),
+            //         onPressed: onEditPressed as void Function()?,
+            //       )
+            //     : const SizedBox(),
+            // fromAddress
+            //     ? IconButton(
+            //         icon: Icon(CupertinoIcons.delete,
+            //             color: Theme.of(context).colorScheme.error,
+            //             size: ResponsiveHelper.isDesktop(context) ? 25 : 20),
+            //         onPressed: onRemovePressed as void Function()?,
+            //       )
+            //     : const SizedBox(),
           ]),
         ),
       ),

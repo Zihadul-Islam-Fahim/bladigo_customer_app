@@ -76,7 +76,7 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                 margin: EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: Colors.grey.withOpacity(0.35)),
                   borderRadius: BorderRadius.all( const Radius.circular(Dimensions.radiusLarge)),
                 ),
                 // padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeSmall),

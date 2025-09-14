@@ -24,7 +24,7 @@ class DiscountTagWidget extends StatelessWidget {
     String currencySymbol = Get.find<SplashController>().configModel!.currencySymbol!;
 
     return !isProductBottomSheet ? (discount! > 0 || freeDelivery!) ? Positioned(
-      top: 8, left: 4,
+      top: 12, left: 8,
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black),
