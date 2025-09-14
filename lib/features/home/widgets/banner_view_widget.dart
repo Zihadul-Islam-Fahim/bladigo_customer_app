@@ -30,7 +30,7 @@ class BannerViewWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 10,left: 16),
+              padding: const EdgeInsets.only(bottom: 10,left: 16,right: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

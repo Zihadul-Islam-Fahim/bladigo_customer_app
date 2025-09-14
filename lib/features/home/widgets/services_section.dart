@@ -19,7 +19,7 @@ class ServicesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
-        padding: const EdgeInsets.only(left: 12),
+        padding: const EdgeInsets.only(left: 12,right: 12),
         child: AppTileTitleBar(
           title: 'what_are_you_craving_for'.tr,
           onTap: () => Get.toNamed(RouteHelper.getCategoryRoute()),
