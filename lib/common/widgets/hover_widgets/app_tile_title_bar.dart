@@ -69,7 +69,7 @@ class AppTileTitleBar extends StatelessWidget {
                   spacing: 4,
                   children: [
                     Text(
-                      'See all',
+                      'see_all'.tr,
                       style: TextStyle(
                           color: Theme.of(context).primaryColor,
                           fontSize: 12,
