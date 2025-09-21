@@ -40,19 +40,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
             width: Dimensions.webMaxWidth,
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-                ResponsiveHelper.isDesktop(context) ? Padding(
-                  padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text(isRecentlyViewed ? 'recently_viewed_restaurants'.tr : 'popular_restaurants'.tr ,
-                      overflow: TextOverflow.ellipsis,
-                      style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge1, fontWeight: FontWeight.w600),
-                    ),
-
-                    ArrowIconButtonWidget(onTap: () {
-                      Get.toNamed(RouteHelper.getAllRestaurantRoute(isRecentlyViewed ? 'recently_viewed' : 'popular'));
-                    }),
-                  ]),
-                ) : Padding(
+               Padding(
                   padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeLarge),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Expanded(
@@ -88,7 +76,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                           }
                         }
                         return Padding(
-                          padding: EdgeInsets.only(left: (ResponsiveHelper.isDesktop(context) && index == 0 && Get.find<LocalizationController>().isLtr) ? 0 : Dimensions.paddingSizeDefault),
+                          padding: EdgeInsets.only(left: ( Dimensions.paddingSizeDefault)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -110,7 +98,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                     children: [
                                       Container(
                                         margin: EdgeInsets.only(bottom: 10),
-                                        height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.95,
+                                        height: 250, width:  MediaQuery.of(context).size.width * 0.95,
                                         decoration: const BoxDecoration(
                                           borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
                                         ),
@@ -120,7 +108,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                             children: [
                                               CustomImageWidget(
                                                 image: '${restaurantList[index].coverPhotoFullUrl}',
-                                                fit: BoxFit.cover, height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.92,
+                                                fit: BoxFit.cover, height: 250, width:  MediaQuery.of(context).size.width * 0.92,
                                                 isRestaurant: true,
 
                                               ),
@@ -302,7 +290,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                           }
                         }
                         return Padding(
-                          padding: EdgeInsets.only(left: (ResponsiveHelper.isDesktop(context) && index == 0 && Get.find<LocalizationController>().isLtr) ? 0 : Dimensions.paddingSizeDefault),
+                          padding: EdgeInsets.only(left: (Dimensions.paddingSizeDefault)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -324,7 +312,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                     children: [
                                       Container(
                                         margin: EdgeInsets.only(bottom: 10),
-                                        height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.95,
+                                        height: 250, width:  MediaQuery.of(context).size.width * 0.95,
                                         decoration: const BoxDecoration(
                                           borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
                                         ),
@@ -334,7 +322,7 @@ class PopularRestaurantsViewWidget extends StatelessWidget {
                                             children: [
                                               CustomImageWidget(
                                                 image: '${restaurantList[index].coverPhotoFullUrl}',
-                                                fit: BoxFit.cover, height: 250, width: ResponsiveHelper.isDesktop(context) ? 253 : MediaQuery.of(context).size.width * 0.92,
+                                                fit: BoxFit.cover, height: 250, width:  MediaQuery.of(context).size.width * 0.92,
                                                 isRestaurant: true,
 
                                               ),

@@ -34,13 +34,13 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDesktop = ResponsiveHelper.isDesktop(context);
+
     final double xyz = MediaQuery.of(context).size.width-1170;
     final double realSpaceNeeded = xyz/2;
 
     return SliverAppBar(
-      expandedHeight: isDesktop ? 350 : hasCoupon ? 300 : 300,
-      toolbarHeight: isDesktop ? 150 : 90,
+      expandedHeight:  hasCoupon ? 300 : 300,
+      toolbarHeight:  90,
       pinned: true, floating: false, elevation: 0.5,
       backgroundColor: Theme.of(context).cardColor,
       leadingWidth: 80,
@@ -73,17 +73,10 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                 decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),
                 child: InkWell(
                   onTap: (){
-                    if(isDesktop) {
-                      // String? hostname = html.window.location.hostname;
-                      // String protocol = html.window.location.protocol;
-                      // String shareUrl = '$protocol//$hostname${restController.filteringUrl(restaurant.slug ?? '')}';
-                      String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
-                      Clipboard.setData(ClipboardData(text: shareUrl));
-                      showCustomSnackBar('restaurant_url_copied'.tr, isError: false);
-                    } else {
+
                       String shareUrl = '${AppConstants.webHostedUrl}${restController.filteringUrl(restaurant.slug ?? '')}';
                       Share.share(shareUrl);
-                    }
+
                   },
                   child: CustomAssetImageWidget( Images.share , height: 20, width: 20),
                 ),
@@ -94,7 +87,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
 
         ],
       ),
-      leading: !isDesktop ? IconButton(
+      leading:  IconButton(
         icon:Container(
           // width: 20, // Adjust size as needed
           // height: 20,
@@ -115,21 +108,21 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
           ),
         ),
         onPressed: () => Get.back(),
-      ) : const SizedBox(),
+      ) ,
 
 
       flexibleSpace: GetBuilder<CouponController>(
         builder: (couponController) {
           bool hasCoupons = couponController.couponList != null && couponController.couponList!.isNotEmpty;
           return Container(
-            margin: isDesktop ? EdgeInsets.symmetric(horizontal: realSpaceNeeded) : EdgeInsets.zero,
+            margin:  EdgeInsets.zero,
             child: FlexibleSpaceBar(
               titlePadding: EdgeInsets.zero,
               centerTitle: true,
-              expandedTitleScale: isDesktop ? 1 : 1.1,
+              expandedTitleScale: 1.1,
               title: CustomizableSpaceBarWidget(
                 builder: (context, scrollingRate) {
-                  return !isDesktop ? Container(
+                  return  Container(
                     color: Theme.of(context).cardColor.withOpacity(scrollingRate),
                     padding: EdgeInsets.only(
                       bottom: 0,
@@ -160,8 +153,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                     Positioned(
                                       top:  scrollingRate == 0.0  ? 30 : 10 ,
                                       left:  scrollingRate == 0.0 ? 25 : Get.find<LocalizationController>().isLtr ? 30 : 50,
-                                      child: !isDesktop
-                                          ? Container(
+                                      child:Container(
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 border: Border.all(
@@ -227,7 +219,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                 ]),
                                               ),
                                             )
-                                          : const SizedBox(),
+
                                     ),
 
                                     Positioned(
@@ -300,9 +292,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                         style: robotoRegular.copyWith(
                                                           fontSize: Dimensions.fontSizeDefault -
                                                               (scrollingRate *
-                                                                  (isDesktop
-                                                                      ? 2
-                                                                      : Dimensions.fontSizeSmall)),
+                                                                  ( Dimensions.fontSizeSmall)),
                                                           color: Theme.of(context).textTheme.bodyLarge!.color,
                                                         ),
                                                       ),
@@ -348,9 +338,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                           style: robotoRegular.copyWith(
                                                             fontSize: Dimensions.fontSizeDefault -
                                                                 (scrollingRate *
-                                                                    (isDesktop
-                                                                        ? 2
-                                                                        : Dimensions.fontSizeSmall)),
+                                                                    (Dimensions.fontSizeSmall)),
                                                             color:
                                                             Theme.of(context).textTheme.bodyLarge!.color,
                                                           ),
@@ -388,9 +376,7 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                                         style: robotoMedium.copyWith(
                                                           fontSize: Dimensions.fontSizeDefault -
                                                               (scrollingRate *
-                                                                  (isDesktop
-                                                                      ? 2
-                                                                      : Dimensions.fontSizeSmall)),
+                                                                  ( Dimensions.fontSizeSmall)),
                                                           color: Theme.of(context).textTheme.bodyLarge!.color,
                                                         ),
                                                       ),
@@ -425,107 +411,11 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ) : Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Container(
-                      height: restaurant.announcementActive! ? 200 : 160,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                        boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 10, offset: const Offset(0, 1))],
-                      ),
-                      margin: EdgeInsets.symmetric(horizontal: hasCoupons ? Dimensions.paddingSizeDefault : 200, vertical: Dimensions.paddingSizeSmall),
-                      child: Column(
-                        children: [
-                          restaurant.announcementActive != null && restaurant.announcementActive! && restaurant.announcementMessage != null ? Container(
-                            height: 40 - (scrollingRate * 40),
-                            padding: EdgeInsets.only(
-                              left: Get.find<LocalizationController>().isLtr ? 250 : 20,
-                              right: Get.find<LocalizationController>().isLtr ? 20 : 250,
-                            ),
-                            decoration: const BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
-                            ),
-                            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                              Image.asset(Images.announcement, height: 26, width: 26),
-                              const SizedBox(width: Dimensions.paddingSizeSmall),
-
-                              Flexible(
-                                child: Marquee(
-                                  text: restaurant.announcementMessage!,
-                                  style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).cardColor),
-                                  blankSpace: 20.0,
-                                  velocity: 100.0,
-                                  accelerationDuration: const Duration(seconds: 5),
-                                  decelerationDuration: const Duration(milliseconds: 500),
-                                  accelerationCurve: Curves.linear,
-                                  decelerationCurve: Curves.easeOut,
-                                ),
-                              ),
-                            ]),
-                          ) : const SizedBox(),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Row(children: [
-
-                                  SizedBox(width: 250 /*(context.width * 0.17)*/ - (scrollingRate * 90)),
-
-                                  Expanded(child: InfoViewWidget(restaurant: restaurant, restController: restController, scrollingRate: scrollingRate)),
-                                  const SizedBox(width: Dimensions.paddingSizeSmall),
-
-                                  hasCoupons ? Expanded(child: CouponViewWidget(scrollingRate: scrollingRate)) : const SizedBox(),
-
-                                ]),
-
-                                Positioned(left: Get.find<LocalizationController>().isLtr ? 30 : null, right: Get.find<LocalizationController>().isLtr ? null : 30, top: - 80 + (scrollingRate * 77), child: Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Theme.of(context).cardColor,
-                                    border: Border.all(color: Theme.of(context).primaryColor, width: 0.2),
-                                    boxShadow: [BoxShadow(color: Theme.of(context).primaryColor.withOpacity(0.3), blurRadius: 10)]
-                                  ),
-                                  padding: const EdgeInsets.all(2),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(500),
-                                    child: Stack(children: [
-                                      CustomImageWidget(
-                                        image: '${restaurant.logoFullUrl}',
-                                        height: 200 - (scrollingRate * 90), width: 200 - (scrollingRate * 90), fit: BoxFit.cover,
-                                        isRestaurant: true,
-                                      ),
-                                      restController.isRestaurantOpenNow(restaurant.active!, restaurant.schedules) ? const SizedBox() : Positioned(
-                                        left: 0, right: 0, bottom: 0,
-                                        child: Container(
-                                          height: 30,
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                            borderRadius: const BorderRadius.vertical(bottom: Radius.circular(Dimensions.radiusSmall)),
-                                            color: Colors.black.withOpacity(0.6),
-                                          ),
-                                          child: Text(
-                                            'closed_now'.tr, textAlign: TextAlign.center,
-                                            style: robotoRegular.copyWith(color: Colors.white, fontSize: Dimensions.fontSizeSmall),
-                                          ),
-                                        ),
-                                      ),
-                                    ]),
-                                  ),
-                                ))
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  ) ;
                 },
               ),
               background: Container(
-                margin: EdgeInsets.only(bottom: isDesktop ? 100 : (hasCoupon ? 100 : 100)),
+                margin: EdgeInsets.only(bottom:  (hasCoupon ? 100 : 100)),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.vertical(bottom: Radius.circular(Dimensions.radiusLarge)),
                   child: CustomImageWidget(

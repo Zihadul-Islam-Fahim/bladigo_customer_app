@@ -59,8 +59,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
 
   Future<void> _initDataCall() async {
 
-WidgetsBinding.instance.addPostFrameCallback((_) async
-    {
+// WidgetsBinding.instance.addPostFrameCallback((_) async
+//     {
 
 
 
@@ -94,14 +94,14 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
 
       // Get.find<RestaurantController>().setSubCategoryList(Get.find<RestaurantController>().restaurant!.categoryId!);
       // Get.find<CategoryController>().getSubCategoryList(Get.find<RestaurantController>().restaurant!.categoryId.toString());
-    });
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
-    bool isDesktop = ResponsiveHelper.isDesktop(context);
+   
     return Scaffold(
-        appBar: isDesktop ? const WebMenuBar() : null,
+
         endDrawer: const MenuDrawerWidget(),
         endDrawerEnableOpenDragGesture: false,
         backgroundColor: Theme.of(context).cardColor,
@@ -126,9 +126,11 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
               bool hasCoupon = (couponController.couponList != null &&
                   couponController.couponList!.isNotEmpty);
 
-              return (restController.restaurant != null &&
-                      restController.restaurant!.name != null &&
-                      categoryController.categoryList != null)
+              return ( restController.isLoading==false
+                  // restController.restaurant != null &&
+                  //     restController.restaurant!.name != null &&
+                  //     categoryController.categoryList != null
+              )
                   ? CustomScrollView(
                       physics: const AlwaysScrollableScrollPhysics(),
                       controller: scrollController,
@@ -149,8 +151,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
 
                         SliverToBoxAdapter(
 
-                          child: !isDesktop
-                              ? Row(
+                          child:  Row(
                                 children: [
                                   const SizedBox(
                                       width: Dimensions.paddingSizeSmall),
@@ -253,36 +254,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
 
                                 ],
                               )
-                              : InkWell(
-                                  onTap: () async {
-                                    await Get.toNamed(RouteHelper
-                                        .getSearchRestaurantProductRoute(
-                                            restaurant!.id));
-                                    if (restController.isSearching) {
-                                      restController.changeSearchStatus();
-                                    }
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 1,
-                                          color:
-                                              Theme.of(context).primaryColor),
-                                      borderRadius: BorderRadius.circular(
-                                          Dimensions.radiusDefault),
-                                      color: Theme.of(context)
-                                          .primaryColor
-                                          .withOpacity(0.1),
-                                    ),
-                                    padding: const EdgeInsets.all(
-                                        Dimensions.paddingSizeExtraSmall),
-                                    child: Image.asset(Images.search,
-                                        height: 24,
-                                        width: 24,
-                                        color: Theme.of(context).primaryColor,
-                                        fit: BoxFit.cover),
-                                  ),
-                                ),
+
                         ),
 
                         SliverToBoxAdapter(
@@ -499,11 +471,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                                 ]),
                                               ),
                                               SizedBox(
-                                                height:
-                                                    ResponsiveHelper.isDesktop(
-                                                            context)
-                                                        ? 307
-                                                        : 280,
+                                                height: 280,
                                                 width: context.width,
                                                 child: ListView.builder(
                                                   shrinkWrap: true,
@@ -537,9 +505,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                                         isBestItem: false,
                                                         isPopularNearbyItem:
                                                             false,
-                                                        width: ResponsiveHelper.isDesktop(context)
-                                                            ? 200
-                                                            : MediaQuery.of(context).size.width * 0.43,
+                                                        width:  MediaQuery.of(context).size.width * 0.43,
                                                       ),
                                                     );
                                                   },
@@ -563,9 +529,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
                                       width: Dimensions.webMaxWidth,
                                       decoration: BoxDecoration(
                                         color: Theme.of(context).cardColor,
-                                        boxShadow: isDesktop
-                                            ? []
-                                            : [
+                                        boxShadow: [
                                                 BoxShadow(
                                                     color: Colors.grey
                                                         .withOpacity(0.1),
@@ -765,7 +729,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) async
         }),
         bottomNavigationBar:
             GetBuilder<CartController>(builder: (cartController) {
-          return cartController.cartList.isNotEmpty && !isDesktop
+          return cartController.cartList.isNotEmpty && ResponsiveHelper.isMobile(context)
               ? BottomCartWidget(
                   restaurantId:
                       cartController.cartList[0].product!.restaurantId!)

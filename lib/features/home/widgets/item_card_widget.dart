@@ -361,7 +361,7 @@ class ItemCardWidget extends StatelessWidget {
                       Flexible(
                           child: Text(product.name ?? '',
                               style: robotoMedium.copyWith(
-                                fontSize: 18,fontWeight: FontWeight.bold
+                                fontSize: 17,fontWeight: FontWeight.bold
                               ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1)),

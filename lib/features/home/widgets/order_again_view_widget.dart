@@ -18,7 +18,7 @@ class OrderAgainViewWidget extends StatelessWidget {
       return (restController.orderAgainRestaurantList != null && restController.orderAgainRestaurantList!.isNotEmpty) ? Padding(
         padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context) ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeLarge),
         child: SizedBox(
-          height: ResponsiveHelper.isDesktop(context) ? 236 : 230,
+          height:  230,
           width: Dimensions.webMaxWidth,
           child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Padding(
@@ -42,7 +42,7 @@ class OrderAgainViewWidget extends StatelessWidget {
             const SizedBox(height: Dimensions.paddingSizeDefault),
 
             SizedBox(
-              height: ResponsiveHelper.isDesktop(context) ? 155 : 150,
+              height: 150,
               child: ListView.builder(
                 itemCount: restController.orderAgainRestaurantList!.length,
                 padding: EdgeInsets.only(right: ResponsiveHelper.isMobile(context) ? Dimensions.paddingSizeDefault : 0),

@@ -49,7 +49,7 @@ class ProductWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool desktop = ResponsiveHelper.isDesktop(context);
+
     double? discount;
     String? discountType;
     bool isAvailable;
@@ -85,7 +85,7 @@ class ProductWidget extends StatelessWidget {
         //vertical: desktop ? 0 : Dimensions.paddingSizeExtraSmall
       ),
       child: Container(
-        margin: desktop ? null : const EdgeInsets.only(bottom: 2),
+        margin: const EdgeInsets.only(bottom: 2),
         decoration: BoxDecoration(
 
           borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
@@ -148,12 +148,10 @@ class ProductWidget extends StatelessWidget {
                               child: CustomImageWidget(
                                 image:
                                     '${isRestaurant ? restaurant!.logoFullUrl : product!.imageFullUrl}',
-                                height: desktop
-                                    ? 120
-                                    : length == null
+                                height: length == null
                                         ? 100
                                         : 170,
-                                width: desktop ? 120 : 190,
+                                width:  190,
                                 fit: BoxFit.cover,
                                 isFood: !isRestaurant,
                                 isRestaurant: isRestaurant,
@@ -163,12 +161,10 @@ class ProductWidget extends StatelessWidget {
                           : isAvailable
                           ? const SizedBox()
                           : Container(
-                        height: desktop
-                            ? 120
-                            : length == null
+                        height: length == null
                             ? 100
                             : 110,
-                        width: desktop ? 120 : 110,
+                        width: 110,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               Dimensions.radiusDefault),
@@ -183,8 +179,7 @@ class ProductWidget extends StatelessWidget {
                             : false,
                         fromTop: Dimensions.paddingSizeExtraSmall,
                         fromLeft: isAvailable ? -7 : -3,
-                        paddingVertical:
-                        ResponsiveHelper.isDesktop(context) ? 5 : 10,
+                        paddingVertical: 10,
                       )
                           : const SizedBox(),
                       isAvailable

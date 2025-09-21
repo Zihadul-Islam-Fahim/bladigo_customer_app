@@ -48,7 +48,7 @@ class CuisineViewWidget extends StatelessWidget {
                 itemCount: cuisineController.cuisineModel!.cuisines!.length > 5  ? 6 : cuisineController.cuisineModel!.cuisines!.length,
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: ResponsiveHelper.isMobile(context) ? 3 : ResponsiveHelper.isDesktop(context) ? 7 : 6,
+                  crossAxisCount: 3,
                   mainAxisSpacing: Dimensions.paddingSizeExtraSmall,  crossAxisSpacing: Dimensions.paddingSizeExtraSmall,
                   childAspectRatio: 0.82
 

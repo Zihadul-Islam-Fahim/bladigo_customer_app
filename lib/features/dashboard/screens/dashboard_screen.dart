@@ -58,8 +58,7 @@ class DashboardScreenState extends State<DashboardScreen> {
 
     if (_isLogin) {
       if (Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 &&
-          Get.find<LoyaltyController>().getEarningPint().isNotEmpty &&
-          !ResponsiveHelper.isDesktop(Get.context)) {
+          Get.find<LoyaltyController>().getEarningPint().isNotEmpty ) {
         Future.delayed(
             const Duration(seconds: 1),
             () => showAnimatedDialog(
@@ -92,16 +91,7 @@ class DashboardScreenState extends State<DashboardScreen> {
         Get.find<DashboardController>().getRegistrationSuccessfulSharedPref();
     if (canShowBottomSheet) {
       Future.delayed(const Duration(seconds: 1), () {
-        ResponsiveHelper.isDesktop(Get.context)
-            ? Get.dialog(const Dialog(child: RegistrationSuccessBottomSheet()))
-                .then((value) {
-                Get.find<DashboardController>()
-                    .saveRegistrationSuccessfulSharedPref(false);
-                Get.find<DashboardController>()
-                    .saveIsRestaurantRegistrationSharedPref(false);
-                setState(() {});
-              })
-            : showModalBottomSheet(
+         showModalBottomSheet(
                 context: Get.context!,
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,

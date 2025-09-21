@@ -17,15 +17,11 @@ import 'package:stackfood_multivendor/features/home/widgets/banner_view_widget.d
 import 'package:stackfood_multivendor/features/home/widgets/best_review_item_view_widget.dart';
 import 'package:stackfood_multivendor/features/home/widgets/cuisine_view_widget.dart';
 import 'package:stackfood_multivendor/features/home/widgets/enjoy_off_banner_view_widget.dart';
-import 'package:stackfood_multivendor/features/home/widgets/location_banner_view_widget.dart';
-import 'package:stackfood_multivendor/features/home/widgets/new_on_stackfood_view_widget.dart';
 import 'package:stackfood_multivendor/features/home/widgets/order_again_view_widget.dart';
 import 'package:stackfood_multivendor/features/home/widgets/popular_foods_nearby_view_widget.dart';
 import 'package:stackfood_multivendor/features/home/widgets/popular_restaurants_view_widget.dart';
-import 'package:stackfood_multivendor/features/home/widgets/refer_banner_view_widget.dart';
 import 'package:stackfood_multivendor/features/home/screens/theme1_home_screen.dart';
 import 'package:stackfood_multivendor/features/home/widgets/today_trends_view_widget.dart';
-import 'package:stackfood_multivendor/features/home/widgets/what_on_your_mind_view_widget.dart';
 import 'package:stackfood_multivendor/features/language/controllers/localization_controller.dart';
 import 'package:stackfood_multivendor/features/order/controllers/order_controller.dart';
 import 'package:stackfood_multivendor/features/restaurant/controllers/restaurant_controller.dart';
@@ -54,9 +50,6 @@ import 'package:stackfood_multivendor/common/widgets/web_menu_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../common/widgets/app_gradient_bg.dart';
-import '../../../common/widgets/custom_ink_well_widget.dart';
-import '../../profile/widgets/profile_card_widget.dart';
 import '../../splash/controllers/theme_controller.dart';
 import '../widgets/services_section.dart';
 
@@ -146,20 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _showReferBottomSheet() {
-    ResponsiveHelper.isDesktop(context)
-        ? Get.dialog(
-            Dialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(Dimensions.radiusExtraLarge)),
-              insetPadding: const EdgeInsets.all(22),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: const ReferBottomSheetWidget(),
-            ),
-            useSafeArea: false,
-          ).then((value) =>
-            Get.find<SplashController>().saveReferBottomSheetStatus(false))
-        : showModalBottomSheet(
+   showModalBottomSheet(
             isScrollControlled: true,
             useRootNavigator: true,
             context: Get.context!,
@@ -188,8 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return GetBuilder<LocalizationController>(
           builder: (localizationController) {
         return Scaffold(
-          appBar:
-              ResponsiveHelper.isDesktop(context) ? const WebMenuBar() : null,
+
           endDrawer: const MenuDrawerWidget(),
           endDrawerEnableOpenDragGesture: false,
           backgroundColor: Theme.of(context).cardColor,
@@ -223,11 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         .getOrderAgainRestaurantList(true);
                   }
                 },
-                child: ResponsiveHelper.isDesktop(context)
-                    ? WebHomeScreen(
-                        scrollController: _scrollController,
-                      )
-                    : (Get.find<SplashController>().configModel!.theme == 2)
+                child:  (Get.find<SplashController>().configModel!.theme == 2)
                         ? Theme1HomeScreen(
                             scrollController: _scrollController,
                           )
@@ -241,8 +216,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ? homeController.showFavButton
                   ? Padding(
                       padding: EdgeInsets.only(
-                          bottom: ResponsiveHelper.isDesktop(context) ? 50 : 0,
-                          right: ResponsiveHelper.isDesktop(context) ? 20 : 0),
+                          bottom:  0,
+                          right:  0),
                       child: InkWell(
                         onTap: () => Get.dialog(const CashBackDialogWidget()),
                         child: const CashBackLogoWidget(),
@@ -273,9 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
           floating: false,
           elevation: 0,
           /*automaticallyImplyLeading: false,*/
-          backgroundColor: ResponsiveHelper.isDesktop(context)
-              ? Colors.transparent
-              : Theme.of(context).primaryColor,
+          backgroundColor:  Theme.of(context).primaryColor,
           flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.zero,
               centerTitle: true,
@@ -505,9 +478,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Center(
             child: FooterViewWidget(
               child: Padding(
-                padding: ResponsiveHelper.isDesktop(context)
-                    ? EdgeInsets.zero
-                    : const EdgeInsets.only(
+                padding:  const EdgeInsets.only(
                         bottom: Dimensions.paddingSizeOverLarge),
                 child:
                     AllRestaurantsWidget(scrollController: _scrollController),

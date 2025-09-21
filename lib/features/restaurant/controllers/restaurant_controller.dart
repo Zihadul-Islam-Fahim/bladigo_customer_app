@@ -384,9 +384,11 @@ class RestaurantController extends GetxController implements GetxService {
 
   Future<Restaurant?> getRestaurantDetails(Restaurant restaurant,
       {bool fromCart = false, String slug = ''}) async {
+
     // _categoryIndex = 0;
     _subCategoryIndex = 0;
     if (restaurant.name != null) {
+
       _restaurant = restaurant;
     } else {
       _isLoading = true;

@@ -53,7 +53,7 @@ class BestReviewItemViewWidget extends StatelessWidget {
                           child: ItemCardWidget(
                             isBestItem: true,
                             product: reviewController.reviewedProductList![index],
-                            width: ResponsiveHelper.isDesktop(context) ? 200 : 190,
+                            width:  190,
 
                           ),
                         );

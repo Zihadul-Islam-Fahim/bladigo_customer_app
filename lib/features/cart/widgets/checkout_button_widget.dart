@@ -55,27 +55,26 @@ class CheckoutButtonWidget extends StatelessWidget {
             (restaurantController.restaurant != null &&
                     restaurantController.restaurant!.freeDelivery != null &&
                     !restaurantController.restaurant!.freeDelivery! &&
-                    Get.find<SplashController>()
-                            .configModel!
-                            .freeDeliveryOver !=
-                        null &&
-                    percentage < 1)
-                ? Padding(
+                    Get.find<SplashController>().configModel!.freeDeliveryOver != null &&
+                    percentage < 1
+            )
+                ?
+            Padding(
                     padding: EdgeInsets.only(
                         bottom: isDesktop ? Dimensions.paddingSizeLarge : 0),
                     child: Column(children: [
-                      // Row(children: [
-                      //   Image.asset(Images.percentTag, height: 20, width: 20),
-                      //   const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                      //
-                      //   PriceConverter.convertAnimationPrice(
-                      //     Get.find<SplashController>().configModel!.freeDeliveryOver! - cartController.subTotal,
-                      //     textStyle: robotoMedium.copyWith(color: Theme.of(context).primaryColor),
-                      //   ),
-                      //   const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                      //
-                      //   Text('more_for_free_delivery'.tr, style: robotoMedium.copyWith(color: Theme.of(context).disabledColor)),
-                      // ]),
+                      Row(children: [
+                        Image.asset(Images.percentTag, height: 20, width: 20),
+                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                        PriceConverter.convertAnimationPrice(
+                          Get.find<SplashController>().configModel!.freeDeliveryOver! - cartController.subTotal,
+                          textStyle: robotoMedium.copyWith(color: Theme.of(context).primaryColor),
+                        ),
+                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                        Text('more_for_free_delivery'.tr, style: robotoMedium.copyWith(color: Theme.of(context).disabledColor)),
+                      ]),
                       const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
                       // LinearProgressIndicator(
@@ -84,7 +83,8 @@ class CheckoutButtonWidget extends StatelessWidget {
                       // ),
                     ]),
                   )
-                : const SizedBox(),
+                :  SizedBox(),
+
 
             // !isDesktop
             //     ? Padding(

@@ -112,14 +112,10 @@ class ProductViewWidget extends StatelessWidget {
               key: UniqueKey(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: Dimensions.paddingSizeLarge,
-                mainAxisSpacing: ResponsiveHelper.isDesktop(context)
-                    ? Dimensions.paddingSizeLarge
-                    : 0.01,
+                mainAxisSpacing:  0.01,
                 //childAspectRatio: ResponsiveHelper.isDesktop(context) && !isWebRestaurant! ? 3 : isWebRestaurant! ? 1.5 : showTheme1Restaurant ? 1.9 : 3.3,
                 mainAxisExtent:
-                    ResponsiveHelper.isDesktop(context) && !isWebRestaurant!
-                        ? 142
-                        : isWebRestaurant!
+                    isWebRestaurant!
                             ? 280
                             : showTheme1Restaurant
                                 ? 200

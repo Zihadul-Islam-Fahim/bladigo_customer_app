@@ -30,10 +30,7 @@ class _PopularFoodNearbyViewWidgetState extends State<PopularFoodNearbyViewWidge
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ResponsiveHelper.isDesktop(context) ?  Padding(
-                  padding: const EdgeInsets.only(bottom: 45),
-                  child: Text('popular_foods_nearby'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1)),
-                ): Padding(padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeLarge),
+                 Padding(padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault, bottom: Dimensions.paddingSizeLarge),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text('popular_foods_nearby'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, fontWeight: FontWeight.w600)),
                     ArrowIconButtonWidget(onTap: () => Get.toNamed(RouteHelper.getPopularFoodRoute(true))),
@@ -42,18 +39,15 @@ class _PopularFoodNearbyViewWidgetState extends State<PopularFoodNearbyViewWidge
                 ),
 
                 Row(children: [
-                    ResponsiveHelper.isDesktop(context) ? ArrowIconButtonWidget(
-                      isLeft: true,
-                      onTap: ()=> carouselController.previousPage(),
-                    ) : const SizedBox(),
+
 
                     productController.popularProductList != null ? Expanded(
                       child: CarouselSlider.builder(
                         carouselController: carouselController,
                         options: CarouselOptions(
                           height: ResponsiveHelper.isMobile(context) ? 300 : 300,
-                          viewportFraction: ResponsiveHelper.isDesktop(context) ? 0.2 : 0.47,
-                          enlargeFactor: ResponsiveHelper.isDesktop(context) ? 0.2 : 0.35,
+                          viewportFraction:  0.47,
+                          enlargeFactor:  0.35,
                           autoPlay: true,
                           enlargeCenterPage: true,
                           disableCenter: true,
@@ -70,9 +64,9 @@ class _PopularFoodNearbyViewWidgetState extends State<PopularFoodNearbyViewWidge
                       ),
                     ) : const ItemCardShimmer(isPopularNearbyItem: true),
 
-                    ResponsiveHelper.isDesktop(context) ? ArrowIconButtonWidget(
-                      onTap: () => carouselController.nextPage(),
-                    ) : const SizedBox(),
+                    // ResponsiveHelper.isDesktop(context) ? ArrowIconButtonWidget(
+                    //   onTap: () => carouselController.nextPage(),
+                    // ) : const SizedBox(),
                   ],
                 ),
 

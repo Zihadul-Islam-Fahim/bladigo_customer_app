@@ -48,7 +48,7 @@ class _TodayTrendsViewWidgetState extends State<TodayTrendsViewWidget> {
         return (campaignController.itemCampaignList != null && campaignController.itemCampaignList!.isEmpty) ? const SizedBox() : Padding(
           padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.isMobile(context)  ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeLarge),
           child: Container(
-            height: ResponsiveHelper.isDesktop(context) ? 406 : 410,
+            height: 410,
             width: Dimensions.webMaxWidth,
             color: Theme.of(context).primaryColor.withOpacity(0.1),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -65,7 +65,7 @@ class _TodayTrendsViewWidgetState extends State<TodayTrendsViewWidget> {
 
                campaignController.itemCampaignList != null ? Expanded(
                   child: SizedBox(
-                    height: ResponsiveHelper.isDesktop(context) ? 245 : 240,
+                    height:  240,
                     child: ListView.builder(
                       controller: _scrollController,
                       shrinkWrap: true,
@@ -77,7 +77,7 @@ class _TodayTrendsViewWidgetState extends State<TodayTrendsViewWidget> {
                         return Padding(
                           padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault),
                           child: ItemCardWidget(
-                            width: ResponsiveHelper.isDesktop(context) ? 200 : MediaQuery.of(context).size.width * 0.53,
+                            width:  MediaQuery.of(context).size.width * 0.53,
                             product: campaignController.itemCampaignList![index],
                             isBestItem: false,
                             isPopularNearbyItem: false,

@@ -460,7 +460,7 @@ class AdvertisementShimmer extends StatelessWidget {
           color: Colors.blue.withOpacity(0.05),
         ),
         margin:  EdgeInsets.only(
-          top: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge * 3.5 : 0 ,
+          top:  0 ,
           right: Get.find<LocalizationController>().isLtr && ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0,
           left: !Get.find<LocalizationController>().isLtr && ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0,
         ),
@@ -492,11 +492,11 @@ class AdvertisementShimmer extends StatelessWidget {
               SizedBox(
                 height: 250,
                 child: ListView.builder(
-                  itemCount: ResponsiveHelper.isDesktop(context) ? 3 : 1,
+                  itemCount:  1,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return SizedBox(
-                      width: ResponsiveHelper.isDesktop(context) ? (Dimensions.webMaxWidth - 20) / 3 : MediaQuery.of(context).size.width,
+                      width:  MediaQuery.of(context).size.width,
                       child: Stack(
                         clipBehavior: Clip.none,
                         children: [

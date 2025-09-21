@@ -57,7 +57,7 @@ class _BadWeatherWidgetState extends State<BadWeatherWidget> {
         color: Theme.of(context).primaryColor.withOpacity(0.7),
       ),
       padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
-      margin: EdgeInsets.symmetric(horizontal: ResponsiveHelper.isDesktop(context) ? 0 : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
+      margin: EdgeInsets.symmetric(horizontal:  Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
       child: Row(
         children: [
           Image.asset(Images.weather, height: 50, width: 50),
