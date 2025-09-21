@@ -98,7 +98,7 @@ class OrderTrackingScreenState extends State<OrderTrackingScreen> with WidgetsBi
             GoogleMap(
               initialCameraPosition: CameraPosition(target: LatLng(
                 double.parse(track.deliveryAddress!.latitude!), double.parse(track.deliveryAddress!.longitude!),
-              ), zoom: 16),
+              ), zoom: 32),
               minMaxZoomPreference: const MinMaxZoomPreference(0, 16),
               zoomControlsEnabled: true,
               markers: _markers,
@@ -187,7 +187,8 @@ class OrderTrackingScreenState extends State<OrderTrackingScreen> with WidgetsBi
         width: 120, imagePath: Images.deliveryManMarker,
       );
       BitmapDescriptor destinationImageData = await MarkerHelper.convertAssetToBitmapDescriptor(
-        width: 120, imagePath: Images.myLocationMarker,
+        width: 120,
+        imagePath: Images.myLocationMarker,
       );
       // Uint8List restaurantImageData = await convertAssetToUnit8List(Images.restaurantMarker, width: 120);
       // Uint8List deliveryBoyImageData = await convertAssetToUnit8List(Images.deliveryManMarker, width: 120);
@@ -261,6 +262,9 @@ class OrderTrackingScreenState extends State<OrderTrackingScreen> with WidgetsBi
           zIndex: 2,
           flat: true,
           anchor: const Offset(0.5, 0.5),
+          infoWindow: InfoWindow(
+            title: 'Current Location',
+          ),
           position: LatLng(
             double.parse(currentAddress.latitude!),
             double.parse(currentAddress.longitude!),
@@ -268,6 +272,9 @@ class OrderTrackingScreenState extends State<OrderTrackingScreen> with WidgetsBi
           icon: destinationImageData,
         ));
         setState(() {});
+        Future.delayed(const Duration(milliseconds: 300), () {
+          _controller?.showMarkerInfoWindow(const MarkerId('current_location'),);
+        });
       }
 
       if(currentAddress == null){
@@ -275,10 +282,12 @@ class OrderTrackingScreenState extends State<OrderTrackingScreen> with WidgetsBi
           markerId: const MarkerId('destination'),
           position: LatLng(double.parse(addressModel.latitude!), double.parse(addressModel.longitude!)),
           infoWindow: InfoWindow(
-            title: 'Destination',
-            snippet: addressModel.address,
+
+            title: 'Order will be delivered here',
+            // snippet: addressModel.address,
           ),
           icon: destinationImageData,
+
         )) : const SizedBox();
       }
 
@@ -304,6 +313,10 @@ class OrderTrackingScreenState extends State<OrderTrackingScreen> with WidgetsBi
       )) : const SizedBox();
     }catch(_) {}
     setState(() {});
+    Future.delayed(const Duration(milliseconds: 300), () {
+      _controller?.showMarkerInfoWindow(const MarkerId('destination'),);
+    });
+
   }
   //
   // _getPolyline(double destinationLat, double destinationLng, double restaurantLat, double restaurantLng) async {
