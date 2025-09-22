@@ -108,7 +108,7 @@ class _PickMapScreenState extends State<PickMapScreen> {
                       )
                     ],
                   ),
-                  child: Text("Order_will_be_delivered_here",style: robotoBlack.copyWith(fontSize: 15,color: Colors.white),),),
+                  child: Text("Order_will_be_delivered_here".tr,style: robotoBlack.copyWith(fontSize: 15,color: Colors.white),),),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 8,vertical: 4),
                     child: Image.asset(Images.pickMarker, height: 50, width: 50)),

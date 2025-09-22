@@ -164,6 +164,7 @@ class DashboardScreenState extends State<DashboardScreen> {
       },
       child: Scaffold(
         key: _scaffoldKey,
+        extendBody: true,
         floatingActionButton:
             GetBuilder<OrderController>(builder: (orderController) {
           return ResponsiveHelper.isDesktop(context) || keyboardVisible
@@ -194,77 +195,78 @@ class DashboardScreenState extends State<DashboardScreen> {
                     );
         }),
         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: ResponsiveHelper.isDesktop(context)
-            ? const SizedBox()
-            : GetBuilder<OrderController>(builder: (orderController) {
+        bottomNavigationBar: GetBuilder<OrderController>(builder: (orderController) {
                 return (orderController.showBottomSheet &&
                         (orderController.runningOrderList != null &&
                             orderController.runningOrderList!.isNotEmpty &&
                             _isLogin))
                     ? const SizedBox()
-                    : BottomAppBar(
-                        elevation: 5,
-                        notchMargin: 8,
-                        height: 64,
-                        clipBehavior: Clip.antiAlias,
-                        shape: const CircularNotchedRectangle(),
-                        shadowColor: Theme.of(context).disabledColor,
-                        color: Theme.of(context).cardColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(
-                              Dimensions.paddingSizeExtraSmall),
-                          child: Row(children: [
-                            SizedBox(
-                              width: 12,
-                            ),
-                            KBottomNavItem(
-                              imageAsset: 'assets/image/home.png',
-                              selectedImage: 'assets/image/home_filled.png',
+                    : SafeArea(
+                      bottom: false,
+                      child: BottomAppBar(
+                          elevation: 5,
+                          notchMargin: 8,
+                          height: 60,
+                          clipBehavior: Clip.antiAlias,
+                          shape: const CircularNotchedRectangle(),
+                          shadowColor: Theme.of(context).disabledColor,
+                          color: Theme.of(context).cardColor,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                               horizontal:  Dimensions.paddingSizeExtraSmall),
+                            child: Row(children: [
+                              SizedBox(
+                                width: 12,
+                              ),
+                              KBottomNavItem(
+                                imageAsset: 'assets/image/home.png',
+                                selectedImage: 'assets/image/home_filled.png',
 
-                              label: 'Home'.tr,
-                              isSelected: _pageIndex == 0,
-                              onTap: () => _setPage(0),
+                                label: 'Home'.tr,
+                                isSelected: _pageIndex == 0,
+                                onTap: () => _setPage(0),
+                              ),
+                              Spacer(),
+                              KBottomNavItem(
+                                imageAsset: 'assets/image/my_order.png',
+                                selectedImage: 'assets/image/order_filled.png',
+                                label: 'my_orders'.tr,
+                                isSelected: _pageIndex == 4,
+                                onTap: () => _setPage(4),
+                              ),
+                              Spacer(),
+                              // const Expanded(child: SizedBox()),
+                              KBottomNavItem(
+                                imageAsset: 'assets/image/wallet_bottom.png',
+                                selectedImage: 'assets/image/wallet_bottom.png',
+                                label: 'wallet'.tr,
+                                isSelected: _pageIndex == 2,
+                                onTap: () => _setPage(2),
+                              ),
+                              Spacer(),
+                              KBottomNavItem(
+                                imageAsset: 'assets/image/fav.png',
+                                selectedImage: 'assets/image/fav_filled.png',
+                                label: 'Favorites'.tr,
+                                isSelected: _pageIndex == 1,
+                                onTap: () => _setPage(1),
+                              ),
+                              Spacer(),
+                              KBottomNavItem(
+                                imageAsset: 'assets/image/person.png',
+                                selectedImage: 'assets/image/person_filled.png',
+                                label: 'Profile'.tr,
+                                isSelected: _pageIndex == 5,
+                                onTap: () => _setPage(5),
+                              ),
+                              SizedBox(
+                                width: 12,
+                              )
+                            ],
                             ),
-                            Spacer(),
-                            KBottomNavItem(
-                              imageAsset: 'assets/image/my_order.png',
-                              selectedImage: 'assets/image/order_filled.png',
-                              label: 'my_orders'.tr,
-                              isSelected: _pageIndex == 4,
-                              onTap: () => _setPage(4),
-                            ),
-                            Spacer(),
-                            // const Expanded(child: SizedBox()),
-                            KBottomNavItem(
-                              imageAsset: 'assets/image/wallet_bottom.png',
-                              selectedImage: 'assets/image/wallet_bottom.png',
-                              label: 'wallet'.tr,
-                              isSelected: _pageIndex == 2,
-                              onTap: () => _setPage(2),
-                            ),
-                            Spacer(),
-                            KBottomNavItem(
-                              imageAsset: 'assets/image/fav.png',
-                              selectedImage: 'assets/image/fav_filled.png',
-                              label: 'Favorites'.tr,
-                              isSelected: _pageIndex == 1,
-                              onTap: () => _setPage(1),
-                            ),
-                            Spacer(),
-                            KBottomNavItem(
-                              imageAsset: 'assets/image/person.png',
-                              selectedImage: 'assets/image/person_filled.png',
-                              label: 'Profile'.tr,
-                              isSelected: _pageIndex == 5,
-                              onTap: () => _setPage(5),
-                            ),
-                            SizedBox(
-                              width: 12,
-                            )
-                          ],
                           ),
                         ),
-                      );
+                    );
               }),
         body: GetBuilder<OrderController>(builder: (orderController) {
           List<OrderModel> runningOrder =
