@@ -15,6 +15,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../../util/styles.dart';
+
 class PickMapScreen extends StatefulWidget {
   final bool fromSignUp;
   final bool fromSplash;
@@ -90,7 +92,28 @@ class _PickMapScreenState extends State<PickMapScreen> {
               style: Get.isDarkMode ? Get.find<ThemeController>().darkMap : Get.find<ThemeController>().lightMap,
             ),
 
-            Center(child: !locationController.loading ? Image.asset(Images.pickMarker, height: 50, width: 50)
+            Center(child: !locationController.loading ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4),
+                  decoration:BoxDecoration(
+                    color: Colors.black,borderRadius: BorderRadius.circular(6),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      )
+                    ],
+                  ),
+                  child: Text("Order_will_be_delivered_here",style: robotoBlack.copyWith(fontSize: 15,color: Colors.white),),),
+                Container(
+                    margin: EdgeInsets.symmetric(horizontal: 8,vertical: 4),
+                    child: Image.asset(Images.pickMarker, height: 50, width: 50)),
+              ],
+            )
                 : const CircularProgressIndicator()),
 
             Positioned(

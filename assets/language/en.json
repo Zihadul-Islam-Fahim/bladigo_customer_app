@@ -1215,7 +1215,8 @@
   "helping_dm": "Helping your delivery partner by adding tip",
   "delivery_location": "Delivery Address",
 
-  "location_details": "Location details"
+  "location_details": "Location details",
+  "Order_will_be_delivered_here": "Order will be delivered here"
 
 
 }

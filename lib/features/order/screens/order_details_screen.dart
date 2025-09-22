@@ -238,7 +238,6 @@ class OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBind
                         total: total, orderController: orderController, orderId: widget.orderId, contactNumber: widget.contactNumber,
                         extraPackagingAmount: extraPackagingCharge, referrerBonusAmount: referrerBonusAmount,
                       ),
-
                     ]),
                   )),
                 )),
