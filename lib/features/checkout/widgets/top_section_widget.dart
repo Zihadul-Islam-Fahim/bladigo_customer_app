@@ -263,7 +263,7 @@ class TopSectionWidget extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('delivery_option'.tr, style: robotoMedium.copyWith(fontSize: 20,fontWeight: FontWeight.bold)),
+                      Text('delivery_option'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge,fontWeight: FontWeight.bold)),
                       const SizedBox(height: Dimensions.paddingSizeDefault),
                       Container(
 
@@ -441,7 +441,7 @@ class TopSectionWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text('your_orders'.tr, style: robotoMedium.copyWith(
-                    fontSize: 20, fontWeight: FontWeight.bold)),
+                    fontSize: 16, fontWeight: FontWeight.bold)),
               ],
             ),
             Column(

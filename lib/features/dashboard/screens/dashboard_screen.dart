@@ -390,7 +390,7 @@ class KBottomNavItem extends StatelessWidget {
                   imageAsset!,
                   height: 24,
                   width: 24,
-            color: Colors.grey,
+            // color: Colors.grey,
 
                 )
               : Icon(

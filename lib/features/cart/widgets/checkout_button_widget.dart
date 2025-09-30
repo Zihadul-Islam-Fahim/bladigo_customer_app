@@ -104,29 +104,32 @@ class CheckoutButtonWidget extends StatelessWidget {
             //       )
             //     : const SizedBox(),
 
-            !isDesktop
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: Dimensions.paddingSizeSmall),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('subtotal'.tr,
-                            style: robotoMedium.copyWith(fontSize: 18,
-                                color: Theme.of(context).primaryColor)),
-                        PriceConverter.convertAnimationPrice(
-                            cartController.subTotal,
-                            textStyle: robotoRegular.copyWith(fontSize: 18,
-                                color: Theme.of(context).primaryColor)),
-                      ],
-                    ),
-                  )
-                : const SizedBox(),
+             // Padding(
+             //        padding: const EdgeInsets.symmetric(
+             //            vertical: Dimensions.paddingSizeSmall),
+             //        child: Row(
+             //          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             //          children: [
+             //            Text('subtotal'.tr,
+             //                style: robotoMedium.copyWith(fontSize: 18,
+             //                    color: Theme.of(context).primaryColor)),
+             //            PriceConverter.convertAnimationPrice(
+             //                cartController.subTotal,
+             //                textStyle: robotoRegular.copyWith(fontSize: 18,
+             //                    color: Theme.of(context).primaryColor)),
+             //          ],
+             //        ),
+             //      )
+
 
             GetBuilder<CartController>(builder: (cartController) {
               return CustomButtonWidget(
                 radius: 40,
+                productQuantity: 2,
+                hasPrice: true,
+                price: "MAD ${cartController.subTotal}",
                 buttonText: 'confirm_delivery_details'.tr,
+                // buttonText: "Checkout with ${cartController.cartList.l}",
 
                 onPressed: cartController.isLoading ||
                         restaurantController.restaurant == null

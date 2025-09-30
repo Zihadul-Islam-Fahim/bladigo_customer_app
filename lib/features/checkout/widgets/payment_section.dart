@@ -30,7 +30,7 @@ class PaymentSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeSmall),
       child: Column(children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text('choose_payment_method'.tr, style: robotoBlack.copyWith(fontSize: 20)),
+          Text('choose_payment_method'.tr, style: robotoBlack.copyWith(fontSize: Dimensions.fontSizeLarge)),
           SizedBox(height: Dimensions.paddingSizeDefault,)
 
           // InkWell(

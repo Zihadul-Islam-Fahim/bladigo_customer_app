@@ -141,7 +141,7 @@ class _DeliverySectionState extends State<DeliverySection> {
                                   Text('delivery_location'.tr,
                                       style: robotoMedium.copyWith(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20,
+                                        fontSize: Dimensions.fontSizeLarge,
                                       )),
                                   CustomInkWellWidget(
                                     onTap: () async {

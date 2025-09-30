@@ -32,7 +32,7 @@ class TimeSlotSection extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: isDesktop ? Dimensions.paddingSizeLarge : Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
-            Text('preference_time'.tr, style: robotoMedium.copyWith(fontSize: 20,fontWeight: FontWeight.bold)),
+            Text('preference_time'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge,fontWeight: FontWeight.bold)),
             const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
             JustTheTooltip(

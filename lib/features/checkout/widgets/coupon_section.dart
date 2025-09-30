@@ -57,7 +57,7 @@ class CouponSection extends StatelessWidget {
                       const SizedBox(width: Dimensions.paddingSizeSmall),
                       Text('add_coupon'.tr,
                           style: robotoRegular.copyWith(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
+                              fontSize: Dimensions.fontSizeLarge, fontWeight: FontWeight.bold)),
                     ]),
                   ),
                   InkWell(
