@@ -28,6 +28,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common/widgets/product_shimmer_widget.dart';
 import '../widgets/coupon_view_widget.dart';
 
 class RestaurantScreen extends StatefulWidget {
@@ -396,7 +397,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                           SizedBox(
                                             height: 280,
                                             width: context.width,
-                                            child:  ListView.builder(
+                                            child: ListView.builder(
                                               shrinkWrap: true,
                                               scrollDirection:
                                                   Axis.horizontal,

@@ -386,6 +386,9 @@ class RestaurantController extends GetxController implements GetxService {
       {bool fromCart = false, String slug = ''}) async {
 
     // _categoryIndex = 0;
+    _recommendedProductModel = null;
+    _restaurantProductModel = null;
+    _restaurantProducts = null;
     _subCategoryIndex = 0;
     if (restaurant.name != null) {
 
