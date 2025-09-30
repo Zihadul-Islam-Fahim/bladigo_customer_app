@@ -87,7 +87,6 @@ class SplashScreenState extends State<SplashScreen> {
           child: splashController.hasConnection ? Column(
             // mainAxisSize: MainAxisSize.max,
             children: [
-
               Expanded(child: Image.asset(Images.logo, fit: BoxFit.scaleDown,)),
             ],
           ) : NoInternetScreen(child: SplashScreen(notificationBody: widget.notificationBody, linkBody: widget.linkBody)),

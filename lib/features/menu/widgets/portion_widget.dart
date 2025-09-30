@@ -28,7 +28,7 @@ class PortionWidget extends StatelessWidget {
 
             suffix != null ? Container(
               decoration: BoxDecoration(
-                color: Color.fromRGBO(0, 158, 40, 1),
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
               ),
               padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall, horizontal: Dimensions.paddingSizeSmall),
