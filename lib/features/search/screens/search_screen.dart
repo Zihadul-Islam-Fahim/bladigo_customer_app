@@ -182,17 +182,19 @@ class SearchScreenState extends State<SearchScreen> {
                             border: Border.all(color: Theme.of(context).disabledColor.withOpacity(0.6)),
                           ),
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
-                            InkWell(
-                              onTap: () {
-                                _searchTextEditingController.text = historyData;
-                                searchController.searchData(historyData);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall),
-                                child: Text(
-                                  historyData,
-                                  style: robotoRegular.copyWith(color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.5)),
-                                  maxLines: 1, overflow: TextOverflow.ellipsis,
+                            Flexible(
+                              child: InkWell(
+                                onTap: () {
+                                  _searchTextEditingController.text = historyData;
+                                  searchController.searchData(historyData);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraSmall),
+                                  child: Text(
+                                    historyData,
+                                    style: robotoRegular.copyWith(color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.5)),
+                                    maxLines: 1, overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
                               ),
                             ),
