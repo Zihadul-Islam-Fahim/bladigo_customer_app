@@ -1,3 +1,4 @@
+import 'package:stackfood_multivendor/common/widgets/custom_image_widget.dart';
 import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
 import 'package:stackfood_multivendor/features/profile/controllers/profile_controller.dart';
 import 'package:stackfood_multivendor/features/wallet/controllers/wallet_controller.dart';
@@ -18,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
+import 'package:stackfood_multivendor/util/images.dart';
 import 'package:stackfood_multivendor/util/styles.dart';
 
 class WalletScreen extends StatefulWidget {
@@ -159,12 +161,12 @@ class _WalletScreenState extends State<WalletScreen> {
 
                   GetBuilder<WalletController>(builder: (walletController) {
                     return Column(children: [
-                      SizedBox(height: 120,),
+                      // SizedBox(height: 20,),
 
                       // WalletCardWidget(tooltipController: tooltipController),
-                      Center(child: Text("Wallet",style: robotoBold.copyWith(color: Colors.white,fontSize: 24),)),
+                      Center(child: Image.asset(Images.walletFeature,)),
 
-                      SizedBox(height: 100),
+                      // SizedBox(height: 10),
                       Container(
                         height: Get.height * 0.8,
                         decoration: BoxDecoration(

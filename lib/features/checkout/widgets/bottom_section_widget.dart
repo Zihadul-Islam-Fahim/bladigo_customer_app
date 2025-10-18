@@ -184,184 +184,177 @@ class BottomSectionWidget extends StatelessWidget {
       padding: !isDesktop ? const EdgeInsets.symmetric(horizontal : Dimensions.paddingSizeSmall) : EdgeInsets.zero,
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-        child: ExpansionTile(
-          controller: expansionTileController,
-          title: Text('order_summary'.tr, style: !isDesktop ? robotoMedium : robotoBold),
-          trailing: Icon(checkoutController.isExpanded ? Icons.arrow_drop_up_rounded : Icons.arrow_drop_down_rounded, size: 34, color: Theme.of(context).textTheme.bodyLarge!.color),
-          tilePadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-          onExpansionChanged: (value) => checkoutController.expandedUpdate(value),
-          initiallyExpanded: !isDesktop ? true : true,
-          children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: Padding(
+          padding: const  EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-              Divider(thickness: 0.5, color: Theme.of(context).hintColor.withOpacity(0.5)),
+            // Divider(thickness: 0.5, color: Theme.of(context).hintColor.withOpacity(0.5)),
 
-              SizedBox(height: !isDesktop ? Dimensions.paddingSizeSmall : 0),
+            SizedBox(height: !isDesktop ? Dimensions.paddingSizeLarge : 0),
 
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text(!checkoutController.subscriptionOrder ? 'subtotal'.tr : 'item_price'.tr, style: robotoRegular),
-                Text(PriceConverter.convertPrice(subTotal), style: robotoRegular, textDirection: TextDirection.ltr),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text(!checkoutController.subscriptionOrder ? 'subtotal'.tr : 'item_price'.tr, style: robotoRegular),
+              Text(PriceConverter.convertPrice(subTotal), style: robotoRegular, textDirection: TextDirection.ltr),
+            ]),
+            const SizedBox(height: Dimensions.paddingSizeSmall),
+
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text('discount'.tr, style: robotoRegular),
+              Row(children: [
+                Text('(-) ', style: robotoRegular),
+                PriceConverter.convertAnimationPrice(discount, textStyle: robotoRegular)
               ]),
-              const SizedBox(height: Dimensions.paddingSizeSmall),
+              // Text('(-) ${PriceConverter.convertPrice(discount)}', style: robotoRegular, textDirection: TextDirection.ltr),
+            ]),
+            const SizedBox(height: Dimensions.paddingSizeSmall),
 
+            (couponController.discount! > 0 || couponController.freeDelivery) ? Column(children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text('discount'.tr, style: robotoRegular),
-                Row(children: [
-                  Text('(-) ', style: robotoRegular),
-                  PriceConverter.convertAnimationPrice(discount, textStyle: robotoRegular)
-                ]),
-                // Text('(-) ${PriceConverter.convertPrice(discount)}', style: robotoRegular, textDirection: TextDirection.ltr),
-              ]),
-              const SizedBox(height: Dimensions.paddingSizeSmall),
-
-              (couponController.discount! > 0 || couponController.freeDelivery) ? Column(children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  Text('coupon_discount'.tr, style: robotoRegular),
-                  (couponController.coupon != null && couponController.coupon!.couponType == 'free_delivery') ? Text(
-                    'free_delivery'.tr, style: robotoRegular.copyWith(color: Theme.of(context).primaryColor),
-                  ) : Row(children: [
-                    Text('(-) ', style: robotoRegular),
-                    Text(
-                      PriceConverter.convertPrice(couponController.discount),
-                      style: robotoRegular, textDirection: TextDirection.ltr,
-                    )
-                  ]),
-                ]),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
-              ]) : const SizedBox(),
-
-              referralDiscount > 0 ? Column(children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  Text('referral_discount'.tr, style: robotoRegular),
-
-                  Text(
-                    '(-) ${PriceConverter.convertPrice(referralDiscount)}',
-                    style: robotoRegular, textDirection: TextDirection.ltr,
-                  ),
-                ]),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
-              ]) : const SizedBox(),
-
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Row(children: [
-                  Text('${'vat_tax'.tr} ${taxIncluded ? 'tax_included'.tr : ''}', style: robotoRegular),
-                  Text('($taxPercent%)', style: robotoRegular, textDirection: TextDirection.ltr),
-                ]),
-                Row(children: [
-                  Text('(+) ', style: robotoRegular),
-                  Text(PriceConverter.convertPrice(tax), style: robotoRegular, textDirection: TextDirection.ltr),
-                ]),
-              ]),
-              const SizedBox(height: Dimensions.paddingSizeSmall),
-
-              (checkoutController.orderType != 'take_away' && Get.find<SplashController>().configModel!.dmTipsStatus == 1 && !checkoutController.subscriptionOrder) ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('delivery_man_tips'.tr, style: robotoRegular),
-                  Row(children: [
-                    Text('(+) ', style: robotoRegular),
-                    PriceConverter.convertAnimationPrice(checkoutController.tips, textStyle: robotoRegular)
-                  ]),
-                  // Text('(+) ${PriceConverter.convertPrice(checkoutController.tips)}', style: robotoRegular, textDirection: TextDirection.ltr),
-                ],
-              ) : const SizedBox.shrink(),
-              SizedBox(height: checkoutController.orderType != 'take_away' && Get.find<SplashController>().configModel!.dmTipsStatus == 1 && !checkoutController.subscriptionOrder ? Dimensions.paddingSizeSmall : 0.0),
-
-              (extraPackagingAmount > 0) ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('extra_packaging'.tr, style: robotoRegular),
-                  Text('(+) ${PriceConverter.convertPrice(checkoutController.restaurant!.extraPackagingAmount!)}', style: robotoRegular, textDirection: TextDirection.ltr),
-                ],
-              ) : const SizedBox.shrink(),
-              SizedBox(height: extraPackagingAmount > 0 ? Dimensions.paddingSizeSmall : 0),
-
-              checkoutController.orderType != 'take_away' ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text('delivery_fee'.tr, style: robotoRegular),
-                checkoutController.distance == -1 ? Text(
-                  'calculating'.tr, style: robotoRegular.copyWith(color: Colors.red),
-                ) : (deliveryCharge == 0 || (couponController.coupon != null && couponController.coupon!.couponType == 'free_delivery')) ? Text(
-                  'free'.tr, style: robotoRegular.copyWith(color: Theme.of(context).primaryColor),
+                Text('coupon_discount'.tr, style: robotoRegular),
+                (couponController.coupon != null && couponController.coupon!.couponType == 'free_delivery') ? Text(
+                  'free_delivery'.tr, style: robotoRegular.copyWith(color: Theme.of(context).primaryColor),
                 ) : Row(children: [
-                  Text('(+) ', style: robotoRegular),
+                  Text('(-) ', style: robotoRegular),
                   Text(
-                    PriceConverter.convertPrice(deliveryCharge), style: robotoRegular, textDirection: TextDirection.ltr,
+                    PriceConverter.convertPrice(couponController.discount),
+                    style: robotoRegular, textDirection: TextDirection.ltr,
                   )
                 ]),
-              ]) : const SizedBox(),
+              ]),
               const SizedBox(height: Dimensions.paddingSizeSmall),
+            ]) : const SizedBox(),
 
-              Get.find<SplashController>().configModel!.additionalChargeStatus! ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Row(children: [
+            referralDiscount > 0 ? Column(children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text('referral_discount'.tr, style: robotoRegular),
 
-                  Text(Get.find<SplashController>().configModel!.additionalChargeName!, style: robotoRegular),
-                  const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-
-                  // const Icon(Icons.info_outline, size: 16),
-
-                ]),
                 Text(
-                  '(+) ${PriceConverter.convertPrice(Get.find<SplashController>().configModel!.additionCharge)}',
+                  '(-) ${PriceConverter.convertPrice(referralDiscount)}',
                   style: robotoRegular, textDirection: TextDirection.ltr,
                 ),
-              ]) : const SizedBox(),
-              SizedBox(height: Get.find<SplashController>().configModel!.additionalChargeStatus! ? Dimensions.paddingSizeSmall : 0),
+              ]),
+              const SizedBox(height: Dimensions.paddingSizeSmall),
+            ]) : const SizedBox(),
 
-              (isDesktop || checkoutController.isPartialPay) && checkoutController.subscriptionOrder ? Column(
-                children: [
-                  Divider(thickness: 1, color: Theme.of(context).hintColor.withOpacity(0.5)),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(children: [
+                Text('${'vat_tax'.tr} ${taxIncluded ? 'tax_included'.tr : ''}', style: robotoRegular),
+                Text('($taxPercent%)', style: robotoRegular, textDirection: TextDirection.ltr),
+              ]),
+              Row(children: [
+                Text('(+) ', style: robotoRegular),
+                Text(PriceConverter.convertPrice(tax), style: robotoRegular, textDirection: TextDirection.ltr),
+              ]),
+            ]),
+            const SizedBox(height: Dimensions.paddingSizeSmall),
 
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text(
-                      checkoutController.subscriptionOrder ? 'subtotal'.tr : 'total_amount'.tr,
-                      style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: checkoutController.isPartialPay ? Theme.of(context).textTheme.bodyMedium!.color : Theme.of(context).primaryColor),
-                    ),
-                    PriceConverter.convertAnimationPrice(
-                      total,
-                      textStyle: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: checkoutController.isPartialPay ? Theme.of(context).textTheme.bodyMedium!.color : Theme.of(context).primaryColor),
-                    ),
-                  ]),
-                ],
-              ) : const SizedBox(),
-
-              checkoutController.subscriptionOrder ? Column(children: [
-                const SizedBox(height: Dimensions.paddingSizeSmall),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                  Text('subscription_order_count'.tr, style: robotoMedium),
-                  Text(subscriptionQty.toString(), style: robotoMedium),
+            (checkoutController.orderType != 'take_away' && Get.find<SplashController>().configModel!.dmTipsStatus == 1 && !checkoutController.subscriptionOrder) ? Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('delivery_man_tips'.tr, style: robotoRegular),
+                Row(children: [
+                  Text('(+) ', style: robotoRegular),
+                  PriceConverter.convertAnimationPrice(checkoutController.tips, textStyle: robotoRegular)
                 ]),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
-                  child: Divider(thickness: 1, color: Theme.of(context).hintColor.withOpacity(0.5)),
-                ),
+                // Text('(+) ${PriceConverter.convertPrice(checkoutController.tips)}', style: robotoRegular, textDirection: TextDirection.ltr),
+              ],
+            ) : const SizedBox.shrink(),
+            SizedBox(height: checkoutController.orderType != 'take_away' && Get.find<SplashController>().configModel!.dmTipsStatus == 1 && !checkoutController.subscriptionOrder ? Dimensions.paddingSizeSmall : 0.0),
 
-              ]) : const SizedBox(),
-              SizedBox(height: checkoutController.isPartialPay ? Dimensions.paddingSizeSmall : 0),
+            (extraPackagingAmount > 0) ? Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('extra_packaging'.tr, style: robotoRegular),
+                Text('(+) ${PriceConverter.convertPrice(checkoutController.restaurant!.extraPackagingAmount!)}', style: robotoRegular, textDirection: TextDirection.ltr),
+              ],
+            ) : const SizedBox.shrink(),
+            SizedBox(height: extraPackagingAmount > 0 ? Dimensions.paddingSizeSmall : 0),
 
-              checkoutController.isPartialPay && !checkoutController.subscriptionOrder ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text('paid_by_wallet'.tr, style: robotoRegular),
-                Text('(-) ${PriceConverter.convertPrice(Get.find<ProfileController>().userInfoModel!.walletBalance!)}', style: robotoRegular, textDirection: TextDirection.ltr),
-              ]) : const SizedBox(),
-              SizedBox(height: checkoutController.isPartialPay ? Dimensions.paddingSizeSmall : 0),
-
-              checkoutController.isPartialPay && !checkoutController.subscriptionOrder ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            checkoutController.orderType != 'take_away' ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text('delivery_fee'.tr, style: robotoRegular),
+              checkoutController.distance == -1 ? Text(
+                'calculating'.tr, style: robotoRegular.copyWith(color: Colors.red),
+              ) : (deliveryCharge == 0 || (couponController.coupon != null && couponController.coupon!.couponType == 'free_delivery')) ? Text(
+                'free'.tr, style: robotoRegular.copyWith(color: Theme.of(context).primaryColor),
+              ) : Row(children: [
+                Text('(+) ', style: robotoRegular),
                 Text(
-                  'due_payment'.tr,
-                  style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: !isDesktop ? Theme.of(context).textTheme.bodyMedium!.color : Theme.of(context).primaryColor),
-                ),
-                PriceConverter.convertAnimationPrice(
-                  checkoutController.viewTotalPrice,
-                  textStyle: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: !isDesktop ? Theme.of(context).textTheme.bodyMedium!.color : Theme.of(context).primaryColor),
+                  PriceConverter.convertPrice(deliveryCharge), style: robotoRegular, textDirection: TextDirection.ltr,
                 )
-              ]) : const SizedBox(),
+              ]),
+            ]) : const SizedBox(),
+            const SizedBox(height: Dimensions.paddingSizeSmall),
 
-              isDesktop && !checkoutController.subscriptionOrder ? Padding(
+            Get.find<SplashController>().configModel!.additionalChargeStatus! ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Row(children: [
+
+                Text(Get.find<SplashController>().configModel!.additionalChargeName!, style: robotoRegular),
+                const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                // const Icon(Icons.info_outline, size: 16),
+
+              ]),
+              Text(
+                '(+) ${PriceConverter.convertPrice(Get.find<SplashController>().configModel!.additionCharge)}',
+                style: robotoRegular, textDirection: TextDirection.ltr,
+              ),
+            ]) : const SizedBox(),
+            SizedBox(height: Get.find<SplashController>().configModel!.additionalChargeStatus! ? Dimensions.paddingSizeSmall : 0),
+
+            (isDesktop || checkoutController.isPartialPay) && checkoutController.subscriptionOrder ? Column(
+              children: [
+                Divider(thickness: 1, color: Theme.of(context).hintColor.withOpacity(0.5)),
+
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  Text(
+                    checkoutController.subscriptionOrder ? 'subtotal'.tr : 'total_amount'.tr,
+                    style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: checkoutController.isPartialPay ? Theme.of(context).textTheme.bodyMedium!.color : Theme.of(context).primaryColor),
+                  ),
+                  PriceConverter.convertAnimationPrice(
+                    total,
+                    textStyle: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: checkoutController.isPartialPay ? Theme.of(context).textTheme.bodyMedium!.color : Theme.of(context).primaryColor),
+                  ),
+                ]),
+              ],
+            ) : const SizedBox(),
+
+            checkoutController.subscriptionOrder ? Column(children: [
+              const SizedBox(height: Dimensions.paddingSizeSmall),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text('subscription_order_count'.tr, style: robotoMedium),
+                Text(subscriptionQty.toString(), style: robotoMedium),
+              ]),
+              Padding(
                 padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
                 child: Divider(thickness: 1, color: Theme.of(context).hintColor.withOpacity(0.5)),
-              ) : const SizedBox(),
+              ),
 
-            ]),
-          ],
+            ]) : const SizedBox(),
+            SizedBox(height: checkoutController.isPartialPay ? Dimensions.paddingSizeSmall : 0),
+
+            checkoutController.isPartialPay && !checkoutController.subscriptionOrder ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text('paid_by_wallet'.tr, style: robotoRegular),
+              Text('(-) ${PriceConverter.convertPrice(Get.find<ProfileController>().userInfoModel!.walletBalance!)}', style: robotoRegular, textDirection: TextDirection.ltr),
+            ]) : const SizedBox(),
+            SizedBox(height: checkoutController.isPartialPay ? Dimensions.paddingSizeSmall : 0),
+
+            checkoutController.isPartialPay && !checkoutController.subscriptionOrder ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text(
+                'due_payment'.tr,
+                style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: !isDesktop ? Theme.of(context).textTheme.bodyMedium!.color : Theme.of(context).primaryColor),
+              ),
+              PriceConverter.convertAnimationPrice(
+                checkoutController.viewTotalPrice,
+                textStyle: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: !isDesktop ? Theme.of(context).textTheme.bodyMedium!.color : Theme.of(context).primaryColor),
+              )
+            ]) : const SizedBox(),
+
+            isDesktop && !checkoutController.subscriptionOrder ? Padding(
+              padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
+              child: Divider(thickness: 1, color: Theme.of(context).hintColor.withOpacity(0.5)),
+            ) : const SizedBox(),
+
+          ]),
         ),
       ),
     );

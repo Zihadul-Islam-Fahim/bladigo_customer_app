@@ -13,6 +13,7 @@ class Images {
   static const String english = 'assets/image/english.png';
   static const String locationMarker = 'assets/image/location_marker.png';
   static const String lock = 'assets/image/lock.png';
+  static const String walletFeature = 'assets/image/wallet_feature.png';
   static const String mail = 'assets/image/mail.png';
   static const String map = 'assets/image/map.png';
   static const String restaurantMarker = 'assets/image/nearby_location.png';
