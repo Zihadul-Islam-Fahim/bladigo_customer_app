@@ -161,10 +161,10 @@ class _WalletScreenState extends State<WalletScreen> {
 
                   GetBuilder<WalletController>(builder: (walletController) {
                     return Column(children: [
-                      // SizedBox(height: 20,),
+                      SizedBox(height: 80,),
 
                       // WalletCardWidget(tooltipController: tooltipController),
-                      Center(child: Image.asset(Images.walletFeature,)),
+                      Image.asset(Images.walletFeature,width: 300,),
 
                       // SizedBox(height: 10),
                       Container(
