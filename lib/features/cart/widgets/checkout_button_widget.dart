@@ -127,7 +127,7 @@ class CheckoutButtonWidget extends StatelessWidget {
                 radius: 40,
                 productQuantity: 2,
                 hasPrice: true,
-                price: "MAD ${cartController.subTotal}",
+                price: "MAD ${cartController.subTotal.toStringAsFixed(2)}",
                 buttonText: 'confirm_delivery_details'.tr,
                 // buttonText: "Checkout with ${cartController.cartList.l}",
 
