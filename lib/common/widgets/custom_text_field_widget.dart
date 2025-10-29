@@ -22,6 +22,7 @@ class CustomTextFieldWidget extends StatefulWidget {
   final Function? onSubmit;
   final bool isEnabled;
   final int maxLines;
+  final Color? fillColor;
   final TextCapitalization capitalization;
   final String? prefixImage;
   final IconData? prefixIcon;
@@ -89,6 +90,7 @@ class CustomTextFieldWidget extends StatefulWidget {
     this.suffixChild,
     this.suffixOnPressed,
     this.suffixImage,
+    this.fillColor,
   });
 
   @override
@@ -151,6 +153,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
                     : widget.isNumber
                         ? [FilteringTextInputFormatter.allow(RegExp(r'\d'))]
                         : null,
+
             decoration: InputDecoration(
               errorMaxLines: 2,
               enabledBorder: OutlineInputBorder(
@@ -201,7 +204,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
                   widget.hintText.isEmpty ? widget.titleText : widget.hintText,
               fillColor: !widget.isEnabled
                   ? Theme.of(context).disabledColor.withOpacity(0.1)
-                  : Theme.of(context).cardColor,
+                  : widget.fillColor ?? Theme.of(context).cardColor,
               hintStyle: robotoRegular.copyWith(
                   fontSize: Dimensions.fontSizeLarge,
                   color: Theme.of(context).hintColor.withOpacity(0.7)),

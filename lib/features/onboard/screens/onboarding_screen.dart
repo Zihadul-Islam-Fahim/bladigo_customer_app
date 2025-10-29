@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_asset_image_widget.dart';
+import 'package:stackfood_multivendor/common/widgets/custom_button_widget.dart';
 import 'package:stackfood_multivendor/features/auth/controllers/auth_controller.dart';
 import 'package:stackfood_multivendor/features/onboard/controllers/onboard_controller.dart';
 import 'package:stackfood_multivendor/features/splash/controllers/splash_controller.dart';
 import 'package:stackfood_multivendor/helper/address_helper.dart';
 import 'package:stackfood_multivendor/helper/route_helper.dart';
 import 'package:stackfood_multivendor/util/dimensions.dart';
+import 'package:stackfood_multivendor/util/images.dart';
 import 'package:stackfood_multivendor/util/styles.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -18,130 +20,139 @@ class OnBoardingScreen extends StatelessWidget {
     Get.find<OnBoardingController>().getOnBoardingList();
     return GetBuilder<OnBoardingController>(builder: (onBoardingController) {
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).primaryColor.withOpacity(0.05),
-          actions: [
-            onBoardingController.selectedIndex == 2 ? const SizedBox() : InkWell(
-              onTap: () {
-                _configureToRouteInitialPage();
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-                child: Text('skip'.tr, style: robotoBold.copyWith(color: Theme.of(context).disabledColor)),
-              ),
-            ),
-            const SizedBox(width: 30),
-          ],
-        ),
-        body: onBoardingController.onBoardingList != null ? Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        backgroundColor: Color.fromRGBO(0, 161, 41, 1),
 
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: onBoardingController.onBoardingList!.length,
-              itemBuilder: (context, index) {
-                return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        // appBar: AppBar(
+        //   backgroundColor: Theme.of(context).primaryColor.withOpacity(0.05),
+        //   actions: [
+        //     onBoardingController.selectedIndex == 2 ? const SizedBox() : InkWell(
+        //       onTap: () {
+        //         _configureToRouteInitialPage();
+        //       },
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+        //         child: Text('skip'.tr, style: robotoBold.copyWith(color: Theme.of(context).disabledColor)),
+        //       ),
+        //     ),
+        //     const SizedBox(width: 30),
+        //   ],
+        // ),
+        body: onBoardingController.onBoardingList != null ? Container(
 
-                  Stack(alignment: Alignment.bottomCenter, children: [
+          decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage(Images.onboardImage),fit: BoxFit.contain)
+          ),
+          child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
 
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.55, width: MediaQuery.of(context).size.width,
-                      child: CustomAssetImageWidget(
-                        onBoardingController.onBoardingList![index].frameImageUrl,
-                        width: MediaQuery.of(context).size.width,
-                        fit: BoxFit.fill,
-                        color: Theme.of(context).primaryColor,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: onBoardingController.onBoardingList!.length,
+                itemBuilder: (context, index) {
+                  return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+
+                    Stack(alignment: Alignment.bottomCenter, children: [
+
+                      // SizedBox(
+                      //   height: MediaQuery.of(context).size.height * 0.55, width: MediaQuery.of(context).size.width,
+                      //   child: CustomAssetImageWidget(
+                      //     onBoardingController.onBoardingList![index].frameImageUrl,
+                      //     width: MediaQuery.of(context).size.width,
+                      //     fit: BoxFit.fill,
+                      //     color: Theme.of(context).primaryColor,
+                      //   ),
+                      // ),
+
+                      Positioned(
+                        bottom: 120,
+                        child: CustomAssetImageWidget(
+                          Images.onboardImage,
+                          width: MediaQuery.of(context).size.width * 0.60,
+                          fit: BoxFit.fill,
+                        ),
                       ),
-                    ),
 
-                    Positioned(
-                      bottom: 120,
-                      child: CustomAssetImageWidget(
-                        onBoardingController.onBoardingList![index].imageUrl,
-                        width: MediaQuery.of(context).size.width * 0.60,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    ]),
 
-                  ]),
-
-                  Text(
-                    onBoardingController.onBoardingList![index].title,
-                    style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.75,
-                    child: Text(
-                      onBoardingController.onBoardingList![index].description,
-                      style: robotoRegular.copyWith(color: Theme.of(context).disabledColor),
+                    Text(
+                      onBoardingController.onBoardingList![index].title,
+                      style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge),
                       textAlign: TextAlign.center,
                     ),
-                  ),
+                    const SizedBox(height: Dimensions.paddingSizeSmall),
 
-
-                ]);
-              },
-              onPageChanged: (index) {
-                onBoardingController.changeSelectIndex(index);
-              },
-
-            ),
-          ),
-
-
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeExtraLarge),
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: _pageIndicators(onBoardingController, context),
-              ),
-
-              Stack(children: [
-
-                Center(
-                  child: SizedBox(
-                    height: 50, width: 50,
-                    child: CircularProgressIndicator(
-                      value: (onBoardingController.selectedIndex + 1) / onBoardingController.onBoardingList!.length,
-                      valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
-                      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
-                    ),
-                  ),
-                ),
-
-                Positioned(
-                  top: 7, left: 7, right: 7, bottom: 7,
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      // if(onBoardingController.selectedIndex != 0) {
-                      //   _pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.ease);
-                      // }else {
-                        _configureToRouteInitialPage();
-                      // }
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        shape: BoxShape.circle,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      child: Text(
+                        onBoardingController.onBoardingList![index].description,
+                        style: robotoRegular.copyWith(color: Theme.of(context).disabledColor),
+                        textAlign: TextAlign.center,
                       ),
-                      child: Icon(Icons.arrow_forward_ios, size: 15, color: Theme.of(context).cardColor),
+                    ),
+
+
+                  ]);
+                },
+                onPageChanged: (index) {
+                  onBoardingController.changeSelectIndex(index);
+                },
+
+              ),
+            ),
+
+
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeExtraLarge),
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: _pageIndicators(onBoardingController, context),
+                // ),
+
+                Stack(children: [
+
+                  // Center(
+                  //   child: SizedBox(
+                  //     height: 50, width: 50,
+                  //     child: CircularProgressIndicator(
+                  //       value: (onBoardingController.selectedIndex + 1) / onBoardingController.onBoardingList!.length,
+                  //       valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
+                  //       backgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
+                  //     ),
+                  //   ),
+                  // ),
+
+                  Positioned(
+
+                    child: InkWell(
+                      onTap: (){
+                        _configureToRouteInitialPage();
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          color: Colors.white
+                        ),
+                        height: 55,
+                        width: Get.width * 0.84,
+                        margin: EdgeInsets.symmetric(horizontal: 20,vertical: 40),
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Center(child: Text("get_started".tr,style: robotoBold.copyWith(fontSize: 18),)),
+
+
+                      ),
                     ),
                   ),
-                ),
+
+                ]),
 
               ]),
+            ),
 
-            ]),
-          ),
-
-        ]) : const Center(child: CircularProgressIndicator()),
+          ]),
+        ) : const Center(child: CircularProgressIndicator()),
       );
     });
   }

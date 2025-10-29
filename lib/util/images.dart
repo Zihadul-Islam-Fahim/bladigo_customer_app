@@ -8,6 +8,7 @@ class Images {
   static const String french = 'assets/image/french.png';
   static const String bengali = 'assets/image/bangla.png';
   static const String notLoggedIn = 'assets/image/not_loggedin.png';
+  static const String onboardImage = 'assets/image/onboard_image.png';
   static const String call = 'assets/image/call.png';
   static const String cart = 'assets/image/cart.png';
   static const String checked = 'assets/image/checked.png';

@@ -150,11 +150,7 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
                     Center(
                       child: Text(
                         'enter_your_mobile'.tr,
-                        style: TextStyle(
-                          fontSize: 16,
-
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: robotoBold.copyWith(fontSize: 24),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -162,11 +158,7 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
                     Center(
                       child: Text(
                         'we_will_send_whatsapp'.tr,
-                        style: TextStyle(
-                          fontSize: 15,
-
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: robotoBlack.copyWith(fontSize: 18),
                         textAlign: TextAlign.center,
                       ),
                     ),

@@ -51,6 +51,7 @@ class OtpLoginWidget extends StatelessWidget {
             hintText: 'xxx-xxx-xxxxx'.tr,
             controller: phoneController,
             focusNode: phoneFocus,
+            fillColor: Theme.of(context).disabledColor.withOpacity(0.1),
             inputAction: TextInputAction.done,
             inputType: TextInputType.phone,
             isPhone: true,
@@ -64,6 +65,8 @@ class OtpLoginWidget extends StatelessWidget {
             required: true,
             validator: (value) => ValidateCheck.validateEmptyText(
                 value, "please_enter_phone_number".tr),
+            showBorder: false,
+
           ),
           const SizedBox(height: Dimensions.paddingSizeDefault),
           Align(
@@ -103,7 +106,7 @@ class OtpLoginWidget extends StatelessWidget {
           CustomButtonWidget(
             // height: isDesktop ? 50 : null,
             // width:  isDesktop ? 250 : null,
-            buttonText: 'login'.tr,
+            buttonText: 'continue'.tr,
             radius: 50,
             // radius: Dimensions.radiusDefault,
             isBold: isDesktop ? false : true,
@@ -113,7 +116,7 @@ class OtpLoginWidget extends StatelessWidget {
             onPressed: onClickLoginButton,
             fontSize: isDesktop
                 ? Dimensions.fontSizeSmall
-                : Dimensions.fontSizeDefault,
+                : Dimensions.fontSizeExtraLarge,
           ),
           const SizedBox(height: Dimensions.paddingSizeSmall),
           socialEnable
