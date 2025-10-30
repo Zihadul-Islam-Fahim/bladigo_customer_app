@@ -279,6 +279,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
                                   Theme.of(context).cardColor,
                               textStyle: robotoRegular.copyWith(
                                 fontSize: Dimensions.fontSizeDefault,
+                                fontWeight: FontWeight.bold,
                                 color: Theme.of(context)
                                     .textTheme
                                     .bodyMedium!
