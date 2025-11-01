@@ -25,9 +25,7 @@ class LoyaltyCardWidget extends StatelessWidget {
               vertical: ResponsiveHelper.isDesktop(context) ? 35 : Dimensions.paddingSizeSmall,
             ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              border: Border.all(color: Colors.black),
-              color: Colors.transparent,
+
             ),
             child:  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
               const SizedBox(width: Dimensions.paddingSizeExtraLarge),
@@ -41,7 +39,9 @@ class LoyaltyCardWidget extends StatelessWidget {
                   'convertible_points'.tr,
                   style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Theme.of(context).textTheme.bodyLarge!.color),
                 ),
-                const SizedBox(width: 20),
+                const SizedBox(width: 10),
+                Text(':',style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge1, color: Theme.of(context).textTheme.bodyLarge!.color),),
+                const SizedBox(width: 10),
                 Text(
                   userController.userInfoModel?.loyaltyPoint == null ? '0' : userController.userInfoModel!.loyaltyPoint.toString(),
                   style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge, color: Theme.of(context).textTheme.bodyLarge!.color),

@@ -18,7 +18,7 @@ class LoyaltyHistoryCardWidget extends StatelessWidget {
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [
 
-              Image.asset(Images.loyaltyIcon, height: 18, width: 18),
+              Image.asset(Images.loyal, height: 18, width: 18),
               const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
               Text(
