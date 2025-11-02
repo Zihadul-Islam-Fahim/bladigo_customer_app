@@ -240,93 +240,42 @@ class TopSectionWidget extends StatelessWidget {
 
         checkoutController.restaurant != null
             ? Container(
-                width: Get.width,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+          width: context.width,
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+            boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1), spreadRadius: 1, blurRadius: 10, offset: const Offset(0, 1))],
+          ),
+          margin: EdgeInsets.symmetric(horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
+          padding: EdgeInsets.symmetric( vertical: Dimensions.paddingSizeSmall),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //       color: Colors.grey.withOpacity(0.1),
-                  //       spreadRadius: 1,
-                  //       blurRadius: 10,
-                  //       offset: const Offset(0, 1))
-                  // ],
-                ),
-                // margin: EdgeInsets.symmetric(
-                //     horizontal: isDesktop ? 0 : Dimensions.fontSizeDefault),
-                padding: EdgeInsets.symmetric(
-                    horizontal: isDesktop
-                        ? Dimensions.paddingSizeLarge
-                        : Dimensions.paddingSizeDefault,
-                    vertical: Dimensions.paddingSizeSmall),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('delivery_option'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge,fontWeight: FontWeight.bold)),
-                      const SizedBox(height: Dimensions.paddingSizeDefault),
-                      Container(
+            Text('delivery_option'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge,fontWeight: FontWeight.bold)),
+            const SizedBox(height: Dimensions.paddingSizeDefault),
 
-                        padding: EdgeInsets.symmetric(horizontal: 6),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color:
-                          Colors.grey.withOpacity(0.4))
-                        ),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                          (Get.find<SplashController>()
-                                      .configModel!
-                                      .homeDelivery! &&
-                                  checkoutController.restaurant!.delivery!)
-                              ? DeliveryOptionButton(
-                                  value: 'delivery',
-                                  title: 'home_delivery'.tr,
-                                  charge: charge,
-                                  isFree: checkoutController
-                                      .restaurant!.freeDelivery,
-                                  total: total,
-                                  chargeForView: deliveryChargeForView,
-                                  deliveryFeeTooltipController:
-                                      deliveryFeeTooltipController,
-                                  badWeatherCharge: badWeatherCharge,
-                                  extraChargeForToolTip:
-                                      extraChargeForToolTip,
-                                )
-                              : const SizedBox(),
-                          // const SizedBox(
-                          //     width: Dimensions.paddingSizeDefault),
-                              (Get.find<SplashController>()
-                                  .configModel!
-                                  .takeAway! &&
-                                  checkoutController.restaurant!.takeAway!)?  Divider() : SizedBox.shrink(),
+            Row(
 
+                children: [
 
-                          (Get.find<SplashController>()
-                                      .configModel!
-                                      .takeAway! &&
-                                  checkoutController.restaurant!.takeAway!)
-                              ? DeliveryOptionButton(
-                                  value: 'take_away',
-                                  title: 'take_away'.tr,
-                                  charge: deliveryCharge,
-                                  isFree: true,
-                                  total: total,
-                                  badWeatherCharge: badWeatherCharge,
-                                  extraChargeForToolTip:
-                                      extraChargeForToolTip,
-                                )
-                              : SizedBox.shrink()
-                        ]),
-                      ),
-                      SizedBox(
-                          height:
-                              isDesktop ? Dimensions.paddingSizeDefault : 0),
-                    ]),
-              )
-            : const SizedBox(),
+              (Get.find<SplashController>().configModel!.homeDelivery! && checkoutController.restaurant!.delivery!)
+                  ? DeliveryOptionButton(
+                value: 'delivery', title: 'home_delivery'.tr, charge: charge,
+                isFree: checkoutController.restaurant!.freeDelivery, total: total,
+                chargeForView: deliveryChargeForView, deliveryFeeTooltipController: deliveryFeeTooltipController,
+                badWeatherCharge: badWeatherCharge, extraChargeForToolTip: extraChargeForToolTip,
+              ) : const SizedBox(),
+              const SizedBox(width: Dimensions.paddingSizeDefault),
+
+              (Get.find<SplashController>().configModel!.takeAway! && checkoutController.restaurant!.takeAway!)
+                  ? DeliveryOptionButton(
+                value: 'take_away', title: 'take_away'.tr, charge: deliveryCharge, isFree: true, total: total,
+                badWeatherCharge: badWeatherCharge, extraChargeForToolTip: extraChargeForToolTip,
+              ) : const SizedBox(),
+
+            ]),
+            SizedBox(height: isDesktop ? Dimensions.paddingSizeDefault : 0),
+          ]),
+        ) : const SizedBox(),
 
         /*SizedBox(height: checkoutController.orderType != 'take_away' ? ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeSmall : Dimensions.paddingSizeLarge : Dimensions.paddingSizeSmall),
 

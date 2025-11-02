@@ -76,28 +76,39 @@ class TimeSlotSection extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Theme.of(context).disabledColor, width: 0.3),
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
               ),
-              height: 50,
+              height: 70,
+              width: Get.width * 0.42,
               child: Row(children: [
                 const SizedBox(width: Dimensions.paddingSizeLarge),
 
                 Builder(
                   builder: (context) {
-                    return Expanded(child: Text(
-                      (checkoutController.selectedDateSlot == 0 && todayClosed) || (checkoutController.selectedDateSlot == 1 && tomorrowClosed) || (checkoutController.selectedDateSlot == 2 && checkoutController.customDateRestaurantClose)
-                          ? 'restaurant_is_closed'.tr
-                          : checkoutController.preferableTime.isNotEmpty ? checkoutController.preferableTime
-                          : (Get.find<SplashController>().configModel!.instantOrder! && checkoutController.restaurant!.instantOrder!) ? 'now'.tr : 'select_preference_time'.tr,
-                      style: robotoRegular.copyWith(
-                          color: (checkoutController.selectedDateSlot == 0 && todayClosed) || (checkoutController.selectedDateSlot == 1 && tomorrowClosed) || (checkoutController.selectedDateSlot == 2 && checkoutController.customDateRestaurantClose)
-                              ? Theme.of(context).colorScheme.error
-                              : Theme.of(context).textTheme.bodyMedium!.color),
+                    return Expanded(child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 4,),
+                        Text("Schedule",style: robotoRegular.copyWith(fontSize: 13),),
+                        Text("delivery".tr,style: robotoBlack),
+                        Text(
+                          (checkoutController.selectedDateSlot == 0 && todayClosed) || (checkoutController.selectedDateSlot == 1 && tomorrowClosed) || (checkoutController.selectedDateSlot == 2 && checkoutController.customDateRestaurantClose)
+                              ? 'restaurant_is_closed'.tr
+                              : checkoutController.preferableTime.isNotEmpty ? checkoutController.preferableTime
+                              : (Get.find<SplashController>().configModel!.instantOrder! && checkoutController.restaurant!.instantOrder!) ? 'now'.tr : 'select_preference_time'.tr,
+                          style: robotoRegular.copyWith(
+                              color: (checkoutController.selectedDateSlot == 0 && todayClosed) || (checkoutController.selectedDateSlot == 1 && tomorrowClosed) || (checkoutController.selectedDateSlot == 2 && checkoutController.customDateRestaurantClose)
+                                  ? Theme.of(context).colorScheme.error
+                                  : Theme.of(context).textTheme.bodyMedium!.color),
+                        ),
+
+                      ],
                     ));
                   }
                 ),
 
-                Icon(Icons.access_time_filled_outlined, color: Theme.of(context).primaryColor),
+                // Icon(Icons.access_time_filled_outlined, color: Theme.of(context).primaryColor),
+                Icon(Icons.keyboard_arrow_down_outlined, color: Theme.of(context).primaryColor),
                 const SizedBox(width: Dimensions.paddingSizeSmall),
               ]),
             ),
