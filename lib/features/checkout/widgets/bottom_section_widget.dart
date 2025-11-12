@@ -236,17 +236,17 @@ class BottomSectionWidget extends StatelessWidget {
               const SizedBox(height: Dimensions.paddingSizeSmall),
             ]) : const SizedBox(),
 
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Row(children: [
-                Text('${'vat_tax'.tr} ${taxIncluded ? 'tax_included'.tr : ''}', style: robotoRegular),
-                Text('($taxPercent%)', style: robotoRegular, textDirection: TextDirection.ltr),
-              ]),
-              Row(children: [
-                Text('(+) ', style: robotoRegular),
-                Text(PriceConverter.convertPrice(tax), style: robotoRegular, textDirection: TextDirection.ltr),
-              ]),
-            ]),
-            const SizedBox(height: Dimensions.paddingSizeSmall),
+            // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            //   Row(children: [
+            //     Text('${'vat_tax'.tr} ${taxIncluded ? 'tax_included'.tr : ''}', style: robotoRegular),
+            //     Text('($taxPercent%)', style: robotoRegular, textDirection: TextDirection.ltr),
+            //   ]),
+            //   Row(children: [
+            //     Text('(+) ', style: robotoRegular),
+            //     Text(PriceConverter.convertPrice(tax), style: robotoRegular, textDirection: TextDirection.ltr),
+            //   ]),
+            // ]),
+            // const SizedBox(height: Dimensions.paddingSizeSmall),
 
             (checkoutController.orderType != 'take_away' && Get.find<SplashController>().configModel!.dmTipsStatus == 1 && !checkoutController.subscriptionOrder) ? Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
