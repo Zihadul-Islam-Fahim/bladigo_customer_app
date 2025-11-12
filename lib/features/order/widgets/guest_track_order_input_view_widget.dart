@@ -48,6 +48,7 @@ class _GuestTrackOrderInputViewWidgetState extends State<GuestTrackOrderInputVie
       child: Center(
         child: SingleChildScrollView(
           child: FooterViewWidget(
+
             child: SizedBox(
               width: Dimensions.webMaxWidth,
               child: Form(
@@ -68,6 +69,8 @@ class _GuestTrackOrderInputViewWidgetState extends State<GuestTrackOrderInputVie
                     labelText: 'order_id'.tr,
                     required: true,
                     validator: (value) => ValidateCheck.validateEmptyText(value, null),
+                    showBorder: false,
+                    fillColor: Theme.of(context).disabledColor.withOpacity(0.1),
                   ),
                   const SizedBox(height: Dimensions.paddingSizeDefault),
 
@@ -87,6 +90,8 @@ class _GuestTrackOrderInputViewWidgetState extends State<GuestTrackOrderInputVie
                     labelText: 'phone'.tr,
                     required: true,
                     validator: (value) => ValidateCheck.validateEmptyText(value, "phone_number_field_is_required".tr),
+                    showBorder: false,
+                    fillColor: Theme.of(context).disabledColor.withOpacity(0.1),
                   ),
                   const SizedBox(height: Dimensions.paddingSizeExtraLarge),
 

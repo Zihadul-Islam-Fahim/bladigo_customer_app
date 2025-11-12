@@ -108,6 +108,7 @@ class _NewUserSetupScreenState extends State<NewUserSetupScreen> {
                   levelTextSize: Dimensions.fontSizeDefault,
                   validator: (value) => ValidateCheck.validateEmptyText(value, "please_enter_your_name".tr),
                   showBorder: false,
+                  fillColor: Theme.of(context).disabledColor.withOpacity(0.1),
                 ),
                 const SizedBox(height: Dimensions.paddingSizeExtraLarge),
 
@@ -139,6 +140,7 @@ class _NewUserSetupScreenState extends State<NewUserSetupScreen> {
                   prefixIcon: CupertinoIcons.mail_solid,
                   validator: (value) => ValidateCheck.validateEmail(value),
                   showBorder: false,
+                  fillColor: Theme.of(context).disabledColor.withOpacity(0.1),
                 ),
                 const SizedBox(height: Dimensions.paddingSizeExtraLarge),
 

@@ -183,7 +183,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                         for (var item in cartController.cartList) {
                           totalQuantity += item.quantity!;
                         }
-                      return InkWell(
+                      return  cartController.cartList.isNotEmpty ?  InkWell(
                         onTap: () {
                           Get.toNamed(RouteHelper.getCartRoute());
                         },
@@ -195,6 +195,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                               height: 50,
                               width: cartController.cartList.isNotEmpty ? Get.width * 0.93 : 50,
                               child: FloatingActionButton(
+                                elevation: 0,
 
                                 isExtended: true,
                                 backgroundColor: _pageIndex == 2
@@ -204,7 +205,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                                   // _setPage(2);
                                   Get.toNamed(RouteHelper.getCartRoute());
                                 },
-                                child: cartController.cartList.isNotEmpty ? Row(
+                                child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
                                     Row(
@@ -231,15 +232,16 @@ class DashboardScreenState extends State<DashboardScreen> {
                                     ),
 
                                   ],
-                                ) : CartWidget(
-                                    color: _pageIndex == 2
-                                        ? Theme.of(context).cardColor
-                                        : Theme.of(context).cardColor,
-                                    size: 30),
+                                )
+                                    // : CartWidget(
+                                    // color: _pageIndex == 2
+                                    //     ? Theme.of(context).cardColor
+                                    //     : Theme.of(context).cardColor,
+                                    // size: 30),
                               ),
                             ),
                           ),
-                      );
+                      ) : SizedBox.shrink();
                     }
                   );
         }),

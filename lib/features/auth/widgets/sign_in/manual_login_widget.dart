@@ -79,6 +79,8 @@ class ManualLoginWidget extends StatelessWidget {
                 }
                 return (GetUtils.isPhoneNumber(value!.tr) || GetUtils.isEmail(value.tr)) ? null : 'enter_email_address_or_phone_number'.tr;
               },
+              showBorder: false,
+              fillColor: Theme.of(context).disabledColor.withOpacity(0.1),
             ),
 
             const SizedBox(height: Dimensions.paddingSizeExtraLarge),
@@ -95,6 +97,8 @@ class ManualLoginWidget extends StatelessWidget {
               labelText: 'password'.tr,
               required: true,
               validator: (value) => ValidateCheck.validateEmptyText(value, "please_enter_password".tr),
+              showBorder: false,
+              fillColor: Theme.of(context).disabledColor.withOpacity(0.1),
             ),
             SizedBox(height: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeDefault : Dimensions.paddingSizeExtraSmall),
 

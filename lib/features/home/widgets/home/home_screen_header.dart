@@ -22,17 +22,8 @@ class HomeScreenHeaderWidget extends StatelessWidget {
 
   final bool isSecondScreen;
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
-
-
-
-
-
     return Stack(
       alignment: Alignment.topLeft,
       children: [
@@ -72,20 +63,20 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                     //     color: Theme.of(context).primaryColor,
                                     //   )
                                     // :
-                                Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(100)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8),
-                                          child: Image.asset(
-                                           Images.locationRounded,
-                                            width: 27,
-                                          ),
-                                        ),
-                                      ),
-                                const SizedBox(width: 12),
+                                // Container(
+                                //         decoration: BoxDecoration(
+                                //             color: Colors.white,
+                                //             borderRadius:
+                                //                 BorderRadius.circular(100)),
+                                //         child: Padding(
+                                //           padding: const EdgeInsets.all(8),
+                                //           child: Image.asset(
+                                //            Images.locationRounded,
+                                //             width: 27,
+                                //           ),
+                                //         ),
+                                //       ),
+                                // const SizedBox(width: 12),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
@@ -105,7 +96,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                         style: robotoMedium.copyWith(
                                           color: Colors.black,
                                           fontSize: Dimensions
-                                              .fontSizeDefault /* - (scrollingRate * Dimensions.fontSizeDefault)*/,
+                                              .fontSizeLarge /* - (scrollingRate * Dimensions.fontSizeDefault)*/,
                                         ),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
@@ -117,7 +108,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                             MainAxisAlignment.start,
                                         children: [
                                           SizedBox(
-                                            width: 160,
+                                            width: Get.width * 0.7,
                                             child: Text(
                                               AddressHelper
                                                       .getAddressFromSharedPref()!
