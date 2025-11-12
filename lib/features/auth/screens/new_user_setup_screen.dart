@@ -107,6 +107,7 @@ class _NewUserSetupScreenState extends State<NewUserSetupScreen> {
                   prefixIcon: CupertinoIcons.person_alt_circle_fill,
                   levelTextSize: Dimensions.fontSizeDefault,
                   validator: (value) => ValidateCheck.validateEmptyText(value, "please_enter_your_name".tr),
+                  showBorder: false,
                 ),
                 const SizedBox(height: Dimensions.paddingSizeExtraLarge),
 
@@ -137,6 +138,7 @@ class _NewUserSetupScreenState extends State<NewUserSetupScreen> {
                   inputType: TextInputType.emailAddress,
                   prefixIcon: CupertinoIcons.mail_solid,
                   validator: (value) => ValidateCheck.validateEmail(value),
+                  showBorder: false,
                 ),
                 const SizedBox(height: Dimensions.paddingSizeExtraLarge),
 
