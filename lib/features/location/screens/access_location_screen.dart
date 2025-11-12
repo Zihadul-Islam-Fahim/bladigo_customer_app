@@ -140,11 +140,11 @@ class _AccessLocationScreenState extends State<AccessLocationScreen> {
             child: Center(child: Padding(
               padding: context.width > 700 ? const EdgeInsets.all(50) : EdgeInsets.zero,
               child: SizedBox(width: 700, child: Column(children: [
-                CustomAssetImageWidget(Images.deliveryLocation, height: 220),
+                CustomAssetImageWidget(Images.locationRounded, height: 220),
                 const SizedBox(height: Dimensions.paddingSizeLarge),
                 Text(
-                  'find_restaurants_and_foods'.tr.toUpperCase(), textAlign: TextAlign.center,
-                  style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraLarge),
+                  'enter_your_delivery'.tr, textAlign: TextAlign.center,
+                  style: robotoBlack.copyWith(fontSize: Dimensions.fontSizeOverLarge),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),

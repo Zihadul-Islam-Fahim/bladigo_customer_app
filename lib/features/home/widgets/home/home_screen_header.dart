@@ -93,7 +93,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                                 .addressType!
                                                 .tr
                                             : 'deliver_to'.tr,
-                                        style: robotoMedium.copyWith(
+                                        style: robotoBlack.copyWith(
                                           color: Colors.black,
                                           fontSize: Dimensions
                                               .fontSizeLarge /* - (scrollingRate * Dimensions.fontSizeDefault)*/,
@@ -181,22 +181,20 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                     await Get.toNamed(
                         RouteHelper.getSignInRoute(Get.currentRoute));
                   },
-                  child: Text('SIGN UP'.tr),
                   style: ElevatedButton.styleFrom(
-                      elevation: 8,
+                      // elevation: 8,
                       textStyle: TextStyle(fontSize: 9),
                       padding: EdgeInsets.only(
                           left: 2, right: 2, top: 4, bottom: 4),
-                      backgroundColor: Color(0xff2B9430),
-                      foregroundColor: Colors.white,
+                      backgroundColor: Theme.of(context).primaryColor,
+                      // foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            8), // Makes the button rectangular
+                        borderRadius: BorderRadius.circular(18), // Makes the button rectangular
                       ),
-                      maximumSize: Size(80, 32),
-                      minimumSize: Size(80, 32)),
+                      maximumSize: Size(80, 40),
+                      minimumSize: Size(80, 38)),
+                  child: Text('SIGN UP'.tr,style: robotoBlack.copyWith(fontSize: 12,color: Colors.white),),
                 )
-
               ],
             ),
           ),

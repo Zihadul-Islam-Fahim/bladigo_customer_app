@@ -39,6 +39,7 @@
   "resend": "Resend",
   "verified": "Verified",
   "find_restaurants_and_foods": "Find Restaurants and Foods Near You",
+  "enter_your_delivery":"Enter your delivery location",
   "by_allowing_location_access": "By allowing location access, you can search for restaurants and foods near you and receive more accurate delivery.",
   "user_current_location": "Use Current Location",
   "set_from_map": "Set From Map",
