@@ -27,7 +27,10 @@ import 'package:stackfood_multivendor/common/widgets/custom_dialog_widget.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stackfood_multivendor/util/styles.dart';
 import 'package:vibration/vibration.dart';
+
+import '../../cart/controllers/cart_controller.dart';
 
 class DashboardScreen extends StatefulWidget {
   final int pageIndex;
@@ -174,25 +177,71 @@ class DashboardScreenState extends State<DashboardScreen> {
                       orderController.runningOrderList!.isNotEmpty &&
                       _isLogin)
                   ? const SizedBox.shrink()
-                  : Material(
-                      elevation: 3,
-                      color: Theme.of(context).primaryColor,
-                      shape: const CircleBorder(),
-                      child: FloatingActionButton(
-                        backgroundColor: _pageIndex == 2
-                            ? Theme.of(context).primaryColor
-                            : Theme.of(context).primaryColor,
-                        onPressed: () {
-                          // _setPage(2);
+                  :  GetBuilder<CartController>(
+                      builder: (cartController) {
+                        int totalQuantity = 0;
+                        for (var item in cartController.cartList) {
+                          totalQuantity += item.quantity!;
+                        }
+                      return InkWell(
+                        onTap: () {
                           Get.toNamed(RouteHelper.getCartRoute());
                         },
-                        child: CartWidget(
-                            color: _pageIndex == 2
-                                ? Theme.of(context).cardColor
-                                : Theme.of(context).cardColor,
-                            size: 30),
-                      ),
-                    );
+                        child: Material(
+                            elevation: 3,
+                            color: Theme.of(context).primaryColor,
+                            shape: const CircleBorder(),
+                            child: SizedBox(
+                              height: 50,
+                              width: cartController.cartList.isNotEmpty ? Get.width * 0.93 : 50,
+                              child: FloatingActionButton(
+
+                                isExtended: true,
+                                backgroundColor: _pageIndex == 2
+                                    ? Theme.of(context).primaryColor
+                                    : Theme.of(context).primaryColor,
+                                onPressed: () {
+                                  // _setPage(2);
+                                  Get.toNamed(RouteHelper.getCartRoute());
+                                },
+                                child: cartController.cartList.isNotEmpty ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                            padding: EdgeInsets.all(6),
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.white,
+                                            ),
+
+                                            child: Text(totalQuantity.toString(),style: robotoBold.copyWith(fontSize: 18,color: Theme.of(context).primaryColor),)),
+                                        SizedBox(width: 6,),
+                                        Text("items".tr,style: robotoBold.copyWith(fontSize: 18),),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("MAD",style: robotoBold.copyWith(fontSize: 18),),
+                                        SizedBox(width: 6,),
+                                        Text(cartController.subTotal.toString(),style: robotoBold.copyWith(fontSize: 18),),
+
+                                      ],
+                                    ),
+
+                                  ],
+                                ) : CartWidget(
+                                    color: _pageIndex == 2
+                                        ? Theme.of(context).cardColor
+                                        : Theme.of(context).cardColor,
+                                    size: 30),
+                              ),
+                            ),
+                          ),
+                      );
+                    }
+                  );
         }),
         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: GetBuilder<OrderController>(builder: (orderController) {
