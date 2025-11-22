@@ -193,7 +193,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                       ),
                       maximumSize: Size(80, 40),
                       minimumSize: Size(80, 38)),
-                  child: Text('SIGN UP'.tr,style: robotoBlack.copyWith(fontSize: 12,color: Colors.white),),
+                  child: Text('Sign up'.tr,style: robotoBlack.copyWith(fontSize: 12,color: Colors.white),),
                 )
               ],
             ),

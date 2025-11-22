@@ -360,7 +360,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                     .refEarningStatus ==
                                     1)
                                     ? PortionWidget(
-                                  icon: Images.referIcon,
+                                  icon: Images.referCode,
                                   title: 'refer_and_earn'.tr,
                                   route:
                                   RouteHelper.getReferAndEarnRoute(),

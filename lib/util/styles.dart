@@ -28,6 +28,11 @@ final robotoBlack = TextStyle(
   fontSize: Dimensions.fontSizeDefault,
 );
 
+final openSans = TextStyle(
+  fontFamily: "openSans",
+  fontSize: Dimensions.fontSizeDefault,
+);
+
 // final arial = TextStyle(
 //
 //   fontSize: Dimensions.fontSizeDefault,

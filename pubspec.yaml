@@ -2,7 +2,7 @@ name: stackfood_multivendor
 description: A new Flutter application.
 publish_to: 'none' #
 #version: 1.0.18+29 # palystore
-version: 1.0.22+24 # appstore
+version: 1.1.0+25 # appstore
 
 environment:
   sdk: ">=3.4.4 <4.0.0"
@@ -147,5 +147,10 @@ flutter:
           weight: 400
         - asset: assets/font/arial-bold.ttf
           weight: 900
+
+    - family: openSans
+      fonts:
+        - asset: assets/font/OpenSans-Regular.ttf
+
 
 
