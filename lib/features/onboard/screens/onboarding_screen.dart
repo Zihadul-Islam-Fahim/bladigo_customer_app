@@ -127,6 +127,7 @@ class OnBoardingScreen extends StatelessWidget {
                   Positioned(
 
                     child: InkWell(
+                      focusColor: Colors.transparent,highlightColor: Colors.transparent,hoverColor: Colors.transparent,splashColor: Colors.transparent,
                       onTap: (){
                         _configureToRouteInitialPage();
                       },
@@ -136,9 +137,9 @@ class OnBoardingScreen extends StatelessWidget {
                           color: Colors.white
                         ),
                         height: 55,
-                        width: Get.width * 0.84,
-                        margin: EdgeInsets.symmetric(horizontal: 20,vertical: 40),
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        width: Get.width * 0.92,
+                        margin: EdgeInsets.symmetric(vertical: 40),
+                        padding: EdgeInsets.symmetric(horizontal: 10),
                         child: Center(child: Text("get_started".tr,style: robotoBold.copyWith(fontSize: 18),)),
 
 

@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/md.emonmiah/development/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/md.emonmiah/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/md.emonmiah/Desktop/App Work Folder/Ecom Matrix/ecom_mtrix_customer/android/app/.cxx/Debug/6o3v615d/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/md.emonmiah/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/md.emonmiah/Desktop/App Work Folder/Ecom Matrix/ecom_mtrix_customer/android/app/.cxx/Debug/6o3v615d/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
