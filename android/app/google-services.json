@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "512064433463-ampf3tondeqv6iosgvm9ijl1hk0orf65.apps.googleusercontent.com",
+          "client_id": "512064433463-ijbdjj97jahpomoln0d7b8snm2sa05ro.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.bladigo.bladigocustomer",
-            "certificate_hash": "a7668fc7acb86cb69165c8ffe5a440d674957234"
+            "certificate_hash": "14e982df4e472b534f5d1bd878e5f591799bc90b"
           }
         },
         {
@@ -37,6 +37,13 @@
             {
               "client_id": "512064433463-0p2l1keg5u70jv88o4gcu22kc5vhauap.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "512064433463-28s5oc12ugasfbt2iqurch408iarcf03.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bladigo.driver"
+              }
             }
           ]
         }
@@ -66,6 +73,13 @@
             {
               "client_id": "512064433463-0p2l1keg5u70jv88o4gcu22kc5vhauap.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "512064433463-28s5oc12ugasfbt2iqurch408iarcf03.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bladigo.driver"
+              }
             }
           ]
         }
@@ -95,6 +109,13 @@
             {
               "client_id": "512064433463-0p2l1keg5u70jv88o4gcu22kc5vhauap.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "512064433463-28s5oc12ugasfbt2iqurch408iarcf03.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bladigo.driver"
+              }
             }
           ]
         }

@@ -75,22 +75,25 @@ class AddressCardWidget extends StatelessWidget {
                           ResponsiveHelper.isDesktop(context) ? 25 : 30,
                     ),
                     const SizedBox(width: Dimensions.paddingSizeSmall),
-                    Text(
-                      (address?.house != null ? "House No:- ${address?.house},  " : '') +
-                          (address?.floor != null
-                              ? "Floor:- ${address?.floor},   "
-                              : '') +
-                          (address?.road != null
-                              ? "Road No:- ${address?.road}, "
-                              : '') +
-                          (address?.address != null
-                              ? ("Address:- ${address?.address}")
-                              : ''),
-                      style: robotoRegular.copyWith(
-                          fontSize: Dimensions.fontSizeDefault,
-                          color: Theme.of(context).disabledColor),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
+                    SizedBox(
+                      width: Get.width * 0.8,
+                      child: Text(
+                        (address?.house != null ? "House No:- ${address?.house},  " : '') +
+                            (address?.floor != null
+                                ? "Floor:- ${address?.floor},   "
+                                : '') +
+                            (address?.road != null
+                                ? "Road No:- ${address?.road}, "
+                                : '') +
+                            (address?.address != null
+                                ? ("Address:- ${address?.address}")
+                                : ''),
+                        style: robotoRegular.copyWith(
+                            fontSize: Dimensions.fontSizeDefault,
+                            color: Theme.of(context).disabledColor),
+                        maxLines: 3,
+                        overflow: TextOverflow.fade,
+                      ),
                     ),
                   ]),
             ),
