@@ -174,7 +174,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                 //     );
                 //   }),
                 // )
-                Image.asset(Images.logoName,width: 150,)
+                Image.asset(Images.logoName,width: 85,)
                     :
                 ElevatedButton(
                   onPressed: () async {
