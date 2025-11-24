@@ -24,23 +24,24 @@ class OfflinePaymentButton extends StatelessWidget {
       child: Container(
         width: 550,
         decoration: BoxDecoration(
-          color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.1) : Colors.transparent,
+          // color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.1) : Colors.transparent,
           borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-          border: Border.all(color: Theme.of(context).disabledColor, width: 0.3),
+          // border: Border.all(color: Theme.of(context).disabledColor, width: 0.3),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeLarge),
-        margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
+        padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: 16),
+        // margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
         child: Column(children: [
           Row(children: [
+            const SizedBox(width: Dimensions.paddingSizeExtraSmall),
             Container(
-              height: 20, width: 20,
+              height: 25, width: 20,
               decoration: BoxDecoration(
                   shape: BoxShape.circle, color: isSelected ? Colors.green : Theme.of(context).cardColor,
                   border: Border.all(color: Theme.of(context).disabledColor)
               ),
               child: Icon(Icons.check, color: Theme.of(context).cardColor, size: 16),
             ),
-            const SizedBox(width: Dimensions.paddingSizeDefault),
+            const SizedBox(width: Dimensions.paddingSizeSmall),
 
             Expanded(
               child: Text(
