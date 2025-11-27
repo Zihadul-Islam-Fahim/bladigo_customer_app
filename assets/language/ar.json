@@ -1215,6 +1215,11 @@
  "your_orders": "طلباتك",
  "tip_DM": "إعطاء إكرامية لشريك التوصيل",
  "helping_dm": "ساعد شريك التوصيل الخاص بك بإضافة إكرامية",
- "delivery_location": "عنوان التوصيل"
+ "delivery_location": "عنوان التوصيل",
+ "location_details": "تفاصيل الموقع",
+ "Order_will_be_delivered_here": "سيتم توصيل الطلب إلى هنا",
+ "login_with_google": "تسجيل الدخول باستخدام جوجل",
+ "login_with_apple": "تسجيل الدخول باستخدام أبل",
+ "login_or_signup_for_more": "سجل الدخول أو أنشئ حسابًا للحصول على تجربة طلب أكثر تخصيصًا"
 
 }

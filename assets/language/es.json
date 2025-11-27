@@ -1211,7 +1211,12 @@
   "your_orders": "Tus Pedidos",
   "tip_DM": "Propina para el repartidor",
   "helping_dm": "Ayuda a tu repartidor añadiendo una propina",
-  "delivery_location": "Dirección de Entrega"
+  "delivery_location": "Dirección de Entrega",
+  "location_details": "Detalles de la ubicación",
+  "Order_will_be_delivered_here": "El pedido será entregado aquí",
+  "login_with_google": "Iniciar sesión con Google",
+  "login_with_apple": "Iniciar sesión con Apple",
+  "login_or_signup_for_more": "Inicia sesión o regístrate para una experiencia de pedido más personalizada"
 
 
 }

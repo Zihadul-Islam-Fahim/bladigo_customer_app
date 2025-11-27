@@ -1217,7 +1217,11 @@
   "delivery_location": "Delivery Address",
 
   "location_details": "Location details",
-  "Order_will_be_delivered_here": "Order will be delivered here"
+  "Order_will_be_delivered_here": "Order will be delivered here",
+  "login_with_google": "Login with Google",
+  "login_with_apple": "Login with Apple",
+  "login_or_signup_for_more": "Log in or sign up for a more personalized ordering experience"
+
 
 
 }

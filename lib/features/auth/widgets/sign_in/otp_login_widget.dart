@@ -68,37 +68,37 @@ class OtpLoginWidget extends StatelessWidget {
             showBorder: false,
 
           ),
-          const SizedBox(height: Dimensions.paddingSizeDefault),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: InkWell(
-              onTap: () => authController.toggleRememberMe(),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: 10,
-                    width: 24,
-                    child: Checkbox(
-                      side: BorderSide(
-                          color: GetPlatform.isAndroid
-                              ? Colors.white
-                              : Theme.of(context).hintColor),
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      activeColor: Theme.of(context).colorScheme.primary,
-                      value: authController.isActiveRememberMe,
-                      onChanged: (bool? isChecked) =>
-                          authController.toggleRememberMe(),
-                    ),
-                  ),
-                  const SizedBox(width: Dimensions.paddingSizeSmall),
-                  Text('remember_me'.tr,
-                      style: robotoRegular.copyWith(
-                          color: GetPlatform.isAndroid ? Colors.white : null)),
-                ],
-              ),
-            ),
-          ),
+          const SizedBox(height: Dimensions.paddingSizeSmall),
+          // Align(
+          //   alignment: Alignment.centerLeft,
+          //   child: InkWell(
+          //     onTap: () => authController.toggleRememberMe(),
+          //     child: Row(
+          //       mainAxisSize: MainAxisSize.min,
+          //       children: [
+          //         SizedBox(
+          //           height: 10,
+          //           width: 24,
+          //           child: Checkbox(
+          //             side: BorderSide(
+          //                 color: GetPlatform.isAndroid
+          //                     ? Colors.white
+          //                     : Theme.of(context).hintColor),
+          //             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          //             activeColor: Theme.of(context).colorScheme.primary,
+          //             value: authController.isActiveRememberMe,
+          //             onChanged: (bool? isChecked) =>
+          //                 authController.toggleRememberMe(),
+          //           ),
+          //         ),
+          //         const SizedBox(width: Dimensions.paddingSizeSmall),
+          //         Text('remember_me'.tr,
+          //             style: robotoRegular.copyWith(
+          //                 color: GetPlatform.isAndroid ? Colors.white : null)),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           // const SizedBox(height: Dimensions.paddingSizeLarge),
           // TramsConditionsCheckBoxWidget(
           //     authController: authController, fromDialog: true),

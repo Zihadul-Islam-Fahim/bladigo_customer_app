@@ -1125,7 +1125,7 @@
   "show_less": "Voir moins",
   "only": "Seulement",
   "item_available": "article disponible",
-  "recommend_for_you": "Recommandé pour vous",
+  "recommend_for_you": "Les Promotions",
   "see_our_most_popular_restaurant_and_foods": "Découvrez nos restaurants et plats les plus populaires",
   "highlights_for_you": "Points forts pour vous",
   "convertible_points": "Points convertibles",
@@ -1213,7 +1213,12 @@
   "your_orders": "Vos Commandes",
   "tip_DM": "Donner un pourboire au livreur",
   "helping_dm": "Aidez votre livreur en ajoutant un pourboire",
-  "delivery_location": "Adresse de Livraison"
+  "delivery_location": "Adresse de Livraison",
+  "location_details": "Détails du lieu",
+  "Order_will_be_delivered_here": "La commande sera livrée ici",
+  "login_with_google": "Se connecter avec Google",
+  "login_with_apple": "Se connecter avec Apple",
+  "login_or_signup_for_more": "Connectez-vous ou inscrivez-vous pour une expérience de commande plus personnalisée"
 
 
 
