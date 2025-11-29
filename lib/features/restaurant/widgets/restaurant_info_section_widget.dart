@@ -307,19 +307,19 @@ class RestaurantInfoSectionWidget extends StatelessWidget {
                                             /// Location
                                             Expanded(
                                               child: InkWell(
-                                                onTap: () => Get.toNamed(RouteHelper.getMapRoute(
-                                                  AddressModel(
-                                                    id: restaurant.id,
-                                                    address: restaurant.address,
-                                                    latitude: restaurant.latitude,
-                                                    longitude: restaurant.longitude,
-                                                    contactPersonNumber: '',
-                                                    contactPersonName: '',
-                                                    addressType: '',
-                                                  ),
-                                                  'restaurant',
-                                                  restaurantName: restaurant.name,
-                                                )),
+                                                // onTap: () => Get.toNamed(RouteHelper.getMapRoute(
+                                                //   AddressModel(
+                                                //     id: restaurant.id,
+                                                //     address: restaurant.address,
+                                                //     latitude: restaurant.latitude,
+                                                //     longitude: restaurant.longitude,
+                                                //     contactPersonNumber: '',
+                                                //     contactPersonName: '',
+                                                //     addressType: '',
+                                                //   ),
+                                                //   'restaurant',
+                                                //   restaurantName: restaurant.name,
+                                                // )),
                                                 child: Container(
                                                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                                                   decoration: BoxDecoration(

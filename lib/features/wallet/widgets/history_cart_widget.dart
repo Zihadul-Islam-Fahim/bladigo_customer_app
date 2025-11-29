@@ -21,8 +21,8 @@ class HistoryCartWidget extends StatelessWidget {
             Row(children: [
 
               data![index].transactionType == 'order_place' || data![index].transactionType == 'partial_payment'
-                  ? Image.asset(Images.debitIconWallet, height: 15, width: 15)
-                  : Image.asset(Images.creditIconWallet, height: 15, width: 15),
+                  ? Image.asset(Images.loyal, height: 15, width: 15)
+                  : Image.asset(Images.loyal, height: 15, width: 15),
               const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
               Text(data![index].transactionType == 'order_place' || data![index].transactionType == 'partial_payment'

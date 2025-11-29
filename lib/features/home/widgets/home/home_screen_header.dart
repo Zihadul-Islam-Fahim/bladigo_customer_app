@@ -108,7 +108,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                                             MainAxisAlignment.start,
                                         children: [
                                           SizedBox(
-                                            width: Get.width * 0.7,
+                                            width: Get.width * 0.65,
                                             child: Text(
                                               AddressHelper
                                                       .getAddressFromSharedPref()!

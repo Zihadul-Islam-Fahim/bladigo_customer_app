@@ -226,7 +226,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                                       children: [
                                         Text("MAD",style: robotoBold.copyWith(fontSize: 18),),
                                         SizedBox(width: 6,),
-                                        Text(cartController.subTotal.toString(),style: robotoBold.copyWith(fontSize: 18),),
+                                        Text(cartController.subTotal.toStringAsFixed(2),style: robotoBold.copyWith(fontSize: 18),),
 
                                       ],
                                     ),

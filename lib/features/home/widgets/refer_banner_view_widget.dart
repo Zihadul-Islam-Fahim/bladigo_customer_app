@@ -37,7 +37,14 @@ class ReferBannerViewWidget extends StatelessWidget {
             Positioned(
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                  child: Image.asset(Images.referBg, height: ResponsiveHelper.isMobile(context) ? 95 : 147,fit: BoxFit.cover,)),
+                  child:Container(
+                    height: ResponsiveHelper.isMobile(context) ? 95 : 147,
+                    width: double.infinity,
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                  )
+
+                  // Image.asset(Images.referBg, height: ResponsiveHelper.isMobile(context) ? 95 : 147,fit: BoxFit.cover,)
+              ),
             ),
             Positioned(
               top: 0,bottom: 0,right: 20,
@@ -54,10 +61,10 @@ class ReferBannerViewWidget extends StatelessWidget {
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: Colors.white
+                          color: Theme.of(context).primaryColor
                       ),
                       child: Center(
-                        child: Text("refer_now".tr,style: TextStyle(color: Theme.of(context).primaryColor),),
+                        child: Text("refer_now".tr,style: TextStyle(color: Colors.white),),
                       ),
                     ),
                   ),
@@ -70,11 +77,12 @@ class ReferBannerViewWidget extends StatelessWidget {
               ),
             ),
             Row(
+
               children: [
               SizedBox(
                 width: Get.width * 0.6,
                 child: Row(children: [
-                  SizedBox(width: ResponsiveHelper.isDesktop(context) ? 180 : ResponsiveHelper.isMobile(context) ? 145 : 200),
+                  SizedBox(width: 50),
 
                   Flexible(
                     child: Column(
@@ -86,19 +94,19 @@ class ReferBannerViewWidget extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text: '${'earn'.tr} ',
-                                style: robotoMedium.copyWith(fontSize: ResponsiveHelper.isMobile(context) ? Dimensions.fontSizeSmall : Dimensions.fontSizeLarge, fontWeight: FontWeight.w600, color: Colors.white),
+                                style: robotoMedium.copyWith(fontSize: ResponsiveHelper.isMobile(context) ? Dimensions.fontSizeLarge : Dimensions.fontSizeLarge, fontWeight: FontWeight.w600, color: Colors.black),
                               ),
                               TextSpan(
                                 text: PriceConverter.convertPrice(Get.find<SplashController>().configModel!.refEarningExchangeRate),
-                                style: robotoBold.copyWith(fontSize: ResponsiveHelper.isMobile(context) ? Dimensions.fontSizeDefault : Dimensions.fontSizeOverLarge, color: Colors.white),
+                                style: robotoBold.copyWith(fontSize: ResponsiveHelper.isMobile(context) ? Dimensions.fontSizeDefault : Dimensions.fontSizeOverLarge, color: Colors.black),
                               ),
                               TextSpan(
                                 text: ' ${'when_you'.tr} ',
-                                style: robotoMedium.copyWith(fontSize: ResponsiveHelper.isMobile(context) ? Dimensions.fontSizeSmall : Dimensions.fontSizeLarge, fontWeight: FontWeight.w600, color: Colors.white),
+                                style: robotoMedium.copyWith(fontSize: ResponsiveHelper.isMobile(context) ? Dimensions.fontSizeLarge : Dimensions.fontSizeLarge, fontWeight: FontWeight.w600, color: Colors.black),
                               ),
                               TextSpan(
                                 text: 'refer_an_friend'.tr,
-                                style: robotoRegular.copyWith(fontSize: ResponsiveHelper.isMobile(context) ? Dimensions.fontSizeSmall : Dimensions.fontSizeDefault, fontWeight: FontWeight.w600, color: Colors.white),
+                                style: robotoRegular.copyWith(fontSize: ResponsiveHelper.isMobile(context) ? Dimensions.fontSizeLarge : Dimensions.fontSizeDefault, fontWeight: FontWeight.w600, color: Colors.black),
                               ),
                             ],
                           ),

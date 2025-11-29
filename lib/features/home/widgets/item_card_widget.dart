@@ -152,8 +152,8 @@ class ItemCardWidget extends StatelessWidget {
                   fromLeft: isCampaignItem ? -7 : -2,
                 ),
                 Positioned(
-                  bottom: Dimensions.paddingSizeSmall,
-                  right: Dimensions.paddingSizeSmall,
+                  bottom: Dimensions.paddingSizeDefault,
+                  right: Dimensions.paddingSizeLarge,
                   child: GetBuilder<ProductController>(
                       builder: (productController) {
                     return GetBuilder<CartController>(
@@ -316,8 +316,8 @@ class ItemCardWidget extends StatelessWidget {
                                 }
                               },
                               child: Container(
-                                height: 24,
-                                width: 24,
+                                height: 28,
+                                width: 28,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Theme.of(context).primaryColor,
