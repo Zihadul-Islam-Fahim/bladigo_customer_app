@@ -129,14 +129,14 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
           // const SignInBg(),
           Container(
             height: Get.height,
-            color: Theme.of(context).cardColor,
-            // decoration: BoxDecoration(
-            //   // color: Theme.of(context).primaryColor.withOpacity(0.10),
-            //     image: const DecorationImage(
-            //       fit: BoxFit.fitWidth,
-            //       image: AssetImage(Images.signinBG),
-            //     ),
-            // ),
+            // color: Theme.of(context).cardColor,
+            decoration: BoxDecoration(
+              // color: Theme.of(context).primaryColor.withOpacity(0.10),
+                image: const DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/image/bg1.png"),
+                ),
+            ),
             child: Container(
               padding: const EdgeInsets.only(left: 12, right: 12),
               // color: bgColor,
@@ -146,22 +146,23 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 100),
-                    Center(
-                      child: Text(
-                        'enter_your_mobile'.tr,
-                        style: openSans.copyWith(fontSize: 24),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    SizedBox(height: 20,),
-                    Center(
-                      child: Text(
-                        'we_will_send_whatsapp'.tr,
-                        style: openSans.copyWith(fontSize: 18),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                    SizedBox(height: 200),
+
+                    // Center(
+                    //   child: Text(
+                    //     'enter_your_mobile'.tr,
+                    //     style: openSans.copyWith(fontSize: 24),
+                    //     textAlign: TextAlign.center,
+                    //   ),
+                    // ),
+                    // SizedBox(height: 20,),
+                    // Center(
+                    //   child: Text(
+                    //     'we_will_send_whatsapp'.tr,
+                    //     style: openSans.copyWith(fontSize: 18),
+                    //     textAlign: TextAlign.center,
+                    //   ),
+                    // ),
                     // const SizedBox(height: 20),
                     // TextFormField(
                     //   keyboardType: TextInputType.phone,

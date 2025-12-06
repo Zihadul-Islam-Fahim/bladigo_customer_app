@@ -51,34 +51,32 @@ class SocialLoginWidget extends StatelessWidget {
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+
+          const SizedBox(height: Dimensions.paddingSizeSmall),
+          Text("hey_there".tr,style: openSans.copyWith(fontSize: 18,color: Colors.white),),
+          Text("login_or_signup_for_more".tr,textAlign:TextAlign.center,style: openSans.copyWith(fontSize: 18,color: Colors.white),),
+          const SizedBox(height: Dimensions.paddingSizeSmall),
           canGoogleAndFacebookLogin
               ? Column(children: [
-                  showWelcomeText
-                      ? Text('${'welcome_to'.tr} ${AppConstants.appName}',
-                          style: robotoMedium.copyWith(
-                              fontSize: Dimensions.fontSizeLarge))
-                      : const SizedBox(),
+                  // showWelcomeText
+                  //     ? Text('${'welcome_to'.tr} ${AppConstants.appName}',
+                  //         style: robotoMedium.copyWith(
+                  //           color: Colors.white,
+                  //             fontSize: Dimensions.fontSizeLarge))
+                  //     : const SizedBox(),
                   const SizedBox(height: Dimensions.paddingSizeLarge),
                   Get.find<SplashController>()
                           .configModel!
                           .socialLogin![0]
                           .status!
                       ? Container(
-                          height: 50,
-                          padding: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            borderRadius: const BorderRadius.all(
-                                Radius.circular(Dimensions.radiusDefault)),
-                            boxShadow: [
-                              BoxShadow(
-                                  color:
-                                      Colors.grey[Get.isDarkMode ? 700 : 300]!,
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                  offset: const Offset(2, 2))
-                            ],
-                          ),
+                    height: 60,
+                    width: Get.width *0.95,
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
+                        // border: Border.all(color: Colors.black)
+                    ),
                           child: CustomInkWellWidget(
                             onTap: () => _googleLogin(googleSignIn),
                             radius: Dimensions.radiusDefault,
@@ -111,21 +109,13 @@ class SocialLoginWidget extends StatelessWidget {
                           .socialLogin![1]
                           .status!
                       ? Container(
-                          height: 50,
-                          padding: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            borderRadius: const BorderRadius.all(
-                                Radius.circular(Dimensions.radiusDefault)),
-                            boxShadow: [
-                              BoxShadow(
-                                  color:
-                                      Colors.grey[Get.isDarkMode ? 700 : 300]!,
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                  offset: const Offset(2, 2))
-                            ],
-                          ),
+                    height: 60,
+                    width: Get.width *0.95,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
+                        border: Border.all(color: Colors.black)
+                    ),
                           child: CustomInkWellWidget(
                             onTap: () => _facebookLogin(),
                             radius: Dimensions.radiusDefault,
@@ -155,21 +145,13 @@ class SocialLoginWidget extends StatelessWidget {
                           : 0),
                   canAppleLogin
                       ? Container(
-                          height: 50,
-                          padding: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            borderRadius: const BorderRadius.all(
-                                Radius.circular(Dimensions.radiusDefault)),
-                            boxShadow: [
-                              BoxShadow(
-                                  color:
-                                      Colors.grey[Get.isDarkMode ? 700 : 300]!,
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                  offset: const Offset(2, 2))
-                            ],
-                          ),
+                    height: 60,
+                    width: Get.width *0.95,
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
+                        // border: Border.all(color: Colors.black)
+                    ),
                           child: CustomInkWellWidget(
                             onTap: () => _appleLogin(),
                             radius: Dimensions.radiusDefault,
@@ -285,8 +267,9 @@ class SocialLoginWidget extends StatelessWidget {
                             height: 60,
                             width: Get.width *0.95,
                             decoration: BoxDecoration(
+                                color: Theme.of(context).cardColor,
                               borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
-                              border: Border.all(color: Colors.black)
+                              // border: Border.all(color: Colors.black)
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -335,8 +318,9 @@ class SocialLoginWidget extends StatelessWidget {
                         height: 60,
                         width: Get.width *0.95,
                         decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(Dimensions.radiusXExtraLarge),
-                            border: Border.all(color: Colors.black)
+                            // border: Border.all(color: Colors.black)
                         ),
                         margin: EdgeInsets.all(6),
                         child: Row(

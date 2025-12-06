@@ -35,11 +35,19 @@
 				<string>Editor</string>
 				<key>CFBundleURLSchemes</key>
 				<array>
-					<string>com.googleusercontent.apps.491987943015-8enep3h58pfk6da9oc17rv2iqostjvln</string>
-					<string>fb452131619626499</string>
+					<string>com.googleusercontent.apps.512064433463-3mf20qp6hagqggqpdr7mrjbfqj52o262</string>
+
 				</array>
 			</dict>
 		</array>
+
+		<key>LSApplicationQueriesSchemes</key>
+        <array>
+            <string>google</string>
+            	<string>512064433463-3mf20qp6hagqggqpdr7mrjbfqj52o262.apps.googleusercontent.com</string>
+            <string>com.googleusercontent.apps.512064433463-3mf20qp6hagqggqpdr7mrjbfqj52o262</string>
+        </array>
+
 		<key>CFBundleVersion</key>
 		<string>$(CURRENT_PROJECT_VERSION)</string>
 		<key>FacebookAppID</key>

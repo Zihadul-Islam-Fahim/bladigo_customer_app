@@ -270,7 +270,7 @@ class AppConstants {
     //     languageCode: 'bn'),
     LanguageModel(
         imageUrl: Images.french,
-        languageName: 'French',
+        languageName: 'Francais',
         countryCode: 'FR',
         languageCode: 'fr'),
   ];

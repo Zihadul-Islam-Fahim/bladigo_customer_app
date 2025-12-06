@@ -49,9 +49,10 @@ class OtpLoginWidget extends StatelessWidget {
           const SizedBox(height: Dimensions.paddingSizeLarge),
           CustomTextFieldWidget(
             hintText: 'xxx-xxx-xxxxx'.tr,
+            // hintTextColor: Theme.of(context).cardColor,
             controller: phoneController,
             focusNode: phoneFocus,
-            fillColor: Theme.of(context).disabledColor.withOpacity(0.1),
+            fillColor: Theme.of(context).cardColor,
             inputAction: TextInputAction.done,
             inputType: TextInputType.phone,
             isPhone: true,
@@ -103,20 +104,26 @@ class OtpLoginWidget extends StatelessWidget {
           // TramsConditionsCheckBoxWidget(
           //     authController: authController, fromDialog: true),
           const SizedBox(height: Dimensions.paddingSizeLarge),
-          CustomButtonWidget(
-            // height: isDesktop ? 50 : null,
-            // width:  isDesktop ? 250 : null,
-            buttonText: 'continue'.tr,
-            radius: 50,
-            // radius: Dimensions.radiusDefault,
-            isBold: isDesktop ? false : true,
-            isLoading: authController.isLoading,
-          //  color: GetPlatform.isAndroid ? Colors.white : null,
-            textColor: GetPlatform.isAndroid ? Colors.black : null,
-            onPressed: onClickLoginButton,
-            fontSize: isDesktop
-                ? Dimensions.fontSizeSmall
-                : Dimensions.fontSizeExtraLarge,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40),
+              border: Border.all(color: Colors.white)
+            ),
+            child: CustomButtonWidget(
+              // height: isDesktop ? 50 : null,
+              // width:  isDesktop ? 250 : null,
+              buttonText: 'continue'.tr,
+              radius: 50,
+              // radius: Dimensions.radiusDefault,
+              isBold: isDesktop ? false : true,
+              isLoading: authController.isLoading,
+            //  color: GetPlatform.isAndroid ? Colors.white : null,
+              textColor: GetPlatform.isAndroid ? Colors.black : null,
+              onPressed: onClickLoginButton,
+              fontSize: isDesktop
+                  ? Dimensions.fontSizeSmall
+                  : Dimensions.fontSizeExtraLarge,
+            ),
           ),
           const SizedBox(height: Dimensions.paddingSizeSmall),
           socialEnable

@@ -34,6 +34,7 @@ class CustomTextFieldWidget extends StatefulWidget {
   final bool showTitle;
   final bool showBorder;
   final double iconSize;
+  final Color? hintTextColor;
   final bool divider;
   final bool isPhone;
   final String? countryDialCode;
@@ -54,6 +55,7 @@ class CustomTextFieldWidget extends StatefulWidget {
     super.key,
     this.titleText = 'Write something...',
     this.hintText = '',
+    this.hintTextColor,
     this.controller,
     this.focusNode,
     this.nextFocus,
@@ -207,7 +209,7 @@ class CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
                   : widget.fillColor ?? Theme.of(context).cardColor,
               hintStyle: robotoRegular.copyWith(
                   fontSize: Dimensions.fontSizeLarge,
-                  color: Theme.of(context).hintColor.withOpacity(0.7)),
+                  color: widget.hintTextColor ?? Theme.of(context).hintColor.withOpacity(0.7)),
               filled: true,
               labelStyle: widget.showLabelText
                   ? robotoRegular.copyWith(
