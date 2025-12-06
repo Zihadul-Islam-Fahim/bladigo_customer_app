@@ -1247,7 +1247,7 @@ class _ProductBottomSheetWidgetState extends State<ProductBottomSheetWidget> {
                               value:
                                   productController.quantity!.toDouble(),
                               textStyle: robotoMedium.copyWith(
-                                  fontSize: Dimensions.fontSizeLarge),
+                                  fontSize: Dimensions.fontSizeLarge1),
                             ),
                             QuantityButton(
                               onTap: () => productController.setQuantity(

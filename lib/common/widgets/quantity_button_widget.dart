@@ -20,8 +20,8 @@ class QuantityButton extends StatelessWidget {
     return CustomInkWellWidget(
       onTap: onTap ?? () {},
       child: Container(
-        height: 25,
-        width: 25,
+        height: 35,
+        width: 35,
         margin:
             const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
         decoration: BoxDecoration(
@@ -47,7 +47,7 @@ class QuantityButton extends StatelessWidget {
               : isIncrement
                   ? Icons.add
                   : Icons.remove,
-          size: 12,
+          size: 22,
           color: showRemoveIcon
               ? Theme.of(context).colorScheme.error
               : isIncrement
