@@ -1220,6 +1220,7 @@
  "Order_will_be_delivered_here": "سيتم توصيل الطلب إلى هنا",
  "login_with_google": "تسجيل الدخول باستخدام جوجل",
  "login_with_apple": "تسجيل الدخول باستخدام أبل",
- "login_or_signup_for_more": "سجل الدخول أو أنشئ حسابًا للحصول على تجربة طلب أكثر تخصيصًا"
+ "login_or_signup_for_more": "سجل الدخول أو أنشئ حسابًا للحصول على تجربة طلب أكثر تخصيصًا",
+ "payment_summary" :"ملخص السداد"
 
 }

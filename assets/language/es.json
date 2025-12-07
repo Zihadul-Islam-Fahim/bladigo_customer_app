@@ -1216,7 +1216,7 @@
   "Order_will_be_delivered_here": "El pedido será entregado aquí",
   "login_with_google": "Iniciar sesión con Google",
   "login_with_apple": "Iniciar sesión con Apple",
-  "login_or_signup_for_more": "Inicia sesión o regístrate para una experiencia de pedido más personalizada"
-
+  "login_or_signup_for_more": "Inicia sesión o regístrate para una experiencia de pedido más personalizada",
+  "payment_summary" : "El resumen de pago"
 
 }

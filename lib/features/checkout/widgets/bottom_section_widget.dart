@@ -191,7 +191,8 @@ class BottomSectionWidget extends StatelessWidget {
             // Divider(thickness: 0.5, color: Theme.of(context).hintColor.withOpacity(0.5)),
 
             SizedBox(height: !isDesktop ? Dimensions.paddingSizeLarge : 0),
-
+            Text("payment_summary".tr,style:robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge,fontWeight: FontWeight.bold),),
+            SizedBox(height:  Dimensions.paddingSizeSmall ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(!checkoutController.subscriptionOrder ? 'subtotal'.tr : 'item_price'.tr, style: robotoRegular),
               Text(PriceConverter.convertPrice(subTotal), style: robotoRegular, textDirection: TextDirection.ltr),
