@@ -241,7 +241,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           route: RouteHelper.getProfileRoute()),
                       PortionWidget(
                           icon: "assets/image/notification_new.png",
-                          title: 'Notification'.tr,
+                          title: 'notification'.tr,
                           route: RouteHelper.getNotificationRoute()),
                       PortionWidget(
                           icon: Images.addressIcon,

@@ -47,7 +47,9 @@ class ReferBannerViewWidget extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 0,bottom: 0,right: 20,
+              top: 0,bottom: 0,
+              right: Get.locale?.languageCode == 'ar' ? null : 20,
+              left: Get.locale?.languageCode == 'ar' ? 20 : null,
               child: Column(mainAxisAlignment: MainAxisAlignment.center,
 
                 children: [
