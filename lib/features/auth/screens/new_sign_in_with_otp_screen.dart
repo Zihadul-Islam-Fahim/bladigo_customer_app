@@ -1,8 +1,10 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_button_widget.dart';
+import 'package:stackfood_multivendor/common/widgets/custom_image_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_ink_well_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/custom_text_field_widget.dart';
 import 'package:stackfood_multivendor/common/widgets/validate_check.dart';
@@ -126,17 +128,17 @@ class _NewSignInWithOtpScreenState extends State<NewSignInWithOtpScreen> {
         // crossAxisAlignment: CrossAxisAlignment.start,
         // mainAxisSize: MainAxisSize.min,
         children: [
-          // const SignInBg(),
+          const SignInBg(),
           Container(
             height: Get.height,
             // color: Theme.of(context).cardColor,
-            decoration: BoxDecoration(
-              // color: Theme.of(context).primaryColor.withOpacity(0.10),
-                image: const DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage("assets/image/bg1.png"),
-                ),
-            ),
+            // decoration: BoxDecoration(
+            //   // color: Theme.of(context).primaryColor.withOpacity(0.10),
+            //     image:  DecorationImage(
+            //       fit: BoxFit.cover,
+            //       image: SvgPicture("assets/image/bg1.svg"),
+            //     ),
+            // ),
             child: Container(
               padding: const EdgeInsets.only(left: 12, right: 12),
               // color: bgColor,
@@ -447,11 +449,13 @@ class SignInBg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height * 0.6,
-      decoration: BoxDecoration(
-        // color: Theme.of(context).primaryColor.withOpacity(0.10),
-          image: const DecorationImage(
-              image: AssetImage(Images.loginBgSvg), fit: BoxFit.fitHeight)),
+      height: Get.height ,
+      width: Get.width,
+      child: SvgPicture.asset("assets/image/bg1.svg",height: Get.height,fit: BoxFit.cover,),
+      // decoration: BoxDecoration(
+      //   // color: Theme.of(context).primaryColor.withOpacity(0.10),
+      //     image: const DecorationImage(
+      //         image: AssetImage(Images.loginBgSvg), fit: BoxFit.fitHeight)),
     );
   }
 }
