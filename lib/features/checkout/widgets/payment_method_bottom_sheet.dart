@@ -140,11 +140,11 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
 
 
                               ]),
-                              Container(
+                              (!widget.isWalletActive && !widget.isDigitalPaymentActive && !widget.isOfflinePaymentActive) ? Container(
                                 height: 1,
                                 width: double.infinity,
                                 color: Colors.grey[300],
-                              ),
+                              ) : SizedBox.shrink(),
                               widget.isWalletActive && notHideWallet && !checkoutController.subscriptionOrder && isLoggedIn ? PaymentButtonNew(
                                 icon: Images.walletProfile,
                                 title: 'pay_via_wallet'.tr,
@@ -173,11 +173,11 @@ class _PaymentMethodBottomSheetState extends State<PaymentMethodBottomSheet> {
                           //   ),
                           // ]) : const SizedBox(),
                           // SizedBox(height: widget.isDigitalPaymentActive && notHideDigital ? Dimensions.paddingSizeLarge : 0),
-                          Container(
-                            height: 1,
-                            width: double.infinity,
-                            color: Colors.grey[300],
-                          ),
+                          // Container(
+                          //   height: 1,
+                          //   width: double.infinity,
+                          //   color: Colors.grey[300],
+                          // ),
                           widget.isDigitalPaymentActive && notHideDigital && !checkoutController.subscriptionOrder ? ListView.builder(
                               itemCount: Get.find<SplashController>().configModel!.activePaymentMethodList!.length,
                               shrinkWrap: true,

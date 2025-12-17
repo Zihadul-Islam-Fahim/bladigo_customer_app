@@ -452,14 +452,14 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                       width: Dimensions.webMaxWidth,
                                       decoration: BoxDecoration(
                                         color: Theme.of(context).cardColor,
-                                        boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.1),
-                                                    spreadRadius: 1,
-                                                    blurRadius: 10,
-                                                    offset: const Offset(0, 1)),
-                                              ],
+                                        // boxShadow: [
+                                        //         BoxShadow(
+                                        //             color: Colors.grey
+                                        //                 .withOpacity(0.1),
+                                        //             spreadRadius: 1,
+                                        //             blurRadius: 10,
+                                        //             offset: const Offset(0, 1)),
+                                        //       ],
                                       ),
                                       padding: const EdgeInsets.symmetric(
                                           vertical:5),
