@@ -200,8 +200,8 @@ class ProductWidget extends StatelessWidget {
                         bottom: 18,
                         right: 17,
                         child: Container(
-                          width: 24,
-                          height: 24,
+                          width: 28,
+                          height: 28,
                           decoration: BoxDecoration(
                             color: Colors.green,
                             shape: BoxShape.circle,
@@ -210,7 +210,7 @@ class ProductWidget extends StatelessWidget {
                             child: Icon(
                               Icons.add,
                               color: Colors.white,
-                              size: 16,
+                              size: 20,
                             ),
                           ),
                         ),
