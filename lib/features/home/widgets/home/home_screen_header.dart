@@ -179,7 +179,9 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () async {
                     await Get.toNamed(
-                        RouteHelper.getSignInRoute(Get.currentRoute));
+                        RouteHelper.getSignInRoute(Get.currentRoute),
+
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                       // elevation: 8,

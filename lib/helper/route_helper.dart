@@ -401,6 +401,8 @@ class RouteHelper {
     GetPage(name: onBoarding, page: () => OnBoardingScreen()),
     GetPage(
         name: signIn,
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 400),
         page: () => SignInScreen(
               exitFromApp: Get.parameters['page'] == signUp ||
                   Get.parameters['page'] == splash ||
