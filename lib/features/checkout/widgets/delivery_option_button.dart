@@ -60,7 +60,7 @@ class DeliveryOptionButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
               border: Border.all(color: select ? Theme.of(context).primaryColor : Theme.of(context).disabledColor, width: 0.5),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeDefault),
+            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall, vertical: Dimensions.paddingSizeDefault),
             child: Row(
 
               children: [
@@ -77,10 +77,10 @@ class DeliveryOptionButton extends StatelessWidget {
                 const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(title, style: robotoMedium.copyWith(color: Theme.of(context).textTheme.bodyMedium!.color)),
+                  Text(title, style: robotoMedium.copyWith(color: Theme.of(context).textTheme.bodyMedium!.color),overflow: TextOverflow.ellipsis,maxLines: 1,),
 
                   Row(children: [
-                    Text(value == 'delivery' ? '${'charge'.tr}: +$chargeForView' : 'free'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).textTheme.bodyMedium!.color)),
+                    Text(value == 'delivery' ? '${'charge'.tr}: +$chargeForView' : 'free'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).textTheme.bodyMedium!.color),maxLines: 2,overflow: TextOverflow.ellipsis,),
                     const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
                     value == 'delivery' && checkoutController.extraCharge != null && (chargeForView! != '0') && extraChargeForToolTip > 0 ? CustomToolTip(
