@@ -207,7 +207,7 @@ class BottomSectionWidget extends StatelessWidget {
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text('discount'.tr, style: openSans),
                     Row(children: [
-                      Text('(-) ', style: openSans),
+                      // Text('(-) ', style: openSans),
                       PriceConverter.convertAnimationPrice(discount, textStyle: openSans)
                     ]),
                     // Text('(-) ${PriceConverter.convertPrice(discount)}', style: robotoRegular, textDirection: TextDirection.ltr),
@@ -220,7 +220,7 @@ class BottomSectionWidget extends StatelessWidget {
                       (couponController.coupon != null && couponController.coupon!.couponType == 'free_delivery') ? Text(
                         'free_delivery'.tr, style: openSans.copyWith(color: Theme.of(context).primaryColor),
                       ) : Row(children: [
-                        Text('(-) ', style: openSans),
+                        // Text('(-) ', style: openSans),
                         Text(
                           PriceConverter.convertPrice(couponController.discount),
                           style: openSans, textDirection: TextDirection.ltr,
@@ -259,7 +259,7 @@ class BottomSectionWidget extends StatelessWidget {
                     children: [
                       Text('delivery_man_tips'.tr, style: openSans),
                       Row(children: [
-                        Text('(+) ', style: openSans),
+                        // Text('(+) ', style: openSans),
                         PriceConverter.convertAnimationPrice(checkoutController.tips, textStyle: openSans)
                       ]),
                       // Text('(+) ${PriceConverter.convertPrice(checkoutController.tips)}', style: robotoRegular, textDirection: TextDirection.ltr),
@@ -271,7 +271,7 @@ class BottomSectionWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('extra_packaging'.tr, style: openSans),
-                      Text('(+) ${PriceConverter.convertPrice(checkoutController.restaurant!.extraPackagingAmount!)}', style: openSans, textDirection: TextDirection.ltr),
+                      Text(PriceConverter.convertPrice(checkoutController.restaurant!.extraPackagingAmount!), style: openSans, textDirection: TextDirection.ltr),
                     ],
                   ) : const SizedBox.shrink(),
                   SizedBox(height: extraPackagingAmount > 0 ? Dimensions.paddingSizeSmall : 0),
@@ -283,7 +283,7 @@ class BottomSectionWidget extends StatelessWidget {
                     ) : (deliveryCharge == 0 || (couponController.coupon != null && couponController.coupon!.couponType == 'free_delivery')) ? Text(
                       'free'.tr, style: openSans.copyWith(color: Theme.of(context).primaryColor),
                     ) : Row(children: [
-                      Text('(+) ', style: openSans),
+                      // Text('(+) ', style: openSans),
                       Text(
                         PriceConverter.convertPrice(deliveryCharge), style: openSans, textDirection: TextDirection.ltr,
                       )
@@ -301,7 +301,7 @@ class BottomSectionWidget extends StatelessWidget {
                   
                     ]),
                     Text(
-                      '(+) ${PriceConverter.convertPrice(Get.find<SplashController>().configModel!.additionCharge)}',
+                      PriceConverter.convertPrice(Get.find<SplashController>().configModel!.additionCharge),
                       style: openSans, textDirection: TextDirection.ltr,
                     ),
                   ]) : const SizedBox(),
@@ -340,7 +340,7 @@ class BottomSectionWidget extends StatelessWidget {
                   
                   checkoutController.isPartialPay && !checkoutController.subscriptionOrder ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text('paid_by_wallet'.tr, style: openSans),
-                    Text('(-) ${PriceConverter.convertPrice(Get.find<ProfileController>().userInfoModel!.walletBalance!)}', style: openSans, textDirection: TextDirection.ltr),
+                    Text(PriceConverter.convertPrice(Get.find<ProfileController>().userInfoModel!.walletBalance!), style: openSans, textDirection: TextDirection.ltr),
                   ]) : const SizedBox(),
                   SizedBox(height: checkoutController.isPartialPay ? Dimensions.paddingSizeSmall : 0),
                   
